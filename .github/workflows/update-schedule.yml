@@ -35,12 +35,13 @@ jobs:
           JELLYFIN_PASS: ${{ secrets.JELLYFIN_PASS }}
         run: node build-schedule.js
 
-      # 5. Commit and push the updated channels.json back to the repository
+      # 5. Commit and Push Updated Schedule
       - name: Commit and Push Updated Schedule
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add channels.json
+          git add -A
           git status
           git diff-index --quiet HEAD || git commit -m "chore: auto-update channels.json schedule"
           git push
+
