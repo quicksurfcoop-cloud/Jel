@@ -105,8 +105,6 @@
 
     const player = document.getElementById('tvPlayer');
     // Set video source directly to Jellyfin stream endpoint
-
-    const player = document.getElementById('tvPlayer');
     
     // Switch from static mp4 to Jellyfin's universal HLS master playlist
     const streamUrl = `${JELLYFIN_URL}/Videos/${activeItem.id}/master.m3u8?MediaSourceId=${activeItem.id}`;
