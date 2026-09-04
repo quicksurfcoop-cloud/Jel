@@ -3,7 +3,7 @@ name: Update Nostalgex Channel Schedule
 on:
   schedule:
     # Runs every day at midnight UTC (Adjust using standard cron syntax)
-    - cron: '0 0 * * *'
+    - cron: '0 */2 * * *'
   # Allows you to manually trigger the workflow from the GitHub Actions tab anytime
   workflow_dispatch:
 
