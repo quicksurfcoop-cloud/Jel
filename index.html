@@ -101,9 +101,10 @@
     }
 
     const player = document.getElementById('tvPlayer');
+    const apiKey = scheduleData.apiKey || '';
     
-    // Universal iOS stream endpoint forcing container remuxing without auth blocks
-    const streamUrl = `${JELLYFIN_URL}/Videos/${activeItem.id}/stream?static=true&container=mp4`;
+    // Authenticated Jellyfin video stream URL
+    const streamUrl = `${JELLYFIN_URL}/Videos/${activeItem.id}/stream?static=true&api_key=${apiKey}`;
     
     if (player.src !== streamUrl) {
       player.src = streamUrl;
