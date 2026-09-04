@@ -66,7 +66,9 @@ async function generateSchedule() {
 
   console.log(`Successfully compiled ${allEpisodes.length} total episodes.`);
 
+  // Export apiKey so index.html can attach it to video stream requests
   const outputSchedule = {
+    apiKey: apiKey,
     generatedAt: Date.now(),
     channels: {}
   };
