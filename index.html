@@ -105,7 +105,9 @@
 
     const player = document.getElementById('tvPlayer');
     // Set video source directly to Jellyfin stream endpoint
-    const streamUrl = `${JELLYFIN_URL}/Items/${activeItem.id}/Download`;
+
+const streamUrl = `${JELLYFIN_URL}/Videos/${activeItem.id}/stream.mp4?static=true`;
+
     
     if (player.src !== streamUrl) {
       player.src = streamUrl;
