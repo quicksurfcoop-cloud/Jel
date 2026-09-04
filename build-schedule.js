@@ -1,11 +1,19 @@
 const fs = require('fs');
 
-const JELLYFIN_URL = process.env.JELLYFIN_URL || 'https://spread.thepebbles.tech';
+let rawUrl = process.env.JELLYFIN_URL || 'https://spread.thepebbles.tech';
+
+// Clean trailing slashes and ensure https:// scheme is attached
+rawUrl = rawUrl.trim().replace(/\/+$/, '');
+if (!rawUrl.startsWith('http://') && !rawUrl.startsWith('https://')) {
+  rawUrl = `https://${rawUrl}`;
+}
+
+const JELLYFIN_URL = rawUrl;
 const USERNAME = process.env.JELLYFIN_USER || 'union6';
 const PASSWORD = process.env.JELLYFIN_PASS || '1499952177779513';
 
-async function generateSchedule() {
-  console.log('Connecting to:', JELLYFIN_URL);
+console.log(`Connecting to server: ${JELLYFIN_URL}`);
+
   
   if (!JELLYFIN_URL || !USERNAME || !PASSWORD) {
     throw new Error('Missing environment variables for Jellyfin authentication.');
