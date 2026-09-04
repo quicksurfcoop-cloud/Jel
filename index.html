@@ -111,15 +111,6 @@
     // Switch from static mp4 to Jellyfin's universal HLS master playlist
     const streamUrl = `${JELLYFIN_URL}/Videos/${activeItem.id}/master.m3u8?MediaSourceId=${activeItem.id}`;
     
-    if (player.src !== streamUrl) {
-      player.src = streamUrl;
-    }
-    
-    player.currentTime = seekOffset;
-    player.play().catch(err => {
-      console.log("Autoplay blocked - user interaction required.");
-    });
-
 
     
     if (player.src !== streamUrl) {
