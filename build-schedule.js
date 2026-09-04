@@ -1,13 +1,16 @@
 const fs = require('fs');
 
-// Clean and validate environment variables
-let rawUrl = process.env.JELLYFIN_URL || 'https://spread.thepebbles.tech';
-rawUrl = rawUrl.replace(/\[|\]|\(|\)/g, '').trim();
-const match = rawUrl.match(/https?:\/\/[^\s"']+/);
-const JELLYFIN_URL = match ? match[0] : 'https://spread.thepebbles.tech';
+// Extract strictly the first valid http/https URL match
+const envUrl = process.env.JELLYFIN_URL || '';
+const urlMatch = envUrl.match(/https?:\/\/[a-zA-Z0-9.-]+/);
+const JELLYFIN_URL = urlMatch ? urlMatch[0] : 'https://spread.thepebbles.tech';
 
 const USERNAME = (process.env.JELLYFIN_USER || 'union6').trim();
 const PASSWORD = (process.env.JELLYFIN_PASS || '1499952177779513').trim();
+
+
+console.log(`Resolved Jellyfin Server URL: ${JELLYFIN_URL}`);
+
 
 // Channel configuration
 const CHANNELS = [
