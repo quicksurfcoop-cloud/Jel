@@ -1,0 +1,46 @@
+name: Update Nostalgex Channel Schedule
+
+on:
+  schedule:
+    # Runs every day at midnight UTC (Adjust using standard cron syntax)
+    - cron: '0 0 * * *'
+  # Allows you to manually trigger the workflow from the GitHub Actions tab anytime
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Checkout repository code
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+
+      # 2. Set up Node.js environment
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # 3. Install dependencies (if you use node-fetch or other npm packages)
+      - name: Install Dependencies
+        run: |
+          if [ -f package.json ]; then npm install; fi
+
+      # 4. Run the schedule generator script
+      - name: Generate channels.json
+        env:
+          JELLYFIN_URL: ${{ secrets.JELLYFIN_URL }}
+          JELLYFIN_USER: ${{ secrets.JELLYFIN_USER }}
+          JELLYFIN_PASS: ${{ secrets.JELLYFIN_PASS }}
+        run: node build-schedule.js
+
+      # 5. Commit and push the updated channels.json back to the repository
+      - name: Commit and Push Updated Schedule
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add channels.json
+          git status
+          git diff-index --quiet HEAD || git commit -m "chore: auto-update channels.json schedule"
+          git push
