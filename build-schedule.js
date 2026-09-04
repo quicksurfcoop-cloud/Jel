@@ -1,24 +1,24 @@
 const fs = require('fs');
 
+// Clean and validate environment variables
 let rawUrl = process.env.JELLYFIN_URL || 'https://spread.thepebbles.tech';
+rawUrl = rawUrl.replace(/\[|\]|\(|\)/g, '').trim();
+const match = rawUrl.match(/https?:\/\/[^\s"']+/);
+const JELLYFIN_URL = match ? match[0] : 'https://spread.thepebbles.tech';
 
-// Clean trailing slashes and ensure https:// scheme is attached
-rawUrl = rawUrl.trim().replace(/\/+$/, '');
-if (!rawUrl.startsWith('http://') && !rawUrl.startsWith('https://')) {
-  rawUrl = `https://${rawUrl}`;
-}
+const USERNAME = (process.env.JELLYFIN_USER || 'union6').trim();
+const PASSWORD = (process.env.JELLYFIN_PASS || '1499952177779513').trim();
 
-const JELLYFIN_URL = rawUrl;
-const USERNAME = process.env.JELLYFIN_USER || 'union6';
-const PASSWORD = process.env.JELLYFIN_PASS || '1499952177779513';
+// Channel configuration
+const CHANNELS = [
+  { id: 'cartoons', name: '90s Cartoons', genre: 'Animation' },
+  { id: 'sitcoms', name: 'Retro Sitcoms', genre: 'Comedy' }
+];
 
-console.log(`Connecting to server: ${JELLYFIN_URL}`);
+async function generateSchedule() {
+  console.log(`Connecting to Jellyfin server: ${JELLYFIN_URL}`);
 
-  
-  if (!JELLYFIN_URL || !USERNAME || !PASSWORD) {
-    throw new Error('Missing environment variables for Jellyfin authentication.');
-  }
-
+  // 1. Authenticate with Jellyfin
   const authRes = await fetch(`${JELLYFIN_URL}/Users/AuthenticateByName`, {
     method: 'POST',
     headers: {
@@ -36,82 +36,27 @@ console.log(`Connecting to server: ${JELLYFIN_URL}`);
   const apiKey = authData.AccessToken;
   const userId = authData.User.Id;
 
-  console.log('Authenticated successfully. Fetching items...');
+  console.log('Authenticated successfully. Fetching library items...');
 
+  // 2. Fetch all episodes
   const itemsRes = await fetch(`${JELLYFIN_URL}/Users/${userId}/Items?IncludeItemTypes=Episode&Recursive=true&Fields=Genres,RunTimeTicks&api_key=${apiKey}`);
+  if (!itemsRes.ok) {
+    throw new Error(`Failed to fetch items with HTTP status ${itemsRes.status}`);
+  }
+
   const itemsData = await itemsRes.json();
   const allEpisodes = itemsData.Items || [];
-
-  console.log(`Retrieved ${allEpisodes.length} total episodes.`);
-
-  const outputSchedule = {
-    generatedAt: Date.now(),
-    channels: {
-      cartoons: {
-        name: "90s Cartoons",
-        totalLoopSeconds: 3600,
-        items: allEpisodes.slice(0, 50).map(e => ({
-          id: e.Id,
-          title: e.Name,
-          series: e.SeriesName || '',
-          start: 0,
-          duration: 1800
-        }))
-      }
-    }
-  };
-
-  fs.writeFileSync('channels.json', JSON.stringify(outputSchedule, null, 2));
-  console.log('channels.json written successfully!');
-}
-
-generateSchedule().catch(err => {
-  console.error('Fatal Error:', err);
-  process.exit(1); // Force workflow to report failure if the script crashes
-});
-
-
-
-// Define your channel filters
-const CHANNELS = [
-  { id: 'cartoons', name: '90s Cartoons', genre: 'Animation' },
-  { id: 'sitcoms', name: 'Retro Sitcoms', genre: 'Comedy' }
-];
-
-async function generateSchedule() {
-  console.log('Authenticating with Jellyfin...');
-  
-  // 1. Authenticate
-  const authRes = await fetch(`${JELLYFIN_URL}/Users/AuthenticateByName`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'X-Emby-Authorization': 'MediaBrowser Client="NostalgexBuilder", Device="Server", DeviceId="cron-1", Version="1.0.0"'
-    },
-    body: JSON.stringify({ Username: USERNAME, Pw: PASSWORD })
-  });
-  
-  const authData = await authRes.json();
-  const apiKey = authData.AccessToken;
-  const userId = authData.User.Id;
-
-  // 2. Fetch all episodes in bulk
-  console.log('Fetching episodes...');
-  const itemsRes = await fetch(`${JELLYFIN_URL}/Users/${userId}/Items?IncludeItemTypes=Episode&Recursive=true&Fields=Genres,RunTimeTicks&api_key=${apiKey}`);
-  const itemsData = await itemsRes.json();
-  const allEpisodes = itemsData.Items || [];
+  console.log(`Retrieved ${allEpisodes.length} total episodes from server.`);
 
   const outputSchedule = {
     generatedAt: Date.now(),
     channels: {}
   };
 
-  // 3. Group into channels and calculate timeline positions
+  // 3. Build channels and calculate timelines
   for (const ch of CHANNELS) {
     const matching = allEpisodes.filter(e => e.Genres && e.Genres.includes(ch.genre));
-    
-    // Shuffle list for continuous variety
-    const shuffled = matching.sort(() => 0.5 - Math.random());
+    const shuffled = (matching.length > 0 ? matching : allEpisodes).sort(() => 0.5 - Math.random());
 
     let totalDuration = 0;
     const playlist = shuffled.map(item => {
@@ -121,22 +66,26 @@ async function generateSchedule() {
         title: item.Name,
         series: item.SeriesName || '',
         start: totalDuration,
-        duration: runtime
+        duration: runtime > 0 ? runtime : 1800 // Fallback to 30 mins if runtime is missing
       };
-      totalDuration += runtime;
+      totalDuration += entry.duration;
       return entry;
-    }).filter(e => e.duration > 0);
+    });
 
     outputSchedule.channels[ch.id] = {
       name: ch.name,
-      totalLoopSeconds: totalDuration,
+      totalLoopSeconds: totalDuration || 3600,
       items: playlist
     };
   }
 
-  // 4. Save to json
+  // 4. Save to channels.json
   fs.writeFileSync('channels.json', JSON.stringify(outputSchedule, null, 2));
-  console.log('Schedule successfully saved to channels.json!');
+  console.log('channels.json generated and saved successfully!');
 }
 
-generateSchedule().catch(console.error);
+// Safely invoke the async function
+generateSchedule().catch(err => {
+  console.error('Fatal Error:', err);
+  process.exit(1);
+});
