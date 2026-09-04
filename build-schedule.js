@@ -1,9 +1,66 @@
 const fs = require('fs');
 
-// Reads from process.env (GitHub Secrets) or falls back to local strings
 const JELLYFIN_URL = process.env.JELLYFIN_URL || 'https://spread.thepebbles.tech';
 const USERNAME = process.env.JELLYFIN_USER || 'union6';
 const PASSWORD = process.env.JELLYFIN_PASS || '1499952177779513';
+
+async function generateSchedule() {
+  console.log('Connecting to:', JELLYFIN_URL);
+  
+  if (!JELLYFIN_URL || !USERNAME || !PASSWORD) {
+    throw new Error('Missing environment variables for Jellyfin authentication.');
+  }
+
+  const authRes = await fetch(`${JELLYFIN_URL}/Users/AuthenticateByName`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-Emby-Authorization': 'MediaBrowser Client="NostalgexBuilder", Device="Server", DeviceId="cron-1", Version="1.0.0"'
+    },
+    body: JSON.stringify({ Username: USERNAME, Pw: PASSWORD })
+  });
+
+  if (!authRes.ok) {
+    throw new Error(`Authentication failed with HTTP status ${authRes.status}`);
+  }
+
+  const authData = await authRes.json();
+  const apiKey = authData.AccessToken;
+  const userId = authData.User.Id;
+
+  console.log('Authenticated successfully. Fetching items...');
+
+  const itemsRes = await fetch(`${JELLYFIN_URL}/Users/${userId}/Items?IncludeItemTypes=Episode&Recursive=true&Fields=Genres,RunTimeTicks&api_key=${apiKey}`);
+  const itemsData = await itemsRes.json();
+  const allEpisodes = itemsData.Items || [];
+
+  console.log(`Retrieved ${allEpisodes.length} total episodes.`);
+
+  const outputSchedule = {
+    generatedAt: Date.now(),
+    channels: {
+      cartoons: {
+        name: "90s Cartoons",
+        totalLoopSeconds: 3600,
+        items: allEpisodes.slice(0, 50).map(e => ({
+          id: e.Id,
+          title: e.Name,
+          series: e.SeriesName || '',
+          start: 0,
+          duration: 1800
+        }))
+      }
+    }
+  };
+
+  fs.writeFileSync('channels.json', JSON.stringify(outputSchedule, null, 2));
+  console.log('channels.json written successfully!');
+}
+
+generateSchedule().catch(err => {
+  console.error('Fatal Error:', err);
+  process.exit(1); // Force workflow to report failure if the script crashes
+});
 
 
 
