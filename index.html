@@ -103,8 +103,8 @@
     const player = document.getElementById('tvPlayer');
     const apiKey = scheduleData.apiKey || '';
     
-    // Authenticated Jellyfin video stream URL
-    const streamUrl = `${JELLYFIN_URL}/Videos/${activeItem.id}/stream?static=true&api_key=${apiKey}`;
+    // HLS Stream with authenticated token for native iOS WebKit compatibility
+    const streamUrl = `${JELLYFIN_URL}/Videos/${activeItem.id}/master.m3u8?api_key=${apiKey}&MediaSourceId=${activeItem.id}&VideoCodec=h264&AudioCodec=aac`;
     
     if (player.src !== streamUrl) {
       player.src = streamUrl;
