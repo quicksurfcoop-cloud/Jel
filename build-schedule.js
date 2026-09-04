@@ -1,8 +1,11 @@
 const fs = require('fs');
 
-const JELLYFIN_URL = 'https://spread.thepebbles.tech';
-const USERNAME = 'union6';
-const PASSWORD = '1499952177779513';
+// Reads from process.env (GitHub Secrets) or falls back to local strings
+const JELLYFIN_URL = process.env.JELLYFIN_URL || 'https://spread.thepebbles.tech';
+const USERNAME = process.env.JELLYFIN_USER || 'union6';
+const PASSWORD = process.env.JELLYFIN_PASS || '1499952177779513';
+
+
 
 // Define your channel filters
 const CHANNELS = [
