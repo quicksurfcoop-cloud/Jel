@@ -8,11 +8,6 @@ const JELLYFIN_URL = urlMatch ? urlMatch[0] : 'https://spread.thepebbles.tech';
 const USERNAME = (process.env.JELLYFIN_USER || 'union6').trim();
 const PASSWORD = (process.env.JELLYFIN_PASS || '1499952177779513').trim();
 
-
-console.log(`Resolved Jellyfin Server URL: ${JELLYFIN_URL}`);
-
-
-// Channel configuration
 const CHANNELS = [
   { id: 'cartoons', name: '90s Cartoons', genre: 'Animation' },
   { id: 'sitcoms', name: 'Retro Sitcoms', genre: 'Comedy' }
@@ -39,17 +34,37 @@ async function generateSchedule() {
   const apiKey = authData.AccessToken;
   const userId = authData.User.Id;
 
-  console.log('Authenticated successfully. Fetching library items...');
+  console.log('Authenticated successfully. Fetching library items in batches...');
 
-  // 2. Fetch all episodes
-  const itemsRes = await fetch(`${JELLYFIN_URL}/Users/${userId}/Items?IncludeItemTypes=Episode&Recursive=true&Fields=Genres,RunTimeTicks&api_key=${apiKey}`);
-  if (!itemsRes.ok) {
-    throw new Error(`Failed to fetch items with HTTP status ${itemsRes.status}`);
+  // 2. Paginated Fetching to Prevent 504 Timeouts
+  let allEpisodes = [];
+  const limit = 100;
+  let startIndex = 0;
+  let hasMore = true;
+  const maxItemsToFetch = 500; // Limits total fetch depth to protect connection
+
+  while (hasMore && allEpisodes.length < maxItemsToFetch) {
+    const itemsUrl = `${JELLYFIN_URL}/Users/${userId}/Items?IncludeItemTypes=Episode&Recursive=true&Fields=Genres,RunTimeTicks&StartIndex=${startIndex}&Limit=${limit}&api_key=${apiKey}`;
+    
+    const itemsRes = await fetch(itemsUrl);
+    if (!itemsRes.ok) {
+      throw new Error(`Failed to fetch items at offset ${startIndex} with HTTP status ${itemsRes.status}`);
+    }
+
+    const itemsData = await itemsRes.json();
+    const batch = itemsData.Items || [];
+    
+    allEpisodes = allEpisodes.concat(batch);
+    console.log(`Fetched batch: ${batch.length} items (Total: ${allEpisodes.length})`);
+
+    if (batch.length < limit || itemsData.TotalRecordCount <= allEpisodes.length) {
+      hasMore = false;
+    } else {
+      startIndex += limit;
+    }
   }
 
-  const itemsData = await itemsRes.json();
-  const allEpisodes = itemsData.Items || [];
-  console.log(`Retrieved ${allEpisodes.length} total episodes from server.`);
+  console.log(`Successfully compiled ${allEpisodes.length} total episodes.`);
 
   const outputSchedule = {
     generatedAt: Date.now(),
@@ -59,17 +74,18 @@ async function generateSchedule() {
   // 3. Build channels and calculate timelines
   for (const ch of CHANNELS) {
     const matching = allEpisodes.filter(e => e.Genres && e.Genres.includes(ch.genre));
-    const shuffled = (matching.length > 0 ? matching : allEpisodes).sort(() => 0.5 - Math.random());
+    const playlistSource = matching.length > 0 ? matching : allEpisodes;
+    const shuffled = [...playlistSource].sort(() => 0.5 - Math.random());
 
     let totalDuration = 0;
     const playlist = shuffled.map(item => {
-      const runtime = Math.floor((item.RunTimeTicks || 0) / 10000000); // Ticks to seconds
+      const runtime = Math.floor((item.RunTimeTicks || 0) / 10000000);
       const entry = {
         id: item.Id,
         title: item.Name,
         series: item.SeriesName || '',
         start: totalDuration,
-        duration: runtime > 0 ? runtime : 1800 // Fallback to 30 mins if runtime is missing
+        duration: runtime > 0 ? runtime : 1800
       };
       totalDuration += entry.duration;
       return entry;
@@ -82,12 +98,11 @@ async function generateSchedule() {
     };
   }
 
-  // 4. Save to channels.json
+  // 4. Write output file
   fs.writeFileSync('channels.json', JSON.stringify(outputSchedule, null, 2));
   console.log('channels.json generated and saved successfully!');
 }
 
-// Safely invoke the async function
 generateSchedule().catch(err => {
   console.error('Fatal Error:', err);
   process.exit(1);
