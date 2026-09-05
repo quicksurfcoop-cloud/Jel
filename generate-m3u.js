@@ -15,7 +15,6 @@ const FIXED_EPOCH_SECONDS = 1767225600;
 let masterM3u = '#EXTM3U\n\n';
 
 for (const [channelId, channel] of Object.entries(schedule.channels)) {
-  // Calculate active item based on schedule loop offset
   const elapsedSeconds = (nowSeconds - FIXED_EPOCH_SECONDS) % channel.totalLoopSeconds;
 
   let activeItem = channel.items[0];
@@ -32,21 +31,14 @@ for (const [channelId, channel] of Object.entries(schedule.channels)) {
 
   const title = activeItem.series ? `${activeItem.series} - ${activeItem.title}` : activeItem.title;
 
-  // Direct MP4/TS stream container optimized for VLC media parser
-  const streamUrl = `${JELLYFIN_URL}/Videos/${activeItem.id}/stream.mp4?` +
-    `api_key=${apiKey}` +
-    `&VideoCodec=h264` +
-    `&AudioCodec=aac` +
-    `&AudioChannels=2` +
-    `&VideoBitrate=8000000` +
-    `&StartTimeTicks=${Math.floor(seekOffset * 10000000)}`;
+  // Direct video stream URL (VLC natively handles all codecs, containers, and seeking)
+  const streamUrl = `${JELLYFIN_URL}/Items/${activeItem.id}/Download?api_key=${apiKey}`;
 
-  // Live TV stream entry for VLC
-  const channelM3u = `#EXTM3U\n#EXTINF:-1 tvg-id="${channelId}" tvg-name="${channel.name}", ${channel.name} (Now: ${title})\n${streamUrl}\n`;
+  const channelM3u = `#EXTM3U\n#EXTINF:${activeItem.duration}, [${channel.name}] ${title}\n${streamUrl}\n`;
   fs.writeFileSync(`${channelId}.m3u`, channelM3u);
-  console.log(`Generated ${channelId}.m3u (Live Channel)`);
+  console.log(`Generated ${channelId}.m3u`);
 
-  masterM3u += `#EXTINF:-1 tvg-id="${channelId}" tvg-name="${channel.name}", ${channel.name}\n${streamUrl}\n\n`;
+  masterM3u += `#EXTINF:${activeItem.duration}, [${channel.name}] ${title}\n${streamUrl}\n\n`;
 }
 
 fs.writeFileSync('all-channels.m3u', masterM3u);
