@@ -43,7 +43,7 @@ const CHANNELS = [
   excludeGenres: ['Documentary'],
   // Restricted strictly to family-friendly / youth ratings
   allowedRatings: ['TV-Y7', 'TV-G', 'TV-PG', 'G', 'PG'],
-  excludeTitles: ['Sailor Moon'],
+  excludeTitles: ['Sailor Moon', 'Dragon Ball', 'Aria', 'Avatar: The Last Airbender', 'Adventure Time', 'ThunderCats','Teenage Mutant Ninja Turtles', 'Penn & Teller: Fool Us', 'Dragon Ball GT'],
   startYear: 1970,
   endYear: 2026
 },
