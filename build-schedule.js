@@ -57,6 +57,25 @@ const CHANNELS = [
   startYear: 1970,
   endYear: 2015
 },
+  // Add this entry to your CHANNELS array in build-schedule.js
+
+{
+  id: 'box-office',
+  name: 'Sky Box Office - Latest Movies',
+  // Tag matching for recent blockbusters and premiere releases
+  tags: ['blockbuster','box office', 'cinema', 'critically acclaimed','award winning','action', 'thriller', 'sci-fi', 'adventure'],
+  // Empty array to prevent broad genre bleed
+  genres: [],
+  excludeGenres: ['Documentary', 'Animation'],
+  // Feature films only
+  includeItemTypes: ['Movie'],
+  // Broad parental ratings for major cinematic releases
+  allowedRatings: ['PG', 'PG-13', 'TV-14', 'R'],
+  // Restrict to the last 3-4 years for a true "New Releases" feel
+  startYear: 2025,
+  endYear: 2026
+},
+
 ];
 
 function seededRandom(seed) {
