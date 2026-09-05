@@ -29,6 +29,11 @@ const CHANNELS = [
     startYear: 1900,
     endYear: 1999
   },
+  { 
+    id: 'BBC', 
+    name: 'BBC', 
+    studio: ['BBC One'],
+  },
   {
     id: 'scream-kids',
     name: 'SCREAM KIDS',
