@@ -173,6 +173,10 @@ async function generateSchedule() {
       );
       if (hasExcluded) return false;
     }
+    
+    if (channel.studios && channel.studios.length > 0) {
+  url += `&Studios=${encodeURIComponent(channel.studios.join(','))}`;
+}
 
     if (ch.allowedRatings && ch.allowedRatings.length > 0) {
       const rating = (item.OfficialRating || '').trim().toUpperCase();
