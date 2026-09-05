@@ -62,7 +62,7 @@ async function generateSchedule() {
 
   console.log('Authenticated successfully. Fetching TV Series metadata...');
 
-  // 2. Fetch all Series to inspect show-level genres (Fast & lightweight)
+  // 2. Fetch all Series to inspect show-level genres
   const seriesUrl = `${JELLYFIN_URL}/Users/${userId}/Items?IncludeItemTypes=Series&Recursive=true&Fields=Genres&api_key=${apiKey}`;
   const seriesRes = await fetch(seriesUrl);
   if (!seriesRes.ok) throw new Error(`Failed to fetch series list: ${seriesRes.status}`);
@@ -77,50 +77,53 @@ async function generateSchedule() {
     channels: {}
   };
 
-  // 3. For each channel, find matching Series IDs and fetch their episodes
+  // 3. Process each channel show-by-show
   for (let cIdx = 0; cIdx < CHANNELS.length; cIdx++) {
     const ch = CHANNELS[cIdx];
     
-    // Find series that match channel target genres
-    const matchingSeriesIds = allSeries.filter(s => {
+    // Find series objects matching target genres
+    const matchingSeries = allSeries.filter(s => {
       if (!s.Genres || s.Genres.length === 0) return false;
       return s.Genres.some(g => ch.genres.map(cg => cg.toLowerCase()).includes(g.toLowerCase()));
-    }).map(s => s.Id);
+    });
 
-    console.log(`Channel [${ch.name}]: Matched ${matchingSeriesIds.length} series.`);
+    console.log(`Channel [${ch.name}]: Matched ${matchingSeries.length} series. Fetching episodes per show...`);
 
     let channelEpisodes = [];
 
-    if (matchingSeriesIds.length > 0) {
-      // Fetch episodes specifically belonging to the matching show IDs
-      const parentIdsParam = matchingSeriesIds.join(',');
+    // Fetch episodes show-by-show to avoid huge SQL IN(...) parameter limits
+    for (const show of matchingSeries) {
       let startIndex = 0;
       let hasMore = true;
-      const limit = 200;
+      const limit = 100;
 
       while (hasMore) {
-        const epUrl = `${JELLYFIN_URL}/Users/${userId}/Items?IncludeItemTypes=Episode&Recursive=true&ParentIds=${parentIdsParam}&Fields=RunTimeTicks&StartIndex=${startIndex}&Limit=${limit}&api_key=${apiKey}`;
-        const epRes = await fetch(epUrl);
+        const epUrl = `${JELLYFIN_URL}/Users/${userId}/Items?IncludeItemTypes=Episode&Recursive=true&ParentId=${show.Id}&Fields=RunTimeTicks&StartIndex=${startIndex}&Limit=${limit}&api_key=${apiKey}`;
         
-        if (!epRes.ok) {
-          console.error(`Failed to fetch episode batch at offset ${startIndex}`);
-          startIndex += limit;
-          continue;
-        }
+        try {
+          const epRes = await fetch(epUrl);
+          if (!epRes.ok) {
+            console.error(`Failed to fetch episodes for show "${show.Name}" at offset ${startIndex}`);
+            break;
+          }
 
-        const epData = await epRes.json();
-        const batch = epData.Items || [];
-        channelEpisodes = channelEpisodes.concat(batch);
+          const epData = await epRes.json();
+          const batch = epData.Items || [];
+          channelEpisodes = channelEpisodes.concat(batch);
 
-        if (batch.length < limit || epData.TotalRecordCount <= channelEpisodes.length) {
-          hasMore = false;
-        } else {
-          startIndex += limit;
+          if (batch.length < limit || epData.TotalRecordCount <= (startIndex + batch.length)) {
+            hasMore = false;
+          } else {
+            startIndex += limit;
+          }
+        } catch (err) {
+          console.error(`Error querying show "${show.Name}":`, err.message);
+          break;
         }
       }
     }
 
-    console.log(`Channel [${ch.name}]: Fetched ${channelEpisodes.length} total episodes.`);
+    console.log(`Channel [${ch.name}]: Successfully fetched ${channelEpisodes.length} total episodes.`);
 
     // Sort deterministically by ID and shuffle using a unique channel seed
     const sortedPool = [...channelEpisodes].sort((a, b) => a.Id.localeCompare(b.Id));
