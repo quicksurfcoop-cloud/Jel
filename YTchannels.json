@@ -1,48 +1,27 @@
 {
-  "id": "cbbc-ch1",
   "channelNumber": 1,
-  "name": "CBBC",
-  "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/CBBC_logo_1997.svg/320px-CBBC_logo_1997.svg.png",
+  "channelName": "CBBC",
   "genre": "Children",
-  "era": "1997-2002",
-  "playlist": [
+  "videos": [
     {
-      "id": "cbbc_ident_1997",
-      "title": "CBBC Broom Cupboard & Ident Intro",
-      "duration": 45,
-      "type": "continuity",
-      "url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
+      "title": "CBBC Broom Cupboard Continuity (1997)",
+      "videoId": "p3T9Zf74h1k"
     },
     {
-      "id": "demon_headmaster_s1e1",
-      "title": "The Demon Headmaster - Series 1 Episode 1",
-      "duration": 1500,
-      "type": "episode",
-      "rating": "G",
-      "url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+      "title": "The Demon Headmaster S1E1",
+      "videoId": "K1Y3nO8fH4g"
     },
     {
-      "id": "cbbc_promo_mid",
-      "title": "CBBC Promo & Next Up Ident",
-      "duration": 30,
-      "type": "promo",
-      "url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"
+      "title": "CBBC Ident & Presentation (1998)",
+      "videoId": "d34F3G8K2lQ"
     },
     {
-      "id": "raven_s1e1",
-      "title": "Raven - The Way of the Warrior",
-      "duration": 1500,
-      "type": "episode",
-      "rating": "G",
-      "url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
+      "title": "Raven - Series 1 Episode 1",
+      "videoId": "x5Y0pP2A7kQ"
     },
     {
-      "id": "newsround_1999",
       "title": "Newsround Special",
-      "duration": 600,
-      "type": "news",
-      "rating": "G",
-      "url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4"
+      "videoId": "L8_1n7J3fYo"
     }
   ]
 }
