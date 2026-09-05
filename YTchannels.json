@@ -1,487 +1,478 @@
-{
-  "channels": [
-    {
-      "channel_id": "cbbc_1997_2002",
-      "channel_name": "CBBC (1997 - 2002 Era)",
-      "description": "A retro archive covering CBBC, CBBC Two, and CBBC on Choice continuity, promos, and links from October 4, 1997 through February 11, 2002.",
-      "playlist": [
-        {
-          "id": 1,
-          "title": "CBBC Continuity - Wednesday 16th January 2002",
-          "uploader": "Baby Chicken Studios",
-          "duration": "2:51",
-          "upload_date": "2024-06-01"
-        },
-        {
-          "id": 2,
-          "title": "CBBC Two Eek! Week Continuity - Monday 30th July 2001 (1)",
-          "uploader": "Thecbbconchoice1",
-          "duration": "0:37",
-          "upload_date": "2016-09-18"
-        },
-        {
-          "id": 3,
-          "title": "cbbc vhs Friday 9th November 2001",
-          "uploader": "junk_vhs_tapes_pal",
-          "duration": "2:12:01",
-          "upload_date": "2024-09-09"
-        },
-        {
-          "id": 4,
-          "title": "CBBC - Liam Continuity (2001) (2)",
-          "uploader": "QueenofVHS",
-          "duration": "0:15",
-          "upload_date": "2021-02-05"
-        },
-        {
-          "id": 5,
-          "title": "BBC ONE & CBBC ONE Continuity On Sunday 2nd September 2001 vhs",
-          "uploader": "old_vhs_stuff",
-          "duration": "5:36",
-          "upload_date": "2025-07-02"
-        },
-        {
-          "id": 6,
-          "title": "CBBC2 - 22 September 1999",
-          "uploader": "Hayley Fisher",
-          "duration": "6:56",
-          "upload_date": "2025-01-22"
-        },
-        {
-          "id": 7,
-          "title": "BBC ONE | CBBC continuity | 8th January 1998",
-          "uploader": "Sticky tape 'n' rust",
-          "duration": "4:40",
-          "upload_date": "2020-09-08"
-        },
-        {
-          "id": 8,
-          "title": "BBC ONE | L&K Friday S1 E1 & CBBC continuity | 9th January 1998 | Part 1 of 2",
-          "uploader": "Sticky tape 'n' rust",
-          "duration": "30:54",
-          "upload_date": "2020-09-19"
-        },
-        {
-          "id": 9,
-          "title": "CBBC One Continuity - Tuesday 13th January 1998 (1)",
-          "uploader": "TV As It Was",
-          "duration": "0:57",
-          "upload_date": "2016-12-18"
-        },
-        {
-          "id": 10,
-          "title": "CBBC One Continuity - Tuesday 13th January 1998 (2)",
-          "uploader": "TV As It Was",
-          "duration": "1:26",
-          "upload_date": "2016-12-19"
-        },
-        {
-          "id": 11,
-          "title": "CBBC - Continuity (1st May 1998)",
-          "uploader": "Lucas’s Archive",
-          "duration": "9:10",
-          "upload_date": "2022-06-15"
-        },
-        {
-          "id": 12,
-          "title": "CBBC - Continuity (27th May 1998)",
-          "uploader": "Lucas’s Archive",
-          "duration": "2:35",
-          "upload_date": "2021-12-31"
-        },
-        {
-          "id": 13,
-          "title": "BBC One Continuity - Friday 5th June 1998 (1)",
-          "uploader": "ChrisVHS89",
-          "duration": "6:25",
-          "upload_date": "2022-09-30"
-        },
-        {
-          "id": 14,
-          "title": "CBBC Morning Continuity With Liam End Of FIreman Sam Then Birthday Cards Then Into Double teletubbies",
-          "uploader": "jimbob8434",
-          "duration": "3:43",
-          "upload_date": "2011-08-21"
-        },
-        {
-          "id": 15,
-          "title": "CBBC Choice Idents",
-          "uploader": "Random TV",
-          "duration": "0:27",
-          "upload_date": "2015-10-11"
-        },
-        {
-          "id": 16,
-          "title": "CBBC on Choice Continuity - Thursday 9th November 2000",
-          "uploader": "Thecbbconchoice1",
-          "duration": "0:22",
-          "upload_date": "2017-12-27"
-        },
-        {
-          "id": 17,
-          "title": "CBBC on Choice - Final Link 2002",
-          "uploader": "Random TV",
-          "duration": "1:47",
-          "upload_date": "2015-11-21"
-        },
-        {
-          "id": 18,
-          "title": "CBBC on Choice continuity - June 2000 - TV Time Machine",
-          "uploader": "TV TIME MACHINE",
-          "duration": "0:21",
-          "upload_date": "2018-11-25"
-        },
-        {
-          "id": 19,
-          "title": "CBBC on Choice continuity - Tuesday 22nd August 2000",
-          "uploader": "Thecbbconchoice1",
-          "duration": "0:56",
-          "upload_date": "2016-09-13"
-        },
-        {
-          "id": 20,
-          "title": "CBBC - Angellica Continuity (2000) (1)",
-          "uploader": "QueenofVHS",
-          "duration": "5:48",
-          "upload_date": "2021-06-11"
-        },
-        {
-          "id": 21,
-          "title": "CBBC Two Continuity - Wednesday 19th July 2000 (4)",
-          "uploader": "TV As It Was",
-          "duration": "1:27",
-          "upload_date": "2016-12-06"
-        },
-        {
-          "id": 22,
-          "title": "CBBC Continuity: Christmas Day 1997",
-          "uploader": "madmusician91",
-          "duration": "5:15",
-          "upload_date": "2010-12-30"
-        },
-        {
-          "id": 23,
-          "title": "CBBC Morning Continuity With Adrian End Of Playdays Into Double Tweenies",
-          "uploader": "jimbob8434",
-          "duration": "0:44",
-          "upload_date": "2011-08-21"
-        },
-        {
-          "id": 24,
-          "title": "Children's BBC Tweenies UK 1999 Promo",
-          "uploader": "Anthony Collins",
-          "duration": "0:40",
-          "upload_date": "2020-06-29"
-        },
-        {
-          "id": 25,
-          "title": "CBBC Continuity September 1998",
-          "uploader": "Up The Archives - The VHS Vault UK",
-          "duration": "4:43",
-          "upload_date": "2025-09-01"
-        },
-        {
-          "id": 26,
-          "title": "CBBC Two continuity - Wednesday 3rd January 2001 (1)",
-          "uploader": "Thecbbconchoice1",
-          "duration": "1:32",
-          "upload_date": "2016-09-20"
-        },
-        {
-          "id": 27,
-          "title": "BBC TWO | CBBC continuity | 10th April 2001",
-          "uploader": "Sticky tape 'n' rust",
-          "duration": "2:47",
-          "upload_date": "2022-01-18"
-        },
-        {
-          "id": 28,
-          "title": "CBBC on Choice continuity - Thursday 29th June 2000 (2)",
-          "uploader": "Thecbbconchoice1",
-          "duration": "0:57",
-          "upload_date": "2016-09-14"
-        },
-        {
-          "id": 29,
-          "title": "BBC Two Schools continuity - Monday 22nd November 1999 - TV Time Machine",
-          "uploader": "TV TIME MACHINE",
-          "duration": "1:33",
-          "upload_date": "2018-12-05"
-        },
-        {
-          "id": 30,
-          "title": "2001 Grange Hill Guests CBBC",
-          "uploader": "Goldmine Video",
-          "duration": "4:20",
-          "upload_date": "2023-05-29"
-        },
-        {
-          "id": 31,
-          "title": "CBBC on BBC Two Continuity 14th January 2002",
-          "uploader": "Thomas Richardson",
-          "duration": "11:00",
-          "upload_date": "2022-12-01"
-        },
-        {
-          "id": 32,
-          "title": "CBBC Moning Continuity With Liam End Of Oakie Doke Into 64 Zoo Lane",
-          "uploader": "jimbob8434",
-          "duration": "1:05",
-          "upload_date": "2011-08-21"
-        },
-        {
-          "id": 33,
-          "title": "CBBC Morning Continuity With Liam End Of Tweenies Into Teletubbies",
-          "uploader": "jimbob8434",
-          "duration": "1:12",
-          "upload_date": "2011-08-21"
-        },
-        {
-          "id": 34,
-          "title": "CBBC One Continuity 3rd September 2001",
-          "uploader": "Media Central UK",
-          "duration": "0:53",
-          "upload_date": "2025-09-13"
-        },
-        {
-          "id": 35,
-          "title": "50/50 - Monday 1st June 1998 (Series 2)",
-          "uploader": "CSE2.0",
-          "duration": "28:21",
-          "upload_date": "2025-09-04"
-        },
-        {
-          "id": 36,
-          "title": "Children's BBC with Kirsten O'Brien from Monday 2nd March 1998",
-          "uploader": "Ashley Michael Sowerby",
-          "duration": "1:34:31",
-          "upload_date": "2024-08-23"
-        },
-        {
-          "id": 37,
-          "title": "CBBC on Choice Little Monsters intro",
-          "uploader": "Thecbbconchoice1",
-          "duration": "0:29",
-          "upload_date": "2016-10-04"
-        },
-        {
-          "id": 38,
-          "title": "CBBC continuity out of Enchanted Lands and into Little Monsters (1998)",
-          "uploader": "MrHammadmossop1988 Ul-Haq",
-          "duration": "1:09",
-          "upload_date": "2023-07-01"
-        },
-        {
-          "id": 39,
-          "title": "CBBC Morning Continuity End Of Little Monsters Into Liam's Breakfast Show Into Bob The Builder",
-          "uploader": "jimbob8434",
-          "duration": "1:04",
-          "upload_date": "2011-08-21"
-        },
-        {
-          "id": 40,
-          "title": "CBBC Christmas Ident 1997",
-          "uploader": "Chat With Matt",
-          "duration": "0:12",
-          "upload_date": "2010-05-20"
-        },
-        {
-          "id": 41,
-          "title": "CBBC Two continuity - Thursday 14th December 2000 (4)",
-          "uploader": "Thecbbconchoice1",
-          "duration": "0:28",
-          "upload_date": "2016-09-24"
-        },
-        {
-          "id": 42,
-          "title": "CBBC - Continuity (11th, 12th October 2000)",
-          "uploader": "Lucas’s Archive",
-          "duration": "19:59",
-          "upload_date": "2021-12-26"
-        },
-        {
-          "id": 43,
-          "title": "CBBC continuity 2000s",
-          "uploader": "Ident Circle",
-          "duration": "1:05",
-          "upload_date": "2020-05-29"
-        },
-        {
-          "id": 44,
-          "title": "Vintage CBBC continuity - 9th September 2000",
-          "uploader": "James's Archive Deep Dive",
-          "duration": "1:46",
-          "upload_date": "2022-09-25"
-        },
-        {
-          "id": 45,
-          "title": "CBBC - Continuity (2000)",
-          "uploader": "Lucas’s Archive",
-          "duration": "7:37",
-          "upload_date": "2021-11-06"
-        },
-        {
-          "id": 46,
-          "title": "CBBC - Christmas Link with Birthday Card Read out (Incomplete) Early 2000s",
-          "uploader": "The Ingest Department",
-          "duration": "0:18",
-          "upload_date": "2024-12-02"
-        },
-        {
-          "id": 47,
-          "title": "CBBC on Choice continuity - Tuesday 29th August 2000 (1)",
-          "uploader": "Thecbbconchoice1",
-          "duration": "1:06",
-          "upload_date": "2016-09-17"
-        },
-        {
-          "id": 48,
-          "title": "CBBC Continuity and Newsround incomplete Friday 27 April 2001",
-          "uploader": "The Ted Taylor Files",
-          "duration": "6:34",
-          "upload_date": "2023-08-02"
-        },
-        {
-          "id": 49,
-          "title": "CBBC - SMart (2001, Promo)",
-          "uploader": "Telly Archive",
-          "duration": "0:15",
-          "upload_date": "2024-09-16"
-        },
-        {
-          "id": 50,
-          "title": "CBBC Two Continuity (Thursday 20th September 2001)",
-          "uploader": "Roryvhs",
-          "duration": "5:40",
-          "upload_date": "2021-08-12"
-        },
-        {
-          "id": 51,
-          "title": "CBBC Continuity - 3rd September 2001",
-          "uploader": "VHS dump",
-          "duration": "0:57",
-          "upload_date": "2021-12-04"
-        },
-        {
-          "id": 52,
-          "title": "CBBC Continuity - 11th December 2001",
-          "uploader": "HalfbrickVHS",
-          "duration": "3:35",
-          "upload_date": "2025-09-08"
-        },
-        {
-          "id": 53,
-          "title": "CBBC One Afternoon - Tuesday 23rd January 2001",
-          "uploader": "Thecbbconchoice1",
-          "duration": "57:14",
-          "upload_date": "2023-05-24"
-        },
-        {
-          "id": 54,
-          "title": "CBBC1 Afternoon Continuity - Wild Week 2001.wmv",
-          "uploader": "jimbob8434",
-          "duration": "3:03",
-          "upload_date": "2010-03-21"
-        },
-        {
-          "id": 55,
-          "title": "CBBC Continuity - 18th April 2000",
-          "uploader": "Lucas’s Archive",
-          "duration": "4:02",
-          "upload_date": "2023-04-22"
-        },
-        {
-          "id": 56,
-          "title": "Tweenies on CBBC Promo (2000)",
-          "uploader": "Zackzilla ザックジラ",
-          "duration": "0:21",
-          "upload_date": "2023-04-24"
-        },
-        {
-          "id": 57,
-          "title": "BBC One/CBBC Continuity - Monday 16th March 1998 (2)",
-          "uploader": "TV As It Was",
-          "duration": "2:30",
-          "upload_date": "2017-06-23"
-        },
-        {
-          "id": 58,
-          "title": "CBBC and CBeebies Continuity - January/February 2002",
-          "uploader": "Lucas’s Archive",
-          "duration": "11:43",
-          "upload_date": "2023-05-27"
-        },
-        {
-          "id": 59,
-          "title": "CBBC, BBC Schools, Channel 4 Schools continuity, a selection - 1998",
-          "uploader": "Thomas Wiseman",
-          "duration": "18:37",
-          "upload_date": "2021-05-26"
-        },
-        {
-          "id": 60,
-          "title": "BBC Two & CBBC Continuity - 6 April 2000 (Benriggers reupload)",
-          "uploader": "Hayley Fisher",
-          "duration": "5:54",
-          "upload_date": "2025-02-06"
-        },
-        {
-          "id": 61,
-          "title": "CBBC Tuesday Afternoon Contunity With Adrian and Emlin.wmv",
-          "uploader": "jimbob8434",
-          "duration": "5:19",
-          "upload_date": "2010-08-29"
-        },
-        {
-          "id": 62,
-          "title": "CBBC2 Breakfast Show - 10 January 2001",
-          "uploader": "Hayley Fisher",
-          "duration": "5:43",
-          "upload_date": "2025-12-10"
-        },
-        {
-          "id": 63,
-          "title": "CBBC One 'HOT' Continuity - 27 July 2001 (Benriggers reupload)",
-          "uploader": "Hayley Fisher",
-          "duration": "13:48",
-          "upload_date": "2024-12-27"
-        },
-        {
-          "id": 64,
-          "title": "BBC One/CBBC Continuity - Wednesday 29th March 2000 (1)",
-          "uploader": "TV As It Was",
-          "duration": "1:37",
-          "upload_date": "2017-06-20"
-        },
-        {
-          "id": 65,
-          "title": "CBBC1 On-Screen Continuity (c. Early 1998)",
-          "uploader": "Zodi's VHS Vault",
-          "duration": "4:19",
-          "upload_date": "2025-09-12"
-        },
-        {
-          "id": 66,
-          "title": "CBBC Closedown - October 2000",
-          "uploader": "J Harper",
-          "duration": "0:16",
-          "upload_date": "2008-10-25"
-        },
-        {
-          "id": 67,
-          "title": "CBBC Continuity With Michael And Liam Err Game, The Wild Thornberry's and Gadget Boy",
-          "uploader": "jimbob8434",
-          "duration": "5:21",
-          "upload_date": "2012-05-05"
-        },
-        {
-          "id": 68,
-          "title": "CBBC morning Continuity With Liam End Of Playdays Into Double Tweenies",
-          "uploader": "jimbob8434",
-          "duration": "1:35",
-          "upload_date": "2011-08-21"
-        }
-      ]
-    }
-  ]
-}
+[
+  {
+    "id": 1,
+    "title": "CBBC Continuity - Wednesday 16th January 2002",
+    "channel": "Baby Chicken Studios",
+    "duration": "2:51",
+    "upload_date": "2024-06-01"
+  },
+  {
+    "id": 2,
+    "title": "CBBC Two Eek! Week Continuity - Monday 30th July 2001 (1)",
+    "channel": "Thecbbconchoice1",
+    "duration": "0:37",
+    "upload_date": "2016-09-18"
+  },
+  {
+    "id": 3,
+    "title": "cbbc vhs Friday 9th November 2001",
+    "channel": "junk_vhs_tapes_pal",
+    "duration": "2:12:01",
+    "upload_date": "2024-09-09"
+  },
+  {
+    "id": 4,
+    "title": "CBBC - Liam Continuity (2001) (2)",
+    "channel": "QueenofVHS",
+    "duration": "0:15",
+    "upload_date": "2021-02-05"
+  },
+  {
+    "id": 5,
+    "title": "BBC ONE & CBBC ONE Continuity On Sunday 2nd September 2001 vhs",
+    "channel": "old_vhs_stuff",
+    "duration": "5:36",
+    "upload_date": "2025-07-02"
+  },
+  {
+    "id": 6,
+    "title": "CBBC2 - 22 September 1999",
+    "channel": "Hayley Fisher",
+    "duration": "6:56",
+    "upload_date": "2025-01-22"
+  },
+  {
+    "id": 7,
+    "title": "BBC ONE | CBBC continuity | 8th January 1998",
+    "channel": "Sticky tape 'n' rust",
+    "duration": "4:40",
+    "upload_date": "2020-09-08"
+  },
+  {
+    "id": 8,
+    "title": "BBC ONE | L&K Friday S1 E1 & CBBC continuity | 9th January 1998 | Part 1 of 2",
+    "channel": "Sticky tape 'n' rust",
+    "duration": "30:54",
+    "upload_date": "2020-09-19"
+  },
+  {
+    "id": 9,
+    "title": "CBBC One Continuity - Tuesday 13th January 1998 (1)",
+    "channel": "TV As It Was",
+    "duration": "0:57",
+    "upload_date": "2016-12-18"
+  },
+  {
+    "id": 10,
+    "title": "CBBC One Continuity - Tuesday 13th January 1998 (2)",
+    "channel": "TV As It Was",
+    "duration": "1:26",
+    "upload_date": "2016-12-19"
+  },
+  {
+    "id": 11,
+    "title": "CBBC - Continuity (1st May 1998)",
+    "channel": "Lucas’s Archive",
+    "duration": "9:10",
+    "upload_date": "2022-06-15"
+  },
+  {
+    "id": 12,
+    "title": "CBBC - Continuity (27th May 1998)",
+    "channel": "Lucas’s Archive",
+    "duration": "2:35",
+    "upload_date": "2021-12-31"
+  },
+  {
+    "id": 13,
+    "title": "BBC One Continuity - Friday 5th June 1998 (1)",
+    "channel": "ChrisVHS89",
+    "duration": "6:25",
+    "upload_date": "2022-09-30"
+  },
+  {
+    "id": 14,
+    "title": "CBBC Morning Continuity With Liam End Of FIreman Sam Then Birthday Cards Then Into Double teletubbies",
+    "channel": "jimbob8434",
+    "duration": "3:43",
+    "upload_date": "2011-08-21"
+  },
+  {
+    "id": 15,
+    "title": "CBBC Choice Idents",
+    "channel": "Random TV",
+    "duration": "0:27",
+    "upload_date": "2015-10-11"
+  },
+  {
+    "id": 16,
+    "title": "CBBC on Choice Continuity - Thursday 9th November 2000",
+    "channel": "Thecbbconchoice1",
+    "duration": "0:22",
+    "upload_date": "2017-12-27"
+  },
+  {
+    "id": 17,
+    "title": "CBBC on Choice - Final Link 2002",
+    "channel": "Random TV",
+    "duration": "1:47",
+    "upload_date": "2015-11-21"
+  },
+  {
+    "id": 18,
+    "title": "CBBC on Choice continuity - June 2000 - TV Time Machine",
+    "channel": "TV TIME MACHINE",
+    "duration": "0:21",
+    "upload_date": "2018-11-25"
+  },
+  {
+    "id": 19,
+    "title": "CBBC on Choice continuity - Tuesday 22nd August 2000",
+    "channel": "Thecbbconchoice1",
+    "duration": "0:56",
+    "upload_date": "2016-09-13"
+  },
+  {
+    "id": 20,
+    "title": "CBBC - Angellica Continuity (2000) (1)",
+    "channel": "QueenofVHS",
+    "duration": "5:48",
+    "upload_date": "2021-06-11"
+  },
+  {
+    "id": 21,
+    "title": "CBBC Two Continuity - Wednesday 19th July 2000 (4)",
+    "channel": "TV As It Was",
+    "duration": "1:27",
+    "upload_date": "2016-12-06"
+  },
+  {
+    "id": 22,
+    "title": "CBBC Continuity: Christmas Day 1997",
+    "channel": "madmusician91",
+    "duration": "5:15",
+    "upload_date": "2010-12-30"
+  },
+  {
+    "id": 23,
+    "title": "CBBC Morning Continuity With Adrian End Of Playdays Into Double Tweenies",
+    "channel": "jimbob8434",
+    "duration": "0:44",
+    "upload_date": "2011-08-21"
+  },
+  {
+    "id": 24,
+    "title": "Children's BBC Tweenies UK 1999 Promo",
+    "channel": "Anthony Collins",
+    "duration": "0:40",
+    "upload_date": "2020-06-29"
+  },
+  {
+    "id": 25,
+    "title": "CBBC Continuity September 1998",
+    "channel": "Up The Archives - The VHS Vault UK",
+    "duration": "4:43",
+    "upload_date": "2025-09-01"
+  },
+  {
+    "id": 26,
+    "title": "CBBC Two continuity - Wednesday 3rd January 2001 (1)",
+    "channel": "Thecbbconchoice1",
+    "duration": "1:32",
+    "upload_date": "2016-09-20"
+  },
+  {
+    "id": 27,
+    "title": "BBC TWO | CBBC continuity | 10th April 2001",
+    "channel": "Sticky tape 'n' rust",
+    "duration": "2:47",
+    "upload_date": "2022-01-18"
+  },
+  {
+    "id": 28,
+    "title": "CBBC on Choice continuity - Thursday 29th June 2000 (2)",
+    "channel": "Thecbbconchoice1",
+    "duration": "0:57",
+    "upload_date": "2016-09-14"
+  },
+  {
+    "id": 29,
+    "title": "BBC Two Schools continuity - Monday 22nd November 1999 - TV Time Machine",
+    "channel": "TV TIME MACHINE",
+    "duration": "1:33",
+    "upload_date": "2018-12-05"
+  },
+  {
+    "id": 30,
+    "title": "2001 Grange Hill Guests CBBC",
+    "channel": "Goldmine Video",
+    "duration": "4:20",
+    "upload_date": "2023-05-29"
+  },
+  {
+    "id": 31,
+    "title": "CBBC on BBC Two Continuity 14th January 2002",
+    "channel": "Thomas Richardson",
+    "duration": "11:00",
+    "upload_date": "2022-12-01"
+  },
+  {
+    "id": 32,
+    "title": "CBBC Moning Continuity With Liam End Of Oakie Doke Into 64 Zoo Lane",
+    "channel": "jimbob8434",
+    "duration": "1:05",
+    "upload_date": "2011-08-21"
+  },
+  {
+    "id": 33,
+    "title": "CBBC Morning Continuity With Liam End Of Tweenies Into Teletubbies",
+    "channel": "jimbob8434",
+    "duration": "1:12",
+    "upload_date": "2011-08-21"
+  },
+  {
+    "id": 34,
+    "title": "CBBC One Continuity 3rd September 2001",
+    "channel": "Media Central UK",
+    "duration": "0:53",
+    "upload_date": "2025-09-13"
+  },
+  {
+    "id": 35,
+    "title": "50/50 - Monday 1st June 1998 (Series 2)",
+    "channel": "CSE2.0",
+    "duration": "28:21",
+    "upload_date": "2025-09-04"
+  },
+  {
+    "id": 36,
+    "title": "Children's BBC with Kirsten O'Brien from Monday 2nd March 1998",
+    "channel": "Ashley Michael Sowerby",
+    "duration": "1:34:31",
+    "upload_date": "2024-08-23"
+  },
+  {
+    "id": 37,
+    "title": "CBBC on Choice Little Monsters intro",
+    "channel": "Thecbbconchoice1",
+    "duration": "0:29",
+    "upload_date": "2016-10-04"
+  },
+  {
+    "id": 38,
+    "title": "CBBC continuity out of Enchanted Lands and into Little Monsters (1998)",
+    "channel": "MrHammadmossop1988 Ul-Haq",
+    "duration": "1:09",
+    "upload_date": "2023-07-01"
+  },
+  {
+    "id": 39,
+    "title": "CBBC Morning Continuity End Of Little Monsters Into Liam's Breakfast Show Into Bob The Builder",
+    "channel": "jimbob8434",
+    "duration": "1:04",
+    "upload_date": "2011-08-21"
+  },
+  {
+    "id": 40,
+    "title": "CBBC Christmas Ident 1997",
+    "channel": "Chat With Matt",
+    "duration": "0:12",
+    "upload_date": "2010-05-20"
+  },
+  {
+    "id": 41,
+    "title": "CBBC Two continuity - Thursday 14th December 2000 (4)",
+    "channel": "Thecbbconchoice1",
+    "duration": "0:28",
+    "upload_date": "2016-09-24"
+  },
+  {
+    "id": 42,
+    "title": "CBBC - Continuity (11th, 12th October 2000)",
+    "channel": "Lucas’s Archive",
+    "duration": "19:59",
+    "upload_date": "2021-12-26"
+  },
+  {
+    "id": 43,
+    "title": "CBBC continuity 2000s",
+    "channel": "Ident Circle",
+    "duration": "1:05",
+    "upload_date": "2020-05-29"
+  },
+  {
+    "id": 44,
+    "title": "Vintage CBBC continuity - 9th September 2000",
+    "channel": "James's Archive Deep Dive",
+    "duration": "1:46",
+    "upload_date": "2022-09-25"
+  },
+  {
+    "id": 45,
+    "title": "CBBC - Continuity (2000)",
+    "channel": "Lucas’s Archive",
+    "duration": "7:37",
+    "upload_date": "2021-11-06"
+  },
+  {
+    "id": 46,
+    "title": "CBBC - Christmas Link with Birthday Card Read out (Incomplete) Early 2000s",
+    "channel": "The Ingest Department",
+    "duration": "0:18",
+    "upload_date": "2024-12-02"
+  },
+  {
+    "id": 47,
+    "title": "CBBC on Choice continuity - Tuesday 29th August 2000 (1)",
+    "channel": "Thecbbconchoice1",
+    "duration": "1:06",
+    "upload_date": "2016-09-17"
+  },
+  {
+    "id": 48,
+    "title": "CBBC Continuity and Newsround incomplete Friday 27 April 2001",
+    "channel": "The Ted Taylor Files",
+    "duration": "6:34",
+    "upload_date": "2023-08-02"
+  },
+  {
+    "id": 49,
+    "title": "CBBC - SMart (2001, Promo)",
+    "channel": "Telly Archive",
+    "duration": "0:15",
+    "upload_date": "2024-09-16"
+  },
+  {
+    "id": 50,
+    "title": "CBBC Two Continuity (Thursday 20th September 2001)",
+    "channel": "Roryvhs",
+    "duration": "5:40",
+    "upload_date": "2021-08-12"
+  },
+  {
+    "id": 51,
+    "title": "CBBC Continuity - 3rd September 2001",
+    "channel": "VHS dump",
+    "duration": "0:57",
+    "upload_date": "2021-12-04"
+  },
+  {
+    "id": 52,
+    "title": "CBBC Continuity - 11th December 2001",
+    "channel": "HalfbrickVHS",
+    "duration": "3:35",
+    "upload_date": "2025-09-08"
+  },
+  {
+    "id": 53,
+    "title": "CBBC One Afternoon - Tuesday 23rd January 2001",
+    "channel": "Thecbbconchoice1",
+    "duration": "57:14",
+    "upload_date": "2023-05-24"
+  },
+  {
+    "id": 54,
+    "title": "CBBC1 Afternoon Continuity - Wild Week 2001.wmv",
+    "channel": "jimbob8434",
+    "duration": "3:03",
+    "upload_date": "2010-03-21"
+  },
+  {
+    "id": 55,
+    "title": "CBBC Continuity - 18th April 2000",
+    "channel": "Lucas’s Archive",
+    "duration": "4:02",
+    "upload_date": "2023-04-22"
+  },
+  {
+    "id": 56,
+    "title": "Tweenies on CBBC Promo (2000)",
+    "channel": "Zackzilla ザックジラ",
+    "duration": "0:21",
+    "upload_date": "2023-04-24"
+  },
+  {
+    "id": 57,
+    "title": "BBC One/CBBC Continuity - Monday 16th March 1998 (2)",
+    "channel": "TV As It Was",
+    "duration": "2:30",
+    "upload_date": "2017-06-23"
+  },
+  {
+    "id": 58,
+    "title": "CBBC and CBeebies Continuity - January/February 2002",
+    "channel": "Lucas’s Archive",
+    "duration": "11:43",
+    "upload_date": "2023-05-27"
+  },
+  {
+    "id": 59,
+    "title": "CBBC, BBC Schools, Channel 4 Schools continuity, a selection - 1998",
+    "channel": "Thomas Wiseman",
+    "duration": "18:37",
+    "upload_date": "2021-05-26"
+  },
+  {
+    "id": 60,
+    "title": "BBC Two & CBBC Continuity - 6 April 2000 (Benriggers reupload)",
+    "channel": "Hayley Fisher",
+    "duration": "5:54",
+    "upload_date": "2025-02-06"
+  },
+  {
+    "id": 61,
+    "title": "CBBC Tuesday Afternoon Contunity With Adrian and Emlin.wmv",
+    "channel": "jimbob8434",
+    "duration": "5:19",
+    "upload_date": "2010-08-29"
+  },
+  {
+    "id": 62,
+    "title": "CBBC2 Breakfast Show - 10 January 2001",
+    "channel": "Hayley Fisher",
+    "duration": "5:43",
+    "upload_date": "2025-12-10"
+  },
+  {
+    "id": 63,
+    "title": "CBBC One 'HOT' Continuity - 27 July 2001 (Benriggers reupload)",
+    "channel": "Hayley Fisher",
+    "duration": "13:48",
+    "upload_date": "2024-12-27"
+  },
+  {
+    "id": 64,
+    "title": "BBC One/CBBC Continuity - Wednesday 29th March 2000 (1)",
+    "channel": "TV As It Was",
+    "duration": "1:37",
+    "upload_date": "2017-06-20"
+  },
+  {
+    "id": 65,
+    "title": "CBBC1 On-Screen Continuity (c. Early 1998)",
+    "channel": "Zodi's VHS Vault",
+    "duration": "4:19",
+    "upload_date": "2025-09-12"
+  },
+  {
+    "id": 66,
+    "title": "CBBC Closedown - October 2000",
+    "channel": "J Harper",
+    "duration": "0:16",
+    "upload_date": "2008-10-25"
+  },
+  {
+    "id": 67,
+    "title": "CBBC Continuity With Michael And Liam Err Game, The Wild Thornberry's and Gadget Boy",
+    "channel": "jimbob8434",
+    "duration": "5:21",
+    "upload_date": "2012-05-05"
+  },
+  {
+    "id": 68,
+    "title": "CBBC morning Continuity With Liam End Of Playdays Into Double Tweenies",
+    "channel": "jimbob8434",
+    "duration": "1:35",
+    "upload_date": "2011-08-21"
+  }
+]
