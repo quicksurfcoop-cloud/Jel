@@ -17,8 +17,8 @@ const CHANNELS = [
     excludeGenres: ['Documentary', 'Reality', 'Action'],
     allowedRatings: ['TV-Y', 'TV-Y7', 'TV-Y7-FV', 'TV-G', 'TV-PG', 'G', 'PG'],
     excludeTitles: ['South Park', 'Beavis and Butt-Head', 'Family Guy', 'Spawn', 'Futurama', 'King of the Hill', 'American Dad'],
-    startYear: 1988,
-    endYear: 2004
+    startYear: 1990,
+    endYear: 1999
   },
   { 
     id: 'sitcoms', 
@@ -26,8 +26,8 @@ const CHANNELS = [
     genres: ['Sitcom', 'British Comedy'],
     tags: ['Sitcom', 'Sitcoms', 'British Sitcom'],
     excludeGenres: ['Reality', 'Game Show', 'Documentary', 'Talk Show'],
-    startYear: 1960,
-    endYear: 2012
+    startYear: 1900,
+    endYear: 1999
   },
   {
     id: 'scream-kids',
@@ -46,6 +46,7 @@ const CHANNELS = [
     type: 'Series', // Tells Jellyfin to pull TV Shows
     tags: ['superhero', 'superhero team', 'female superhero', 'masked superhero', 'based on comic'],
     excludeGenres: ['Anime'],
+    excludeTags: ['Anime'],
     // If your script uses a single string for the API URL:
     // tagsApiString: 'superhero,superhero team,female superhero,masked superhero,based on comic'
   },
@@ -55,6 +56,7 @@ const CHANNELS = [
     includeItemTypes: ['Movie'], // Tells Jellyfin to pull Movies only
     tags: ['superhero', 'superhero team', 'superhero teamup', 'female superhero', 'masked superhero', 'based on comic'],
    excludeGenres: ['Anime'],
+    excludeTags: ['Anime'],
   },
   {
     id: 'Period-dramas',
@@ -62,8 +64,8 @@ const CHANNELS = [
     tags: ['historical', 'historical drama', 'historical fiction', 'costume drama', 'period drama', '19th century', '18th century', '17th century', '16th century', '15th century', 'victorian era', 'georgian or regency era', 'edwardian era', 'british history'],
     excludeGenres: ['Documentary', 'Animation', 'Comedy'],
     allowedRatings: ['TV-PG', 'TV-14', 'PG-13', 'PG'],
-    startYear: 1970,
-    endYear: 2015
+    startYear: 1900,
+    endYear: 2026
   },
   {
     id: 'box-office',
