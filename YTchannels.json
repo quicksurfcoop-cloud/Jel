@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "name": "Classic Cartoons & Vintage TV",
+    "playlist": [
+      {
+        "id": "e-ORhEE9VVg",
+        "title": "Popeye the Sailor - Classic Cartoon",
+        "duration": 900
+      },
+      {
+        "id": "J1O3UvN5268",
+        "title": "Betty Boop Special",
+        "duration": 1200
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Lo-Fi & Study Beats",
+    "playlist": [
+      {
+        "id": "TURbeWK-x0M",
+        "title": "Ambient Chill Mix 2026",
+        "duration": 3600
+      }
+    ]
+  }
+]
