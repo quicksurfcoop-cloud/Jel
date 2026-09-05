@@ -7,16 +7,27 @@ const JELLYFIN_URL = urlMatch ? urlMatch[0] : 'https://spread.thepebbles.tech';
 const USERNAME = (process.env.JELLYFIN_USER || 'union6').trim();
 const PASSWORD = (process.env.JELLYFIN_PASS || '1499952177779513').trim();
 
+// Refined Channel Specifications
 const CHANNELS = [
   { 
     id: 'cartoons', 
     name: '90s Cartoons', 
-    genres: ['Animation', 'Anime', 'Cartoons', 'Children'] 
+    genres: ['Animation', 'Anime', 'Cartoons', 'Children'],
+    tags: ['Animation', 'Cartoons', '90s'], // Check tags as well
+    excludeGenres: ['Documentary', 'Reality', 'Action'],
+    allowedRatings: ['TV-Y', 'TV-Y7', 'TV-Y7-FV', 'TV-G', 'TV-PG', 'G', 'PG'],
+    excludeTitles: ['South Park', 'Beavis and Butt-Head', 'Family Guy', 'Spawn', 'Futurama', 'King of the Hill', 'American Dad'],
+    startYear: 1988,
+    endYear: 2001
   },
   { 
     id: 'sitcoms', 
     name: 'Retro Sitcoms', 
-    genres: ['Comedy', 'Sitcom', 'Retro', 'British Comedy'] 
+    genres: ['Sitcom', 'British Comedy'],
+    tags: ['Sitcom', 'Sitcoms', 'British Sitcom'], // Added Sitcom tags
+    excludeGenres: ['Reality', 'Game Show', 'Documentary', 'Talk Show'],
+    startYear: 1900,
+    endYear: 2012
   }
 ];
 
@@ -62,8 +73,8 @@ async function generateSchedule() {
 
   console.log('Authenticated successfully. Fetching TV Series metadata...');
 
-  // 2. Fetch all Series to inspect show-level genres
-  const seriesUrl = `${JELLYFIN_URL}/Users/${userId}/Items?IncludeItemTypes=Series&Recursive=true&Fields=Genres&api_key=${apiKey}`;
+  // 2. Fetch all Series with extended metadata fields (Genres, OfficialRating, ProductionYear)
+  const seriesUrl = `${JELLYFIN_URL}/Users/${userId}/Items?IncludeItemTypes=Series&Recursive=true&Fields=Genres,OfficialRating,ProductionYear&api_key=${apiKey}`;
   const seriesRes = await fetch(seriesUrl);
   if (!seriesRes.ok) throw new Error(`Failed to fetch series list: ${seriesRes.status}`);
   
@@ -81,17 +92,54 @@ async function generateSchedule() {
   for (let cIdx = 0; cIdx < CHANNELS.length; cIdx++) {
     const ch = CHANNELS[cIdx];
     
-    // Find series objects matching target genres
+    // Filter matching series based on channel criteria
     const matchingSeries = allSeries.filter(s => {
       if (!s.Genres || s.Genres.length === 0) return false;
-      return s.Genres.some(g => ch.genres.map(cg => cg.toLowerCase()).includes(g.toLowerCase()));
+
+      // Match target genres
+      const hasGenre = s.Genres.some(g => 
+        ch.genres.map(cg => cg.toLowerCase()).includes(g.toLowerCase())
+      );
+      if (!hasGenre) return false;
+
+      // Check excluded genres
+      if (ch.excludeGenres) {
+        const hasExcluded = s.Genres.some(g => 
+          ch.excludeGenres.map(eg => eg.toLowerCase()).includes(g.toLowerCase())
+        );
+        if (hasExcluded) return false;
+      }
+
+      // Filter by Official Ratings (e.g. exclude TV-MA, TV-14)
+      if (ch.allowedRatings && ch.allowedRatings.length > 0) {
+        const rating = (s.OfficialRating || '').trim().toUpperCase();
+        // If a rating exists and isn't allowed, exclude it
+        if (rating && !ch.allowedRatings.map(r => r.toUpperCase()).includes(rating)) {
+          return false;
+        }
+      }
+
+      // Check explicit title exclusions
+      if (ch.excludeTitles && ch.excludeTitles.length > 0) {
+        const isExcluded = ch.excludeTitles.some(title => 
+          s.Name.toLowerCase().includes(title.toLowerCase())
+        );
+        if (isExcluded) return false;
+      }
+
+      // Filter by Production Year range
+      const prodYear = s.ProductionYear || 0;
+      if (ch.startYear && prodYear && prodYear < ch.startYear) return false;
+      if (ch.endYear && prodYear && prodYear > ch.endYear) return false;
+
+      return true;
     });
 
     console.log(`Channel [${ch.name}]: Matched ${matchingSeries.length} series. Fetching episodes per show...`);
 
     let channelEpisodes = [];
 
-    // Fetch episodes show-by-show to avoid huge SQL IN(...) parameter limits
+    // Fetch episodes show-by-show using individual ParentId lookups
     for (const show of matchingSeries) {
       let startIndex = 0;
       let hasMore = true;
