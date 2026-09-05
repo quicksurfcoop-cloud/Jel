@@ -1,6 +1,6 @@
 {
-  "apiKey": "42ea9b8a0ded4073a6007003d9fe5094",
-  "generatedAt": 1788600503327,
+  "apiKey": "40526ef433214b24af5c0791ee6b9dab",
+  "generatedAt": 1788604651262,
   "channels": {
     "cartoons": {
       "name": "90s Cartoons",
@@ -219606,6 +219606,425 @@
           "series": "Mad Men",
           "start": 3418370,
           "duration": 2870
+        }
+      ]
+    },
+    "box-office": {
+      "name": "Sky Box Office - Latest Movies",
+      "totalLoopSeconds": 176705,
+      "items": [
+        {
+          "id": "56a6cd4f4e5d3416b3061e236e2d602f",
+          "title": "YABA",
+          "series": "Maximum Pleasure Guaranteed",
+          "start": 0,
+          "duration": 2172
+        },
+        {
+          "id": "a0e72f0f95bf3edf2225eded07f1d03f",
+          "title": "The Last Dance",
+          "series": "Sherlock & Daughter",
+          "start": 2172,
+          "duration": 2633
+        },
+        {
+          "id": "80fd7b6510fe6211f6714d2ecc73b5a2",
+          "title": "Partners in Crime",
+          "series": "Sherlock & Daughter",
+          "start": 4805,
+          "duration": 2638
+        },
+        {
+          "id": "4c3d1e1c33106040f03a7fd64bcee337",
+          "title": "Betrayal",
+          "series": "Memory of a Killer",
+          "start": 7443,
+          "duration": 2627
+        },
+        {
+          "id": "75dc6b1f4c64e607c429dee68501ccef",
+          "title": "Sound Connections",
+          "series": "Sherlock & Daughter",
+          "start": 10070,
+          "duration": 2607
+        },
+        {
+          "id": "578136df4fbc67a75c1a0dcc0ed2c53b",
+          "title": "Pilot",
+          "series": "Memory of a Killer",
+          "start": 12677,
+          "duration": 2595
+        },
+        {
+          "id": "22d10f8aaea42ab599792a2dd324d367",
+          "title": "Magnets",
+          "series": "Maximum Pleasure Guaranteed",
+          "start": 15272,
+          "duration": 2405
+        },
+        {
+          "id": "91254b671abdde2120f54f801810a9d1",
+          "title": "And Tomorrow",
+          "series": "Testament",
+          "start": 17677,
+          "duration": 2879
+        },
+        {
+          "id": "620fbfe3a9229d3622ec5cc1a3692df6",
+          "title": "One Accord",
+          "series": "Testament",
+          "start": 20556,
+          "duration": 2998
+        },
+        {
+          "id": "7b0d6314639aa3703eb1a6b680d0bdbd",
+          "title": "Dr. Parks",
+          "series": "Memory of a Killer",
+          "start": 23554,
+          "duration": 2463
+        },
+        {
+          "id": "5c50deb5783a1a52d2f7159b0eff35fe",
+          "title": "Dark Forest",
+          "series": "Star City",
+          "start": 26017,
+          "duration": 3732
+        },
+        {
+          "id": "e092ed11a52f8eeb09d29fe451ebba35",
+          "title": "Raisins",
+          "series": "Maximum Pleasure Guaranteed",
+          "start": 29749,
+          "duration": 1988
+        },
+        {
+          "id": "a2709c687a254b116586ca96d805207e",
+          "title": "Hallidays",
+          "series": "Maximum Pleasure Guaranteed",
+          "start": 31737,
+          "duration": 2054
+        },
+        {
+          "id": "0ab602906e9e5be5e3372d8431904d49",
+          "title": "Bite Your Elbow",
+          "series": "Star City",
+          "start": 33791,
+          "duration": 3277
+        },
+        {
+          "id": "a4c34363f84d9ab0896b32a408851a8e",
+          "title": "Best of All Possible Worlds",
+          "series": "The Audacity",
+          "start": 37068,
+          "duration": 3970
+        },
+        {
+          "id": "12743b29e2663f1e51306a6c13d18c14",
+          "title": "Shoot the Piano Player",
+          "series": "Memory of a Killer",
+          "start": 41038,
+          "duration": 2459
+        },
+        {
+          "id": "2fadbb7b23c45f8db4d23f96fe4014b3",
+          "title": "The Vision of Taliesin",
+          "series": "The Pendragon Cycle: Rise of the Merlin",
+          "start": 43497,
+          "duration": 3993
+        },
+        {
+          "id": "50f70a71eada2822a9b935390ddf8648",
+          "title": "The King of Maridunum",
+          "series": "The Pendragon Cycle: Rise of the Merlin",
+          "start": 47490,
+          "duration": 4058
+        },
+        {
+          "id": "82d3d4ace96434622116c14c5ac97f63",
+          "title": "The Price of Failure",
+          "series": "The Pendragon Cycle: Rise of the Merlin",
+          "start": 51548,
+          "duration": 4316
+        },
+        {
+          "id": "0345a9fe4d5dd0ba58b59d47f5374793",
+          "title": "Chunnel",
+          "series": "Maximum Pleasure Guaranteed",
+          "start": 55864,
+          "duration": 2075
+        },
+        {
+          "id": "2559414416644cb74a96863f19873454",
+          "title": "Bad Dancer",
+          "series": "Star City",
+          "start": 57939,
+          "duration": 3599
+        },
+        {
+          "id": "58051a17234fd942384661338ad8bdd2",
+          "title": "Foundering",
+          "series": "The Audacity",
+          "start": 61538,
+          "duration": 3402
+        },
+        {
+          "id": "70ce8215343aaf5fc1908ee713f63dc2",
+          "title": "Flighting",
+          "series": "Maximum Pleasure Guaranteed",
+          "start": 64940,
+          "duration": 2104
+        },
+        {
+          "id": "7b0bed2bc48eb7dd222299ec5ef7e8f0",
+          "title": "Granfalloon",
+          "series": "The Audacity",
+          "start": 67044,
+          "duration": 4021
+        },
+        {
+          "id": "312f5872f0dc0bdc973d033e8635bd99",
+          "title": "The Wolves",
+          "series": "Star City",
+          "start": 71065,
+          "duration": 3870
+        },
+        {
+          "id": "76a429a63b3c27db3b82c045aaa4d714",
+          "title": "Samurai",
+          "series": "Memory of a Killer",
+          "start": 74935,
+          "duration": 2560
+        },
+        {
+          "id": "bdcc57a7112dad498a970c7e30bcb465",
+          "title": "The Challenge",
+          "series": "Sherlock & Daughter",
+          "start": 77495,
+          "duration": 2643
+        },
+        {
+          "id": "14adf77c0ed0b5692368d94bf732b049",
+          "title": "Rosebuds",
+          "series": "Maximum Pleasure Guaranteed",
+          "start": 80138,
+          "duration": 1762
+        },
+        {
+          "id": "0bb524e84203e73ffed1cfe4c3e9da80",
+          "title": "Uncle Jacob",
+          "series": "Memory of a Killer",
+          "start": 81900,
+          "duration": 2461
+        },
+        {
+          "id": "571560219a662868cf70805ca32a8936",
+          "title": "Awl in a Sack",
+          "series": "Star City",
+          "start": 84361,
+          "duration": 3656
+        },
+        {
+          "id": "fe47a6292713b4e2d6e0e2803b7983cd",
+          "title": "Plow Deep",
+          "series": "Star City",
+          "start": 88017,
+          "duration": 3421
+        },
+        {
+          "id": "44ec5291432fb08f4d10e44af7561d87",
+          "title": "Lamplighters",
+          "series": "The Audacity",
+          "start": 91438,
+          "duration": 3706
+        },
+        {
+          "id": "0abbefa2632e3308050ff84b970df1a3",
+          "title": "Shine Brightly",
+          "series": "The Audacity",
+          "start": 95144,
+          "duration": 3605
+        },
+        {
+          "id": "fd9e02851a7ae2a5a193dde098789926",
+          "title": "Queens",
+          "series": "Maximum Pleasure Guaranteed",
+          "start": 98749,
+          "duration": 2284
+        },
+        {
+          "id": "2ac4babd2fe7b5be494ddc10fbd2f0b6",
+          "title": "Vanitas",
+          "series": "The Audacity",
+          "start": 101033,
+          "duration": 3497
+        },
+        {
+          "id": "d39d24200e3ba8628fc2c2e7adc9fba1",
+          "title": "Doubting Thomas",
+          "series": "Sherlock & Daughter",
+          "start": 104530,
+          "duration": 2522
+        },
+        {
+          "id": "9570fcdc5f71b627ba1eae8c6f23d23c",
+          "title": "Unhappy Ending",
+          "series": "Memory of a Killer",
+          "start": 107052,
+          "duration": 2500
+        },
+        {
+          "id": "f19ee151011d4efa29711f0af8bad4f7",
+          "title": "Valley of Heart's Delight",
+          "series": "The Audacity",
+          "start": 109552,
+          "duration": 3611
+        },
+        {
+          "id": "baf5553add5618ff56db81258b486829",
+          "title": "The Last True Bard",
+          "series": "The Pendragon Cycle: Rise of the Merlin",
+          "start": 113163,
+          "duration": 4149
+        },
+        {
+          "id": "c6d798ec4466b785d03ec4dc2c9c43c3",
+          "title": "The Eyes",
+          "series": "Star City",
+          "start": 117312,
+          "duration": 3592
+        },
+        {
+          "id": "2f8567064cf6ea230e7e0f00a8827c19",
+          "title": "The Common Thread",
+          "series": "Sherlock & Daughter",
+          "start": 120904,
+          "duration": 2696
+        },
+        {
+          "id": "556d096774604afe017886a93c2329f5",
+          "title": "Something New",
+          "series": "Testament",
+          "start": 123600,
+          "duration": 3332
+        },
+        {
+          "id": "c67961b8121530a6efad7d1b480006f8",
+          "title": "Tailored by Fabroni",
+          "series": "Memory of a Killer",
+          "start": 126932,
+          "duration": 2627
+        },
+        {
+          "id": "860d75144b52ccbc94a7b5ef092175f9",
+          "title": "The Golden Fleece",
+          "series": "Sherlock & Daughter",
+          "start": 129559,
+          "duration": 2573
+        },
+        {
+          "id": "11bb5d1cc22c535a264ed9fe6838b045",
+          "title": "A Bear on a Chain",
+          "series": "Star City",
+          "start": 132132,
+          "duration": 3712
+        },
+        {
+          "id": "5d4d96b295841d2c63ad36ba0d91264c",
+          "title": "Something Old",
+          "series": "Testament",
+          "start": 135844,
+          "duration": 2867
+        },
+        {
+          "id": "29b32f19c69100026f2d69ec51e0b276",
+          "title": "Exposed",
+          "series": "Memory of a Killer",
+          "start": 138711,
+          "duration": 2462
+        },
+        {
+          "id": "964b8eb6bc2122ca4c600a3dc64e7302",
+          "title": "Erroneous",
+          "series": "Maximum Pleasure Guaranteed",
+          "start": 141173,
+          "duration": 1702
+        },
+        {
+          "id": "0563eff80296d410f2ef1e4b58e052ca",
+          "title": "Ferryman",
+          "series": "Memory of a Killer",
+          "start": 142875,
+          "duration": 2502
+        },
+        {
+          "id": "7ee5e3d259d493dc77eb879f4c1a8b6a",
+          "title": "Scamboy",
+          "series": "Maximum Pleasure Guaranteed",
+          "start": 145377,
+          "duration": 2211
+        },
+        {
+          "id": "af7e79b0185b47bdd87e880e7dd65d2b",
+          "title": "Fire Burns",
+          "series": "Testament",
+          "start": 147588,
+          "duration": 3115
+        },
+        {
+          "id": "0c91829fdd896cb468ac501ec332d210",
+          "title": "Ganieda",
+          "series": "The Pendragon Cycle: Rise of the Merlin",
+          "start": 150703,
+          "duration": 3653
+        },
+        {
+          "id": "c90631ce192f8e2d1790d7ddca2bf464",
+          "title": "Rising Tides",
+          "series": "Testament",
+          "start": 154356,
+          "duration": 2993
+        },
+        {
+          "id": "37a88487c7eab37872124a4ad147fe78",
+          "title": "The Fisherman",
+          "series": "Testament",
+          "start": 157349,
+          "duration": 2774
+        },
+        {
+          "id": "8dd5da9d4710fd4f3d16b93b1e538344",
+          "title": "For Kith & Kin",
+          "series": "Sherlock & Daughter",
+          "start": 160123,
+          "duration": 2591
+        },
+        {
+          "id": "5e2bfff5b85f353babf7aa0e8077031c",
+          "title": "I See",
+          "series": "Testament",
+          "start": 162714,
+          "duration": 2572
+        },
+        {
+          "id": "88d77f7b3703a98295eaa139e0995ab3",
+          "title": "Island of the Mighty",
+          "series": "The Pendragon Cycle: Rise of the Merlin",
+          "start": 165286,
+          "duration": 4114
+        },
+        {
+          "id": "f0b5160fb250f20c6796c5ffceffa89b",
+          "title": "A Fatherless Child",
+          "series": "The Pendragon Cycle: Rise of the Merlin",
+          "start": 169400,
+          "duration": 3546
+        },
+        {
+          "id": "491fd70b70330189d2503f73a7930eae",
+          "title": "Sandbox",
+          "series": "The Audacity",
+          "start": 172946,
+          "duration": 3759
         }
       ]
     }
