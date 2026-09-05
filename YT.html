@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live TV</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body, html { width: 100%; height: 100%; background: #000; color: #fff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; overflow: hidden; }
+    
+    #player-wrapper { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
+    #player { width: 100%; height: 100%; }
+
+    /* On-Screen Display (OSD) */
+    #osd {
+      position: absolute;
+      top: 40px;
+      right: 50px;
+      background: rgba(0, 0, 0, 0.75);
+      border: 2px solid #00ffcc;
+      padding: 15px 25px;
+      border-radius: 8px;
+      box-shadow: 0 0 15px rgba(0, 255, 204, 0.4);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      z-index: 10;
+    }
+    #osd.active { opacity: 1; }
+    .ch-num { font-size: 2rem; font-weight: bold; color: #00ffcc; }
+    .ch-name { font-size: 1.2rem; font-weight: 600; }
+    .ch-title { font-size: 0.9rem; color: #ccc; margin-top: 4px; }
+
+    /* Controls Overlay */
+    #controls {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 12px;
+      z-index: 10;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 10px 20px;
+      border-radius: 30px;
+      backdrop-filter: blur(5px);
+    }
+    button {
+      background: #222;
+      color: #fff;
+      border: 1px solid #444;
+      padding: 8px 16px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.2s;
+    }
+    button:hover { background: #00ffcc; color: #000; }
+  </style>
+</head>
+<body>
+
+  <div id="player-wrapper">
+    <div id="player"></div>
+  </div>
+
+  <div id="osd">
+    <div class="ch-num" id="osd-num">CH 01</div>
+    <div class="ch-name" id="osd-name">Channel Name</div>
+    <div class="ch-title" id="osd-title">Loading...</div>
+  </div>
+
+  <div id="controls">
+    <button onclick="prevChannel()">▲ CH Prev</button>
+    <button onclick="nextChannel()">▼ CH Next</button>
+  </div>
+
+  <script>
+    // Channel database (Durations in seconds)
+    const CHANNELS = [
+      {
+        id: 1,
+        name: "Retro Gaming & Documentaries",
+        playlist: [
+          { id: "dQw4w9WgXcQ", duration: 213, title: "Classic Track" },
+          { id: "L_LUpnjgPso", duration: 180, title: "Synthwave Visuals" }
+        ]
+      },
+      {
+        id: 2,
+        name: "Chill Beats & Ambience",
+        playlist: [
+          { id: "jfKfPfyJRdk", duration: 1200, title: "Lofi Beats - Session 1" }
+        ]
+      }
+    ];
+
+    let currentChannelIdx = 0;
+    let player;
+    let osdTimer;
+
+    // Load YouTube IFrame API
+    const tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    document.head.appendChild(tag);
+
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('player', {
+        playerVars: {
+          'autoplay': 1,
+          'controls': 0,
+          'disablekb': 1,
+          'modestbranding': 1,
+          'rel': 0
+        },
+        events: {
+          'onReady': () => loadChannel(currentChannelIdx)
+        }
+      });
+    }
+
+    function calculateLivePosition(channel) {
+      const totalDuration = channel.playlist.reduce((acc, v) => acc + v.duration, 0);
+      const now = Math.floor(Date.now() / 1000);
+      let loopOffset = now % totalDuration;
+
+      for (let i = 0; i < channel.playlist.length; i++) {
+        const video = channel.playlist[i];
+        if (loopOffset < video.duration) {
+          return { videoId: video.id, startSeconds: loopOffset, title: video.title };
+        }
+        loopOffset -= video.duration;
+      }
+      return { videoId: channel.playlist[0].id, startSeconds: 0, title: channel.playlist[0].title };
+    }
+
+    function loadChannel(index) {
+      currentChannelIdx = index;
+      const channel = CHANNELS[currentChannelIdx];
+      const liveState = calculateLivePosition(channel);
+
+      player.loadVideoById({
+        videoId: liveState.videoId,
+        startSeconds: liveState.startSeconds
+      });
+
+      showOSD(`CH ${String(channel.id).padStart(2, '0')}`, channel.name, liveState.title);
+    }
+
+    function showOSD(num, name, title) {
+      document.getElementById('osd-num').innerText = num;
+      document.getElementById('osd-name').innerText = name;
+      document.getElementById('osd-title').innerText = title;
+      
+      const osd = document.getElementById('osd');
+      osd.classList.add('active');
+      
+      clearTimeout(osdTimer);
+      osdTimer = setTimeout(() => osd.classList.remove('active'), 3500);
+    }
+
+    function nextChannel() {
+      currentChannelIdx = (currentChannelIdx + 1) % CHANNELS.length;
+      loadChannel(currentChannelIdx);
+    }
+
+    function prevChannel() {
+      currentChannelIdx = (currentChannelIdx - 1 + CHANNELS.length) % CHANNELS.length;
+      loadChannel(currentChannelIdx);
+    }
+
+    // Keyboard navigation (Up/Down arrow keys)
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowUp') prevChannel();
+      if (e.key === 'ArrowDown') nextChannel();
+    });
+  </script>
+</body>
+</html>
