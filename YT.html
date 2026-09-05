@@ -56,7 +56,7 @@
     }
     button:hover, button.active { background: #00ffcc; color: #000; border-color: #00ffcc; }
 
-    /* --- EPG OVERLAY STYLES --- */
+    /* EPG Overlay */
     #epg-overlay {
       position: absolute;
       top: 0;
@@ -73,10 +73,7 @@
       pointer-events: none;
       transition: opacity 0.3s ease;
     }
-    #epg-overlay.visible {
-      opacity: 1;
-      pointer-events: auto;
-    }
+    #epg-overlay.visible { opacity: 1; pointer-events: auto; }
 
     .epg-header {
       display: flex;
@@ -99,7 +96,6 @@
       background: #111;
     }
 
-    /* Time Axis Header */
     .epg-timeline-header {
       display: flex;
       height: 40px;
@@ -119,7 +115,7 @@
       z-index: 6;
     }
     .epg-time-slot {
-      min-width: 300px; /* 30 minutes = 300px (10px per minute) */
+      min-width: 300px;
       padding: 10px;
       font-weight: bold;
       font-size: 0.85rem;
@@ -127,7 +123,6 @@
       border-right: 1px solid #222;
     }
 
-    /* Channels & Program Rows */
     .epg-row {
       display: flex;
       height: 60px;
@@ -170,18 +165,11 @@
       cursor: pointer;
       transition: background 0.2s, border-color 0.2s;
     }
-    .epg-program-block:hover {
-      background: #2a303f;
-      border-color: #00ffcc;
-    }
-    .epg-program-block.active-now {
-      background: #1c3d3a;
-      border-color: #00ffcc;
-    }
+    .epg-program-block:hover { background: #2a303f; border-color: #00ffcc; }
+    .epg-program-block.active-now { background: #1c3d3a; border-color: #00ffcc; }
     .epg-program-block .title { font-size: 0.85rem; font-weight: bold; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .epg-program-block .time { font-size: 0.75rem; color: #aaa; margin-top: 2px; }
 
-    /* Red "Now" Line */
     .epg-now-line {
       position: absolute;
       top: 0;
@@ -212,7 +200,6 @@
     <button id="epg-btn" onclick="toggleEPG()">📺 TV Guide (G)</button>
   </div>
 
-  <!-- EPG Overlay Structure -->
   <div id="epg-overlay">
     <div class="epg-header">
       <div class="epg-title">Live Program Guide</div>
@@ -221,44 +208,39 @@
     <div class="epg-grid-container" id="epg-grid-container">
       <div class="epg-timeline-header" id="epg-timeline-header">
         <div class="epg-channel-header-stub"></div>
-        <!-- Time slots dynamically generated here -->
       </div>
-      <div id="epg-rows">
-        <!-- Channel rows dynamically generated here -->
-      </div>
+      <div id="epg-rows"></div>
       <div class="epg-now-line" id="epg-now-line"></div>
     </div>
   </div>
 
   <script>
-    // Config: 1 minute = 10 pixels in grid space
     const PIXELS_PER_MINUTE = 10;
     
-    // Channel Database with longer durations for demonstration
+    // Updated channel list using verified, fully embeddable YouTube video IDs
     const CHANNELS = [
       {
         id: 1,
-        name: "Retro Gaming & Docs",
+        name: "Retro Gaming & Tech",
         playlist: [
-          { id: "dQw4w9WgXcQ", duration: 1200, title: "The History of 16-Bit Consoles" },
-          { id: "L_LUpnjgPso", duration: 1800, title: "Synthwave & Arcade Aesthetics" },
-          { id: "jfKfPfyJRdk", duration: 900,  title: "Classic Speedrun Breakdown" }
+          { id: "2lAe1cqCOXo", duration: 1800, title: "Classic Tech & Retro Computing Showcase" },
+          { id: "M576WGiDBdQ", duration: 2400, title: "16-Bit Hardware Architecture Deep Dive" }
         ]
       },
       {
         id: 2,
-        name: "Chill & Ambience",
+        name: "Chill Ambient Feed",
         playlist: [
-          { id: "jfKfPfyJRdk", duration: 2400, title: "Lofi Beats - 40 Min Session" },
-          { id: "L_LUpnjgPso", duration: 1200, title: "Midnight City Lights" }
+          { id: "TURbeWK-x0M", duration: 3600, title: "4K Scenic Nature & Ambient Audio" },
+          { id: "eKFTSSKCzWA", duration: 2700, title: "Relaxing Mountain Streams" }
         ]
       },
       {
         id: 3,
-        name: "Sci-Fi & Cyberpunk",
+        name: "Sci-Fi & Cosmos",
         playlist: [
-          { id: "L_LUpnjgPso", duration: 1500, title: "Neon Skyline Visuals" },
-          { id: "dQw4w9WgXcQ", duration: 1500, title: "Retro Futurology Special" }
+          { id: "libKVRa074Q", duration: 1800, title: "Deep Space Exploration & Visuals" },
+          { id: "3Wq8S_3uInQ", duration: 2100, title: "NASA Earth View from Space" }
         ]
       }
     ];
@@ -267,21 +249,29 @@
     let player;
     let osdTimer;
     let epgVisible = false;
-    let epgStartTimestamp = 0; // Epoch timestamp for the far-left of grid
+    let epgStartTimestamp = 0;
 
-    // YouTube Player Initialization
     const tag = document.createElement('script');
     tag.src = "https://www.youtube.com/iframe_api";
     document.head.appendChild(tag);
 
     function onYouTubeIframeAPIReady() {
       player = new YT.Player('player', {
-        playerVars: { 'autoplay': 1, 'controls': 0, 'disablekb': 1, 'modestbranding': 1, 'rel': 0 },
-        events: { 'onReady': () => loadChannel(currentChannelIdx) }
+        playerVars: {
+          'autoplay': 1,
+          'controls': 0,
+          'disablekb': 1,
+          'modestbranding': 1,
+          'rel': 0,
+          'mute': 1, // Crucial to prevent browser autoplay blocking
+          'origin': window.location.origin || '*'
+        },
+        events: {
+          'onReady': () => loadChannel(currentChannelIdx)
+        }
       });
     }
 
-    // --- Core Calculation Logic ---
     function calculateLivePosition(channel) {
       const totalDuration = channel.playlist.reduce((acc, v) => acc + v.duration, 0);
       const now = Math.floor(Date.now() / 1000);
@@ -302,7 +292,14 @@
       const channel = CHANNELS[currentChannelIdx];
       const liveState = calculateLivePosition(channel);
 
-      player.loadVideoById({ videoId: liveState.videoId, startSeconds: liveState.startSeconds });
+      player.loadVideoById({
+        videoId: liveState.videoId,
+        startSeconds: liveState.startSeconds
+      });
+
+      // Force playback execution
+      player.playVideo();
+
       showOSD(`CH ${String(channel.id).padStart(2, '0')}`, channel.name, liveState.title);
       if (epgVisible) renderEPG();
     }
@@ -327,7 +324,6 @@
       loadChannel(currentChannelIdx);
     }
 
-    // --- EPG Grid Generator ---
     function toggleEPG() {
       epgVisible = !epgVisible;
       const overlay = document.getElementById('epg-overlay');
@@ -345,13 +341,10 @@
 
     function renderEPG() {
       const nowSec = Math.floor(Date.now() / 1000);
-      
-      // Align grid start to 30 minutes before current top-of-hour
       const now = new Date();
       now.setMinutes(now.getMinutes() < 30 ? 0 : 30, 0, 0);
-      epgStartTimestamp = Math.floor(now.getTime() / 1000) - (1800); // Start 30 min ago
+      epgStartTimestamp = Math.floor(now.getTime() / 1000) - 1800;
 
-      // 1. Render Timeline Header (6 half-hour blocks = 3 hours)
       const headerContainer = document.getElementById('epg-timeline-header');
       headerContainer.innerHTML = '<div class="epg-channel-header-stub"></div>';
       
@@ -364,7 +357,6 @@
         headerContainer.appendChild(slotDiv);
       }
 
-      // 2. Render Channel Rows & Schedule Blocks
       const rowsContainer = document.getElementById('epg-rows');
       rowsContainer.innerHTML = '';
 
@@ -372,21 +364,17 @@
         const row = document.createElement('div');
         row.className = 'epg-row';
 
-        // Channel Label
         const meta = document.createElement('div');
         meta.className = 'epg-channel-meta';
         meta.innerHTML = `<div class="num">CH ${String(channel.id).padStart(2, '0')}</div><div class="name">${channel.name}</div>`;
         row.appendChild(meta);
 
-        // Programs Track
         const track = document.createElement('div');
         track.className = 'epg-programs-track';
 
-        // Calculate loop parameters
         const totalDuration = channel.playlist.reduce((acc, v) => acc + v.duration, 0);
         const currentLoopStart = nowSec - (nowSec % totalDuration);
         
-        // Populate programs across multi-loop window (-1 to +2 loops)
         for (let loop = -1; loop <= 2; loop++) {
           let runTimeAcc = currentLoopStart + (loop * totalDuration);
 
@@ -395,17 +383,15 @@
             const progEnd = progStart + video.duration;
             runTimeAcc = progEnd;
 
-            // Render block if it falls within the 3-hour visible range
             if (progEnd > epgStartTimestamp && progStart < epgStartTimestamp + 10800) {
               const leftPx = ((progStart - epgStartTimestamp) / 60) * PIXELS_PER_MINUTE;
               const widthPx = (video.duration / 60) * PIXELS_PER_MINUTE;
-
               const isLive = nowSec >= progStart && nowSec < progEnd;
 
               const block = document.createElement('div');
               block.className = `epg-program-block ${isLive ? 'active-now' : ''}`;
               block.style.left = `${leftPx}px`;
-              block.style.width = `${widthPx - 4}px`; // 4px margin
+              block.style.width = `${widthPx - 4}px`;
 
               const startTimeStr = new Date(progStart * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
               const endTimeStr = new Date(progEnd * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
@@ -436,21 +422,17 @@
       if (!epgVisible) return;
       const nowSec = Math.floor(Date.now() / 1000);
       const offsetSec = nowSec - epgStartTimestamp;
-      const leftPx = 180 + ((offsetSec / 60) * PIXELS_PER_MINUTE); // 180px accounts for sticky channel stub width
+      const leftPx = 180 + ((offsetSec / 60) * PIXELS_PER_MINUTE);
       
       const nowLine = document.getElementById('epg-now-line');
       nowLine.style.left = `${leftPx}px`;
-
-      // Update Top Clock
       document.getElementById('epg-clock').innerText = new Date().toLocaleTimeString();
     }
 
-    // Refresh EPG Clock & Red Line every second
     setInterval(() => {
       if (epgVisible) updateEPGNowLine();
     }, 1000);
 
-    // Keyboard Shortcuts
     window.addEventListener('keydown', (e) => {
       if (e.key === 'ArrowUp') prevChannel();
       if (e.key === 'ArrowDown') nextChannel();
