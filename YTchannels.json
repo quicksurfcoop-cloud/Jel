@@ -1,4 +1,4 @@
-const YT_CHANNELS = [
+[
   {
     "id": 1,
     "name": "Retro Tech & Computing",
@@ -23,4 +23,4 @@ const YT_CHANNELS = [
       { "id": "3Wq8S_3uInQ", "duration": 2100, "title": "NASA Live Earth Views from ISS" }
     ]
   }
-];
+]
