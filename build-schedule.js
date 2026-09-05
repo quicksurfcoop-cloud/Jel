@@ -118,16 +118,20 @@ async function generateSchedule() {
   const apiKey = authData.AccessToken;
   const userId = authData.User.Id;
 
-  console.log('Authenticated successfully. Fetching TV Series metadata...');
+  console.log('Authenticated successfully. Fetching TV Series and Movie metadata...');
 
-  // 2. Fetch all Series requesting Genres, Tags, OfficialRating, and ProductionYear
-  const seriesUrl = `${JELLYFIN_URL}/Users/${userId}/Items?IncludeItemTypes=Series&Recursive=true&Fields=Genres,Tags,OfficialRating,ProductionYear&api_key=${apiKey}`;
-  const seriesRes = await fetch(seriesUrl);
-  if (!seriesRes.ok) throw new Error(`Failed to fetch series list: ${seriesRes.status}`);
+  // 2. Fetch both Series AND Movies metadata from Jellyfin
+  const mediaUrl = `${JELLYFIN_URL}/Users/${userId}/Items?IncludeItemTypes=Series,Movie&Recursive=true&Fields=Genres,Tags,OfficialRating,ProductionYear,RunTimeTicks&api_key=${apiKey}`;
+  const mediaRes = await fetch(mediaUrl);
+  if (!mediaRes.ok) throw new Error(`Failed to fetch media list: ${mediaRes.status}`);
   
-  const seriesData = await seriesRes.json();
-  const allSeries = seriesData.Items || [];
-  console.log(`Found ${allSeries.length} total TV Series in library.`);
+  const mediaData = await mediaRes.json();
+  const allMedia = mediaData.Items || [];
+  
+  const allSeries = allMedia.filter(i => i.Type === 'Series');
+  const allMovies = allMedia.filter(i => i.Type === 'Movie');
+
+  console.log(`Found ${allSeries.length} TV Series and ${allMovies.length} Movies in library.`);
 
   const outputSchedule = {
     apiKey: apiKey,
@@ -135,110 +139,117 @@ async function generateSchedule() {
     channels: {}
   };
 
-  // 3. Process each channel show-by-show
+  // Helper filter function for metadata matching
+  const matchesCriteria = (item, ch) => {
+    const itemGenres = (item.Genres || []).map(g => g.toLowerCase());
+    const itemTags = (item.Tags || []).map(t => t.toLowerCase());
+
+    if (itemGenres.length === 0 && itemTags.length === 0) return false;
+
+    const targetGenres = (ch.genres || []).map(cg => cg.toLowerCase());
+    const targetTags = (ch.tags || []).map(ct => ct.toLowerCase());
+
+    const matchesGenre = itemGenres.some(g => targetGenres.includes(g));
+    const matchesTag = itemTags.some(t => targetTags.includes(t));
+
+    if (!matchesGenre && !matchesTag) return false;
+
+    if (ch.excludeGenres) {
+      const hasExcluded = itemGenres.some(g => 
+        ch.excludeGenres.map(eg => eg.toLowerCase()).includes(g)
+      );
+      if (hasExcluded) return false;
+    }
+
+    if (ch.allowedRatings && ch.allowedRatings.length > 0) {
+      const rating = (item.OfficialRating || '').trim().toUpperCase();
+      if (rating && !ch.allowedRatings.map(r => r.toUpperCase()).includes(rating)) {
+        return false;
+      }
+    }
+
+    if (ch.excludeTitles && ch.excludeTitles.length > 0) {
+      const isExcluded = ch.excludeTitles.some(title => 
+        item.Name.toLowerCase().includes(title.toLowerCase())
+      );
+      if (isExcluded) return false;
+    }
+
+    const prodYear = item.ProductionYear || 0;
+    if (ch.startYear && prodYear && prodYear < ch.startYear) return false;
+    if (ch.endYear && prodYear && prodYear > ch.endYear) return false;
+
+    return true;
+  };
+
+  // 3. Process each channel
   for (let cIdx = 0; cIdx < CHANNELS.length; cIdx++) {
     const ch = CHANNELS[cIdx];
-    
-    // Filter matching series based on channel criteria
-    const matchingSeries = allSeries.filter(s => {
-      const showGenres = (s.Genres || []).map(g => g.toLowerCase());
-      const showTags = (s.Tags || []).map(t => t.toLowerCase());
+    let channelItems = [];
 
-      if (showGenres.length === 0 && showTags.length === 0) return false;
+    // Determine target types for this channel (default to TV Series/Episodes)
+    const includeTypes = ch.includeItemTypes || ['Series'];
 
-      // 1. Match target Genres OR target Tags
-      const targetGenres = (ch.genres || []).map(cg => cg.toLowerCase());
-      const targetTags = (ch.tags || []).map(ct => ct.toLowerCase());
+    // A. Process Movies if configured
+    if (includeTypes.includes('Movie')) {
+      const matchingMovies = allMovies.filter(m => matchesCriteria(m, ch));
+      console.log(`Channel [${ch.name}]: Matched ${matchingMovies.length} movies.`);
+      channelItems = channelItems.concat(matchingMovies);
+    }
 
-      const matchesGenre = showGenres.some(g => targetGenres.includes(g));
-      const matchesTag = showTags.some(t => targetTags.includes(t));
+    // B. Process TV Series Episodes if configured
+    if (includeTypes.includes('Series')) {
+      const matchingSeries = allSeries.filter(s => matchesCriteria(s, ch));
+      console.log(`Channel [${ch.name}]: Matched ${matchingSeries.length} series. Fetching episodes...`);
 
-      if (!matchesGenre && !matchesTag) return false;
+      for (const show of matchingSeries) {
+        let startIndex = 0;
+        let hasMore = true;
+        const limit = 100;
 
-      // 2. Check excluded genres
-      if (ch.excludeGenres) {
-        const hasExcluded = showGenres.some(g => 
-          ch.excludeGenres.map(eg => eg.toLowerCase()).includes(g)
-        );
-        if (hasExcluded) return false;
-      }
+        while (hasMore) {
+          const epUrl = `${JELLYFIN_URL}/Users/${userId}/Items?IncludeItemTypes=Episode&Recursive=true&ParentId=${show.Id}&Fields=RunTimeTicks&StartIndex=${startIndex}&Limit=${limit}&api_key=${apiKey}`;
+          
+          try {
+            const epRes = await fetch(epUrl);
+            if (!epRes.ok) break;
 
-      // 3. Official Content Rating check
-      if (ch.allowedRatings && ch.allowedRatings.length > 0) {
-        const rating = (s.OfficialRating || '').trim().toUpperCase();
-        if (rating && !ch.allowedRatings.map(r => r.toUpperCase()).includes(rating)) {
-          return false;
-        }
-      }
+            const epData = await epRes.json();
+            const batch = epData.Items || [];
+            
+            // Attach Series Name context to episodes
+            batch.forEach(ep => { ep.SeriesName = show.Name; });
+            channelItems = channelItems.concat(batch);
 
-      // 4. Check explicit title exclusions
-      if (ch.excludeTitles && ch.excludeTitles.length > 0) {
-        const isExcluded = ch.excludeTitles.some(title => 
-          s.Name.toLowerCase().includes(title.toLowerCase())
-        );
-        if (isExcluded) return false;
-      }
-
-      // 5. Production Year check
-      const prodYear = s.ProductionYear || 0;
-      if (ch.startYear && prodYear && prodYear < ch.startYear) return false;
-      if (ch.endYear && prodYear && prodYear > ch.endYear) return false;
-
-      return true;
-    });
-
-    console.log(`Channel [${ch.name}]: Matched ${matchingSeries.length} series. Fetching episodes per show...`);
-
-    let channelEpisodes = [];
-
-    // Fetch episodes show-by-show using individual ParentId lookups
-    for (const show of matchingSeries) {
-      let startIndex = 0;
-      let hasMore = true;
-      const limit = 100;
-
-      while (hasMore) {
-        const epUrl = `${JELLYFIN_URL}/Users/${userId}/Items?IncludeItemTypes=Episode&Recursive=true&ParentId=${show.Id}&Fields=RunTimeTicks&StartIndex=${startIndex}&Limit=${limit}&api_key=${apiKey}`;
-        
-        try {
-          const epRes = await fetch(epUrl);
-          if (!epRes.ok) {
-            console.error(`Failed to fetch episodes for show "${show.Name}" at offset ${startIndex}`);
+            if (batch.length < limit || epData.TotalRecordCount <= (startIndex + batch.length)) {
+              hasMore = false;
+            } else {
+              startIndex += limit;
+            }
+          } catch (err) {
+            console.error(`Error querying show "${show.Name}":`, err.message);
             break;
           }
-
-          const epData = await epRes.json();
-          const batch = epData.Items || [];
-          channelEpisodes = channelEpisodes.concat(batch);
-
-          if (batch.length < limit || epData.TotalRecordCount <= (startIndex + batch.length)) {
-            hasMore = false;
-          } else {
-            startIndex += limit;
-          }
-        } catch (err) {
-          console.error(`Error querying show "${show.Name}":`, err.message);
-          break;
         }
       }
     }
 
-    console.log(`Channel [${ch.name}]: Successfully fetched ${channelEpisodes.length} total episodes.`);
+    console.log(`Channel [${ch.name}]: Total playable items pooled = ${channelItems.length}.`);
 
-    // Sort deterministically by ID and shuffle using a unique channel seed
-    const sortedPool = [...channelEpisodes].sort((a, b) => a.Id.localeCompare(b.Id));
+    // Sort deterministically by ID and shuffle
+    const sortedPool = [...channelItems].sort((a, b) => a.Id.localeCompare(b.Id));
     const channelSeed = 987654 + cIdx * 4321;
     const shuffled = shuffleDeterministic(sortedPool, channelSeed);
 
     let totalDuration = 0;
     const playlist = shuffled.map(item => {
-      const runtime = item.RunTimeTicks ? Math.floor(item.RunTimeTicks / 10000000) : 1320;
+      const runtime = item.RunTimeTicks ? Math.floor(item.RunTimeTicks / 10000000) : 5400; // Default 90m for movies
       const entry = {
         id: item.Id,
         title: item.Name,
         series: item.SeriesName || '',
         start: totalDuration,
-        duration: runtime > 0 ? runtime : 1320
+        duration: runtime > 0 ? runtime : 5400
       };
       totalDuration += entry.duration;
       return entry;
@@ -255,8 +266,3 @@ async function generateSchedule() {
   fs.writeFileSync('channels.json', JSON.stringify(outputSchedule, null, 2));
   console.log('channels.json generated cleanly!');
 }
-
-generateSchedule().catch(err => {
-  console.error('Fatal Error:', err);
-  process.exit(1);
-});
