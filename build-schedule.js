@@ -8,10 +8,40 @@ const JELLYFIN_URL = urlMatch ? urlMatch[0] : 'https://spread.thepebbles.tech';
 const USERNAME = (process.env.JELLYFIN_USER || 'union6').trim();
 const PASSWORD = (process.env.JELLYFIN_PASS || '1499952177779513').trim();
 
+// Channels with expanded genre filters
 const CHANNELS = [
-  { id: 'cartoons', name: '90s Cartoons', genre: 'Animation' },
-  { id: 'sitcoms', name: 'Retro Sitcoms', genre: 'Comedy' }
+  { 
+    id: 'cartoons', 
+    name: '90s Cartoons', 
+    genres: ['Animation', 'Anime', 'Cartoons', 'Children'] 
+  },
+  { 
+    id: 'sitcoms', 
+    name: 'Retro Sitcoms', 
+    genres: ['Comedy', 'Sitcom', 'Retro', 'British Comedy'] 
+  }
 ];
+
+// Seeded PRNG (Mulberry32) for deterministic, reproducible shuffling
+function seededRandom(seed) {
+  return function() {
+    let t = seed += 0x6D2B79F5;
+    t = Math.imul(t ^ (t >>> 15), t | 1);
+    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+// Fisher-Yates shuffle using our seeded PRNG
+function shuffleDeterministic(array, seedValue = 123456) {
+  const rng = seededRandom(seedValue);
+  const result = [...array];
+  for (let i = result.length - 1; i > 0; i--) {
+    const j = Math.floor(rng() * (i + 1));
+    [result[i], result[j]] = [result[j], result[i]];
+  }
+  return result;
+}
 
 async function generateSchedule() {
   console.log(`Connecting to Jellyfin server: ${JELLYFIN_URL}`);
@@ -34,14 +64,14 @@ async function generateSchedule() {
   const apiKey = authData.AccessToken;
   const userId = authData.User.Id;
 
-  console.log('Authenticated successfully. Fetching library items in batches...');
+  console.log('Authenticated successfully. Fetching library items...');
 
-  // 2. Paginated Fetching to Prevent 504 Timeouts
+  // 2. Fetch items in batches
   let allEpisodes = [];
-  const limit = 100;
+  const limit = 200;
   let startIndex = 0;
   let hasMore = true;
-  const maxItemsToFetch = 500; // Limits total fetch depth to protect connection
+  const maxItemsToFetch = 2000;
 
   while (hasMore && allEpisodes.length < maxItemsToFetch) {
     const itemsUrl = `${JELLYFIN_URL}/Users/${userId}/Items?IncludeItemTypes=Episode&Recursive=true&Fields=Genres,RunTimeTicks&StartIndex=${startIndex}&Limit=${limit}&api_key=${apiKey}`;
@@ -55,7 +85,6 @@ async function generateSchedule() {
     const batch = itemsData.Items || [];
     
     allEpisodes = allEpisodes.concat(batch);
-    console.log(`Fetched batch: ${batch.length} items (Total: ${allEpisodes.length})`);
 
     if (batch.length < limit || itemsData.TotalRecordCount <= allEpisodes.length) {
       hasMore = false;
@@ -64,20 +93,30 @@ async function generateSchedule() {
     }
   }
 
-  console.log(`Successfully compiled ${allEpisodes.length} total episodes.`);
+  console.log(`Fetched ${allEpisodes.length} total episodes.`);
 
-  // Export apiKey so index.html can attach it to video stream requests
   const outputSchedule = {
     apiKey: apiKey,
     generatedAt: Date.now(),
     channels: {}
   };
 
-  // 3. Build channels and calculate timelines
-  for (const ch of CHANNELS) {
-    const matching = allEpisodes.filter(e => e.Genres && e.Genres.includes(ch.genre));
-    const playlistSource = matching.length > 0 ? matching : allEpisodes;
-    const shuffled = [...playlistSource].sort(() => 0.5 - Math.random());
+  // 3. Build channels using deterministic shuffling
+  for (let cIdx = 0; cIdx < CHANNELS.length; cIdx++) {
+    const ch = CHANNELS[cIdx];
+    const matching = allEpisodes.filter(e => {
+      if (!e.Genres || e.Genres.length === 0) return false;
+      return e.Genres.some(g => ch.genres.map(cg => cg.toLowerCase()).includes(g.toLowerCase()));
+    });
+
+    const sourcePool = matching.length >= 5 ? matching : allEpisodes;
+    
+    // Sort alphabetically first so the input array order is 100% predictable across runs
+    const sortedPool = [...sourcePool].sort((a, b) => a.Id.localeCompare(b.Id));
+    
+    // Deterministically shuffle using a unique channel seed
+    const channelSeed = 987654 + cIdx * 4321;
+    const shuffled = shuffleDeterministic(sortedPool, channelSeed);
 
     let totalDuration = 0;
     const playlist = shuffled.map(item => {
@@ -100,9 +139,9 @@ async function generateSchedule() {
     };
   }
 
-  // 4. Write output file
+  // 4. Save schedule
   fs.writeFileSync('channels.json', JSON.stringify(outputSchedule, null, 2));
-  console.log('channels.json generated and saved successfully!');
+  console.log('channels.json generated with deterministic shuffle!');
 }
 
 generateSchedule().catch(err => {
