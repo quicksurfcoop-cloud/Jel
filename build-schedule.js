@@ -7,7 +7,7 @@ const JELLYFIN_URL = urlMatch ? urlMatch[0] : 'https://spread.thepebbles.tech';
 const USERNAME = (process.env.JELLYFIN_USER || 'union6').trim();
 const PASSWORD = (process.env.JELLYFIN_PASS || '1499952177779513').trim();
 
-// Refined Channel Specifications matching Genres, Tags, Ratings, and Years
+// Channel Specifications
 const CHANNELS = [
   { 
     id: 'cartoons', 
@@ -15,9 +15,7 @@ const CHANNELS = [
     genres: ['Animation', 'Anime', 'Cartoons', 'Children'],
     tags: ['Animation', 'Cartoons', '90s'],
     excludeGenres: ['Documentary', 'Reality', 'Action'],
-    // Whitelist daytime/family content ratings (filters out TV-MA, TV-14, R)
     allowedRatings: ['TV-Y', 'TV-Y7', 'TV-Y7-FV', 'TV-G', 'TV-PG', 'G', 'PG'],
-    // Safety net for specific adult animation titles or unrated edge-cases
     excludeTitles: ['South Park', 'Beavis and Butt-Head', 'Family Guy', 'Spawn', 'Futurama', 'King of the Hill', 'American Dad'],
     startYear: 1988,
     endYear: 2004
@@ -26,56 +24,44 @@ const CHANNELS = [
     id: 'sitcoms', 
     name: 'Retro Sitcoms', 
     genres: ['Sitcom', 'British Comedy'],
-    tags: ['Sitcom', 'Sitcoms', 'British Sitcom'], // Catches shows tagged with Sitcom in Jellyfin
+    tags: ['Sitcom', 'Sitcoms', 'British Sitcom'],
     excludeGenres: ['Reality', 'Game Show', 'Documentary', 'Talk Show'],
     startYear: 1960,
     endYear: 2012
   },
-  // Add this entry to your CHANNELS array in build-schedule.js
-
-{
-  id: 'scream-kids',
-  name: 'SCREAM KIDS',
-  // Pure tag matching targeting youth spooky & entry-level horror
-  tags: ['spooky', 'spooky comedy', 'teen horror', 'ghosts', 'ghost', 'haunted house', 'witchcraft', 'witch', 'teen witch', 'school of witchcraft', 'monster', 'monsters', 'mummy', 'vampire', 'werewolf', 'halloween', 'magic', 'magical creature', 'supernatural', 'scare', 'modern fairy tale'],
-  // Empty array prevents broad genre matching like 'Horror' or 'Drama'
-  genres: [],
-  excludeGenres: ['Documentary'],
-  // Restricted strictly to family-friendly / youth ratings
-  allowedRatings: ['TV-Y7', 'TV-G', 'TV-PG', 'G', 'PG'],
-  excludeTitles: ['Sailor Moon', 'Dragon Ball', 'Aria', 'Avatar: The Last Airbender', 'Adventure Time', 'ThunderCats','Teenage Mutant Ninja Turtles', 'Penn & Teller: Fool Us', 'Dragon Ball GT'],
-  startYear: 1970,
-  endYear: 2026
-},
   {
-  id: 'Period-dramas',
-  name: 'Period Dramas & History',
-  // Tags directly matching historical periods and costume drama aesthetics
-  tags: ['historical', 'historical drama', 'historical fiction', 'costume drama', 'period drama', '19th century', '18th century', '17th century', '16th century', '15th century', 'victorian era', 'georgian or regency era', 'edwardian era', 'british history'],
-  excludeGenres: ['Documentary', 'Animation', 'Comedy'],
-  allowedRatings: ['TV-PG', 'TV-14', 'PG-13', 'PG'],
-  startYear: 1970,
-  endYear: 2015
-},
-  // Add this entry to your CHANNELS array in build-schedule.js
-
-{
-  id: 'box-office',
-  name: 'Sky Box Office - Latest Movies',
-  // Tag matching for recent blockbusters and premiere releases
-  tags: ['blockbuster','box office', 'cinema', 'critically acclaimed','award winning','action', 'thriller', 'sci-fi', 'adventure'],
-  // Empty array to prevent broad genre bleed
-  genres: [],
-  excludeGenres: ['Documentary', 'Animation'],
-  // Feature films only
-  includeItemTypes: ['Movie'],
-  // Broad parental ratings for major cinematic releases
-  allowedRatings: ['PG', 'PG-13', 'TV-14', 'R'],
-  // Restrict to the last 3-4 years for a true "New Releases" feel
-  startYear: 2025,
-  endYear: 2026
-},
-
+    id: 'scream-kids',
+    name: 'SCREAM KIDS',
+    tags: ['spooky', 'spooky comedy', 'teen horror', 'ghosts', 'ghost', 'haunted house', 'witchcraft', 'witch', 'teen witch', 'school of witchcraft', 'monster', 'monsters', 'mummy', 'vampire', 'werewolf', 'halloween', 'magic', 'magical creature', 'supernatural', 'scare', 'modern fairy tale'],
+    genres: [],
+    excludeGenres: ['Documentary'],
+    allowedRatings: ['TV-Y7', 'TV-G', 'TV-PG', 'G', 'PG'],
+    excludeTitles: ['Sailor Moon', 'Dragon Ball', 'Aria', 'Avatar: The Last Airbender', 'Adventure Time', 'ThunderCats','Teenage Mutant Ninja Turtles', 'Penn & Teller: Fool Us', 'Dragon Ball GT'],
+    startYear: 1970,
+    endYear: 2026
+  },
+  {
+    id: 'Period-dramas',
+    name: 'Period Dramas & History',
+    tags: ['historical', 'historical drama', 'historical fiction', 'costume drama', 'period drama', '19th century', '18th century', '17th century', '16th century', '15th century', 'victorian era', 'georgian or regency era', 'edwardian era', 'british history'],
+    excludeGenres: ['Documentary', 'Animation', 'Comedy'],
+    allowedRatings: ['TV-PG', 'TV-14', 'PG-13', 'PG'],
+    startYear: 1970,
+    endYear: 2015
+  },
+  {
+    id: 'box-office',
+    name: 'Sky Box Office - Latest Movies',
+    // Expanded tags and genres to guarantee matches across modern films
+    genres: ['Action', 'Adventure', 'Sci-Fi', 'Thriller', 'Drama', 'Comedy'],
+    tags: ['blockbuster', 'box office', 'cinema', 'critically acclaimed', 'award winning', 'action', 'thriller', 'sci-fi', 'adventure'],
+    excludeGenres: ['Documentary', 'Animation'],
+    includeItemTypes: ['Movie'],
+    allowedRatings: ['PG', 'PG-13', 'TV-14', 'R'],
+    // Widened slightly to 2021-2026 so you get a full rotation of modern movies
+    startYear: 2021,
+    endYear: 2026
+  }
 ];
 
 function seededRandom(seed) {
@@ -144,15 +130,19 @@ async function generateSchedule() {
     const itemGenres = (item.Genres || []).map(g => g.toLowerCase());
     const itemTags = (item.Tags || []).map(t => t.toLowerCase());
 
-    if (itemGenres.length === 0 && itemTags.length === 0) return false;
-
     const targetGenres = (ch.genres || []).map(cg => cg.toLowerCase());
     const targetTags = (ch.tags || []).map(ct => ct.toLowerCase());
 
-    const matchesGenre = itemGenres.some(g => targetGenres.includes(g));
-    const matchesTag = itemTags.some(t => targetTags.includes(t));
+    // Check if channel has any genre or tag rules specified
+    const hasGenreRules = targetGenres.length > 0;
+    const hasTagRules = targetTags.length > 0;
 
-    if (!matchesGenre && !matchesTag) return false;
+    if (hasGenreRules || hasTagRules) {
+      const matchesGenre = hasGenreRules && itemGenres.some(g => targetGenres.includes(g));
+      const matchesTag = hasTagRules && itemTags.some(t => targetTags.includes(t));
+
+      if (!matchesGenre && !matchesTag) return false;
+    }
 
     if (ch.excludeGenres) {
       const hasExcluded = itemGenres.some(g => 
@@ -187,7 +177,6 @@ async function generateSchedule() {
     const ch = CHANNELS[cIdx];
     let channelItems = [];
 
-    // Determine target types for this channel (default to TV Series/Episodes)
     const includeTypes = ch.includeItemTypes || ['Series'];
 
     // A. Process Movies if configured
@@ -217,7 +206,6 @@ async function generateSchedule() {
             const epData = await epRes.json();
             const batch = epData.Items || [];
             
-            // Attach Series Name context to episodes
             batch.forEach(ep => { ep.SeriesName = show.Name; });
             channelItems = channelItems.concat(batch);
 
@@ -243,7 +231,7 @@ async function generateSchedule() {
 
     let totalDuration = 0;
     const playlist = shuffled.map(item => {
-      const runtime = item.RunTimeTicks ? Math.floor(item.RunTimeTicks / 10000000) : 5400; // Default 90m for movies
+      const runtime = item.RunTimeTicks ? Math.floor(item.RunTimeTicks / 10000000) : 5400;
       const entry = {
         id: item.Id,
         title: item.Name,
@@ -266,3 +254,9 @@ async function generateSchedule() {
   fs.writeFileSync('channels.json', JSON.stringify(outputSchedule, null, 2));
   console.log('channels.json generated cleanly!');
 }
+
+// EXECUTE GENERATOR
+generateSchedule().catch(err => {
+  console.error('Fatal Error:', err);
+  process.exit(1);
+});
