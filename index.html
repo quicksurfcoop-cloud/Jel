@@ -82,14 +82,16 @@
     }
   }
 
-  function syncPlayback() {
+function syncPlayback() {
     if (!scheduleData || !currentChannelKey) return;
 
     const channel = scheduleData.channels[currentChannelKey];
     const nowSeconds = Math.floor(Date.now() / 1000);
-    const scheduleStartSeconds = Math.floor(scheduleData.generatedAt / 1000);
     
-    const elapsedSeconds = (nowSeconds - scheduleStartSeconds) % channel.totalLoopSeconds;
+    // Fixed reference point (Jan 1, 2026 00:00:00 UTC) so updates don't reset the timeline
+    const FIXED_EPOCH_SECONDS = 1767225600; 
+    
+    const elapsedSeconds = (nowSeconds - FIXED_EPOCH_SECONDS) % channel.totalLoopSeconds;
 
     let activeItem = channel.items[0];
     let seekOffset = 0;
