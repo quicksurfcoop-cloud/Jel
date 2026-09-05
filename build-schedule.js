@@ -31,6 +31,21 @@ const CHANNELS = [
     startYear: 1960,
     endYear: 2012
   },
+  // Add this entry to your CHANNELS array in build-schedule.js
+
+{
+  id: 'scream-kids',
+  name: 'SCREAM KIDS',
+  // Pure tag matching targeting youth spooky & entry-level horror
+  tags: ['spooky', 'spooky comedy', 'teen horror', 'ghosts', 'ghost', 'haunted house', 'witchcraft', 'witch', 'teen witch', 'school of witchcraft', 'monster', 'monsters', 'mummy', 'vampire', 'werewolf', 'halloween', 'magic', 'magical creature', 'supernatural', 'scare', 'modern fairy tale'],
+  // Empty array prevents broad genre matching like 'Horror' or 'Drama'
+  genres: [],
+  excludeGenres: ['Documentary'],
+  // Restricted strictly to family-friendly / youth ratings
+  allowedRatings: ['TV-Y7', 'TV-G', 'TV-PG', 'G', 'PG'],
+  startYear: 1970,
+  endYear: 2026
+},
   {
   id: 'Period-dramas',
   name: 'Period Dramas & History',
