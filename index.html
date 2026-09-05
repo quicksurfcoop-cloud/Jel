@@ -30,9 +30,38 @@
       font-size: 16px;
     }
     .info { margin-top: 10px; font-size: 14px; color: #aaa; }
+  
+  #tv-header {
+  background-color: #02020a; /* Deep blue matching the logo edges */
+  text-align: center;
+  padding: 15px 0;
+  border-bottom: 2px solid #5a83c2; /* Light blue accent line */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  width: 100%;
+}
+
+#brand-logo {
+  height: 80px; /* Adjust this value to scale the logo up or down */
+  width: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Optional: Dark theme for the rest of the body to match the new vibe */
+body {
+  background-color: #0a0a0a;
+  color: #ffffff;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
   </style>
 </head>
 <body>
+  <header id="tv-header">
+  <img src="IMG_1942.jpeg" alt="Skyline TV Logo" id="brand-logo">
+</header>
+
 
 <div class="container">
   <video id="tvPlayer" controls autoplay muted playsinline></video>
