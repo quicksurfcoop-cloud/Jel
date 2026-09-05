@@ -1,27 +1,32 @@
 {
-  "channelNumber": 1,
-  "channelName": "CBBC",
-  "genre": "Children",
+  "channel": 1,
+  "name": "CBBC",
+  "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/CBBC_logo_1997.svg/320px-CBBC_logo_1997.svg.png",
   "videos": [
     {
+      "id": "p3T9Zf74h1k",
       "title": "CBBC Broom Cupboard Continuity (1997)",
-      "videoId": "p3T9Zf74h1k"
+      "duration": 180
     },
     {
-      "title": "The Demon Headmaster S1E1",
-      "videoId": "K1Y3nO8fH4g"
+      "id": "K1Y3nO8fH4g",
+      "title": "The Demon Headmaster - S01E01",
+      "duration": 1500
     },
     {
+      "id": "d34F3G8K2lQ",
       "title": "CBBC Ident & Presentation (1998)",
-      "videoId": "d34F3G8K2lQ"
+      "duration": 60
     },
     {
+      "id": "x5Y0pP2A7kQ",
       "title": "Raven - Series 1 Episode 1",
-      "videoId": "x5Y0pP2A7kQ"
+      "duration": 1500
     },
     {
+      "id": "L8_1n7J3fYo",
       "title": "Newsround Special",
-      "videoId": "L8_1n7J3fYo"
+      "duration": 600
     }
   ]
 }
