@@ -32,7 +32,7 @@ const CHANNELS = [
   { 
     id: 'BBC', 
     name: 'BBC', 
-    studio: ['BBC One'],
+    studios: ['BBC One'],
   },
   {
     id: 'scream-kids',
