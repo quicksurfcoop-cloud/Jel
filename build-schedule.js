@@ -43,11 +43,26 @@ function shuffleDeterministic(array, seedValue = 123456) {
   return result;
 }
 
+// Helper function to fetch with retry logic for server HTTP 500/timeout issues
+async function fetchWithRetry(url, options = {}, retries = 3, delayMs = 2000) {
+  for (let i = 0; i < retries; i++) {
+    try {
+      const res = await fetch(url, options);
+      if (res.ok) return res;
+      console.warn(`Fetch returned status ${res.status}. Attempt ${i + 1} of ${retries}...`);
+    } catch (err) {
+      console.warn(`Fetch error: ${err.message}. Attempt ${i + 1} of ${retries}...`);
+    }
+    if (i < retries - 1) await new Promise(r => setTimeout(r, delayMs));
+  }
+  throw new Error(`Failed to fetch from ${url} after ${retries} attempts.`);
+}
+
 async function generateSchedule() {
   console.log(`Connecting to Jellyfin server: ${JELLYFIN_URL}`);
 
   // 1. Authenticate with Jellyfin
-  const authRes = await fetch(`${JELLYFIN_URL}/Users/AuthenticateByName`, {
+  const authRes = await fetchWithRetry(`${JELLYFIN_URL}/Users/AuthenticateByName`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -56,19 +71,15 @@ async function generateSchedule() {
     body: JSON.stringify({ Username: USERNAME, Pw: PASSWORD })
   });
 
-  if (!authRes.ok) {
-    throw new Error(`Authentication failed with HTTP status ${authRes.status}`);
-  }
-
   const authData = await authRes.json();
   const apiKey = authData.AccessToken;
   const userId = authData.User.Id;
 
   console.log('Authenticated successfully. Fetching library items...');
 
-  // 2. Fetch items in batches
+  // 2. Fetch items in smaller batches (limit = 50 to avoid HTTP 500 server timeouts)
   let allEpisodes = [];
-  const limit = 200;
+  const limit = 50;
   let startIndex = 0;
   let hasMore = true;
   const maxItemsToFetch = 2000;
@@ -76,24 +87,27 @@ async function generateSchedule() {
   while (hasMore && allEpisodes.length < maxItemsToFetch) {
     const itemsUrl = `${JELLYFIN_URL}/Users/${userId}/Items?IncludeItemTypes=Episode&Recursive=true&Fields=Genres,RunTimeTicks&StartIndex=${startIndex}&Limit=${limit}&api_key=${apiKey}`;
     
-    const itemsRes = await fetch(itemsUrl);
-    if (!itemsRes.ok) {
-      throw new Error(`Failed to fetch items at offset ${startIndex} with HTTP status ${itemsRes.status}`);
-    }
+    try {
+      const itemsRes = await fetchWithRetry(itemsUrl);
+      const itemsData = await itemsRes.json();
+      const batch = itemsData.Items || [];
+      
+      allEpisodes = allEpisodes.concat(batch);
+      console.log(`Fetched batch: ${batch.length} items (Total: ${allEpisodes.length})`);
 
-    const itemsData = await itemsRes.json();
-    const batch = itemsData.Items || [];
-    
-    allEpisodes = allEpisodes.concat(batch);
-
-    if (batch.length < limit || itemsData.TotalRecordCount <= allEpisodes.length) {
-      hasMore = false;
-    } else {
+      if (batch.length < limit || itemsData.TotalRecordCount <= allEpisodes.length) {
+        hasMore = false;
+      } else {
+        startIndex += limit;
+      }
+    } catch (err) {
+      console.error(`Skipping offset ${startIndex} due to persistent error:`, err.message);
+      // Skip ahead to the next batch instead of crashing the whole build
       startIndex += limit;
     }
   }
 
-  console.log(`Fetched ${allEpisodes.length} total episodes.`);
+  console.log(`Successfully compiled ${allEpisodes.length} total episodes.`);
 
   const outputSchedule = {
     apiKey: apiKey,
@@ -141,7 +155,7 @@ async function generateSchedule() {
 
   // 4. Save schedule
   fs.writeFileSync('channels.json', JSON.stringify(outputSchedule, null, 2));
-  console.log('channels.json generated with deterministic shuffle!');
+  console.log('channels.json generated successfully!');
 }
 
 generateSchedule().catch(err => {
