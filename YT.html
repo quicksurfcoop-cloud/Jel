@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Live TV</title>
+  <title>Live YouTube TV with EPG</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body, html { width: 100%; height: 100%; background: #000; color: #fff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; overflow: hidden; }
@@ -16,7 +16,7 @@
       position: absolute;
       top: 40px;
       right: 50px;
-      background: rgba(0, 0, 0, 0.75);
+      background: rgba(0, 0, 0, 0.85);
       border: 2px solid #00ffcc;
       padding: 15px 25px;
       border-radius: 8px;
@@ -39,7 +39,7 @@
       display: flex;
       gap: 12px;
       z-index: 10;
-      background: rgba(0, 0, 0, 0.6);
+      background: rgba(0, 0, 0, 0.7);
       padding: 10px 20px;
       border-radius: 30px;
       backdrop-filter: blur(5px);
@@ -54,7 +54,144 @@
       font-weight: bold;
       transition: all 0.2s;
     }
-    button:hover { background: #00ffcc; color: #000; }
+    button:hover, button.active { background: #00ffcc; color: #000; border-color: #00ffcc; }
+
+    /* --- EPG OVERLAY STYLES --- */
+    #epg-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(10, 12, 16, 0.92);
+      backdrop-filter: blur(10px);
+      z-index: 20;
+      display: flex;
+      flex-direction: column;
+      padding: 30px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    #epg-overlay.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .epg-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #222;
+      padding-bottom: 15px;
+    }
+    .epg-title { font-size: 1.8rem; font-weight: bold; color: #00ffcc; }
+    .epg-clock { font-size: 1.4rem; font-family: monospace; color: #fff; }
+
+    .epg-grid-container {
+      flex: 1;
+      overflow-x: auto;
+      overflow-y: auto;
+      position: relative;
+      border: 1px solid #333;
+      border-radius: 8px;
+      background: #111;
+    }
+
+    /* Time Axis Header */
+    .epg-timeline-header {
+      display: flex;
+      height: 40px;
+      background: #1a1d24;
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      border-bottom: 1px solid #333;
+    }
+    .epg-channel-header-stub {
+      min-width: 180px;
+      max-width: 180px;
+      background: #14161c;
+      border-right: 1px solid #333;
+      position: sticky;
+      left: 0;
+      z-index: 6;
+    }
+    .epg-time-slot {
+      min-width: 300px; /* 30 minutes = 300px (10px per minute) */
+      padding: 10px;
+      font-weight: bold;
+      font-size: 0.85rem;
+      color: #888;
+      border-right: 1px solid #222;
+    }
+
+    /* Channels & Program Rows */
+    .epg-row {
+      display: flex;
+      height: 60px;
+      border-bottom: 1px solid #222;
+      position: relative;
+    }
+    .epg-channel-meta {
+      min-width: 180px;
+      max-width: 180px;
+      background: #161820;
+      padding: 10px 15px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-right: 1px solid #333;
+      position: sticky;
+      left: 0;
+      z-index: 4;
+    }
+    .epg-channel-meta .num { font-weight: bold; color: #00ffcc; font-size: 0.85rem; }
+    .epg-channel-meta .name { font-weight: 600; font-size: 0.95rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+    .epg-programs-track {
+      display: flex;
+      position: relative;
+      align-items: center;
+    }
+
+    .epg-program-block {
+      position: absolute;
+      height: 48px;
+      background: #222630;
+      border: 1px solid #343a46;
+      border-radius: 4px;
+      padding: 8px 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      overflow: hidden;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .epg-program-block:hover {
+      background: #2a303f;
+      border-color: #00ffcc;
+    }
+    .epg-program-block.active-now {
+      background: #1c3d3a;
+      border-color: #00ffcc;
+    }
+    .epg-program-block .title { font-size: 0.85rem; font-weight: bold; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .epg-program-block .time { font-size: 0.75rem; color: #aaa; margin-top: 2px; }
+
+    /* Red "Now" Line */
+    .epg-now-line {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: #ff3366;
+      box-shadow: 0 0 8px #ff3366;
+      z-index: 5;
+      pointer-events: none;
+    }
   </style>
 </head>
 <body>
@@ -72,24 +209,56 @@
   <div id="controls">
     <button onclick="prevChannel()">▲ CH Prev</button>
     <button onclick="nextChannel()">▼ CH Next</button>
+    <button id="epg-btn" onclick="toggleEPG()">📺 TV Guide (G)</button>
+  </div>
+
+  <!-- EPG Overlay Structure -->
+  <div id="epg-overlay">
+    <div class="epg-header">
+      <div class="epg-title">Live Program Guide</div>
+      <div class="epg-clock" id="epg-clock">00:00:00</div>
+    </div>
+    <div class="epg-grid-container" id="epg-grid-container">
+      <div class="epg-timeline-header" id="epg-timeline-header">
+        <div class="epg-channel-header-stub"></div>
+        <!-- Time slots dynamically generated here -->
+      </div>
+      <div id="epg-rows">
+        <!-- Channel rows dynamically generated here -->
+      </div>
+      <div class="epg-now-line" id="epg-now-line"></div>
+    </div>
   </div>
 
   <script>
-    // Channel database (Durations in seconds)
+    // Config: 1 minute = 10 pixels in grid space
+    const PIXELS_PER_MINUTE = 10;
+    
+    // Channel Database with longer durations for demonstration
     const CHANNELS = [
       {
         id: 1,
-        name: "Retro Gaming & Documentaries",
+        name: "Retro Gaming & Docs",
         playlist: [
-          { id: "dQw4w9WgXcQ", duration: 213, title: "Classic Track" },
-          { id: "L_LUpnjgPso", duration: 180, title: "Synthwave Visuals" }
+          { id: "dQw4w9WgXcQ", duration: 1200, title: "The History of 16-Bit Consoles" },
+          { id: "L_LUpnjgPso", duration: 1800, title: "Synthwave & Arcade Aesthetics" },
+          { id: "jfKfPfyJRdk", duration: 900,  title: "Classic Speedrun Breakdown" }
         ]
       },
       {
         id: 2,
-        name: "Chill Beats & Ambience",
+        name: "Chill & Ambience",
         playlist: [
-          { id: "jfKfPfyJRdk", duration: 1200, title: "Lofi Beats - Session 1" }
+          { id: "jfKfPfyJRdk", duration: 2400, title: "Lofi Beats - 40 Min Session" },
+          { id: "L_LUpnjgPso", duration: 1200, title: "Midnight City Lights" }
+        ]
+      },
+      {
+        id: 3,
+        name: "Sci-Fi & Cyberpunk",
+        playlist: [
+          { id: "L_LUpnjgPso", duration: 1500, title: "Neon Skyline Visuals" },
+          { id: "dQw4w9WgXcQ", duration: 1500, title: "Retro Futurology Special" }
         ]
       }
     ];
@@ -97,27 +266,22 @@
     let currentChannelIdx = 0;
     let player;
     let osdTimer;
+    let epgVisible = false;
+    let epgStartTimestamp = 0; // Epoch timestamp for the far-left of grid
 
-    // Load YouTube IFrame API
+    // YouTube Player Initialization
     const tag = document.createElement('script');
     tag.src = "https://www.youtube.com/iframe_api";
     document.head.appendChild(tag);
 
     function onYouTubeIframeAPIReady() {
       player = new YT.Player('player', {
-        playerVars: {
-          'autoplay': 1,
-          'controls': 0,
-          'disablekb': 1,
-          'modestbranding': 1,
-          'rel': 0
-        },
-        events: {
-          'onReady': () => loadChannel(currentChannelIdx)
-        }
+        playerVars: { 'autoplay': 1, 'controls': 0, 'disablekb': 1, 'modestbranding': 1, 'rel': 0 },
+        events: { 'onReady': () => loadChannel(currentChannelIdx) }
       });
     }
 
+    // --- Core Calculation Logic ---
     function calculateLivePosition(channel) {
       const totalDuration = channel.playlist.reduce((acc, v) => acc + v.duration, 0);
       const now = Math.floor(Date.now() / 1000);
@@ -126,11 +290,11 @@
       for (let i = 0; i < channel.playlist.length; i++) {
         const video = channel.playlist[i];
         if (loopOffset < video.duration) {
-          return { videoId: video.id, startSeconds: loopOffset, title: video.title };
+          return { videoIndex: i, videoId: video.id, startSeconds: loopOffset, title: video.title };
         }
         loopOffset -= video.duration;
       }
-      return { videoId: channel.playlist[0].id, startSeconds: 0, title: channel.playlist[0].title };
+      return { videoIndex: 0, videoId: channel.playlist[0].id, startSeconds: 0, title: channel.playlist[0].title };
     }
 
     function loadChannel(index) {
@@ -138,22 +302,17 @@
       const channel = CHANNELS[currentChannelIdx];
       const liveState = calculateLivePosition(channel);
 
-      player.loadVideoById({
-        videoId: liveState.videoId,
-        startSeconds: liveState.startSeconds
-      });
-
+      player.loadVideoById({ videoId: liveState.videoId, startSeconds: liveState.startSeconds });
       showOSD(`CH ${String(channel.id).padStart(2, '0')}`, channel.name, liveState.title);
+      if (epgVisible) renderEPG();
     }
 
     function showOSD(num, name, title) {
       document.getElementById('osd-num').innerText = num;
       document.getElementById('osd-name').innerText = name;
       document.getElementById('osd-title').innerText = title;
-      
       const osd = document.getElementById('osd');
       osd.classList.add('active');
-      
       clearTimeout(osdTimer);
       osdTimer = setTimeout(() => osd.classList.remove('active'), 3500);
     }
@@ -168,10 +327,134 @@
       loadChannel(currentChannelIdx);
     }
 
-    // Keyboard navigation (Up/Down arrow keys)
+    // --- EPG Grid Generator ---
+    function toggleEPG() {
+      epgVisible = !epgVisible;
+      const overlay = document.getElementById('epg-overlay');
+      const btn = document.getElementById('epg-btn');
+      
+      if (epgVisible) {
+        overlay.classList.add('visible');
+        btn.classList.add('active');
+        renderEPG();
+      } else {
+        overlay.classList.remove('visible');
+        btn.classList.remove('active');
+      }
+    }
+
+    function renderEPG() {
+      const nowSec = Math.floor(Date.now() / 1000);
+      
+      // Align grid start to 30 minutes before current top-of-hour
+      const now = new Date();
+      now.setMinutes(now.getMinutes() < 30 ? 0 : 30, 0, 0);
+      epgStartTimestamp = Math.floor(now.getTime() / 1000) - (1800); // Start 30 min ago
+
+      // 1. Render Timeline Header (6 half-hour blocks = 3 hours)
+      const headerContainer = document.getElementById('epg-timeline-header');
+      headerContainer.innerHTML = '<div class="epg-channel-header-stub"></div>';
+      
+      for (let i = 0; i < 6; i++) {
+        const slotTime = new Date((epgStartTimestamp + (i * 1800)) * 1000);
+        const timeStr = slotTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        const slotDiv = document.createElement('div');
+        slotDiv.className = 'epg-time-slot';
+        slotDiv.innerText = timeStr;
+        headerContainer.appendChild(slotDiv);
+      }
+
+      // 2. Render Channel Rows & Schedule Blocks
+      const rowsContainer = document.getElementById('epg-rows');
+      rowsContainer.innerHTML = '';
+
+      CHANNELS.forEach((channel, chIdx) => {
+        const row = document.createElement('div');
+        row.className = 'epg-row';
+
+        // Channel Label
+        const meta = document.createElement('div');
+        meta.className = 'epg-channel-meta';
+        meta.innerHTML = `<div class="num">CH ${String(channel.id).padStart(2, '0')}</div><div class="name">${channel.name}</div>`;
+        row.appendChild(meta);
+
+        // Programs Track
+        const track = document.createElement('div');
+        track.className = 'epg-programs-track';
+
+        // Calculate loop parameters
+        const totalDuration = channel.playlist.reduce((acc, v) => acc + v.duration, 0);
+        const currentLoopStart = nowSec - (nowSec % totalDuration);
+        
+        // Populate programs across multi-loop window (-1 to +2 loops)
+        for (let loop = -1; loop <= 2; loop++) {
+          let runTimeAcc = currentLoopStart + (loop * totalDuration);
+
+          channel.playlist.forEach((video) => {
+            const progStart = runTimeAcc;
+            const progEnd = progStart + video.duration;
+            runTimeAcc = progEnd;
+
+            // Render block if it falls within the 3-hour visible range
+            if (progEnd > epgStartTimestamp && progStart < epgStartTimestamp + 10800) {
+              const leftPx = ((progStart - epgStartTimestamp) / 60) * PIXELS_PER_MINUTE;
+              const widthPx = (video.duration / 60) * PIXELS_PER_MINUTE;
+
+              const isLive = nowSec >= progStart && nowSec < progEnd;
+
+              const block = document.createElement('div');
+              block.className = `epg-program-block ${isLive ? 'active-now' : ''}`;
+              block.style.left = `${leftPx}px`;
+              block.style.width = `${widthPx - 4}px`; // 4px margin
+
+              const startTimeStr = new Date(progStart * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+              const endTimeStr = new Date(progEnd * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+              block.innerHTML = `
+                <div class="title">${video.title}</div>
+                <div class="time">${startTimeStr} - ${endTimeStr}</div>
+              `;
+
+              block.onclick = () => {
+                loadChannel(chIdx);
+                toggleEPG();
+              };
+
+              track.appendChild(block);
+            }
+          });
+        }
+
+        row.appendChild(track);
+        rowsContainer.appendChild(row);
+      });
+
+      updateEPGNowLine();
+    }
+
+    function updateEPGNowLine() {
+      if (!epgVisible) return;
+      const nowSec = Math.floor(Date.now() / 1000);
+      const offsetSec = nowSec - epgStartTimestamp;
+      const leftPx = 180 + ((offsetSec / 60) * PIXELS_PER_MINUTE); // 180px accounts for sticky channel stub width
+      
+      const nowLine = document.getElementById('epg-now-line');
+      nowLine.style.left = `${leftPx}px`;
+
+      // Update Top Clock
+      document.getElementById('epg-clock').innerText = new Date().toLocaleTimeString();
+    }
+
+    // Refresh EPG Clock & Red Line every second
+    setInterval(() => {
+      if (epgVisible) updateEPGNowLine();
+    }, 1000);
+
+    // Keyboard Shortcuts
     window.addEventListener('keydown', (e) => {
       if (e.key === 'ArrowUp') prevChannel();
       if (e.key === 'ArrowDown') nextChannel();
+      if (e.key.toLowerCase() === 'g' || e.key.toLowerCase() === 'e') toggleEPG();
     });
   </script>
 </body>
