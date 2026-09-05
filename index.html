@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nostalgex TV</title>
-  <!-- Includes HLS.js to allow Chrome/Firefox on desktop to play Jellyfin HLS streams seamlessly -->
+  <!-- Includes HLS.js to allow Chrome/Firefox/Edge to play Jellyfin HLS streams seamlessly -->
   <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
   <style>
     body {
@@ -82,7 +82,7 @@
     }
   }
 
-function syncPlayback() {
+  function syncPlayback() {
     if (!scheduleData || !currentChannelKey) return;
 
     const channel = scheduleData.channels[currentChannelKey];
@@ -108,98 +108,23 @@ function syncPlayback() {
     const player = document.getElementById('tvPlayer');
     const apiKey = scheduleData.apiKey || '';
     
-    // HLS Stream
-// Force transcoding for legacy formats (XviD, AVI, MP3) into native web formats (H.264 / AAC)
-const streamUrl = `${JELLYFIN_URL}/Videos/${activeItem.id}/master.m3u8?` + 
-  `api_key=${apiKey}` +
-  `&MediaSourceId=${activeItem.id}` +
-  `&VideoCodec=h264` +
-  `&AudioCodec=aac` +
-  `&AudioChannels=2` +
-  `&MaxAudioChannels=2` +
-  `&SegmentContainer=ts` +
-  `&VideoBitrate=8000000`;
+    // Fully parameterized Jellyfin HLS stream request
+    const streamUrl = `${JELLYFIN_URL}/Videos/${activeItem.id}/master.m3u8?` + 
+      `api_key=${apiKey}` +
+      `&MediaSourceId=${activeItem.id}` +
+      `&VideoCodec=h264` +
+      `&AudioCodec=aac` +
+      `&AudioChannels=2` +
+      `&MaxAudioChannels=2` +
+      `&SegmentContainer=ts` +
+      `&VideoBitrate=8000000`;
 
-
-    // 1. Chrome/Firefox on Desktop (Uses Hls.js library)
-    if (Hls.isSupported()) {
-      if (hlsEngine) {
-        hlsEngine.destroy();
-      }
-      hlsEngine = new Hls();
-      hlsEngine.loadSource(streamUrl);
-      hlsEngine.attachMedia(player);
-      hlsEngine.on(Hls.Events.MANIFEST_PARSED, function() {
-        player.currentTime = seekOffset;
-        player.play().catch(() => console.log("Autoplay blocked - click play"));
-      });
-    } 
-    // 2. Mobile Safari / iOS Native HLS
-    else if (player.canPlayType('application/vnd.apple.mpegurl')) {
-      if (player.src !== streamUrl) {
-        player.src = streamUrl;
-      }
-      player.currentTime = seekOffset;
-      player.play().catch(() => console.log("Autoplay blocked - tap Sync to start"));
-    }
-
-    document.getElementById('nowPlaying').innerText = 
-      `Playing: ${activeItem.title} ${activeItem.series ? `(${activeItem.series})` : ''} | Offset: ${Math.floor(seekOffset)}s`;
-  }
-
-  function switchChannel() {
-    currentChannelKey = document.getElementById('channelSelect').value;
-    
-    // Stop and clean existing playback before loading new channel
-    const player = document.getElementById('tvPlayer');
-    player.pause();
-    
-    if (hlsEngine) {
-      hlsEngine.destroy();
-      hlsEngine = null;
-    }
-
-    // Force Xbox Edge to unload current media pipeline
-    player.removeAttribute('src');
-    player.load();
-
-    // Trigger sync for new channel
-    syncPlayback();
-  }
-
-  function syncPlayback() {
-    if (!scheduleData || !currentChannelKey) return;
-
-    const channel = scheduleData.channels[currentChannelKey];
-    const nowSeconds = Math.floor(Date.now() / 1000);
-    const FIXED_EPOCH_SECONDS = 1767225600; 
-    
-    const elapsedSeconds = (nowSeconds - FIXED_EPOCH_SECONDS) % channel.totalLoopSeconds;
-
-    let activeItem = channel.items[0];
-    let seekOffset = 0;
-
-    for (const item of channel.items) {
-      const itemEnd = item.start + item.duration;
-      if (elapsedSeconds >= item.start && elapsedSeconds < itemEnd) {
-        activeItem = item;
-        seekOffset = elapsedSeconds - item.start;
-        break;
-      }
-    }
-
-    const player = document.getElementById('tvPlayer');
-    const apiKey = scheduleData.apiKey || '';
-    
-    const streamUrl = `${JELLYFIN_URL}/Videos/${activeItem.id}/master.m3u8?api_key=${apiKey}&MediaSourceId=${activeItem.id}&VideoCodec=h264&AudioCodec=aac&AudioChannels=2&SegmentContainer=ts`;
-
-    // 1. Desktop / Edge using Hls.js
+    // 1. Desktop / Xbox Edge (Uses Hls.js library)
     if (Hls.isSupported()) {
       if (hlsEngine) {
         hlsEngine.destroy();
       }
       hlsEngine = new Hls({
-        // Optimized buffer config for Xbox Edge memory limits
         maxBufferLength: 30,
         maxMaxBufferLength: 60
       });
@@ -209,21 +134,19 @@ const streamUrl = `${JELLYFIN_URL}/Videos/${activeItem.id}/master.m3u8?` +
       
       hlsEngine.on(Hls.Events.MANIFEST_PARSED, function() {
         player.currentTime = seekOffset;
-        
-        // Unmute if user changed channel via UI selection
         player.muted = false; 
         
         const playPromise = player.play();
         if (playPromise !== undefined) {
           playPromise.catch(() => {
-            console.log("Xbox autoplay blocked - attempting muted fallback");
+            console.log("Autoplay blocked - attempting muted fallback");
             player.muted = true;
             player.play();
           });
         }
       });
     } 
-    // 2. Native HLS (Mobile Safari / iOS)
+    // 2. Mobile Safari / iOS Native HLS
     else if (player.canPlayType('application/vnd.apple.mpegurl')) {
       player.src = streamUrl;
       player.currentTime = seekOffset;
@@ -234,6 +157,27 @@ const streamUrl = `${JELLYFIN_URL}/Videos/${activeItem.id}/master.m3u8?` +
       `Playing: ${activeItem.title} ${activeItem.series ? `(${activeItem.series})` : ''} | Offset: ${Math.floor(seekOffset)}s`;
   }
 
+  function switchChannel() {
+    currentChannelKey = document.getElementById('channelSelect').value;
+    
+    const player = document.getElementById('tvPlayer');
+    player.pause();
+    
+    if (hlsEngine) {
+      hlsEngine.detachMedia();
+      hlsEngine.destroy();
+      hlsEngine = null;
+    }
+
+    // Clear source completely
+    player.src = "";
+    player.load();
+
+    // Small delay prevents Xbox Edge hardware decoder pipeline lockups
+    setTimeout(() => {
+      syncPlayback();
+    }, 150);
+  }
 
   init();
 </script>
