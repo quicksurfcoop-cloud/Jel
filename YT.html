@@ -210,8 +210,6 @@
     </div>
   </div>
 
-  <script src="YTchannels.json"></script>
-
   <script>
     const PIXELS_PER_MINUTE = 10;
     let CHANNELS = [];
@@ -220,23 +218,34 @@
     let osdTimer;
     let epgVisible = false;
     let epgStartTimestamp = 0;
+    let isApiReady = false;
 
-    // Load JSON configuration dynamically
-    async function initApp() {
+    // Load JSON file relative to current path
+    async function loadChannelData() {
       try {
-        const response = await fetch('YTchannels.json');
+        const response = await fetch('./YTchannels.json');
+        if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
         CHANNELS = await response.json();
-
-        // Load YouTube IFrame API after channels load successfully
-        const tag = document.createElement('script');
-        tag.src = "https://www.youtube.com/iframe_api";
-        document.head.appendChild(tag);
+        
+        // If YouTube API loaded before fetch completed, initialize player now
+        if (isApiReady && CHANNELS.length > 0) {
+          initPlayer();
+        }
       } catch (err) {
-        console.error("Failed to load YTchannels.json:", err);
+        console.error("Could not load YTchannels.json:", err);
+        showOSD("ERR", "Config Error", "Failed to load YTchannels.json");
       }
     }
 
+    // Global callback required by YouTube IFrame API
     function onYouTubeIframeAPIReady() {
+      isApiReady = true;
+      if (CHANNELS.length > 0) {
+        initPlayer();
+      }
+    }
+
+    function initPlayer() {
       player = new YT.Player('player', {
         playerVars: {
           'autoplay': 1,
@@ -254,7 +263,7 @@
     }
 
     function onPlayerError(event) {
-      console.warn(`Video error (Code: ${event.data}). Auto-skipping...`);
+      console.warn(`Video error (Code: ${event.data}). Skipping...`);
       showOSD(`CH ${String(CHANNELS[currentChannelIdx].id).padStart(2, '0')}`, CHANNELS[currentChannelIdx].name, "Stream Signal Lost - Skipping...");
       setTimeout(() => nextChannel(), 1500);
     }
@@ -275,7 +284,7 @@
     }
 
     function loadChannel(index) {
-      if (!CHANNELS.length) return;
+      if (!CHANNELS.length || !player) return;
       currentChannelIdx = index;
       const channel = CHANNELS[currentChannelIdx];
       const liveState = calculateLivePosition(channel);
@@ -301,11 +310,13 @@
     }
 
     function nextChannel() {
+      if (!CHANNELS.length) return;
       currentChannelIdx = (currentChannelIdx + 1) % CHANNELS.length;
       loadChannel(currentChannelIdx);
     }
 
     function prevChannel() {
+      if (!CHANNELS.length) return;
       currentChannelIdx = (currentChannelIdx - 1 + CHANNELS.length) % CHANNELS.length;
       loadChannel(currentChannelIdx);
     }
@@ -425,9 +436,11 @@
       if (e.key.toLowerCase() === 'g' || e.key.toLowerCase() === 'e') toggleEPG();
     });
 
-    // Start application
-    initApp();
+    // Start fetching channels right away
+    loadChannelData();
   </script>
 
+  <!-- Load YouTube IFrame API -->
+  <script src="https://www.youtube.com/iframe_api"></script>
 </body>
 </html>
