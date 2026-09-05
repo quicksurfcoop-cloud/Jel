@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Channel 1 - CBBC Retro Broadcast</title>
+  <style>
+    :root {
+      --cbbc-yellow: #ffe600;
+      --cbbc-green: #00a651;
+      --cbbc-black: #111111;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: var(--cbbc-black);
+      color: #ffffff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      overflow: hidden;
+    }
+
+    .tv-container {
+      position: relative;
+      width: 90vw;
+      max-width: 960px;
+      aspect-ratio: 4 / 3;
+      background: #000;
+      border: 4px solid #333;
+      box-shadow: 0 0 20px rgba(0,0,0,0.8);
+      overflow: hidden;
+    }
+
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Retro Channel Bug Overlay */
+    .channel-bug {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: var(--cbbc-yellow);
+      color: #000;
+      font-weight: 900;
+      padding: 4px 12px;
+      border-radius: 4px;
+      letter-spacing: 1px;
+      font-size: 1.2rem;
+      box-shadow: 2px 2px 0px var(--cbbc-green);
+      pointer-events: none;
+    }
+
+    /* On-Screen Program Banner */
+    .now-playing {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      background: rgba(0, 0, 0, 0.75);
+      border-left: 5px solid var(--cbbc-yellow);
+      padding: 10px 15px;
+      border-radius: 0 6px 6px 0;
+      pointer-events: none;
+      transition: opacity 0.5s ease;
+    }
+
+    .now-playing h3 {
+      margin: 0;
+      font-size: 1rem;
+      color: var(--cbbc-yellow);
+      text-transform: uppercase;
+    }
+
+    .now-playing p {
+      margin: 4px 0 0;
+      font-size: 0.9rem;
+    }
+
+    /* Controls Panel */
+    .controls {
+      margin-top: 15px;
+      display: flex;
+      gap: 10px;
+    }
+
+    button {
+      background: var(--cbbc-yellow);
+      border: none;
+      color: #000;
+      font-weight: bold;
+      padding: 8px 16px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    button:hover {
+      background: var(--cbbc-green);
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="tv-container">
+    <video id="tvPlayer" autoplay muted playsinline></video>
+    
+    <!-- On-Screen Display Elements -->
+    <div class="channel-bug">CBBC 1</div>
+    <div class="now-playing" id="infoBox">
+      <h3 id="showTitle">Loading Schedule...</h3>
+      <p id="showTime">--:--</p>
+    </div>
+  </div>
+
+  <div class="controls">
+    <button onclick="previousTrack()">⏮ Prev</button>
+    <button onclick="togglePlay()">⏯ Play/Pause</button>
+    <button onclick="nextTrack()">Next ⏭</button>
+  </div>
+
+  <script>
+    // Channel 1 CBBC Schedule Playlist
+    const cbbcSchedule = [
+      {
+        title: "CBBC Continuity & Intro Ident",
+        time: "15:30",
+        src: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
+      },
+      {
+        title: "The Demon Headmaster - Episode 1",
+        time: "15:35",
+        src: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+      },
+      {
+        title: "CBBC Promo & Broom Cupboard Junction",
+        time: "16:00",
+        src: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"
+      },
+      {
+        title: "Raven - Challenge 1",
+        time: "16:05",
+        src: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
+      },
+      {
+        title: "Newsround",
+        time: "16:30",
+        src: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4"
+      }
+    ];
+
+    let currentIndex = 0;
+    const player = document.getElementById('tvPlayer');
+    const titleDisplay = document.getElementById('showTitle');
+    const timeDisplay = document.getElementById('showTime');
+
+    function loadProgram(index) {
+      if (index < 0) index = cbbcSchedule.length - 1;
+      if (index >= cbbcSchedule.length) index = 0;
+      
+      currentIndex = index;
+      const program = cbbcSchedule[currentIndex];
+
+      player.src = program.src;
+      titleDisplay.textContent = program.title;
+      timeDisplay.textContent = `Scheduled: ${program.time}`;
+      
+      player.play().catch(e => console.log("Autoplay waiting for interaction."));
+    }
+
+    function nextTrack() {
+      loadProgram(currentIndex + 1);
+    }
+
+    function previousTrack() {
+      loadProgram(currentIndex - 1);
+    }
+
+    function togglePlay() {
+      if (player.paused) {
+        player.play();
+      } else {
+        player.pause();
+      }
+    }
+
+    // Auto-advance to next program when video ends
+    player.addEventListener('ended', () => {
+      nextTrack();
+    });
+
+    // Initial load
+    loadProgram(0);
+  </script>
+</body>
+</html>
