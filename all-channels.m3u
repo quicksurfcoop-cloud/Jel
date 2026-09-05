@@ -1,17 +1,17 @@
 #EXTM3U
 
-#EXTINF:-1 tvg-id="cartoons" tvg-name="90s Cartoons", 90s Cartoons
-https://spread.thepebbles.tech/Videos/f8ae59601973259d0a349308115c1da9/stream.mp4?api_key=5406d88453364c9187650b739279fe0e&VideoCodec=h264&AudioCodec=aac&AudioChannels=2&VideoBitrate=8000000&StartTimeTicks=5050000000
+#EXTINF:1417, [90s Cartoons] Naruto - Naruto - S04E09 - Two Heartbeats Kabuto's Trap
+https://spread.thepebbles.tech/Items/f8ae59601973259d0a349308115c1da9/Download?api_key=5406d88453364c9187650b739279fe0e
 
-#EXTINF:-1 tvg-id="sitcoms" tvg-name="Retro Sitcoms", Retro Sitcoms
-https://spread.thepebbles.tech/Videos/c2363b1cc0e2cccf17f43de18d5106d3/stream.mp4?api_key=5406d88453364c9187650b739279fe0e&VideoCodec=h264&AudioCodec=aac&AudioChannels=2&VideoBitrate=8000000&StartTimeTicks=10680000000
+#EXTINF:1314, [Retro Sitcoms] The Beverly Hillbillies - Our Hero the Banker
+https://spread.thepebbles.tech/Items/c0b6204178e173cb164ba4eadcb51ac8/Download?api_key=5406d88453364c9187650b739279fe0e
 
-#EXTINF:-1 tvg-id="scream-kids" tvg-name="SCREAM KIDS", SCREAM KIDS
-https://spread.thepebbles.tech/Videos/5ab2ee24d826e9f847022613c787ad9e/stream.mp4?api_key=5406d88453364c9187650b739279fe0e&VideoCodec=h264&AudioCodec=aac&AudioChannels=2&VideoBitrate=8000000&StartTimeTicks=5130000000
+#EXTINF:1392, [SCREAM KIDS] Hilda - Chapter 3: The Witch
+https://spread.thepebbles.tech/Items/5ab2ee24d826e9f847022613c787ad9e/Download?api_key=5406d88453364c9187650b739279fe0e
 
-#EXTINF:-1 tvg-id="Period-dramas" tvg-name="Period Dramas & History", Period Dramas & History
-https://spread.thepebbles.tech/Videos/db70544826a6ecfea6d194f3065fa064/stream.mp4?api_key=5406d88453364c9187650b739279fe0e&VideoCodec=h264&AudioCodec=aac&AudioChannels=2&VideoBitrate=8000000&StartTimeTicks=14190000000
+#EXTINF:3023, [Period Dramas & History] Alias Smith and Jones - Stagecoach Seven
+https://spread.thepebbles.tech/Items/db70544826a6ecfea6d194f3065fa064/Download?api_key=5406d88453364c9187650b739279fe0e
 
-#EXTINF:-1 tvg-id="box-office" tvg-name="Sky Box Office - Latest Movies", Sky Box Office - Latest Movies
-https://spread.thepebbles.tech/Videos/e7d956c33f01fcacfa5f358c5504cfd0/stream.mp4?api_key=5406d88453364c9187650b739279fe0e&VideoCodec=h264&AudioCodec=aac&AudioChannels=2&VideoBitrate=8000000&StartTimeTicks=26730000000
+#EXTINF:5258, [Sky Box Office - Latest Movies] Bo Burnham: Inside
+https://spread.thepebbles.tech/Items/e7d956c33f01fcacfa5f358c5504cfd0/Download?api_key=5406d88453364c9187650b739279fe0e
 

@@ -1,3 +1,3 @@
 #EXTM3U
-#EXTINF:-1 tvg-id="Period-dramas" tvg-name="Period Dramas & History", Period Dramas & History (Now: Alias Smith and Jones - Stagecoach Seven)
-https://spread.thepebbles.tech/Videos/db70544826a6ecfea6d194f3065fa064/stream.mp4?api_key=5406d88453364c9187650b739279fe0e&VideoCodec=h264&AudioCodec=aac&AudioChannels=2&VideoBitrate=8000000&StartTimeTicks=14190000000
+#EXTINF:3023, [Period Dramas & History] Alias Smith and Jones - Stagecoach Seven
+https://spread.thepebbles.tech/Items/db70544826a6ecfea6d194f3065fa064/Download?api_key=5406d88453364c9187650b739279fe0e

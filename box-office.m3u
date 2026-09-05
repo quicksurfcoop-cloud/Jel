@@ -1,3 +1,3 @@
 #EXTM3U
-#EXTINF:-1 tvg-id="box-office" tvg-name="Sky Box Office - Latest Movies", Sky Box Office - Latest Movies (Now: Bo Burnham: Inside)
-https://spread.thepebbles.tech/Videos/e7d956c33f01fcacfa5f358c5504cfd0/stream.mp4?api_key=5406d88453364c9187650b739279fe0e&VideoCodec=h264&AudioCodec=aac&AudioChannels=2&VideoBitrate=8000000&StartTimeTicks=26730000000
+#EXTINF:5258, [Sky Box Office - Latest Movies] Bo Burnham: Inside
+https://spread.thepebbles.tech/Items/e7d956c33f01fcacfa5f358c5504cfd0/Download?api_key=5406d88453364c9187650b739279fe0e
