@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Live YouTube TV with EPG</title>
+  <title>Live YouTube TV</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body, html { width: 100%; height: 100%; background: #000; color: #fff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; overflow: hidden; }
@@ -145,11 +145,7 @@
     .epg-channel-meta .num { font-weight: bold; color: #00ffcc; font-size: 0.85rem; }
     .epg-channel-meta .name { font-weight: 600; font-size: 0.95rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
-    .epg-programs-track {
-      display: flex;
-      position: relative;
-      align-items: center;
-    }
+    .epg-programs-track { display: flex; position: relative; align-items: center; }
 
     .epg-program-block {
       position: absolute;
@@ -214,43 +210,18 @@
     </div>
   </div>
 
+  <script src="YTchannels.js"></script>
+
   <script>
     const PIXELS_PER_MINUTE = 10;
-    
-    // Updated channel list using verified, fully embeddable YouTube video IDs
-    const CHANNELS = [
-      {
-        id: 1,
-        name: "Retro Gaming & Tech",
-        playlist: [
-          { id: "2lAe1cqCOXo", duration: 1800, title: "Classic Tech & Retro Computing Showcase" },
-          { id: "M576WGiDBdQ", duration: 2400, title: "16-Bit Hardware Architecture Deep Dive" }
-        ]
-      },
-      {
-        id: 2,
-        name: "Chill Ambient Feed",
-        playlist: [
-          { id: "TURbeWK-x0M", duration: 3600, title: "4K Scenic Nature & Ambient Audio" },
-          { id: "eKFTSSKCzWA", duration: 2700, title: "Relaxing Mountain Streams" }
-        ]
-      },
-      {
-        id: 3,
-        name: "Sci-Fi & Cosmos",
-        playlist: [
-          { id: "libKVRa074Q", duration: 1800, title: "Deep Space Exploration & Visuals" },
-          { id: "3Wq8S_3uInQ", duration: 2100, title: "NASA Earth View from Space" }
-        ]
-      }
-    ];
-
+    const CHANNELS = typeof YT_CHANNELS !== 'undefined' ? YT_CHANNELS : [];
     let currentChannelIdx = 0;
     let player;
     let osdTimer;
     let epgVisible = false;
     let epgStartTimestamp = 0;
 
+    // Load YouTube API script
     const tag = document.createElement('script');
     tag.src = "https://www.youtube.com/iframe_api";
     document.head.appendChild(tag);
@@ -263,13 +234,19 @@
           'disablekb': 1,
           'modestbranding': 1,
           'rel': 0,
-          'mute': 1, // Crucial to prevent browser autoplay blocking
-          'origin': window.location.origin || '*'
+          'mute': 1
         },
         events: {
-          'onReady': () => loadChannel(currentChannelIdx)
+          'onReady': () => loadChannel(currentChannelIdx),
+          'onError': onPlayerError
         }
       });
+    }
+
+    function onPlayerError(event) {
+      console.warn(`Video error (Code: ${event.data}). Auto-skipping...`);
+      showOSD(`CH ${String(CHANNELS[currentChannelIdx].id).padStart(2, '0')}`, CHANNELS[currentChannelIdx].name, "Stream Signal Lost - Skipping...");
+      setTimeout(() => nextChannel(), 1500);
     }
 
     function calculateLivePosition(channel) {
@@ -288,6 +265,7 @@
     }
 
     function loadChannel(index) {
+      if (!CHANNELS.length) return;
       currentChannelIdx = index;
       const channel = CHANNELS[currentChannelIdx];
       const liveState = calculateLivePosition(channel);
@@ -297,9 +275,7 @@
         startSeconds: liveState.startSeconds
       });
 
-      // Force playback execution
       player.playVideo();
-
       showOSD(`CH ${String(channel.id).padStart(2, '0')}`, channel.name, liveState.title);
       if (epgVisible) renderEPG();
     }
