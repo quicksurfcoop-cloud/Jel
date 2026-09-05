@@ -7,26 +7,28 @@ const JELLYFIN_URL = urlMatch ? urlMatch[0] : 'https://spread.thepebbles.tech';
 const USERNAME = (process.env.JELLYFIN_USER || 'union6').trim();
 const PASSWORD = (process.env.JELLYFIN_PASS || '1499952177779513').trim();
 
-// Refined Channel Specifications
+// Refined Channel Specifications matching Genres, Tags, Ratings, and Years
 const CHANNELS = [
   { 
     id: 'cartoons', 
     name: '90s Cartoons', 
     genres: ['Animation', 'Anime', 'Cartoons', 'Children'],
-    tags: ['Animation', 'Cartoons', '90s'], // Check tags as well
+    tags: ['Animation', 'Cartoons', '90s'],
     excludeGenres: ['Documentary', 'Reality', 'Action'],
+    // Whitelist daytime/family content ratings (filters out TV-MA, TV-14, R)
     allowedRatings: ['TV-Y', 'TV-Y7', 'TV-Y7-FV', 'TV-G', 'TV-PG', 'G', 'PG'],
+    // Safety net for specific adult animation titles or unrated edge-cases
     excludeTitles: ['South Park', 'Beavis and Butt-Head', 'Family Guy', 'Spawn', 'Futurama', 'King of the Hill', 'American Dad'],
     startYear: 1988,
-    endYear: 2001
+    endYear: 2004
   },
   { 
     id: 'sitcoms', 
     name: 'Retro Sitcoms', 
     genres: ['Sitcom', 'British Comedy'],
-    tags: ['Sitcom', 'Sitcoms', 'British Sitcom'], // Added Sitcom tags
+    tags: ['Sitcom', 'Sitcoms', 'British Sitcom'], // Catches shows tagged with Sitcom in Jellyfin
     excludeGenres: ['Reality', 'Game Show', 'Documentary', 'Talk Show'],
-    startYear: 1900,
+    startYear: 1960,
     endYear: 2012
   }
 ];
@@ -73,8 +75,8 @@ async function generateSchedule() {
 
   console.log('Authenticated successfully. Fetching TV Series metadata...');
 
-  // 2. Fetch all Series with extended metadata fields (Genres, OfficialRating, ProductionYear)
-  const seriesUrl = `${JELLYFIN_URL}/Users/${userId}/Items?IncludeItemTypes=Series&Recursive=true&Fields=Genres,OfficialRating,ProductionYear&api_key=${apiKey}`;
+  // 2. Fetch all Series requesting Genres, Tags, OfficialRating, and ProductionYear
+  const seriesUrl = `${JELLYFIN_URL}/Users/${userId}/Items?IncludeItemTypes=Series&Recursive=true&Fields=Genres,Tags,OfficialRating,ProductionYear&api_key=${apiKey}`;
   const seriesRes = await fetch(seriesUrl);
   if (!seriesRes.ok) throw new Error(`Failed to fetch series list: ${seriesRes.status}`);
   
@@ -94,32 +96,37 @@ async function generateSchedule() {
     
     // Filter matching series based on channel criteria
     const matchingSeries = allSeries.filter(s => {
-      if (!s.Genres || s.Genres.length === 0) return false;
+      const showGenres = (s.Genres || []).map(g => g.toLowerCase());
+      const showTags = (s.Tags || []).map(t => t.toLowerCase());
 
-      // Match target genres
-      const hasGenre = s.Genres.some(g => 
-        ch.genres.map(cg => cg.toLowerCase()).includes(g.toLowerCase())
-      );
-      if (!hasGenre) return false;
+      if (showGenres.length === 0 && showTags.length === 0) return false;
 
-      // Check excluded genres
+      // 1. Match target Genres OR target Tags
+      const targetGenres = (ch.genres || []).map(cg => cg.toLowerCase());
+      const targetTags = (ch.tags || []).map(ct => ct.toLowerCase());
+
+      const matchesGenre = showGenres.some(g => targetGenres.includes(g));
+      const matchesTag = showTags.some(t => targetTags.includes(t));
+
+      if (!matchesGenre && !matchesTag) return false;
+
+      // 2. Check excluded genres
       if (ch.excludeGenres) {
-        const hasExcluded = s.Genres.some(g => 
-          ch.excludeGenres.map(eg => eg.toLowerCase()).includes(g.toLowerCase())
+        const hasExcluded = showGenres.some(g => 
+          ch.excludeGenres.map(eg => eg.toLowerCase()).includes(g)
         );
         if (hasExcluded) return false;
       }
 
-      // Filter by Official Ratings (e.g. exclude TV-MA, TV-14)
+      // 3. Official Content Rating check
       if (ch.allowedRatings && ch.allowedRatings.length > 0) {
         const rating = (s.OfficialRating || '').trim().toUpperCase();
-        // If a rating exists and isn't allowed, exclude it
         if (rating && !ch.allowedRatings.map(r => r.toUpperCase()).includes(rating)) {
           return false;
         }
       }
 
-      // Check explicit title exclusions
+      // 4. Check explicit title exclusions
       if (ch.excludeTitles && ch.excludeTitles.length > 0) {
         const isExcluded = ch.excludeTitles.some(title => 
           s.Name.toLowerCase().includes(title.toLowerCase())
@@ -127,7 +134,7 @@ async function generateSchedule() {
         if (isExcluded) return false;
       }
 
-      // Filter by Production Year range
+      // 5. Production Year check
       const prodYear = s.ProductionYear || 0;
       if (ch.startYear && prodYear && prodYear < ch.startYear) return false;
       if (ch.endYear && prodYear && prodYear > ch.endYear) return false;
