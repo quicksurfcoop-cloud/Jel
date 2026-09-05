@@ -149,8 +149,91 @@ const streamUrl = `${JELLYFIN_URL}/Videos/${activeItem.id}/master.m3u8?` +
 
   function switchChannel() {
     currentChannelKey = document.getElementById('channelSelect').value;
+    
+    // Stop and clean existing playback before loading new channel
+    const player = document.getElementById('tvPlayer');
+    player.pause();
+    
+    if (hlsEngine) {
+      hlsEngine.destroy();
+      hlsEngine = null;
+    }
+
+    // Force Xbox Edge to unload current media pipeline
+    player.removeAttribute('src');
+    player.load();
+
+    // Trigger sync for new channel
     syncPlayback();
   }
+
+  function syncPlayback() {
+    if (!scheduleData || !currentChannelKey) return;
+
+    const channel = scheduleData.channels[currentChannelKey];
+    const nowSeconds = Math.floor(Date.now() / 1000);
+    const FIXED_EPOCH_SECONDS = 1767225600; 
+    
+    const elapsedSeconds = (nowSeconds - FIXED_EPOCH_SECONDS) % channel.totalLoopSeconds;
+
+    let activeItem = channel.items[0];
+    let seekOffset = 0;
+
+    for (const item of channel.items) {
+      const itemEnd = item.start + item.duration;
+      if (elapsedSeconds >= item.start && elapsedSeconds < itemEnd) {
+        activeItem = item;
+        seekOffset = elapsedSeconds - item.start;
+        break;
+      }
+    }
+
+    const player = document.getElementById('tvPlayer');
+    const apiKey = scheduleData.apiKey || '';
+    
+    const streamUrl = `${JELLYFIN_URL}/Videos/${activeItem.id}/master.m3u8?api_key=${apiKey}&MediaSourceId=${activeItem.id}&VideoCodec=h264&AudioCodec=aac&AudioChannels=2&SegmentContainer=ts`;
+
+    // 1. Desktop / Edge using Hls.js
+    if (Hls.isSupported()) {
+      if (hlsEngine) {
+        hlsEngine.destroy();
+      }
+      hlsEngine = new Hls({
+        // Optimized buffer config for Xbox Edge memory limits
+        maxBufferLength: 30,
+        maxMaxBufferLength: 60
+      });
+      
+      hlsEngine.loadSource(streamUrl);
+      hlsEngine.attachMedia(player);
+      
+      hlsEngine.on(Hls.Events.MANIFEST_PARSED, function() {
+        player.currentTime = seekOffset;
+        
+        // Unmute if user changed channel via UI selection
+        player.muted = false; 
+        
+        const playPromise = player.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(() => {
+            console.log("Xbox autoplay blocked - attempting muted fallback");
+            player.muted = true;
+            player.play();
+          });
+        }
+      });
+    } 
+    // 2. Native HLS (Mobile Safari / iOS)
+    else if (player.canPlayType('application/vnd.apple.mpegurl')) {
+      player.src = streamUrl;
+      player.currentTime = seekOffset;
+      player.play().catch(() => console.log("Autoplay blocked"));
+    }
+
+    document.getElementById('nowPlaying').innerText = 
+      `Playing: ${activeItem.title} ${activeItem.series ? `(${activeItem.series})` : ''} | Offset: ${Math.floor(seekOffset)}s`;
+  }
+
 
   init();
 </script>
