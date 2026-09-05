@@ -32,7 +32,7 @@ const CHANNELS = [
   { 
     id: 'BBC', 
     name: 'BBC', 
-    studios: ['BBC One'],
+    studios: ['BBC', 'BBC One', 'BBC Two', 'BBC Three', 'BBC Four'],
   },
   {
     id: 'scream-kids',
@@ -48,20 +48,18 @@ const CHANNELS = [
   {
     id: 'superhero-tv',
     name: 'Superhero TV',
-    type: 'Series', // Tells Jellyfin to pull TV Shows
+    includeItemTypes: ['Series'], 
     tags: ['superhero', 'superhero team', 'female superhero', 'masked superhero', 'based on comic'],
     excludeGenres: ['Anime'],
-    excludeTags: ['Anime'],
-    // If your script uses a single string for the API URL:
-    // tagsApiString: 'superhero,superhero team,female superhero,masked superhero,based on comic'
+    excludeTags: ['Anime']
   },
   {
     id: 'superhero-movies',
     name: 'Superhero Cinema',
-    includeItemTypes: ['Movie'], // Tells Jellyfin to pull Movies only
+    includeItemTypes: ['Movie'], 
     tags: ['superhero', 'superhero team', 'superhero teamup', 'female superhero', 'masked superhero', 'based on comic'],
-   excludeGenres: ['Anime'],
-    excludeTags: ['Anime'],
+    excludeGenres: ['Anime'],
+    excludeTags: ['Anime']
   },
   {
     id: 'Period-dramas',
@@ -75,13 +73,11 @@ const CHANNELS = [
   {
     id: 'box-office',
     name: 'Sky Box Office - Latest Movies',
-    // Expanded tags and genres to guarantee matches across modern films
     genres: ['Action', 'Adventure', 'Sci-Fi', 'Thriller', 'Drama', 'Comedy'],
     tags: ['blockbuster', 'box office', 'cinema', 'critically acclaimed', 'award winning', 'action', 'thriller', 'sci-fi', 'adventure'],
     excludeGenres: ['Documentary', 'Animation'],
     includeItemTypes: ['Movie'],
     allowedRatings: ['PG', 'PG-13', 'TV-14', 'R'],
-    // Widened slightly to 2025-2026 so you get a full rotation of modern movies
     startYear: 2025,
     endYear: 2026
   }
@@ -129,8 +125,8 @@ async function generateSchedule() {
 
   console.log('Authenticated successfully. Fetching TV Series and Movie metadata...');
 
-  // 2. Fetch both Series AND Movies metadata from Jellyfin
-  const mediaUrl = `${JELLYFIN_URL}/Users/${userId}/Items?IncludeItemTypes=Series,Movie&Recursive=true&Fields=Genres,Tags,OfficialRating,ProductionYear,RunTimeTicks&api_key=${apiKey}`;
+  // 2. Fetch metadata from Jellyfin (ADDED "Studios" TO THE FIELDS LIST)
+  const mediaUrl = `${JELLYFIN_URL}/Users/${userId}/Items?IncludeItemTypes=Series,Movie&Recursive=true&Fields=Genres,Tags,OfficialRating,ProductionYear,RunTimeTicks,Studios&api_key=${apiKey}`;
   const mediaRes = await fetch(mediaUrl);
   if (!mediaRes.ok) throw new Error(`Failed to fetch media list: ${mediaRes.status}`);
   
@@ -150,13 +146,21 @@ async function generateSchedule() {
 
   // Helper filter function for metadata matching
   const matchesCriteria = (item, ch) => {
+    // Check for Studio rules first
+    if (ch.studios && ch.studios.length > 0) {
+      // Jellyfin returns studios as an array of objects, so we map to the name
+      const itemStudios = (item.Studios || []).map(s => s.Name.toLowerCase());
+      const targetStudios = ch.studios.map(s => s.toLowerCase());
+      const hasStudioMatch = itemStudios.some(s => targetStudios.includes(s));
+      
+      if (!hasStudioMatch) return false;
+    }
+
     const itemGenres = (item.Genres || []).map(g => g.toLowerCase());
     const itemTags = (item.Tags || []).map(t => t.toLowerCase());
-
     const targetGenres = (ch.genres || []).map(cg => cg.toLowerCase());
     const targetTags = (ch.tags || []).map(ct => ct.toLowerCase());
 
-    // Check if channel has any genre or tag rules specified
     const hasGenreRules = targetGenres.length > 0;
     const hasTagRules = targetTags.length > 0;
 
@@ -173,10 +177,13 @@ async function generateSchedule() {
       );
       if (hasExcluded) return false;
     }
-    
-    if (channel.studios && channel.studios.length > 0) {
-  url += `&Studios=${encodeURIComponent(channel.studios.join(','))}`;
-}
+
+    if (ch.excludeTags) {
+      const hasExcludedTag = itemTags.some(t => 
+        ch.excludeTags.map(et => et.toLowerCase()).includes(t)
+      );
+      if (hasExcludedTag) return false;
+    }
 
     if (ch.allowedRatings && ch.allowedRatings.length > 0) {
       const rating = (item.OfficialRating || '').trim().toUpperCase();
@@ -206,14 +213,12 @@ async function generateSchedule() {
 
     const includeTypes = ch.includeItemTypes || ['Series'];
 
-    // A. Process Movies if configured
     if (includeTypes.includes('Movie')) {
       const matchingMovies = allMovies.filter(m => matchesCriteria(m, ch));
       console.log(`Channel [${ch.name}]: Matched ${matchingMovies.length} movies.`);
       channelItems = channelItems.concat(matchingMovies);
     }
 
-    // B. Process TV Series Episodes if configured
     if (includeTypes.includes('Series')) {
       const matchingSeries = allSeries.filter(s => matchesCriteria(s, ch));
       console.log(`Channel [${ch.name}]: Matched ${matchingSeries.length} series. Fetching episodes...`);
@@ -251,7 +256,6 @@ async function generateSchedule() {
 
     console.log(`Channel [${ch.name}]: Total playable items pooled = ${channelItems.length}.`);
 
-    // Sort deterministically by ID and shuffle
     const sortedPool = [...channelItems].sort((a, b) => a.Id.localeCompare(b.Id));
     const channelSeed = 987654 + cIdx * 4321;
     const shuffled = shuffleDeterministic(sortedPool, channelSeed);
@@ -282,7 +286,6 @@ async function generateSchedule() {
   console.log('channels.json generated cleanly!');
 }
 
-// EXECUTE GENERATOR
 generateSchedule().catch(err => {
   console.error('Fatal Error:', err);
   process.exit(1);
