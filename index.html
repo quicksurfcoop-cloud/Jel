@@ -1,157 +1,199 @@
-/**
- * Retro Live TV Player - Index Controller
- * Handles channel tuning, live clock syncing, seamless end-of-file auto-advancing,
- * and YouTube / local bumper switching.
- */
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Retro Live TV</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #000;
+      color: #fff;
+      font-family: sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
 
-// Global State
-let currentScheduleData = null; // Loaded from schedule.json
-let activeChannelId = 'scream-kids'; // Default starting channel
-let syncInterval = null;
-const videoPlayer = document.getElementById('retro-player');
-const youtubeIframe = document.getElementById('youtube-filler-player');
+    #player-container {
+      position: relative;
+      width: 100%;
+      max-width: 1280px;
+      aspect-ratio: 16 / 9;
+      background: #111;
+    }
 
-// Init application
-document.addEventListener('DOMContentLoaded', async () => {
-  await loadScheduleData();
-  setupPlayerEventListeners();
-  tuneToChannel(activeChannelId);
-  
-  // Keep clock synced every 15 seconds to ensure live precision
-  syncInterval = setInterval(checkAndSyncSchedule, 15000);
-});
+    video, iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
 
-/**
- * Fetch schedule compiled by build-schedule.js
- */
-async function loadScheduleData() {
-  try {
-    const response = await fetch('./schedule.json');
-    currentScheduleData = await response.json();
-    console.log('Schedule synced successfully:', currentScheduleData);
-  } catch (err) {
-    console.error('Failed to load schedule.json:', err);
-  }
-}
+    #youtube-filler-player {
+      display: none;
+    }
+  </style>
+</head>
+<body>
 
-/**
- * Event Listeners for HTML5 Video / HLS Player
- */
-function setupPlayerEventListeners() {
-  // Fixes the blank screen issue when a program reaches the end
-  videoPlayer.addEventListener('ended', () => {
-    console.log('Program reached end of stream. Transitioning to next live item...');
-    checkAndSyncSchedule(true); // Force immediate item load on end
-  });
+  <div id="player-container">
+    <video id="retro-player" controls autoplay></video>
+    <iframe id="youtube-filler-player" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+  </div>
 
-  // Resume playback on browser error stall
-  videoPlayer.addEventListener('error', (e) => {
-    console.warn('Playback error encountered:', e);
-    // Retry loading current schedule after 3-second delay
-    setTimeout(() => checkAndSyncSchedule(true), 3000);
-  });
-}
+  <script>
+    // Global State
+    let currentScheduleData = null; // Loaded from schedule.json
+    let activeChannelId = 'scream-kids'; // Default starting channel
+    let syncInterval = null;
+    const videoPlayer = document.getElementById('retro-player');
+    const youtubeIframe = document.getElementById('youtube-filler-player');
 
-/**
- * Switch Channels
- */
-function tuneToChannel(channelId) {
-  activeChannelId = channelId;
-  console.log(`Tuning to channel: ${channelId}`);
-  checkAndSyncSchedule(true);
-}
-
-/**
- * Core Live-Sync Engine: Calculates live time and loads active stream or bumper
- */
-function checkAndSyncSchedule(forceReload = false) {
-  if (!currentScheduleData || !currentScheduleData.channels) return;
-
-  const now = new Date();
-  const channel = currentScheduleData.channels.find(c => c.id === activeChannelId);
-
-  if (!channel || !channel.schedule || channel.schedule.length === 0) {
-    playOffAirBumper();
-    return;
-  }
-
-  // Find program matching current wall-clock time
-  const currentProgram = channel.schedule.find(item => {
-    const start = new Date(item.startTime);
-    const end = new Date(item.endTime);
-    return now >= start && now < end;
-  });
-
-  if (currentProgram) {
-    loadProgramItem(currentProgram, now, forceReload);
-  } else {
-    // If show finished and there's a gap before the next top-of-hour block
-    playOffAirBumper();
-  }
-}
-
-/**
- * Loads media item and seeks to exact live playback timestamp
- */
-function loadProgramItem(program, currentTime, forceReload) {
-  const startMs = new Date(program.startTime).getTime();
-  const elapsedSeconds = Math.max(0, (currentTime.getTime() - startMs) / 1000);
-
-  // 1. Local / Jellyfin Direct Stream
-  if (program.type === 'jellyfin' || program.type === 'video') {
-    hideYouTubePlayer();
-    
-    // Avoid re-triggering if the same video is already playing
-    if (videoPlayer.dataset.currentSrc !== program.streamUrl || forceReload) {
-      videoPlayer.dataset.currentSrc = program.streamUrl;
-      videoPlayer.src = program.streamUrl;
-      videoPlayer.currentTime = elapsedSeconds; // Seek to current live timestamp
+    // Init application
+    document.addEventListener('DOMContentLoaded', async () => {
+      await loadScheduleData();
+      setupPlayerEventListeners();
+      tuneToChannel(activeChannelId);
       
-      videoPlayer.play().catch(err => {
-        console.warn('Autoplay blocked. User interaction required:', err);
+      // Keep clock synced every 15 seconds to ensure live precision
+      syncInterval = setInterval(checkAndSyncSchedule, 15000);
+    });
+
+    /**
+     * Fetch schedule compiled by build-schedule.js
+     */
+    async function loadScheduleData() {
+      try {
+        const response = await fetch('./schedule.json');
+        currentScheduleData = await response.json();
+        console.log('Schedule synced successfully:', currentScheduleData);
+      } catch (err) {
+        console.error('Failed to load schedule.json:', err);
+      }
+    }
+
+    /**
+     * Event Listeners for HTML5 Video / HLS Player
+     */
+    function setupPlayerEventListeners() {
+      // Fixes the blank screen issue when a program reaches the end
+      videoPlayer.addEventListener('ended', () => {
+        console.log('Program reached end of stream. Transitioning to next live item...');
+        checkAndSyncSchedule(true); // Force immediate item load on end
+      });
+
+      // Resume playback on browser error stall
+      videoPlayer.addEventListener('error', (e) => {
+        console.warn('Playback error encountered:', e);
+        // Retry loading current schedule after 3-second delay
+        setTimeout(() => checkAndSyncSchedule(true), 3000);
       });
     }
-  } 
-  // 2. YouTube Commercial / Bumper Switcher
-  else if (program.type === 'youtube_filler') {
-    playYouTubeCommercial(program.youtubeId, elapsedSeconds);
-  }
-}
 
-/**
- * Swaps player layer to YouTube iframe for filler breaks
- */
-function playYouTubeCommercial(youtubeId, startSeconds) {
-  videoPlayer.pause();
-  videoPlayer.style.display = 'none';
-  
-  if (youtubeIframe) {
-    youtubeIframe.style.display = 'block';
-    const embedUrl = `https://www.youtube.com/embed/${youtubeId}?autoplay=1&start=${Math.floor(startSeconds)}&controls=0&enablejsapi=1`;
-    if (youtubeIframe.src !== embedUrl) {
-      youtubeIframe.src = embedUrl;
+    /**
+     * Switch Channels
+     */
+    function tuneToChannel(channelId) {
+      activeChannelId = channelId;
+      console.log(`Tuning to channel: ${channelId}`);
+      checkAndSyncSchedule(true);
     }
-  }
-}
 
-/**
- * Hides YouTube iframe and restores primary HTML5 player
- */
-function hideYouTubePlayer() {
-  if (youtubeIframe) {
-    youtubeIframe.style.display = 'none';
-    youtubeIframe.src = ''; // Halt YT playback
-  }
-  videoPlayer.style.display = 'block';
-}
+    /**
+     * Core Live-Sync Engine: Calculates live time and loads active stream or bumper
+     */
+    function checkAndSyncSchedule(forceReload = false) {
+      if (!currentScheduleData || !currentScheduleData.channels) return;
 
-/**
- * Fallback loop if schedule gap occurs
- */
-function playOffAirBumper() {
-  hideYouTubePlayer();
-  videoPlayer.dataset.currentSrc = 'bumpers/off_air_static.mp4';
-  videoPlayer.src = 'bumpers/off_air_static.mp4';
-  videoPlayer.loop = true;
-  videoPlayer.play().catch(() => {});
-}
+      const now = new Date();
+      const channel = currentScheduleData.channels.find(c => c.id === activeChannelId);
+
+      if (!channel || !channel.schedule || channel.schedule.length === 0) {
+        playOffAirBumper();
+        return;
+      }
+
+      // Find program matching current wall-clock time
+      const currentProgram = channel.schedule.find(item => {
+        const start = new Date(item.startTime);
+        const end = new Date(item.endTime);
+        return now >= start && now < end;
+      });
+
+      if (currentProgram) {
+        loadProgramItem(currentProgram, now, forceReload);
+      } else {
+        // If show finished and there's a gap before the next top-of-hour block
+        playOffAirBumper();
+      }
+    }
+
+    /**
+     * Loads media item and seeks to exact live playback timestamp
+     */
+    function loadProgramItem(program, currentTime, forceReload) {
+      const startMs = new Date(program.startTime).getTime();
+      const elapsedSeconds = Math.max(0, (currentTime.getTime() - startMs) / 1000);
+
+      // 1. Local / Jellyfin Direct Stream
+      if (program.type === 'jellyfin' || program.type === 'video') {
+        hideYouTubePlayer();
+        
+        // Avoid re-triggering if the same video is already playing
+        if (videoPlayer.dataset.currentSrc !== program.streamUrl || forceReload) {
+          videoPlayer.dataset.currentSrc = program.streamUrl;
+          videoPlayer.src = program.streamUrl;
+          videoPlayer.currentTime = elapsedSeconds; // Seek to current live timestamp
+          
+          videoPlayer.play().catch(err => {
+            console.warn('Autoplay blocked. User interaction required:', err);
+          });
+        }
+      } 
+      // 2. YouTube Commercial / Bumper Switcher
+      else if (program.type === 'youtube_filler') {
+        playYouTubeCommercial(program.youtubeId, elapsedSeconds);
+      }
+    }
+
+    /**
+     * Swaps player layer to YouTube iframe for filler breaks
+     */
+    function playYouTubeCommercial(youtubeId, startSeconds) {
+      videoPlayer.pause();
+      videoPlayer.style.display = 'none';
+      
+      if (youtubeIframe) {
+        youtubeIframe.style.display = 'block';
+        const embedUrl = `https://www.youtube.com/embed/${youtubeId}?autoplay=1&start=${Math.floor(startSeconds)}&controls=0&enablejsapi=1`;
+        if (youtubeIframe.src !== embedUrl) {
+          youtubeIframe.src = embedUrl;
+        }
+      }
+    }
+
+    /**
+     * Hides YouTube iframe and restores primary HTML5 player
+     */
+    function hideYouTubePlayer() {
+      if (youtubeIframe) {
+        youtubeIframe.style.display = 'none';
+        youtubeIframe.src = ''; // Halt YT playback
+      }
+      videoPlayer.style.display = 'block';
+    }
+
+    /**
+     * Fallback loop if schedule gap occurs
+     */
+    function playOffAirBumper() {
+      hideYouTubePlayer();
+      videoPlayer.dataset.currentSrc = 'bumpers/off_air_static.mp4';
+      videoPlayer.src = 'bumpers/off_air_static.mp4';
+      videoPlayer.loop = true;
+      videoPlayer.play().catch(() => {});
+    }
+  </script>
+</body>
+</html>
