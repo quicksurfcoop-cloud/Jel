@@ -1,6 +1,5 @@
 const fs = require('fs');
 
-// Extract strictly the first valid http/https URL match
 const envUrl = process.env.JELLYFIN_URL || '';
 const urlMatch = envUrl.match(/https?:\/\/[a-zA-Z0-9.-]+/);
 const JELLYFIN_URL = urlMatch ? urlMatch[0] : 'https://spread.thepebbles.tech';
@@ -8,7 +7,6 @@ const JELLYFIN_URL = urlMatch ? urlMatch[0] : 'https://spread.thepebbles.tech';
 const USERNAME = (process.env.JELLYFIN_USER || 'union6').trim();
 const PASSWORD = (process.env.JELLYFIN_PASS || '1499952177779513').trim();
 
-// Channels with expanded genre filters
 const CHANNELS = [
   { 
     id: 'cartoons', 
@@ -22,7 +20,6 @@ const CHANNELS = [
   }
 ];
 
-// Seeded PRNG (Mulberry32) for deterministic, reproducible shuffling
 function seededRandom(seed) {
   return function() {
     let t = seed += 0x6D2B79F5;
@@ -32,7 +29,6 @@ function seededRandom(seed) {
   };
 }
 
-// Fisher-Yates shuffle using our seeded PRNG
 function shuffleDeterministic(array, seedValue = 123456) {
   const rng = seededRandom(seedValue);
   const result = [...array];
@@ -43,26 +39,11 @@ function shuffleDeterministic(array, seedValue = 123456) {
   return result;
 }
 
-// Helper function to fetch with retry logic for server HTTP 500/timeout issues
-async function fetchWithRetry(url, options = {}, retries = 3, delayMs = 2000) {
-  for (let i = 0; i < retries; i++) {
-    try {
-      const res = await fetch(url, options);
-      if (res.ok) return res;
-      console.warn(`Fetch returned status ${res.status}. Attempt ${i + 1} of ${retries}...`);
-    } catch (err) {
-      console.warn(`Fetch error: ${err.message}. Attempt ${i + 1} of ${retries}...`);
-    }
-    if (i < retries - 1) await new Promise(r => setTimeout(r, delayMs));
-  }
-  throw new Error(`Failed to fetch from ${url} after ${retries} attempts.`);
-}
-
 async function generateSchedule() {
   console.log(`Connecting to Jellyfin server: ${JELLYFIN_URL}`);
 
-  // 1. Authenticate with Jellyfin
-  const authRes = await fetchWithRetry(`${JELLYFIN_URL}/Users/AuthenticateByName`, {
+  // 1. Authenticate
+  const authRes = await fetch(`${JELLYFIN_URL}/Users/AuthenticateByName`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -71,43 +52,24 @@ async function generateSchedule() {
     body: JSON.stringify({ Username: USERNAME, Pw: PASSWORD })
   });
 
+  if (!authRes.ok) {
+    throw new Error(`Authentication failed with status ${authRes.status}`);
+  }
+
   const authData = await authRes.json();
   const apiKey = authData.AccessToken;
   const userId = authData.User.Id;
 
-  console.log('Authenticated successfully. Fetching library items...');
+  console.log('Authenticated successfully. Fetching TV Series metadata...');
 
-  // 2. Fetch items in smaller batches (limit = 50 to avoid HTTP 500 server timeouts)
-  let allEpisodes = [];
-  const limit = 50;
-  let startIndex = 0;
-  let hasMore = true;
-  const maxItemsToFetch = 2000;
-
-  while (hasMore && allEpisodes.length < maxItemsToFetch) {
-    const itemsUrl = `${JELLYFIN_URL}/Users/${userId}/Items?IncludeItemTypes=Episode&Recursive=true&Fields=Genres,RunTimeTicks&StartIndex=${startIndex}&Limit=${limit}&api_key=${apiKey}`;
-    
-    try {
-      const itemsRes = await fetchWithRetry(itemsUrl);
-      const itemsData = await itemsRes.json();
-      const batch = itemsData.Items || [];
-      
-      allEpisodes = allEpisodes.concat(batch);
-      console.log(`Fetched batch: ${batch.length} items (Total: ${allEpisodes.length})`);
-
-      if (batch.length < limit || itemsData.TotalRecordCount <= allEpisodes.length) {
-        hasMore = false;
-      } else {
-        startIndex += limit;
-      }
-    } catch (err) {
-      console.error(`Skipping offset ${startIndex} due to persistent error:`, err.message);
-      // Skip ahead to the next batch instead of crashing the whole build
-      startIndex += limit;
-    }
-  }
-
-  console.log(`Successfully compiled ${allEpisodes.length} total episodes.`);
+  // 2. Fetch all Series to inspect show-level genres (Fast & lightweight)
+  const seriesUrl = `${JELLYFIN_URL}/Users/${userId}/Items?IncludeItemTypes=Series&Recursive=true&Fields=Genres&api_key=${apiKey}`;
+  const seriesRes = await fetch(seriesUrl);
+  if (!seriesRes.ok) throw new Error(`Failed to fetch series list: ${seriesRes.status}`);
+  
+  const seriesData = await seriesRes.json();
+  const allSeries = seriesData.Items || [];
+  console.log(`Found ${allSeries.length} total TV Series in library.`);
 
   const outputSchedule = {
     apiKey: apiKey,
@@ -115,32 +77,65 @@ async function generateSchedule() {
     channels: {}
   };
 
-  // 3. Build channels using deterministic shuffling
+  // 3. For each channel, find matching Series IDs and fetch their episodes
   for (let cIdx = 0; cIdx < CHANNELS.length; cIdx++) {
     const ch = CHANNELS[cIdx];
-    const matching = allEpisodes.filter(e => {
-      if (!e.Genres || e.Genres.length === 0) return false;
-      return e.Genres.some(g => ch.genres.map(cg => cg.toLowerCase()).includes(g.toLowerCase()));
-    });
+    
+    // Find series that match channel target genres
+    const matchingSeriesIds = allSeries.filter(s => {
+      if (!s.Genres || s.Genres.length === 0) return false;
+      return s.Genres.some(g => ch.genres.map(cg => cg.toLowerCase()).includes(g.toLowerCase()));
+    }).map(s => s.Id);
 
-    const sourcePool = matching.length >= 5 ? matching : allEpisodes;
-    
-    // Sort alphabetically first so the input array order is 100% predictable across runs
-    const sortedPool = [...sourcePool].sort((a, b) => a.Id.localeCompare(b.Id));
-    
-    // Deterministically shuffle using a unique channel seed
+    console.log(`Channel [${ch.name}]: Matched ${matchingSeriesIds.length} series.`);
+
+    let channelEpisodes = [];
+
+    if (matchingSeriesIds.length > 0) {
+      // Fetch episodes specifically belonging to the matching show IDs
+      const parentIdsParam = matchingSeriesIds.join(',');
+      let startIndex = 0;
+      let hasMore = true;
+      const limit = 200;
+
+      while (hasMore) {
+        const epUrl = `${JELLYFIN_URL}/Users/${userId}/Items?IncludeItemTypes=Episode&Recursive=true&ParentIds=${parentIdsParam}&Fields=RunTimeTicks&StartIndex=${startIndex}&Limit=${limit}&api_key=${apiKey}`;
+        const epRes = await fetch(epUrl);
+        
+        if (!epRes.ok) {
+          console.error(`Failed to fetch episode batch at offset ${startIndex}`);
+          startIndex += limit;
+          continue;
+        }
+
+        const epData = await epRes.json();
+        const batch = epData.Items || [];
+        channelEpisodes = channelEpisodes.concat(batch);
+
+        if (batch.length < limit || epData.TotalRecordCount <= channelEpisodes.length) {
+          hasMore = false;
+        } else {
+          startIndex += limit;
+        }
+      }
+    }
+
+    console.log(`Channel [${ch.name}]: Fetched ${channelEpisodes.length} total episodes.`);
+
+    // Sort deterministically by ID and shuffle using a unique channel seed
+    const sortedPool = [...channelEpisodes].sort((a, b) => a.Id.localeCompare(b.Id));
     const channelSeed = 987654 + cIdx * 4321;
     const shuffled = shuffleDeterministic(sortedPool, channelSeed);
 
     let totalDuration = 0;
     const playlist = shuffled.map(item => {
-      const runtime = Math.floor((item.RunTimeTicks || 0) / 10000000);
+      const runtime = item.RunTimeTicks ? Math.floor(item.RunTimeTicks / 10000000) : 1320;
       const entry = {
         id: item.Id,
         title: item.Name,
         series: item.SeriesName || '',
         start: totalDuration,
-        duration: runtime > 0 ? runtime : 1800
+        duration: runtime > 0 ? runtime : 1320
       };
       totalDuration += entry.duration;
       return entry;
@@ -155,7 +150,7 @@ async function generateSchedule() {
 
   // 4. Save schedule
   fs.writeFileSync('channels.json', JSON.stringify(outputSchedule, null, 2));
-  console.log('channels.json generated successfully!');
+  console.log('channels.json generated cleanly!');
 }
 
 generateSchedule().catch(err => {
