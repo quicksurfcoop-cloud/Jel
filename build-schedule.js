@@ -41,6 +41,20 @@ const CHANNELS = [
     endYear: 2026
   },
   {
+    id: 'superhero-tv',
+    name: 'Superhero TV',
+    type: 'Series', // Tells Jellyfin to pull TV Shows
+    tags: ['superhero', 'superhero team', 'female superhero', 'masked superhero', 'based on comic'],
+    // If your script uses a single string for the API URL:
+    // tagsApiString: 'superhero,superhero team,female superhero,masked superhero,based on comic'
+  },
+  {
+    id: 'superhero-movies',
+    name: 'Superhero Cinema',
+    type: 'Movie', // Tells Jellyfin to pull Movies only
+    tags: ['superhero', 'superhero team', 'superhero teamup', 'female superhero', 'masked superhero', 'based on comic']
+  },
+  {
     id: 'Period-dramas',
     name: 'Period Dramas & History',
     tags: ['historical', 'historical drama', 'historical fiction', 'costume drama', 'period drama', '19th century', '18th century', '17th century', '16th century', '15th century', 'victorian era', 'georgian or regency era', 'edwardian era', 'british history'],
@@ -58,8 +72,8 @@ const CHANNELS = [
     excludeGenres: ['Documentary', 'Animation'],
     includeItemTypes: ['Movie'],
     allowedRatings: ['PG', 'PG-13', 'TV-14', 'R'],
-    // Widened slightly to 2021-2026 so you get a full rotation of modern movies
-    startYear: 2021,
+    // Widened slightly to 2025-2026 so you get a full rotation of modern movies
+    startYear: 2025,
     endYear: 2026
   }
 ];
