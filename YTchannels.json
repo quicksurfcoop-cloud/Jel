@@ -3,23 +3,63 @@
     "id": 1,
     "name": "CBBC",
     "playlist": [
-      { "id": "k2I1mIG3Gf4geerDgfjZ666RUNpvmhU&si=5o7fighLnBBz-vzk2lAe1cqCOXo", "title": "CBBC" },
+      {
+        "id": "E5SYTbVM5Ic",
+        "duration": 18680,
+        "title": "CBBC Marathon (2007) - Full Block with Continuity & Adverts"
+      },
+      {
+        "id": "S3YAfe1FIXM",
+        "duration": 1675,
+        "title": "Trapped! - Series 1 Episode 1"
+      },
+      {
+        "id": "J1O3UvN5268",
+        "duration": 1500,
+        "title": "The Slammer - Classic CBBC Showcase"
+      },
+      {
+        "id": "hcBkY74BCfc",
+        "duration": 304,
+        "title": "20 Years of CBBC Special"
+      },
+      {
+        "id": "kdqfNoSuxq8",
+        "duration": 27188,
+        "title": "CBBC Retro Broadcast Stream (2007)"
+      }
     ]
   },
   {
     "id": 2,
     "name": "Chill Ambient & Lo-Fi",
     "playlist": [
-      { "id": "TURbeWK-x0M", "duration": 3600, "title": "4K Scenic Nature & Ambient Audio" },
-      { "id": "eKFTSSKCzWA", "duration": 2700, "title": "Mountain Stream Relaxing Sounds" }
+      {
+        "id": "TURbeWK-x0M",
+        "duration": 3600,
+        "title": "4K Scenic Nature & Ambient Audio"
+      },
+      {
+        "id": "eKFTSSKCzWA",
+        "duration": 2700,
+        "title": "Mountain Stream Relaxing Sounds"
+      }
     ]
   },
   {
     "id": 3,
     "name": "Sci-Fi & Astronomy",
     "playlist": [
-      { "id": "libKVRa074Q", "duration": 1800, "title": "Deep Space Exploration Visuals" },
-      { "id": "3Wq8S_3uInQ", "duration": 2100, "title": "NASA Live Earth Views from ISS" }
+      {
+        "id": "libKVRa074Q",
+        "duration": 1800,
+        "title": "Deep Space Exploration Visuals"
+      },
+      {
+        "id": "3Wq8S_3uInQ",
+        "duration": 2100,
+        "title": "NASA Live Earth Views from ISS"
+      }
     ]
   }
 ]
