@@ -193,6 +193,7 @@
   <div id="controls">
     <button onclick="prevChannel()">▲ CH Prev</button>
     <button onclick="nextChannel()">▼ CH Next</button>
+    <button id="mute-btn" onclick="toggleMute()">🔇 Unmute</button>
     <button id="epg-btn" onclick="toggleEPG()">📺 TV Guide (G)</button>
   </div>
 
@@ -220,24 +221,23 @@
     let epgStartTimestamp = 0;
     let isApiReady = false;
 
-    // Load JSON file relative to current path
+    // Fetch JSON configuration relative to location
     async function loadChannelData() {
       try {
         const response = await fetch('./YTchannels.json');
-        if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+        if (!response.ok) throw new Error(`HTTP ${response.status}: Failed to fetch YTchannels.json`);
         CHANNELS = await response.json();
         
-        // If YouTube API loaded before fetch completed, initialize player now
         if (isApiReady && CHANNELS.length > 0) {
           initPlayer();
         }
       } catch (err) {
-        console.error("Could not load YTchannels.json:", err);
+        console.error("Error loading YTchannels.json:", err);
         showOSD("ERR", "Config Error", "Failed to load YTchannels.json");
       }
     }
 
-    // Global callback required by YouTube IFrame API
+    // Required by YouTube IFrame API
     function onYouTubeIframeAPIReady() {
       isApiReady = true;
       if (CHANNELS.length > 0) {
@@ -296,6 +296,7 @@
 
       player.playVideo();
       showOSD(`CH ${String(channel.id).padStart(2, '0')}`, channel.name, liveState.title);
+      syncMuteButtonState();
       if (epgVisible) renderEPG();
     }
 
@@ -307,6 +308,35 @@
       osd.classList.add('active');
       clearTimeout(osdTimer);
       osdTimer = setTimeout(() => osd.classList.remove('active'), 3500);
+    }
+
+    function toggleMute() {
+      if (!player) return;
+
+      const muteBtn = document.getElementById('mute-btn');
+      if (player.isMuted()) {
+        player.unMute();
+        player.setVolume(100);
+        muteBtn.innerText = "🔊 Mute";
+        muteBtn.classList.add('active');
+      } else {
+        player.mute();
+        muteBtn.innerText = "🔇 Unmute";
+        muteBtn.classList.remove('active');
+      }
+    }
+
+    function syncMuteButtonState() {
+      const muteBtn = document.getElementById('mute-btn');
+      if (player && muteBtn) {
+        if (player.isMuted()) {
+          muteBtn.innerText = "🔇 Unmute";
+          muteBtn.classList.remove('active');
+        } else {
+          muteBtn.innerText = "🔊 Mute";
+          muteBtn.classList.add('active');
+        }
+      }
     }
 
     function nextChannel() {
@@ -434,9 +464,10 @@
       if (e.key === 'ArrowUp') prevChannel();
       if (e.key === 'ArrowDown') nextChannel();
       if (e.key.toLowerCase() === 'g' || e.key.toLowerCase() === 'e') toggleEPG();
+      if (e.key.toLowerCase() === 'm') toggleMute();
     });
 
-    // Start fetching channels right away
+    // Start data fetch
     loadChannelData();
   </script>
 
