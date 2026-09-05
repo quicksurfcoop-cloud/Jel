@@ -15,7 +15,7 @@ const FIXED_EPOCH_SECONDS = 1767225600;
 let masterM3u = '#EXTM3U\n\n';
 
 for (const [channelId, channel] of Object.entries(schedule.channels)) {
-  // Calculate currently active item based on schedule loop offset
+  // Calculate active item based on schedule loop offset
   const elapsedSeconds = (nowSeconds - FIXED_EPOCH_SECONDS) % channel.totalLoopSeconds;
 
   let activeItem = channel.items[0];
@@ -32,24 +32,20 @@ for (const [channelId, channel] of Object.entries(schedule.channels)) {
 
   const title = activeItem.series ? `${activeItem.series} - ${activeItem.title}` : activeItem.title;
 
-  // Single direct HLS stream link calculated for the currently active show
-  const streamUrl = `${JELLYFIN_URL}/Videos/${activeItem.id}/master.m3u8?` +
+  // Direct MP4/TS stream container optimized for VLC media parser
+  const streamUrl = `${JELLYFIN_URL}/Videos/${activeItem.id}/stream.mp4?` +
     `api_key=${apiKey}` +
-    `&MediaSourceId=${activeItem.id}` +
     `&VideoCodec=h264` +
     `&AudioCodec=aac` +
     `&AudioChannels=2` +
-    `&MaxAudioChannels=2` +
-    `&SegmentContainer=ts` +
     `&VideoBitrate=8000000` +
-    `&StartTimeTicks=${Math.floor(seekOffset * 10000000)}`; // Tells Jellyfin where to start playing in live time
+    `&StartTimeTicks=${Math.floor(seekOffset * 10000000)}`;
 
-  // Individual channel file (plays current live point on load)
+  // Live TV stream entry for VLC
   const channelM3u = `#EXTM3U\n#EXTINF:-1 tvg-id="${channelId}" tvg-name="${channel.name}", ${channel.name} (Now: ${title})\n${streamUrl}\n`;
   fs.writeFileSync(`${channelId}.m3u`, channelM3u);
   console.log(`Generated ${channelId}.m3u (Live Channel)`);
 
-  // Append entry to Master Live TV Guide
   masterM3u += `#EXTINF:-1 tvg-id="${channelId}" tvg-name="${channel.name}", ${channel.name}\n${streamUrl}\n\n`;
 }
 
