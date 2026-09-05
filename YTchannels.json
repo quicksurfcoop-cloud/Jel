@@ -1,25 +1,26 @@
 [
-   {
+     {
     "id": 1,
     "name": "CBBC",
     "playlist": [
       {
-        "id": "dQw4w9WgXcQ",
-        "duration": 212,
-        "title": "CBBC Stream Test 1"
+        "id": "e_0493p66WA",
+        "duration": 900,
+        "title": "CBBC Broom Cupboard Continuity (1990s)"
       },
       {
-        "id": "L_LUpnjgPso",
-        "duration": 600,
-        "title": "CBBC Stream Test 2"
+        "id": "f8Xf_XjS128",
+        "duration": 1200,
+        "title": "CBBC Idents & Presentation Compilation"
       },
       {
-        "id": "kJQP7kiw5Fk",
+        "id": "4gS8J83fO3w",
         "duration": 300,
-        "title": "CBBC Stream Test 3"
+        "title": "Newsround Retro Broadcast"
       }
     ]
   },
+
 
 
   {
