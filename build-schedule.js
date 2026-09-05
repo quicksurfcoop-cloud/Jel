@@ -45,14 +45,16 @@ const CHANNELS = [
     name: 'Superhero TV',
     type: 'Series', // Tells Jellyfin to pull TV Shows
     tags: ['superhero', 'superhero team', 'female superhero', 'masked superhero', 'based on comic'],
+    excludeGenres: ['Anime'],
     // If your script uses a single string for the API URL:
     // tagsApiString: 'superhero,superhero team,female superhero,masked superhero,based on comic'
   },
   {
     id: 'superhero-movies',
     name: 'Superhero Cinema',
-    type: 'Movie', // Tells Jellyfin to pull Movies only
-    tags: ['superhero', 'superhero team', 'superhero teamup', 'female superhero', 'masked superhero', 'based on comic']
+    includeItemTypes: ['Movie'], // Tells Jellyfin to pull Movies only
+    tags: ['superhero', 'superhero team', 'superhero teamup', 'female superhero', 'masked superhero', 'based on comic'],
+   excludeGenres: ['Anime'],
   },
   {
     id: 'Period-dramas',
