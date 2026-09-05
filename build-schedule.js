@@ -30,33 +30,18 @@ const CHANNELS = [
     excludeGenres: ['Reality', 'Game Show', 'Documentary', 'Talk Show'],
     startYear: 1960,
     endYear: 2012
-  }
+  },
   {
   id: 'Period-dramas',
   name: 'Period Dramas & History',
   // Tags directly matching historical periods and costume drama aesthetics
-  tags: [
-    'historical',
-    'historical drama',
-    'historical fiction',
-    'costume drama',
-    'period drama',
-    '19th century',
-    '18th century',
-    '17th century',
-    '16th century',
-    '15th century',
-    'victorian era',
-    'georgian or regency era',
-    'edwardian era',
-    'british history'
-  ],
+  tags: ['historical', 'historical drama', 'historical fiction', 'costume drama', 'period drama', '19th century', '18th century', '17th century', '16th century', '15th century', 'victorian era', 'georgian or regency era', 'edwardian era', 'british history'],
   genres: ['Drama', 'History'],
   excludeGenres: ['Documentary', 'Animation', 'Comedy'],
   allowedRatings: ['TV-PG', 'TV-14', 'PG-13', 'PG'],
   startYear: 1970,
   endYear: 2015
-}
+},
 ];
 
 function seededRandom(seed) {
