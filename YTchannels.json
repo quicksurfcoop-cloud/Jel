@@ -1,37 +1,48 @@
-[
-  {
-    "id": "1",
-    "youtube_id": "u4m4m-5Y2_M",
-    "title": "CBBC Continuity - Wednesday 16th January 2002",
-    "uploader": "Baby Chicken Studios",
-    "duration": "2:51"
-  },
-  {
-    "id": "2",
-    "youtube_id": "zVp32xJ7t54",
-    "title": "CBBC Two Eek! Week Continuity - Monday 30th July 2001 (1)",
-    "uploader": "Thecbbconchoice1",
-    "duration": "0:37"
-  },
-  {
-    "id": "3",
-    "youtube_id": "yK1Wv09Lg_U",
-    "title": "cbbc vhs Friday 9th November 2001",
-    "uploader": "junk_vhs_tapes_pal",
-    "duration": "2:12:01"
-  },
-  {
-    "id": "4",
-    "youtube_id": "pA_8W3pD1aA",
-    "title": "CBBC - Liam Continuity (2001) (2)",
-    "uploader": "QueenofVHS",
-    "duration": "0:15"
-  },
-  {
-    "id": "5",
-    "youtube_id": "L8vB7b6y3_Q",
-    "title": "BBC ONE & CBBC ONE Continuity On Sunday 2nd September 2001 vhs",
-    "uploader": "old_vhs_stuff",
-    "duration": "5:36"
-  }
-]
+{
+  "id": "cbbc-ch1",
+  "channelNumber": 1,
+  "name": "CBBC",
+  "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/CBBC_logo_1997.svg/320px-CBBC_logo_1997.svg.png",
+  "genre": "Children",
+  "era": "1997-2002",
+  "playlist": [
+    {
+      "id": "cbbc_ident_1997",
+      "title": "CBBC Broom Cupboard & Ident Intro",
+      "duration": 45,
+      "type": "continuity",
+      "url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
+    },
+    {
+      "id": "demon_headmaster_s1e1",
+      "title": "The Demon Headmaster - Series 1 Episode 1",
+      "duration": 1500,
+      "type": "episode",
+      "rating": "G",
+      "url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+    },
+    {
+      "id": "cbbc_promo_mid",
+      "title": "CBBC Promo & Next Up Ident",
+      "duration": 30,
+      "type": "promo",
+      "url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"
+    },
+    {
+      "id": "raven_s1e1",
+      "title": "Raven - The Way of the Warrior",
+      "duration": 1500,
+      "type": "episode",
+      "rating": "G",
+      "url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
+    },
+    {
+      "id": "newsround_1999",
+      "title": "Newsround Special",
+      "duration": 600,
+      "type": "news",
+      "rating": "G",
+      "url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4"
+    }
+  ]
+}
