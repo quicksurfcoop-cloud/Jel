@@ -1,10 +1,9 @@
 [
   {
     "id": 1,
-    "name": "Retro Tech & Computing",
+    "name": "CBBC",
     "playlist": [
-      { "id": "2lAe1cqCOXo", "duration": 1800, "title": "Vintage Hardware & Retro Computing Showcase" },
-      { "id": "M576WGiDBdQ", "duration": 2400, "title": "16-Bit Architecture Deep Dive" }
+      { "id": "k2I1mIG3Gf4geerDgfjZ666RUNpvmhU&si=5o7fighLnBBz-vzk2lAe1cqCOXo", "title": "CBBC" },
     ]
   },
   {
