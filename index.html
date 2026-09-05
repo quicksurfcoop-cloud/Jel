@@ -109,17 +109,17 @@ function syncPlayback() {
     const apiKey = scheduleData.apiKey || '';
     
     // HLS Stream
-// Force universal H.264 video and 2-channel AAC audio transcoding
+// Force transcoding for legacy formats (XviD, AVI, MP3) into native web formats (H.264 / AAC)
 const streamUrl = `${JELLYFIN_URL}/Videos/${activeItem.id}/master.m3u8?` + 
   `api_key=${apiKey}` +
   `&MediaSourceId=${activeItem.id}` +
   `&VideoCodec=h264` +
   `&AudioCodec=aac` +
-  `&AudioChannels=2` +           // Forces 5.1/7.1 surround down to stereo
-  `&MaxAudioChannels=2` +        // Prevents Xbox audio decoding errors
-  `&VideoBitrate=8000000` +      // Prevents buffer stalls
-  `&TranscodingMaxAudioChannels=2` +
-  `&SegmentContainer=ts`;        // Ensures maximum compatibility across Xbox and PC Hls.js
+  `&AudioChannels=2` +
+  `&MaxAudioChannels=2` +
+  `&SegmentContainer=ts` +
+  `&VideoBitrate=8000000`;
+
 
     // 1. Chrome/Firefox on Desktop (Uses Hls.js library)
     if (Hls.isSupported()) {
