@@ -1,0 +1,29 @@
+name: Generate M3U Playlists Only
+
+on:
+  workflow_dispatch: # Allows manual run button in browser UI
+
+jobs:
+  build-m3u:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run Standalone M3U Generator
+        env:
+          JELLYFIN_URL: ${{ secrets.JELLYFIN_URL }}
+        run: node generate-m3u.js
+
+      - name: Commit and Push M3U Files
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add *.m3u
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Update M3U playlists" && git push)
