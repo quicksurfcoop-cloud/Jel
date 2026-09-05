@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nostalgex TV</title>
+  <!-- Includes HLS.js to allow Chrome/Firefox on desktop to play Jellyfin HLS streams seamlessly -->
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
   <style>
     body {
       background-color: #000;
@@ -49,6 +51,7 @@
   
   let scheduleData = null;
   let currentChannelKey = null;
+  let hlsEngine = null;
 
   async function init() {
     try {
@@ -103,15 +106,30 @@
     const player = document.getElementById('tvPlayer');
     const apiKey = scheduleData.apiKey || '';
     
-    // HLS Stream with authenticated token for native iOS WebKit compatibility
+    // HLS Stream URL
     const streamUrl = `${JELLYFIN_URL}/Videos/${activeItem.id}/master.m3u8?api_key=${apiKey}&MediaSourceId=${activeItem.id}&VideoCodec=h264&AudioCodec=aac`;
-    
-    if (player.src !== streamUrl) {
-      player.src = streamUrl;
+
+    // 1. Chrome/Firefox on Desktop (Uses Hls.js library)
+    if (Hls.isSupported()) {
+      if (hlsEngine) {
+        hlsEngine.destroy();
+      }
+      hlsEngine = new Hls();
+      hlsEngine.loadSource(streamUrl);
+      hlsEngine.attachMedia(player);
+      hlsEngine.on(Hls.Events.MANIFEST_PARSED, function() {
+        player.currentTime = seekOffset;
+        player.play().catch(() => console.log("Autoplay blocked - click play"));
+      });
+    } 
+    // 2. Mobile Safari / iOS Native HLS
+    else if (player.canPlayType('application/vnd.apple.mpegurl')) {
+      if (player.src !== streamUrl) {
+        player.src = streamUrl;
+      }
+      player.currentTime = seekOffset;
+      player.play().catch(() => console.log("Autoplay blocked - tap Sync to start"));
     }
-    
-    player.currentTime = seekOffset;
-    player.play().catch(() => console.log("Autoplay blocked - tap Sync to start"));
 
     document.getElementById('nowPlaying').innerText = 
       `Playing: ${activeItem.title} ${activeItem.series ? `(${activeItem.series})` : ''} | Offset: ${Math.floor(seekOffset)}s`;
