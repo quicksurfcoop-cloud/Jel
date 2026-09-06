@@ -1,22 +1,10 @@
 [
   {
     "id": 1,
-    "name": "Test Playlist",
+    "name": "Test Channel",
     "playlist": [
       {
-        "id": "UQDZmENoI3c"
-      },
-      {
-        "id": "EMBIODmknro"
-      },
-      {
         "id": "Ln1MI6xjqgE"
-      },
-      {
-        "id": "BZehplqSAZU"
-      },
-      {
-        "id": "pLJ3zXuoKPg"
       }
     ]
   }
