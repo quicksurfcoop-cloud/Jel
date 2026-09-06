@@ -212,15 +212,18 @@
   </div>
 
   <script>
+<script>
     const PIXELS_PER_MINUTE = 10;
 
     let CHANNELS = [];
     let currentChannelIdx = 0;
-    let player;
-    let osdTimer;
+    let player = null;
+    let osdTimer = null;
     let epgVisible = false;
     let epgStartTimestamp = 0;
     let isApiReady = false;
+    let playerInitialised = false;
+
 
     /*
      * ============================================================
@@ -229,34 +232,66 @@
      */
 
     async function loadChannelData() {
+
         try {
-            const response = await fetch('./YTchannels.json?v=' + Date.now());
+
+            const response =
+                await fetch('./YTchannels.json?v=' + Date.now());
 
             if (!response.ok) {
+
                 throw new Error(
                     `HTTP ${response.status}: Failed to fetch YTchannels.json`
                 );
             }
 
-            CHANNELS = await response.json();
+
+            const text = await response.text();
+
+            console.log('YTchannels.json received:', text);
+
+
+            CHANNELS = JSON.parse(text);
+
 
             if (!Array.isArray(CHANNELS)) {
-                throw new Error('YTchannels.json must contain an array');
+
+                throw new Error(
+                    'YTchannels.json must contain an array'
+                );
             }
 
-            console.log('Loaded channels:', CHANNELS);
 
-            if (isApiReady && CHANNELS.length > 0) {
+            if (CHANNELS.length === 0) {
+
+                throw new Error(
+                    'YTchannels.json contains no channels'
+                );
+            }
+
+
+            console.log(
+                'Loaded channels:',
+                CHANNELS
+            );
+
+
+            if (isApiReady) {
                 initPlayer();
             }
 
         } catch (err) {
-            console.error('Error loading YTchannels.json:', err);
+
+            console.error(
+                'Error loading YTchannels.json:',
+                err
+            );
+
 
             showOSD(
                 'ERR',
                 'Config Error',
-                'Failed to load YTchannels.json'
+                err.message
             );
         }
     }
@@ -269,228 +304,418 @@
      */
 
     function onYouTubeIframeAPIReady() {
-        console.log('YouTube IFrame API ready');
+
+        console.log(
+            'YouTube IFrame API ready'
+        );
+
 
         isApiReady = true;
 
-        if (CHANNELS.length > 0) {
+
+        if (
+            CHANNELS.length > 0 &&
+            !playerInitialised
+        ) {
+
             initPlayer();
         }
     }
 
 
     function initPlayer() {
-        if (player) {
+
+        if (playerInitialised) {
             return;
         }
 
-function initPlayer() {
-  const channel = CHANNELS[currentChannelIdx];
 
-  player = new YT.Player('player', {
-    playerVars: {
-      autoplay: 1,
-      controls: 0,
-      disablekb: 1,
-      modestbranding: 1,
-      rel: 0,
-      mute: 1,
-      listType: 'playlist',
-      list: channel.youtubePlaylist
-    },
+        if (!isApiReady) {
 
-    events: {
-      onReady: function(event) {
-        console.log("YouTube player ready");
-        console.log("Loading playlist:", channel.youtubePlaylist);
+            console.log(
+                'Waiting for YouTube API...'
+            );
 
-        event.target.setLoop(true);
-        event.target.playVideo();
+            return;
+        }
 
-        showOSD(
-          `CH ${String(channel.id).padStart(2, '0')}`,
-          channel.name,
-          "Loading playlist..."
+
+        if (!CHANNELS.length) {
+
+            console.log(
+                'Waiting for channel configuration...'
+            );
+
+            return;
+        }
+
+
+        const channel =
+            CHANNELS[currentChannelIdx];
+
+
+        if (!channel.youtubePlaylist) {
+
+            console.error(
+                'Channel does not contain youtubePlaylist:',
+                channel
+            );
+
+
+            showOSD(
+                'ERR',
+                channel.name || 'Channel Error',
+                'No YouTube playlist ID'
+            );
+
+            return;
+        }
+
+
+        console.log(
+            'Creating YouTube player'
         );
 
-        syncMuteButtonState();
-      },
-
-      onStateChange: onPlayerStateChange,
-
-      onError: function(event) {
-        console.error("YouTube player error:", event.data);
-
-        showOSD(
-          `CH ${String(channel.id).padStart(2, '0')}`,
-          channel.name,
-          `YouTube Error ${event.data}`
+        console.log(
+            'Channel:',
+            channel.name
         );
-      }
+
+        console.log(
+            'Playlist:',
+            channel.youtubePlaylist
+        );
+
+
+        playerInitialised = true;
+
+
+        player = new YT.Player(
+            'player',
+            {
+
+                width: '100%',
+                height: '100%',
+
+
+                playerVars: {
+
+                    autoplay: 1,
+
+                    controls: 0,
+
+                    disablekb: 1,
+
+                    modestbranding: 1,
+
+                    rel: 0,
+
+                    mute: 1,
+
+                    listType: 'playlist',
+
+                    list: channel.youtubePlaylist
+                },
+
+
+                events: {
+
+                    onReady:
+                        onPlayerReady,
+
+                    onStateChange:
+                        onPlayerStateChange,
+
+                    onError:
+                        onPlayerError
+                }
+            }
+        );
     }
-  });
-}
 
 
     /*
      * ============================================================
-     * PLAYER EVENTS
+     * PLAYER READY
+     * ============================================================
+     */
+
+    function onPlayerReady(event) {
+
+        console.log(
+            'YouTube player ready'
+        );
+
+
+        try {
+
+            event.target.setLoop(true);
+
+            event.target.playVideo();
+
+        } catch (err) {
+
+            console.warn(
+                'Could not start playlist:',
+                err
+            );
+        }
+
+
+        const channel =
+            CHANNELS[currentChannelIdx];
+
+
+        showOSD(
+
+            `CH ${String(channel.id).padStart(2, '0')}`,
+
+            channel.name,
+
+            'Loading playlist...'
+        );
+
+
+        syncMuteButtonState();
+    }
+
+
+    /*
+     * ============================================================
+     * PLAYER STATE
      * ============================================================
      */
 
     function onPlayerStateChange(event) {
 
-        /*
-         * When a playlist item starts playing,
-         * update the channel display.
-         */
+        console.log(
+            'YouTube player state:',
+            event.data
+        );
 
-        if (event.data === YT.PlayerState.PLAYING) {
+
+        if (
+            event.data ===
+            YT.PlayerState.PLAYING
+        ) {
 
             updateCurrentProgramme();
-
         }
 
-        /*
-         * YouTube normally advances through a playlist automatically.
-         *
-         * If the playlist finishes, reload it so that the channel
-         * loops continuously.
-         */
 
-        if (event.data === YT.PlayerState.ENDED) {
+        if (
+            event.data ===
+            YT.PlayerState.ENDED
+        ) {
 
-            console.log('Playlist ended - restarting playlist');
+            console.log(
+                'Playlist/video ended'
+            );
 
-            restartCurrentPlaylist();
+
+            try {
+
+                player.nextVideo();
+
+            } catch (err) {
+
+                console.warn(
+                    'Could not advance playlist:',
+                    err
+                );
+            }
         }
     }
 
 
+    /*
+     * ============================================================
+     * YOUTUBE ERROR
+     * ============================================================
+     */
+
     function onPlayerError(event) {
 
-        console.warn(
-            `YouTube player error: ${event.data}`
+        console.error(
+            'YouTube player error:',
+            event.data
         );
 
-        const channel = CHANNELS[currentChannelIdx];
+
+        const channel =
+            CHANNELS[currentChannelIdx];
+
 
         if (!channel) {
             return;
         }
 
+
+        let message =
+            'YouTube playback error';
+
+
+        switch (event.data) {
+
+            case 2:
+                message =
+                    'Invalid YouTube request';
+                break;
+
+            case 5:
+                message =
+                    'HTML5 player error';
+                break;
+
+            case 100:
+                message =
+                    'Video unavailable';
+                break;
+
+            case 101:
+            case 150:
+                message =
+                    'Video cannot be embedded';
+                break;
+
+            case 153:
+                message =
+                    'YouTube requires player identification';
+                break;
+        }
+
+
         showOSD(
+
             `CH ${String(channel.id).padStart(2, '0')}`,
+
             channel.name,
-            'Video unavailable'
+
+            message
         );
 
+
         /*
-         * Do not automatically change TV channels.
-         *
-         * If one video in a YouTube playlist is unavailable,
-         * YouTube may be able to continue with the playlist.
+         * Give YouTube a chance to move to the next
+         * playlist item rather than changing channel.
          */
 
         setTimeout(() => {
 
-            try {
-                player.nextVideo();
-            } catch (err) {
-                console.warn('Could not advance playlist:', err);
+            if (!player) {
+                return;
             }
 
-        }, 1500);
+
+            try {
+
+                player.nextVideo();
+
+            } catch (err) {
+
+                console.warn(
+                    'Could not advance playlist:',
+                    err
+                );
+            }
+
+        }, 2000);
     }
 
 
     /*
      * ============================================================
-     * LOAD A CHANNEL
+     * LOAD CHANNEL
      * ============================================================
      */
 
-function loadChannel(index) {
-  if (!CHANNELS.length || !player) return;
+    function loadChannel(index) {
 
-  currentChannelIdx = index;
+        if (
+            !CHANNELS.length ||
+            !player
+        ) {
 
-  const channel = CHANNELS[currentChannelIdx];
-
-  console.log("Switching to channel:", channel.name);
-  console.log("Playlist ID:", channel.youtubePlaylist);
-
-  player.loadPlaylist({
-    list: channel.youtubePlaylist,
-    listType: 'playlist',
-    index: 0
-  });
-
-  player.setLoop(true);
-  player.playVideo();
-
-  showOSD(
-    `CH ${String(channel.id).padStart(2, '0')}`,
-    channel.name,
-    "Loading playlist..."
-  );
-
-  syncMuteButtonState();
-
-  if (epgVisible) {
-    renderEPG();
-  }
-}
-
-      function onPlayerStateChange(event) {
-  console.log("YouTube player state:", event.data);
-
-  // Playing
-  if (event.data === YT.PlayerState.PLAYING) {
-    const channel = CHANNELS[currentChannelIdx];
-
-    const title = player.getVideoData().title || "Playing";
-
-    showOSD(
-      `CH ${String(channel.id).padStart(2, '0')}`,
-      channel.name,
-      title
-    );
-  }
-
-  // Video ended
-  if (event.data === YT.PlayerState.ENDED) {
-    player.nextVideo();
-  }
-}
-
-    /*
-     * Restart the current playlist when it reaches the end.
-     */
-
-    function restartCurrentPlaylist() {
-
-        const channel = CHANNELS[currentChannelIdx];
-
-        if (!channel || !channel.youtubePlaylist) {
             return;
         }
 
+
+        currentChannelIdx = index;
+
+
+        const channel =
+            CHANNELS[currentChannelIdx];
+
+
         console.log(
-            `Restarting playlist for ${channel.name}`
+            'Switching channel:',
+            channel.name
         );
 
-        player.loadPlaylist(
+
+        console.log(
+            'Playlist:',
             channel.youtubePlaylist
         );
 
-        player.playVideo();
+
+        if (!channel.youtubePlaylist) {
+
+            showOSD(
+
+                `CH ${String(channel.id).padStart(2, '0')}`,
+
+                channel.name,
+
+                'No YouTube playlist configured'
+            );
+
+            return;
+        }
+
+
+        /*
+         * YouTube's IFrame API accepts the playlist ID
+         * directly here.
+         */
+
+        player.loadPlaylist(
+            channel.youtubePlaylist,
+            0
+        );
+
+
+        try {
+
+            player.setLoop(true);
+
+            player.playVideo();
+
+        } catch (err) {
+
+            console.warn(
+                'Could not start channel:',
+                err
+            );
+        }
+
 
         showOSD(
+
             `CH ${String(channel.id).padStart(2, '0')}`,
+
             channel.name,
-            'Playlist restarting'
+
+            'Loading playlist...'
         );
+
+
+        syncMuteButtonState();
+
+
+        if (epgVisible) {
+            renderEPG();
+        }
     }
 
 
@@ -502,35 +727,53 @@ function loadChannel(index) {
 
     function updateCurrentProgramme() {
 
-        if (!player || !CHANNELS.length) {
+        if (
+            !player ||
+            !CHANNELS.length
+        ) {
+
             return;
         }
 
-        const channel = CHANNELS[currentChannelIdx];
 
-        let title = 'Playlist';
+        const channel =
+            CHANNELS[currentChannelIdx];
+
+
+        let title =
+            'YouTube Playlist';
 
 
         try {
 
-            const videoData = player.getVideoData();
+            const videoData =
+                player.getVideoData();
 
-            if (videoData && videoData.title) {
-                title = videoData.title;
+
+            if (
+                videoData &&
+                videoData.title
+            ) {
+
+                title =
+                    videoData.title;
             }
 
         } catch (err) {
 
             console.warn(
-                'Could not read current video information:',
+                'Could not read video information:',
                 err
             );
         }
 
 
         showOSD(
+
             `CH ${String(channel.id).padStart(2, '0')}`,
+
             channel.name,
+
             title
         );
     }
@@ -542,24 +785,64 @@ function loadChannel(index) {
      * ============================================================
      */
 
-    function showOSD(num, name, title) {
+    function showOSD(
+        num,
+        name,
+        title
+    ) {
 
-        document.getElementById('osd-num').innerText = num;
+        const numElement =
+            document.getElementById('osd-num');
 
-        document.getElementById('osd-name').innerText = name;
+        const nameElement =
+            document.getElementById('osd-name');
 
-        document.getElementById('osd-title').innerText = title;
+        const titleElement =
+            document.getElementById('osd-title');
 
-        const osd = document.getElementById('osd');
+        const osd =
+            document.getElementById('osd');
 
-        osd.classList.add('active');
 
-        clearTimeout(osdTimer);
+        if (
+            !numElement ||
+            !nameElement ||
+            !titleElement ||
+            !osd
+        ) {
 
-        osdTimer = setTimeout(
-            () => osd.classList.remove('active'),
-            3500
+            return;
+        }
+
+
+        numElement.innerText =
+            num;
+
+        nameElement.innerText =
+            name;
+
+        titleElement.innerText =
+            title;
+
+
+        osd.classList.add(
+            'active'
         );
+
+
+        clearTimeout(
+            osdTimer
+        );
+
+
+        osdTimer =
+            setTimeout(
+                () =>
+                    osd.classList.remove(
+                        'active'
+                    ),
+                3500
+            );
     }
 
 
@@ -575,8 +858,11 @@ function loadChannel(index) {
             return;
         }
 
+
         const muteBtn =
-            document.getElementById('mute-btn');
+            document.getElementById(
+                'mute-btn'
+            );
 
 
         if (player.isMuted()) {
@@ -585,17 +871,27 @@ function loadChannel(index) {
 
             player.setVolume(100);
 
-            muteBtn.innerText = '🔊 Mute';
 
-            muteBtn.classList.add('active');
+            muteBtn.innerText =
+                '🔊 Mute';
+
+
+            muteBtn.classList.add(
+                'active'
+            );
 
         } else {
 
             player.mute();
 
-            muteBtn.innerText = '🔇 Unmute';
 
-            muteBtn.classList.remove('active');
+            muteBtn.innerText =
+                '🔇 Unmute';
+
+
+            muteBtn.classList.remove(
+                'active'
+            );
         }
     }
 
@@ -603,24 +899,39 @@ function loadChannel(index) {
     function syncMuteButtonState() {
 
         const muteBtn =
-            document.getElementById('mute-btn');
+            document.getElementById(
+                'mute-btn'
+            );
 
-        if (!player || !muteBtn) {
+
+        if (
+            !player ||
+            !muteBtn
+        ) {
+
             return;
         }
 
 
         if (player.isMuted()) {
 
-            muteBtn.innerText = '🔇 Unmute';
+            muteBtn.innerText =
+                '🔇 Unmute';
 
-            muteBtn.classList.remove('active');
+
+            muteBtn.classList.remove(
+                'active'
+            );
 
         } else {
 
-            muteBtn.innerText = '🔊 Mute';
+            muteBtn.innerText =
+                '🔊 Mute';
 
-            muteBtn.classList.add('active');
+
+            muteBtn.classList.add(
+                'active'
+            );
         }
     }
 
@@ -637,10 +948,17 @@ function loadChannel(index) {
             return;
         }
 
-        currentChannelIdx =
-            (currentChannelIdx + 1) % CHANNELS.length;
 
-        loadChannel(currentChannelIdx);
+        currentChannelIdx =
+            (
+                currentChannelIdx + 1
+            ) %
+            CHANNELS.length;
+
+
+        loadChannel(
+            currentChannelIdx
+        );
     }
 
 
@@ -650,11 +968,19 @@ function loadChannel(index) {
             return;
         }
 
-        currentChannelIdx =
-            (currentChannelIdx - 1 + CHANNELS.length)
-            % CHANNELS.length;
 
-        loadChannel(currentChannelIdx);
+        currentChannelIdx =
+            (
+                currentChannelIdx -
+                1 +
+                CHANNELS.length
+            ) %
+            CHANNELS.length;
+
+
+        loadChannel(
+            currentChannelIdx
+        );
     }
 
 
@@ -662,39 +988,47 @@ function loadChannel(index) {
      * ============================================================
      * TV GUIDE
      * ============================================================
-     *
-     * At this stage we don't have playlist duration metadata
-     * because we're no longer storing individual programme
-     * durations in YTchannels.json.
-     *
-     * The guide therefore displays the channels rather than
-     * attempting to invent programme times.
      */
 
     function toggleEPG() {
 
-        epgVisible = !epgVisible;
+        epgVisible =
+            !epgVisible;
+
 
         const overlay =
-            document.getElementById('epg-overlay');
+            document.getElementById(
+                'epg-overlay'
+            );
+
 
         const btn =
-            document.getElementById('epg-btn');
+            document.getElementById(
+                'epg-btn'
+            );
 
 
         if (epgVisible) {
 
-            overlay.classList.add('visible');
+            overlay.classList.add(
+                'visible'
+            );
 
-            btn.classList.add('active');
+            btn.classList.add(
+                'active'
+            );
 
             renderEPG();
 
         } else {
 
-            overlay.classList.remove('visible');
+            overlay.classList.remove(
+                'visible'
+            );
 
-            btn.classList.remove('active');
+            btn.classList.remove(
+                'active'
+            );
         }
     }
 
@@ -702,36 +1036,49 @@ function loadChannel(index) {
     function renderEPG() {
 
         const headerContainer =
-            document.getElementById('epg-timeline-header');
+            document.getElementById(
+                'epg-timeline-header'
+            );
+
 
         headerContainer.innerHTML =
             '<div class="epg-channel-header-stub"></div>';
 
 
-        const now = new Date();
+        const now =
+            new Date();
 
-
-        /*
-         * Create six half-hour time slots.
-         */
 
         now.setMinutes(
-            now.getMinutes() < 30 ? 0 : 30,
+
+            now.getMinutes() < 30
+                ? 0
+                : 30,
+
             0,
             0
         );
 
 
         epgStartTimestamp =
-            Math.floor(now.getTime() / 1000) - 1800;
+            Math.floor(
+                now.getTime() / 1000
+            ) - 1800;
 
 
-        for (let i = 0; i < 6; i++) {
+        for (
+            let i = 0;
+            i < 6;
+            i++
+        ) {
 
             const slotTime =
                 new Date(
-                    (epgStartTimestamp + (i * 1800))
-                    * 1000
+
+                    (
+                        epgStartTimestamp +
+                        i * 1800
+                    ) * 1000
                 );
 
 
@@ -746,97 +1093,143 @@ function loadChannel(index) {
 
 
             const slotDiv =
-                document.createElement('div');
+                document.createElement(
+                    'div'
+                );
+
 
             slotDiv.className =
                 'epg-time-slot';
 
+
             slotDiv.innerText =
                 timeStr;
 
-            headerContainer.appendChild(slotDiv);
+
+            headerContainer.appendChild(
+                slotDiv
+            );
         }
 
 
         const rowsContainer =
-            document.getElementById('epg-rows');
-
-        rowsContainer.innerHTML = '';
-
-
-        CHANNELS.forEach((channel, chIdx) => {
-
-            const row =
-                document.createElement('div');
-
-            row.className = 'epg-row';
+            document.getElementById(
+                'epg-rows'
+            );
 
 
-            const meta =
-                document.createElement('div');
-
-            meta.className =
-                'epg-channel-meta';
+        rowsContainer.innerHTML =
+            '';
 
 
-            meta.innerHTML = `
-                <div class="num">
-                    CH ${String(channel.id).padStart(2, '0')}
-                </div>
+        CHANNELS.forEach(
+            (channel, chIdx) => {
 
-                <div class="name">
-                    ${channel.name}
-                </div>
-            `;
+                const row =
+                    document.createElement(
+                        'div'
+                    );
 
 
-            row.appendChild(meta);
+                row.className =
+                    'epg-row';
 
 
-            const track =
-                document.createElement('div');
-
-            track.className =
-                'epg-programs-track';
-
-
-            const block =
-                document.createElement('div');
-
-            block.className =
-                'epg-program-block active-now';
+                const meta =
+                    document.createElement(
+                        'div'
+                    );
 
 
-            block.style.left = '0px';
-
-            block.style.width = '600px';
-
-
-            block.innerHTML = `
-                <div class="title">
-                    YouTube Playlist
-                </div>
-
-                <div class="time">
-                    Continuous channel
-                </div>
-            `;
+                meta.className =
+                    'epg-channel-meta';
 
 
-            block.onclick = () => {
+                meta.innerHTML = `
 
-                loadChannel(chIdx);
+                    <div class="num">
+                        CH ${String(channel.id).padStart(2, '0')}
+                    </div>
 
-                toggleEPG();
-            };
+                    <div class="name">
+                        ${channel.name}
+                    </div>
+
+                `;
 
 
-            track.appendChild(block);
+                row.appendChild(
+                    meta
+                );
 
-            row.appendChild(track);
 
-            rowsContainer.appendChild(row);
-        });
+                const track =
+                    document.createElement(
+                        'div'
+                    );
+
+
+                track.className =
+                    'epg-programs-track';
+
+
+                const block =
+                    document.createElement(
+                        'div'
+                    );
+
+
+                block.className =
+                    'epg-program-block active-now';
+
+
+                block.style.left =
+                    '0px';
+
+
+                block.style.width =
+                    '600px';
+
+
+                block.innerHTML = `
+
+                    <div class="title">
+                        YouTube Playlist
+                    </div>
+
+                    <div class="time">
+                        Continuous channel
+                    </div>
+
+                `;
+
+
+                block.onclick =
+                    () => {
+
+                        loadChannel(
+                            chIdx
+                        );
+
+                        toggleEPG();
+                    };
+
+
+                track.appendChild(
+                    block
+                );
+
+
+                row.appendChild(
+                    track
+                );
+
+
+                rowsContainer.appendChild(
+                    row
+                );
+            }
+        );
 
 
         updateEPGNowLine();
@@ -851,20 +1244,30 @@ function loadChannel(index) {
 
 
         const nowSec =
-            Math.floor(Date.now() / 1000);
+            Math.floor(
+                Date.now() / 1000
+            );
 
 
         const offsetSec =
-            nowSec - epgStartTimestamp;
+            nowSec -
+            epgStartTimestamp;
 
 
         const leftPx =
             180 +
-            ((offsetSec / 60) * PIXELS_PER_MINUTE);
+            (
+                (
+                    offsetSec / 60
+                ) *
+                PIXELS_PER_MINUTE
+            );
 
 
         const nowLine =
-            document.getElementById('epg-now-line');
+            document.getElementById(
+                'epg-now-line'
+            );
 
 
         nowLine.style.left =
@@ -879,16 +1282,22 @@ function loadChannel(index) {
 
 
     /*
-     * Keep the TV guide clock moving.
+     * ============================================================
+     * TV GUIDE CLOCK
+     * ============================================================
      */
 
-    setInterval(() => {
+    setInterval(
+        () => {
 
-        if (epgVisible) {
-            updateEPGNowLine();
-        }
+            if (epgVisible) {
 
-    }, 1000);
+                updateEPGNowLine();
+            }
+
+        },
+        1000
+    );
 
 
     /*
@@ -897,27 +1306,43 @@ function loadChannel(index) {
      * ============================================================
      */
 
-    window.addEventListener('keydown', (e) => {
+    window.addEventListener(
+        'keydown',
+        (e) => {
 
-        if (e.key === 'ArrowUp') {
-            prevChannel();
-        }
+            if (
+                e.key === 'ArrowUp'
+            ) {
 
-        if (e.key === 'ArrowDown') {
-            nextChannel();
-        }
+                prevChannel();
+            }
 
-        if (
-            e.key.toLowerCase() === 'g' ||
-            e.key.toLowerCase() === 'e'
-        ) {
-            toggleEPG();
-        }
 
-        if (e.key.toLowerCase() === 'm') {
-            toggleMute();
+            if (
+                e.key === 'ArrowDown'
+            ) {
+
+                nextChannel();
+            }
+
+
+            if (
+                e.key.toLowerCase() === 'g' ||
+                e.key.toLowerCase() === 'e'
+            ) {
+
+                toggleEPG();
+            }
+
+
+            if (
+                e.key.toLowerCase() === 'm'
+            ) {
+
+                toggleMute();
+            }
         }
-    });
+    );
 
 
     /*
@@ -927,6 +1352,8 @@ function loadChannel(index) {
      */
 
     loadChannelData();
+
+</script>
 </script>
 
   <!-- Load YouTube IFrame API -->
