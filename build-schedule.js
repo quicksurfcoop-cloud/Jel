@@ -37,13 +37,8 @@ const CHANNELS = [
   {
     id: 'scream-kids',
     name: 'SCREAM KIDS',
-    tags: ['spooky', 'spooky comedy', 'teen horror', 'ghosts', 'ghost', 'haunted house', 'witchcraft', 'witch', 'teen witch', 'school of witchcraft', 'monster', 'monsters', 'mummy', 'vampire', 'werewolf', 'halloween', 'magic', 'magical creature', 'supernatural', 'scare', 'modern fairy tale'],
-    genres: [],
-    excludeGenres: ['Documentary'],
-    allowedRatings: ['TV-Y7', 'TV-G', 'TV-PG', 'G', 'PG'],
-    excludeTitles: ['Sailor Moon', 'Beyblade: Metal Fight Beyblade', 'Dragon Ball', 'Aria', 'Halloween Baking Championship', 'Avatar: The Last Airbender', 'Adventure Time', 'ThunderCats','Teenage Mutant Ninja Turtles', 'Penn & Teller: Fool Us', 'Dragon Ball GT', 'Halloween Wars'],
-    startYear: 1970,
-    endYear: 2026
+    includeTitles: ['Goosebumps','The Munsters', 'Eerie, Indiana', 'Aaahh!!! Real Monsters', 'Amazing Stories', 'Beetlejuice', 'Bewitched', 'Beyond Belief: Fact or Fiction', 'Count Duckula', 'Ghostbusters', 'The Grim Adventures of Billy and Mandy', 'The New Scooby and Scrappy-Doo Show'], // Replace these with your actual Jellyfin show titles
+    includeItemTypes: ['Series']
   },
   {
     id: 'superhero-tv',
