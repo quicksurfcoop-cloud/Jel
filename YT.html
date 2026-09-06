@@ -230,7 +230,7 @@
 
     async function loadChannelData() {
         try {
-            const response = await fetch('./YTchannels.json');
+            const response = await fetch('./YTchannels.json?v=' + Date.now());
 
             if (!response.ok) {
                 throw new Error(
