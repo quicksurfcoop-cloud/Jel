@@ -2,6 +2,7 @@
   {
     "id": 1,
     "name": "Test Channel",
+        "broadcastStart": "00:00",
     "playlist": [
             {
         "id": "UQDZmENoI3c",
