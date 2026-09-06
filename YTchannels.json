@@ -2,20 +2,24 @@
   {
     "id": 1,
     "name": "Test Channel",
-        "broadcastStart": "00:00",
+    "broadcastStart": "00:00",
     "playlist": [
-            {
+      {
         "id": "UQDZmENoI3c",
-         "title": "CBBC"
+        "title": "CBBC",
+        "duration": 171
       },
-             {
-        "id": "wnif8r6bxRc"
+      {
+        "id": "wnif8r6bxRc",
+        "duration": 416
       },
-       {
-        "id": "EMBIODmknro"
+      {
+        "id": "EMBIODmknro",
+        "duration": 37
       },
-            {
-        "id": "Ln1MI6xjqgE"
+      {
+        "id": "Ln1MI6xjqgE",
+        "duration": 7921
       }
     ]
   }
