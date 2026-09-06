@@ -166,6 +166,7 @@ body:hover #controls {
     padding: 14px 18px;
     background: #181818;
     border-bottom: 1px solid #333;
+    cursor: pointer;
 }
 
 .epg-channel-name {
@@ -198,7 +199,7 @@ body:hover #controls {
 }
 
 .epg-time {
-    width: 130px;
+    width: 145px;
     flex-shrink: 0;
     padding: 15px;
     color: #aaa;
@@ -226,7 +227,7 @@ body:hover #controls {
 }
 
 .epg-now {
-    width: 75px;
+    width: 80px;
     flex-shrink: 0;
     display: flex;
     align-items: center;
@@ -234,12 +235,6 @@ body:hover #controls {
     font-size: 12px;
     font-weight: bold;
 }
-
-.epg-programme.now .epg-now {
-    color: #fff;
-}
-
-/* Progress bar */
 
 .epg-progress {
     position: absolute;
@@ -332,7 +327,7 @@ body:hover #controls {
     }
 
     .epg-time {
-        width: 85px;
+        width: 100px;
         padding: 12px 8px;
         font-size: 12px;
     }
@@ -342,7 +337,7 @@ body:hover #controls {
     }
 
     .epg-now {
-        width: 50px;
+        width: 55px;
         font-size: 10px;
     }
 }
@@ -409,7 +404,126 @@ let configurationLoaded = false;
 let osdTimer = null;
 let epgVisible = false;
 
-let epgTimer = null;
+let startupSeeking = false;
+
+
+/* =========================================================
+   LOCAL STORAGE
+   ========================================================= */
+
+const DURATION_STORAGE_KEY =
+    "jelTV_video_durations_v1";
+
+
+function getSavedDurations() {
+
+    try {
+
+        return JSON.parse(
+            localStorage.getItem(
+                DURATION_STORAGE_KEY
+            ) || "{}"
+        );
+
+    } catch (error) {
+
+        console.warn(
+            "Could not read saved durations."
+        );
+
+        return {};
+    }
+}
+
+
+function saveVideoDuration(videoId, duration) {
+
+    if (
+        !videoId ||
+        !duration ||
+        !isFinite(duration)
+    ) {
+        return;
+    }
+
+    const durations =
+        getSavedDurations();
+
+    durations[videoId] =
+        Number(duration);
+
+    try {
+
+        localStorage.setItem(
+            DURATION_STORAGE_KEY,
+            JSON.stringify(durations)
+        );
+
+    } catch (error) {
+
+        console.warn(
+            "Could not save video duration."
+        );
+    }
+}
+
+
+function getSavedDuration(videoId) {
+
+    const durations =
+        getSavedDurations();
+
+    if (
+        durations[videoId] &&
+        isFinite(durations[videoId])
+    ) {
+
+        return Number(
+            durations[videoId]
+        );
+    }
+
+    return 0;
+}
+
+
+/* =========================================================
+   BROADCAST START
+   ========================================================= */
+
+function getBroadcastStart(channel) {
+
+    if (
+        channel &&
+        typeof channel.broadcastStart === "string"
+    ) {
+
+        const parts =
+            channel.broadcastStart.split(":");
+
+        if (parts.length >= 2) {
+
+            const hours =
+                parseInt(parts[0], 10);
+
+            const minutes =
+                parseInt(parts[1], 10);
+
+            if (
+                !isNaN(hours) &&
+                !isNaN(minutes)
+            ) {
+
+                return (
+                    hours * 3600 +
+                    minutes * 60
+                );
+            }
+        }
+    }
+
+    return 0;
+}
 
 
 /* =========================================================
@@ -420,23 +534,32 @@ async function loadChannels() {
 
     try {
 
-        const response = await fetch(
-            "./YTchannels.json?v=" + Date.now()
-        );
+        const response =
+            await fetch(
+                "./YTchannels.json?v=" +
+                Date.now()
+            );
 
         if (!response.ok) {
-            throw new Error("HTTP " + response.status);
+
+            throw new Error(
+                "HTTP " +
+                response.status
+            );
         }
 
-        const data = await response.json();
+        const data =
+            await response.json();
 
         if (!Array.isArray(data)) {
+
             throw new Error(
                 "YTchannels.json is not an array."
             );
         }
 
         if (data.length === 0) {
+
             throw new Error(
                 "YTchannels.json contains no channels."
             );
@@ -454,6 +577,7 @@ async function loadChannels() {
         hideMessage();
 
         if (youtubeAPIReady) {
+
             initPlayer();
         }
 
@@ -488,8 +612,195 @@ function onYouTubeIframeAPIReady() {
     youtubeAPIReady = true;
 
     if (configurationLoaded) {
+
         initPlayer();
     }
+}
+
+
+/* =========================================================
+   CALCULATE CURRENT BROADCAST POSITION
+   ========================================================= */
+
+/*
+   Uses the durations we already know.
+
+   If every video has a saved duration,
+   this can calculate exactly where the
+   channel should currently be.
+
+   If some durations are unknown, we use
+   the first unknown video as the point
+   where we need to learn more.
+*/
+
+function calculateBroadcastPosition(channel) {
+
+    if (
+        !channel ||
+        !Array.isArray(channel.playlist) ||
+        channel.playlist.length === 0
+    ) {
+
+        return null;
+    }
+
+    const playlist =
+        channel.playlist;
+
+    const broadcastStart =
+        getBroadcastStart(channel);
+
+    const now =
+        new Date();
+
+    const currentSeconds =
+        now.getHours() * 3600 +
+        now.getMinutes() * 60 +
+        now.getSeconds();
+
+    /*
+       Seconds since today's broadcast start.
+    */
+
+    let elapsed =
+        currentSeconds -
+        broadcastStart;
+
+    /*
+       If broadcastStart is later than
+       the current time, treat it as
+       yesterday's broadcast.
+    */
+
+    if (elapsed < 0) {
+
+        elapsed += 86400;
+    }
+
+
+    /*
+       Calculate the total known cycle.
+    */
+
+    let totalDuration = 0;
+
+    let allKnown = true;
+
+    for (
+        let i = 0;
+        i < playlist.length;
+        i++
+    ) {
+
+        const video =
+            playlist[i];
+
+        const duration =
+            getSavedDuration(
+                video.id
+            );
+
+        if (duration <= 0) {
+
+            allKnown = false;
+            break;
+        }
+
+        totalDuration += duration;
+    }
+
+
+    /*
+       If all durations are known,
+       calculate the exact position.
+    */
+
+    if (
+        allKnown &&
+        totalDuration > 0
+    ) {
+
+        const position =
+            elapsed %
+            totalDuration;
+
+        let accumulated = 0;
+
+        for (
+            let i = 0;
+            i < playlist.length;
+            i++
+        ) {
+
+            const duration =
+                getSavedDuration(
+                    playlist[i].id
+                );
+
+            if (
+                position <
+                accumulated + duration
+            ) {
+
+                return {
+
+                    index: i,
+
+                    offset:
+                        position -
+                        accumulated,
+
+                    exact: true
+                };
+            }
+
+            accumulated += duration;
+        }
+    }
+
+
+    /*
+       If durations aren't fully known,
+       start at the first video that we
+       haven't learned yet.
+
+       This allows the channel to learn
+       the playlist naturally.
+    */
+
+    for (
+        let i = 0;
+        i < playlist.length;
+        i++
+    ) {
+
+        const duration =
+            getSavedDuration(
+                playlist[i].id
+            );
+
+        if (duration <= 0) {
+
+            return {
+
+                index: i,
+
+                offset: 0,
+
+                exact: false
+            };
+        }
+    }
+
+    return {
+
+        index: 0,
+
+        offset: 0,
+
+        exact: false
+    };
 }
 
 
@@ -515,21 +826,44 @@ function initPlayer() {
         showMessage(
             "Channel Error",
             "Channel " +
-            channel.name +
+            (channel.name || "") +
             " does not contain a playlist."
         );
 
         return;
     }
 
+
+    /*
+       Work out which programme should
+       currently be on.
+    */
+
+    const position =
+        calculateBroadcastPosition(
+            channel
+        );
+
+    if (position) {
+
+        currentVideoIndex =
+            position.index;
+    } else {
+
+        currentVideoIndex = 0;
+    }
+
+
     const video =
-        channel.playlist[currentVideoIndex];
+        channel.playlist[
+            currentVideoIndex
+        ];
 
     if (!video || !video.id) {
 
         showMessage(
             "Video Error",
-            "The first video does not contain a valid YouTube ID."
+            "The selected video does not contain a valid YouTube ID."
         );
 
         return;
@@ -545,45 +879,54 @@ function initPlayer() {
         video.id
     );
 
-    player = new YT.Player(
-        "player",
-        {
-
-            width: "100%",
-            height: "100%",
-
-            videoId: video.id,
-
-            playerVars: {
-
-                autoplay: 1,
-
-                controls: 0,
-
-                disablekb: 1,
-
-                modestbranding: 1,
-
-                rel: 0,
-
-                playsinline: 1,
-
-                fs: 0
-            },
-
-            events: {
-
-                onReady:
-                    onPlayerReady,
-
-                onStateChange:
-                    onPlayerStateChange,
-
-                onError:
-                    onPlayerError
-            }
-        }
+    console.log(
+        "Calculated broadcast position:",
+        position
     );
+
+
+    player =
+        new YT.Player(
+            "player",
+            {
+
+                width: "100%",
+
+                height: "100%",
+
+                videoId:
+                    video.id,
+
+                playerVars: {
+
+                    autoplay: 1,
+
+                    controls: 0,
+
+                    disablekb: 1,
+
+                    modestbranding: 1,
+
+                    rel: 0,
+
+                    playsinline: 1,
+
+                    fs: 0
+                },
+
+                events: {
+
+                    onReady:
+                        onPlayerReady,
+
+                    onStateChange:
+                        onPlayerStateChange,
+
+                    onError:
+                        onPlayerError
+                }
+            }
+        );
 }
 
 
@@ -606,6 +949,120 @@ function onPlayerReady(event) {
     updateOSD();
 
     buildEPG();
+
+
+    /*
+       After the player has loaded,
+       save its real duration.
+    */
+
+    setTimeout(
+        function() {
+
+            learnCurrentDuration();
+
+            /*
+               If we know the exact broadcast
+               position, seek to it.
+            */
+
+            const channel =
+                CHANNELS[
+                    currentChannelIndex
+                ];
+
+            const position =
+                calculateBroadcastPosition(
+                    channel
+                );
+
+            if (
+                position &&
+                position.exact &&
+                position.offset > 0
+            ) {
+
+                startupSeeking = true;
+
+                console.log(
+                    "Seeking to broadcast position:",
+                    position.offset
+                );
+
+                try {
+
+                    event.target.seekTo(
+                        position.offset,
+                        true
+                    );
+
+                    event.target.playVideo();
+
+                } catch (error) {
+
+                    console.warn(
+                        "Could not seek:",
+                        error
+                    );
+                }
+            }
+
+        },
+        1500
+    );
+}
+
+
+/* =========================================================
+   LEARN CURRENT VIDEO DURATION
+   ========================================================= */
+
+function learnCurrentDuration() {
+
+    if (!player) return;
+
+    const channel =
+        CHANNELS[
+            currentChannelIndex
+        ];
+
+    if (!channel) return;
+
+    const video =
+        channel.playlist[
+            currentVideoIndex
+        ];
+
+    if (!video) return;
+
+    try {
+
+        const duration =
+            player.getDuration();
+
+        if (
+            duration &&
+            duration > 0
+        ) {
+
+            saveVideoDuration(
+                video.id,
+                duration
+            );
+
+            console.log(
+                "Saved duration:",
+                video.id,
+                duration
+            );
+        }
+
+    } catch (error) {
+
+        console.warn(
+            "Could not read duration."
+        );
+    }
 }
 
 
@@ -620,25 +1077,33 @@ function onPlayerStateChange(event) {
         event.data
     );
 
+
     if (
         event.data ===
         YT.PlayerState.PLAYING
     ) {
 
-        updateOSD();
-
         hideMessage();
 
+        updateOSD();
+
+        learnCurrentDuration();
+
         buildEPG();
+
+        startupSeeking = false;
     }
+
 
     if (
         event.data ===
         YT.PlayerState.ENDED
     ) {
 
+        learnCurrentDuration();
+
         console.log(
-            "Video ended. Loading next video."
+            "Video ended."
         );
 
         playNextVideo();
@@ -679,15 +1144,21 @@ function onPlayerError(event) {
 function playNextVideo() {
 
     const channel =
-        CHANNELS[currentChannelIndex];
+        CHANNELS[
+            currentChannelIndex
+        ];
 
     if (
         !channel ||
-        !Array.isArray(channel.playlist) ||
+        !Array.isArray(
+            channel.playlist
+        ) ||
         channel.playlist.length === 0
     ) {
+
         return;
     }
+
 
     currentVideoIndex++;
 
@@ -699,8 +1170,11 @@ function playNextVideo() {
         currentVideoIndex = 0;
     }
 
+
     const video =
-        channel.playlist[currentVideoIndex];
+        channel.playlist[
+            currentVideoIndex
+        ];
 
     if (!video || !video.id) {
 
@@ -714,10 +1188,12 @@ function playNextVideo() {
         return;
     }
 
+
     console.log(
         "Loading next video:",
         video.id
     );
+
 
     if (player) {
 
@@ -731,29 +1207,38 @@ function playNextVideo() {
 
 
 /* =========================================================
-   LOAD SPECIFIC VIDEO
+   LOAD VIDEO
    ========================================================= */
 
 function loadVideo(index) {
 
     const channel =
-        CHANNELS[currentChannelIndex];
+        CHANNELS[
+            currentChannelIndex
+        ];
 
     if (
         !channel ||
         !channel.playlist ||
         !channel.playlist.length
     ) {
+
         return;
     }
 
-    currentVideoIndex = index;
 
-    if (currentVideoIndex < 0) {
+    currentVideoIndex =
+        index;
+
+
+    if (
+        currentVideoIndex < 0
+    ) {
 
         currentVideoIndex =
             channel.playlist.length - 1;
     }
+
 
     if (
         currentVideoIndex >=
@@ -763,8 +1248,11 @@ function loadVideo(index) {
         currentVideoIndex = 0;
     }
 
+
     const video =
-        channel.playlist[currentVideoIndex];
+        channel.playlist[
+            currentVideoIndex
+        ];
 
     if (!video || !video.id) {
 
@@ -778,10 +1266,12 @@ function loadVideo(index) {
         return;
     }
 
+
     console.log(
         "Loading:",
         video.id
     );
+
 
     if (player) {
 
@@ -789,6 +1279,7 @@ function loadVideo(index) {
             video.id
         );
     }
+
 
     updateOSD();
 
@@ -831,7 +1322,9 @@ function prevChannel() {
 
     currentChannelIndex--;
 
-    if (currentChannelIndex < 0) {
+    if (
+        currentChannelIndex < 0
+    ) {
 
         currentChannelIndex =
             CHANNELS.length - 1;
@@ -900,10 +1393,13 @@ function updateOSD() {
     if (!CHANNELS.length) return;
 
     const channel =
-        CHANNELS[currentChannelIndex];
+        CHANNELS[
+            currentChannelIndex
+        ];
 
     let title =
         "YouTube video";
+
 
     if (player) {
 
@@ -921,13 +1417,9 @@ function updateOSD() {
                     videoData.title;
             }
 
-        } catch (error) {
-
-            console.log(
-                "Could not get video title."
-            );
-        }
+        } catch (error) {}
     }
+
 
     document.getElementById(
         "osd-num"
@@ -937,16 +1429,19 @@ function updateOSD() {
             currentChannelIndex + 1
         ).padStart(2, "0");
 
+
     document.getElementById(
         "osd-name"
     ).textContent =
         channel.name ||
         "Channel";
 
+
     document.getElementById(
         "osd-title"
     ).textContent =
         title;
+
 
     showOSD();
 }
@@ -967,11 +1462,16 @@ function showOSD(customTitle) {
             customTitle;
     }
 
+
     osd.classList.add(
         "visible"
     );
 
-    clearTimeout(osdTimer);
+
+    clearTimeout(
+        osdTimer
+    );
+
 
     osdTimer =
         setTimeout(
@@ -988,7 +1488,7 @@ function showOSD(customTitle) {
 
 
 /* =========================================================
-   EPG OPEN / CLOSE
+   EPG
    ========================================================= */
 
 function toggleEPG() {
@@ -1019,7 +1519,7 @@ function toggleEPG() {
 
 
 /* =========================================================
-   FORMAT SECONDS
+   FORMAT DURATION
    ========================================================= */
 
 function formatDuration(seconds) {
@@ -1032,21 +1532,26 @@ function formatDuration(seconds) {
         return "--:--";
     }
 
+
     seconds =
         Math.floor(seconds);
+
 
     const hours =
         Math.floor(
             seconds / 3600
         );
 
+
     const minutes =
         Math.floor(
             (seconds % 3600) / 60
         );
 
+
     const secs =
         seconds % 60;
+
 
     if (hours > 0) {
 
@@ -1057,8 +1562,8 @@ function formatDuration(seconds) {
             ":" +
             String(secs).padStart(2, "0")
         );
-
     }
+
 
     return (
         String(minutes).padStart(2, "0") +
@@ -1069,7 +1574,7 @@ function formatDuration(seconds) {
 
 
 /* =========================================================
-   FORMAT CLOCK TIME
+   FORMAT CLOCK
    ========================================================= */
 
 function formatClock(date) {
@@ -1089,7 +1594,10 @@ function formatClock(date) {
    GET VIDEO TITLE
    ========================================================= */
 
-function getVideoTitle(video, index) {
+function getVideoTitle(
+    video,
+    index
+) {
 
     if (
         player &&
@@ -1112,6 +1620,7 @@ function getVideoTitle(video, index) {
         } catch (error) {}
     }
 
+
     if (
         video &&
         video.title
@@ -1119,6 +1628,7 @@ function getVideoTitle(video, index) {
 
         return video.title;
     }
+
 
     return (
         "Programme " +
@@ -1128,76 +1638,7 @@ function getVideoTitle(video, index) {
 
 
 /* =========================================================
-   GET VIDEO DURATION
-   ========================================================= */
-
-function getVideoDuration(index) {
-
-    const channel =
-        CHANNELS[currentChannelIndex];
-
-    if (
-        !channel ||
-        !channel.playlist
-    ) {
-
-        return 0;
-    }
-
-    /*
-       For the currently playing video,
-       YouTube gives us the real duration.
-    */
-
-    if (
-        player &&
-        index === currentVideoIndex
-    ) {
-
-        try {
-
-            const duration =
-                player.getDuration();
-
-            if (
-                duration &&
-                isFinite(duration)
-            ) {
-
-                return duration;
-            }
-
-        } catch (error) {}
-    }
-
-    /*
-       If the JSON contains a duration,
-       use it as a fallback.
-    */
-
-    const video =
-        channel.playlist[index];
-
-    if (
-        video &&
-        video.duration
-    ) {
-
-        return Number(
-            video.duration
-        );
-    }
-
-    /*
-       Unknown duration.
-    */
-
-    return 0;
-}
-
-
-/* =========================================================
-   BUILD ROLLING EPG
+   BUILD EPG
    ========================================================= */
 
 function buildEPG() {
@@ -1213,11 +1654,12 @@ function buildEPG() {
 
     if (!CHANNELS.length) return;
 
-    const now =
-        new Date();
 
     CHANNELS.forEach(
-        function(channel, channelIndex) {
+        function(
+            channel,
+            channelIndex
+        ) {
 
             const row =
                 document.createElement(
@@ -1226,6 +1668,7 @@ function buildEPG() {
 
             row.className =
                 "epg-row";
+
 
             if (
                 channelIndex ===
@@ -1237,6 +1680,7 @@ function buildEPG() {
                 );
             }
 
+
             /* CHANNEL HEADER */
 
             const header =
@@ -1246,6 +1690,7 @@ function buildEPG() {
 
             header.className =
                 "epg-channel-header";
+
 
             const channelName =
                 document.createElement(
@@ -1258,6 +1703,7 @@ function buildEPG() {
             channelName.textContent =
                 channel.name ||
                 "Channel";
+
 
             const channelNumber =
                 document.createElement(
@@ -1273,6 +1719,7 @@ function buildEPG() {
                     channelIndex + 1
                 ).padStart(2, "0");
 
+
             header.appendChild(
                 channelName
             );
@@ -1286,7 +1733,7 @@ function buildEPG() {
             );
 
 
-            /* PROGRAMME LIST */
+            /* PROGRAMMES */
 
             const programmes =
                 document.createElement(
@@ -1298,370 +1745,287 @@ function buildEPG() {
 
 
             /*
-               For the current channel we
-               know exactly how far into the
-               current programme we are.
+               For the current channel,
+               display the current programme
+               first, followed by the next
+               programmes.
             */
 
-            let currentOffset = 0;
+            let startIndex = 0;
 
             if (
                 channelIndex ===
-                currentChannelIndex &&
-                player
+                currentChannelIndex
             ) {
 
-                try {
-
-                    currentOffset =
-                        player.getCurrentTime();
-
-                } catch (error) {
-
-                    currentOffset = 0;
-                }
+                startIndex =
+                    currentVideoIndex;
             }
 
 
-            /*
-               Current video's real duration.
-               This lets the EPG calculate the
-               following programme's time.
-            */
-
-            let elapsedInProgramme =
-                currentOffset;
+            const count =
+                channel.playlist.length;
 
 
-            channel.playlist.forEach(
-                function(video, videoIndex) {
+            for (
+                let displayIndex = 0;
+                displayIndex < count;
+                displayIndex++
+            ) {
 
-                    let duration =
-                        0;
-
-                    /*
-                       Current video:
-                       get exact YouTube duration.
-                    */
-
-                    if (
-                        channelIndex ===
-                        currentChannelIndex &&
-                        videoIndex ===
-                        currentVideoIndex
-                    ) {
-
-                        duration =
-                            getVideoDuration(
-                                videoIndex
-                            );
-
-                    } else if (
-                        video.duration
-                    ) {
-
-                        duration =
-                            Number(
-                                video.duration
-                            );
-                    }
+                const videoIndex =
+                    (
+                        startIndex +
+                        displayIndex
+                    ) % count;
 
 
-                    /*
-                       Unknown durations cannot
-                       produce exact future times.
-                       We display them as TBA.
-                    */
-
-                    const isCurrent =
-                        channelIndex ===
-                        currentChannelIndex &&
-                        videoIndex ===
-                        currentVideoIndex;
+                const video =
+                    channel.playlist[
+                        videoIndex
+                    ];
 
 
-                    /*
-                       Calculate programme start.
-                       The current programme starts
-                       "currentOffset" seconds ago.
-                    */
-
-                    let startTime =
-                        new Date(
-                            now.getTime()
-                        );
-
-                    if (
-                        channelIndex ===
-                        currentChannelIndex
-                    ) {
-
-                        let offset =
-                            -currentOffset;
-
-                        for (
-                            let x = currentVideoIndex - 1;
-                            x >= videoIndex;
-                            x--
-                        ) {
-
-                            const previous =
-                                channel.playlist[x];
-
-                            let previousDuration =
-                                previous.duration
-                                    ? Number(previous.duration)
-                                    : 0;
-
-                            offset -=
-                                previousDuration;
-                        }
-
-                        if (
-                            videoIndex >
-                            currentVideoIndex
-                        ) {
-
-                            offset = 0;
-
-                            for (
-                                let x = currentVideoIndex;
-                                x < videoIndex;
-                                x++
-                            ) {
-
-                                const previous =
-                                    channel.playlist[x];
-
-                                let previousDuration =
-                                    previous.duration
-                                        ? Number(previous.duration)
-                                        : 0;
-
-                                if (
-                                    x ===
-                                    currentVideoIndex &&
-                                    player
-                                ) {
-
-                                    try {
-
-                                        previousDuration =
-                                            player.getDuration();
-
-                                    } catch (error) {}
-                                }
-
-                                offset +=
-                                    previousDuration;
-                            }
-
-                            offset -=
-                                currentOffset;
-                        }
-
-                        startTime =
-                            new Date(
-                                now.getTime() +
-                                offset * 1000
-                            );
-                    }
+                const duration =
+                    getSavedDuration(
+                        video.id
+                    );
 
 
-                    const programme =
-                        document.createElement(
-                            "div"
-                        );
+                const programme =
+                    document.createElement(
+                        "div"
+                    );
 
-                    programme.className =
-                        "epg-programme";
-
-                    if (isCurrent) {
-
-                        programme.classList.add(
-                            "now"
-                        );
-                    }
+                programme.className =
+                    "epg-programme";
 
 
-                    /* TIME */
-
-                    const time =
-                        document.createElement(
-                            "div"
-                        );
-
-                    time.className =
-                        "epg-time";
+                const isCurrent =
+                    channelIndex ===
+                    currentChannelIndex &&
+                    videoIndex ===
+                    currentVideoIndex;
 
 
-                    if (
-                        duration > 0
-                    ) {
+                if (isCurrent) {
 
-                        const endTime =
-                            new Date(
-                                startTime.getTime() +
-                                duration * 1000
-                            );
-
-                        time.textContent =
-                            formatClock(
-                                startTime
-                            ) +
-                            " – " +
-                            formatClock(
-                                endTime
-                            );
-
-                    } else {
-
-                        time.textContent =
-                            formatClock(
-                                startTime
-                            );
-                    }
+                    programme.classList.add(
+                        "now"
+                    );
+                }
 
 
-                    /* PROGRAMME INFO */
+                /* TIME */
 
-                    const info =
-                        document.createElement(
-                            "div"
-                        );
+                const time =
+                    document.createElement(
+                        "div"
+                    );
 
-                    info.className =
-                        "epg-programme-info";
-
-
-                    const title =
-                        document.createElement(
-                            "div"
-                        );
-
-                    title.className =
-                        "epg-programme-title";
-
-                    title.textContent =
-                        getVideoTitle(
-                            video,
-                            videoIndex
-                        );
+                time.className =
+                    "epg-time";
 
 
-                    const meta =
-                        document.createElement(
-                            "div"
-                        );
+                if (
+                    isCurrent &&
+                    player
+                ) {
 
-                    meta.className =
-                        "epg-programme-meta";
+                    let currentTime = 0;
+
+                    try {
+
+                        currentTime =
+                            player.getCurrentTime();
+
+                    } catch (error) {}
 
 
                     if (duration > 0) {
 
-                        meta.textContent =
-                            formatDuration(
-                                duration
+                        const remaining =
+                            Math.max(
+                                0,
+                                duration -
+                                currentTime
                             );
+
+                        time.textContent =
+                            formatDuration(
+                                remaining
+                            ) +
+                            " left";
 
                     } else {
 
-                        meta.textContent =
-                            "Duration unavailable";
+                        time.textContent =
+                            "NOW";
                     }
 
+                } else if (
+                    duration > 0
+                ) {
 
-                    info.appendChild(
-                        title
+                    time.textContent =
+                        formatDuration(
+                            duration
+                        );
+
+                } else {
+
+                    time.textContent =
+                        "TBA";
+                }
+
+
+                /* INFO */
+
+                const info =
+                    document.createElement(
+                        "div"
                     );
 
-                    info.appendChild(
-                        meta
+                info.className =
+                    "epg-programme-info";
+
+
+                const title =
+                    document.createElement(
+                        "div"
+                    );
+
+                title.className =
+                    "epg-programme-title";
+
+                title.textContent =
+                    getVideoTitle(
+                        video,
+                        videoIndex
                     );
 
 
-                    /* NOW / NEXT */
+                const meta =
+                    document.createElement(
+                        "div"
+                    );
 
-                    const nowLabel =
+                meta.className =
+                    "epg-programme-meta";
+
+
+                if (duration > 0) {
+
+                    meta.textContent =
+                        formatDuration(
+                            duration
+                        );
+
+                } else {
+
+                    meta.textContent =
+                        "Duration not yet learned";
+                }
+
+
+                info.appendChild(
+                    title
+                );
+
+                info.appendChild(
+                    meta
+                );
+
+
+                /* NOW / NEXT */
+
+                const label =
+                    document.createElement(
+                        "div"
+                    );
+
+                label.className =
+                    "epg-now";
+
+
+                if (isCurrent) {
+
+                    label.textContent =
+                        "▶ NOW";
+
+                } else if (
+                    displayIndex === 1
+                ) {
+
+                    label.textContent =
+                        "NEXT";
+                }
+
+
+                /* PROGRESS */
+
+                if (
+                    isCurrent &&
+                    player &&
+                    duration > 0
+                ) {
+
+                    let currentTime = 0;
+
+                    try {
+
+                        currentTime =
+                            player.getCurrentTime();
+
+                    } catch (error) {}
+
+
+                    const percentage =
+                        Math.min(
+                            100,
+                            (
+                                currentTime /
+                                duration
+                            ) * 100
+                        );
+
+
+                    const progress =
                         document.createElement(
                             "div"
                         );
 
-                    nowLabel.className =
-                        "epg-now";
+                    progress.className =
+                        "epg-progress";
 
-                    if (isCurrent) {
-
-                        nowLabel.textContent =
-                            "▶ NOW";
-
-                    } else if (
-                        videoIndex ===
-                        currentVideoIndex + 1
-                    ) {
-
-                        nowLabel.textContent =
-                            "NEXT";
-                    }
-
-
-                    /* PROGRESS */
-
-                    if (isCurrent) {
-
-                        const progress =
-                            document.createElement(
-                                "div"
-                            );
-
-                        progress.className =
-                            "epg-progress";
-
-                        let percentage = 0;
-
-                        if (
-                            duration > 0 &&
-                            currentOffset >= 0
-                        ) {
-
-                            percentage =
-                                Math.min(
-                                    100,
-                                    (
-                                        currentOffset /
-                                        duration
-                                    ) * 100
-                                );
-                        }
-
-                        progress.style.width =
-                            percentage + "%";
-
-                        programme.appendChild(
-                            progress
-                        );
-                    }
+                    progress.style.width =
+                        percentage +
+                        "%";
 
 
                     programme.appendChild(
-                        time
-                    );
-
-                    programme.appendChild(
-                        info
-                    );
-
-                    programme.appendChild(
-                        nowLabel
-                    );
-
-
-                    programmes.appendChild(
-                        programme
+                        progress
                     );
                 }
-            );
+
+
+                programme.appendChild(
+                    time
+                );
+
+                programme.appendChild(
+                    info
+                );
+
+                programme.appendChild(
+                    label
+                );
+
+
+                programmes.appendChild(
+                    programme
+                );
+            }
 
 
             row.appendChild(
@@ -1669,10 +2033,7 @@ function buildEPG() {
             );
 
 
-            /*
-               Clicking a channel in the guide
-               changes to that channel.
-            */
+            /* CLICK CHANNEL */
 
             header.addEventListener(
                 "click",
@@ -1680,6 +2041,12 @@ function buildEPG() {
 
                     currentChannelIndex =
                         channelIndex;
+
+                    /*
+                       When manually changing
+                       channel, start the selected
+                       channel at its first video.
+                    */
 
                     currentVideoIndex = 0;
 
@@ -1699,15 +2066,22 @@ function buildEPG() {
 
 
 /* =========================================================
-   EPG LIVE UPDATE
+   LIVE EPG UPDATE
    ========================================================= */
 
-function updateEPGLive() {
+setInterval(
+    function() {
 
-    if (!epgVisible) return;
+        updateClock();
 
-    buildEPG();
-}
+        if (epgVisible) {
+
+            buildEPG();
+        }
+
+    },
+    1000
+);
 
 
 /* =========================================================
@@ -1721,11 +2095,12 @@ function updateClock() {
             "epg-clock"
         );
 
-    const now =
-        new Date();
+    if (!clock) return;
 
     clock.textContent =
-        formatClock(now);
+        formatClock(
+            new Date()
+        );
 }
 
 
@@ -1815,18 +2190,8 @@ document.addEventListener(
 
 
 /* =========================================================
-   TIMERS
+   START
    ========================================================= */
-
-setInterval(
-    updateClock,
-    1000
-);
-
-setInterval(
-    updateEPGLive,
-    5000
-);
 
 updateClock();
 
