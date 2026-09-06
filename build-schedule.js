@@ -41,7 +41,7 @@ const CHANNELS = [
     genres: [],
     excludeGenres: ['Documentary'],
     allowedRatings: ['TV-Y7', 'TV-G', 'TV-PG', 'G', 'PG'],
-    excludeTitles: ['Sailor Moon', 'Dragon Ball', 'Aria', 'Halloween Baking Championship', 'Avatar: The Last Airbender', 'Adventure Time', 'ThunderCats','Teenage Mutant Ninja Turtles', 'Penn & Teller: Fool Us', 'Dragon Ball GT', 'Halloween Wars'],
+    excludeTitles: ['Sailor Moon', 'Beyblade: Metal Fight Beyblade', 'Dragon Ball', 'Aria', 'Halloween Baking Championship', 'Avatar: The Last Airbender', 'Adventure Time', 'ThunderCats','Teenage Mutant Ninja Turtles', 'Penn & Teller: Fool Us', 'Dragon Ball GT', 'Halloween Wars'],
     startYear: 1970,
     endYear: 2026
   },
