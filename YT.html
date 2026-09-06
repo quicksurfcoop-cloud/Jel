@@ -1,251 +1,1627 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Live YouTube TV</title>
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body, html { width: 100%; height: 100%; background: #000; color: #fff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; overflow: hidden; }
-    
-    #player-wrapper { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
-    #player { width: 100%; height: 100%; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jel TV</title>
 
-    /* On-Screen Display (OSD) */
+<style>
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow: hidden;
+}
+
+/* =========================
+   PLAYER
+   ========================= */
+
+#player-wrapper {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    z-index: 1;
+}
+
+#player {
+    width: 100%;
+    height: 100%;
+}
+
+/* =========================
+   OSD
+   ========================= */
+
+#osd {
+    position: fixed;
+    left: 30px;
+    bottom: 45px;
+    z-index: 20;
+
+    min-width: 330px;
+    max-width: 70%;
+
+    padding: 14px 20px;
+
+    background: rgba(0, 0, 0, 0.78);
+
+    border-left: 5px solid #fff;
+
+    opacity: 0;
+    transition: opacity 0.25s ease;
+
+    pointer-events: none;
+}
+
+#osd.visible {
+    opacity: 1;
+}
+
+#osd-num {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 3px;
+}
+
+#osd-name {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+#osd-title {
+    margin-top: 5px;
+    font-size: 16px;
+    color: #ddd;
+}
+
+/* =========================
+   CONTROLS
+   ========================= */
+
+#controls {
+    position: fixed;
+    left: 50%;
+    bottom: 15px;
+
+    transform: translateX(-50%);
+
+    z-index: 30;
+
+    display: flex;
+    gap: 8px;
+
+    opacity: 0;
+    transition: opacity 0.25s ease;
+}
+
+body:hover #controls {
+    opacity: 1;
+}
+
+#controls button {
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+
+    border: 1px solid #555;
+
+    padding: 9px 14px;
+
+    font-size: 14px;
+
+    cursor: pointer;
+}
+
+#controls button:hover {
+    background: #333;
+}
+
+/* =========================
+   EPG
+   ========================= */
+
+#epg {
+    position: fixed;
+    inset: 0;
+
+    z-index: 50;
+
+    background: rgba(0, 0, 0, 0.96);
+
+    display: none;
+
+    flex-direction: column;
+}
+
+#epg.visible {
+    display: flex;
+}
+
+#epg-header {
+    height: 75px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 30px;
+
+    border-bottom: 1px solid #444;
+}
+
+#epg-title {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+#epg-clock {
+    font-size: 22px;
+}
+
+#epg-content {
+    flex: 1;
+    overflow: auto;
+    padding: 20px;
+}
+
+.epg-row {
+    display: flex;
+
+    min-height: 70px;
+
+    margin-bottom: 8px;
+
+    border: 1px solid #333;
+
+    background: #111;
+}
+
+.epg-row.current {
+    border-color: #fff;
+}
+
+.epg-channel {
+    width: 230px;
+
+    flex-shrink: 0;
+
+    padding: 15px;
+
+    background: #181818;
+
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.epg-programme {
+    flex: 1;
+
+    padding: 15px;
+
+    overflow: hidden;
+}
+
+.epg-programme-title {
+    font-size: 17px;
+    font-weight: bold;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.epg-programme-number {
+    margin-top: 5px;
+
+    color: #888;
+
+    font-size: 13px;
+}
+
+/* =========================
+   LOADING / ERROR
+   ========================= */
+
+#message {
+    position: fixed;
+    inset: 0;
+
+    z-index: 100;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: #000;
+
+    text-align: center;
+
+    padding: 30px;
+
+    font-size: 20px;
+}
+
+#message.hidden {
+    display: none;
+}
+
+#message-inner {
+    max-width: 700px;
+}
+
+#message-title {
+    font-size: 28px;
+    font-weight: bold;
+
+    margin-bottom: 15px;
+}
+
+#message-text {
+    color: #aaa;
+    line-height: 1.5;
+}
+
+/* =========================
+   MOBILE
+   ========================= */
+
+@media (max-width: 700px) {
+
     #osd {
-      position: absolute;
-      top: 40px;
-      right: 50px;
-      background: rgba(0, 0, 0, 0.85);
-      border: 2px solid #00ffcc;
-      padding: 15px 25px;
-      border-radius: 8px;
-      box-shadow: 0 0 15px rgba(0, 255, 204, 0.4);
-      opacity: 0;
-      transition: opacity 0.4s ease;
-      z-index: 10;
-    }
-    #osd.active { opacity: 1; }
-    .ch-num { font-size: 2rem; font-weight: bold; color: #00ffcc; }
-    .ch-name { font-size: 1.2rem; font-weight: 600; }
-    .ch-title { font-size: 0.9rem; color: #ccc; margin-top: 4px; }
+        left: 15px;
+        bottom: 70px;
 
-    /* Controls Overlay */
+        min-width: 0;
+        max-width: calc(100% - 30px);
+    }
+
+    #osd-name {
+        font-size: 20px;
+    }
+
     #controls {
-      position: absolute;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 12px;
-      z-index: 10;
-      background: rgba(0, 0, 0, 0.7);
-      padding: 10px 20px;
-      border-radius: 30px;
-      backdrop-filter: blur(5px);
-    }
-    button {
-      background: #222;
-      color: #fff;
-      border: 1px solid #444;
-      padding: 8px 16px;
-      border-radius: 20px;
-      cursor: pointer;
-      font-weight: bold;
-      transition: all 0.2s;
-    }
-    button:hover, button.active { background: #00ffcc; color: #000; border-color: #00ffcc; }
+        width: 100%;
 
-    /* EPG Overlay */
-    #epg-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(10, 12, 16, 0.92);
-      backdrop-filter: blur(10px);
-      z-index: 20;
-      display: flex;
-      flex-direction: column;
-      padding: 30px;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s ease;
-    }
-    #epg-overlay.visible { opacity: 1; pointer-events: auto; }
+        justify-content: center;
 
-    .epg-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 20px;
-      border-bottom: 2px solid #222;
-      padding-bottom: 15px;
-    }
-    .epg-title { font-size: 1.8rem; font-weight: bold; color: #00ffcc; }
-    .epg-clock { font-size: 1.4rem; font-family: monospace; color: #fff; }
-
-    .epg-grid-container {
-      flex: 1;
-      overflow-x: auto;
-      overflow-y: auto;
-      position: relative;
-      border: 1px solid #333;
-      border-radius: 8px;
-      background: #111;
+        flex-wrap: wrap;
     }
 
-    .epg-timeline-header {
-      display: flex;
-      height: 40px;
-      background: #1a1d24;
-      position: sticky;
-      top: 0;
-      z-index: 5;
-      border-bottom: 1px solid #333;
-    }
-    .epg-channel-header-stub {
-      min-width: 180px;
-      max-width: 180px;
-      background: #14161c;
-      border-right: 1px solid #333;
-      position: sticky;
-      left: 0;
-      z-index: 6;
-    }
-    .epg-time-slot {
-      min-width: 300px;
-      padding: 10px;
-      font-weight: bold;
-      font-size: 0.85rem;
-      color: #888;
-      border-right: 1px solid #222;
+    #controls button {
+        padding: 7px 10px;
+        font-size: 12px;
     }
 
-    .epg-row {
-      display: flex;
-      height: 60px;
-      border-bottom: 1px solid #222;
-      position: relative;
+    #epg-header {
+        padding: 0 15px;
     }
-    .epg-channel-meta {
-      min-width: 180px;
-      max-width: 180px;
-      background: #161820;
-      padding: 10px 15px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      border-right: 1px solid #333;
-      position: sticky;
-      left: 0;
-      z-index: 4;
-    }
-    .epg-channel-meta .num { font-weight: bold; color: #00ffcc; font-size: 0.85rem; }
-    .epg-channel-meta .name { font-weight: 600; font-size: 0.95rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
-    .epg-programs-track { display: flex; position: relative; align-items: center; }
-
-    .epg-program-block {
-      position: absolute;
-      height: 48px;
-      background: #222630;
-      border: 1px solid #343a46;
-      border-radius: 4px;
-      padding: 8px 12px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      overflow: hidden;
-      cursor: pointer;
-      transition: background 0.2s, border-color 0.2s;
+    #epg-title {
+        font-size: 20px;
     }
-    .epg-program-block:hover { background: #2a303f; border-color: #00ffcc; }
-    .epg-program-block.active-now { background: #1c3d3a; border-color: #00ffcc; }
-    .epg-program-block .title { font-size: 0.85rem; font-weight: bold; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .epg-program-block .time { font-size: 0.75rem; color: #aaa; margin-top: 2px; }
 
-    .epg-now-line {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      width: 2px;
-      background: #ff3366;
-      box-shadow: 0 0 8px #ff3366;
-      z-index: 5;
-      pointer-events: none;
+    #epg-clock {
+        font-size: 16px;
     }
-  </style>
+
+    .epg-channel {
+        width: 130px;
+        font-size: 14px;
+    }
+}
+</style>
+
 </head>
+
 <body>
 
-  <div id="player-wrapper">
+<!-- =========================
+     PLAYER
+     ========================= -->
+
+<div id="player-wrapper">
     <div id="player"></div>
-  </div>
+</div>
 
-  <div id="osd">
-    <div class="ch-num" id="osd-num">CH 01</div>
-    <div class="ch-name" id="osd-name">Channel Name</div>
-    <div class="ch-title" id="osd-title">Loading...</div>
-  </div>
+<!-- =========================
+     ON-SCREEN DISPLAY
+     ========================= -->
 
-  <div id="controls">
-    <button onclick="prevChannel()">▲ CH Prev</button>
-    <button onclick="nextChannel()">▼ CH Next</button>
-    <button id="mute-btn" onclick="toggleMute()">🔇 Unmute</button>
-    <button id="epg-btn" onclick="toggleEPG()">📺 TV Guide (G)</button>
-  </div>
+<div id="osd">
 
-  <div id="epg-overlay">
-    <div class="epg-header">
-      <div class="epg-title">Live Program Guide</div>
-      <div class="epg-clock" id="epg-clock">00:00:00</div>
+```
+<div id="osd-num">CH 01</div>
+
+<div id="osd-name">
+    Loading...
+</div>
+
+<div id="osd-title">
+    Loading...
+</div>
+```
+
+</div>
+
+<!-- =========================
+     CONTROLS
+     ========================= -->
+
+<div id="controls">
+
+```
+<button onclick="prevChannel()">
+    ▲ CH Prev
+</button>
+
+<button onclick="nextChannel()">
+    ▼ CH Next
+</button>
+
+<button id="mute-btn" onclick="toggleMute()">
+    🔇 Unmute
+</button>
+
+<button onclick="toggleEPG()">
+    📺 TV Guide (G)
+</button>
+```
+
+</div>
+
+<!-- =========================
+     EPG
+     ========================= -->
+
+<div id="epg">
+
+```
+<div id="epg-header">
+
+    <div id="epg-title">
+        TV Guide
     </div>
-    <div class="epg-grid-container" id="epg-grid-container">
-      <div class="epg-timeline-header" id="epg-timeline-header">
-        <div class="epg-channel-header-stub"></div>
-      </div>
-      <div id="epg-rows"></div>
-      <div class="epg-now-line" id="epg-now-line"></div>
-    </div>
-  </div>
 
+    <div id="epg-clock">
+        00:00
+    </div>
+
+</div>
+
+<div id="epg-content"></div>
+```
+
+</div>
+
+<!-- =========================
+     ERROR / LOADING MESSAGE
+     ========================= -->
+
+<div id="message">
+
+```
+<div id="message-inner">
+
+    <div id="message-title">
+        Jel TV
+    </div>
+
+    <div id="message-text">
+        Loading channel configuration...
+    </div>
+
+</div>
+```
+
+</div>
+
+<!-- =========================
+     YOUTUBE IFRAME API
+     ========================= -->
+
+<script src="https://www.youtube.com/iframe_api"></script>
 
 <script>
-function loadVideo(videoIndex) {
 
-    const channel = CHANNELS[currentChannelIdx];
+/* ============================================================
+   JEL TV
+   ============================================================
 
-    if (!channel || !channel.playlist.length) {
+   IMPORTANT:
+
+   This version DOES NOT use the YouTube Playlist API.
+
+   YTchannels.json contains individual video IDs.
+
+   Example:
+
+   [
+       {
+           "id": 1,
+           "name": "CBBC",
+           "playlist": [
+               {
+                   "id": "Ln1MI6xjqgE"
+               },
+               {
+                   "id": "anotherVideoID"
+               }
+           ]
+       }
+   ]
+
+   Videos are played one after another.
+
+   ============================================================ */
+
+
+/* =========================
+   GLOBAL VARIABLES
+   ========================= */
+
+let CHANNELS = [];
+
+let currentChannelIndex = 0;
+
+let currentVideoIndex = 0;
+
+let player = null;
+
+let youtubeAPIReady = false;
+
+let configurationLoaded = false;
+
+let osdTimer = null;
+
+let epgVisible = false;
+
+
+/* =========================
+   LOAD CONFIGURATION
+   ========================= */
+
+async function loadChannels() {
+
+    try {
+
+        /*
+         * The timestamp prevents GitHub Pages from
+         * giving us an old cached JSON file.
+         */
+
+        const response = await fetch(
+            "./YTchannels.json?v=" + Date.now()
+        );
+
+        if (!response.ok) {
+
+            throw new Error(
+                "HTTP " + response.status
+            );
+
+        }
+
+        const data = await response.json();
+
+        if (!Array.isArray(data)) {
+
+            throw new Error(
+                "YTchannels.json is not an array."
+            );
+
+        }
+
+        if (data.length === 0) {
+
+            throw new Error(
+                "YTchannels.json contains no channels."
+            );
+
+        }
+
+        CHANNELS = data;
+
+        configurationLoaded = true;
+
+        console.log(
+            "Loaded channels:",
+            CHANNELS
+        );
+
+        hideMessage();
+
+        /*
+         * The YouTube API may have loaded before
+         * the JSON file.
+         */
+
+        if (youtubeAPIReady) {
+
+            initPlayer();
+
+        }
+
+    } catch (error) {
+
+        console.error(
+            "Could not load YTchannels.json:",
+            error
+        );
+
+        showMessage(
+            "Configuration Error",
+            "Failed to load YTchannels.json.<br><br>" +
+            error.message +
+            "<br><br>" +
+            "Make sure YTchannels.json is in the same folder as YT.html."
+        );
+
+    }
+
+}
+
+
+/* =========================
+   YOUTUBE API READY
+   ========================= */
+
+function onYouTubeIframeAPIReady() {
+
+    console.log(
+        "YouTube IFrame API ready."
+    );
+
+    youtubeAPIReady = true;
+
+    if (configurationLoaded) {
+
+        initPlayer();
+
+    }
+
+}
+
+
+/* =========================
+   CREATE PLAYER
+   ========================= */
+
+function initPlayer() {
+
+    if (player) {
+
         return;
+
     }
 
-    currentVideoIdx = videoIndex;
+    if (!CHANNELS.length) {
 
-    if (currentVideoIdx >= channel.playlist.length) {
-        currentVideoIdx = 0;
+        return;
+
     }
 
-    if (currentVideoIdx < 0) {
-        currentVideoIdx = channel.playlist.length - 1;
+    const channel =
+        CHANNELS[currentChannelIndex];
+
+    if (
+        !channel.playlist ||
+        !Array.isArray(channel.playlist) ||
+        channel.playlist.length === 0
+    ) {
+
+        showMessage(
+            "Channel Error",
+            "Channel " +
+            channel.name +
+            " does not contain a playlist."
+        );
+
+        return;
+
     }
 
-    const video = channel.playlist[currentVideoIdx];
+    const video =
+        channel.playlist[currentVideoIndex];
 
-    console.log("Playing:", video.id);
+    if (!video || !video.id) {
 
-    player.loadVideoById(video.id);
+        showMessage(
+            "Video Error",
+            "The first video does not contain a valid YouTube ID."
+        );
+
+        return;
+
+    }
+
+    console.log(
+        "Starting channel:",
+        channel.name
+    );
+
+    console.log(
+        "Starting video:",
+        video.id
+    );
+
+
+    player = new YT.Player(
+        "player",
+        {
+
+            width: "100%",
+
+            height: "100%",
+
+            videoId: video.id,
+
+            playerVars: {
+
+                autoplay: 1,
+
+                controls: 0,
+
+                disablekb: 1,
+
+                modestbranding: 1,
+
+                rel: 0,
+
+                playsinline: 1,
+
+                fs: 0
+
+            },
+
+            events: {
+
+                onReady:
+                    onPlayerReady,
+
+                onStateChange:
+                    onPlayerStateChange,
+
+                onError:
+                    onPlayerError
+
+            }
+
+        }
+    );
+
+}
+
+
+/* =========================
+   PLAYER READY
+   ========================= */
+
+function onPlayerReady(event) {
+
+    console.log(
+        "Player ready."
+    );
+
+    /*
+     * Start muted so browsers are less likely
+     * to block autoplay.
+     */
+
+    event.target.mute();
+
+    event.target.playVideo();
+
+    updateMuteButton();
+
+    updateOSD();
+
+}
+
+
+/* =========================
+   PLAYER STATE CHANGED
+   ========================= */
+
+function onPlayerStateChange(event) {
+
+    console.log(
+        "Player state:",
+        event.data
+    );
+
+
+    /*
+     * Video has started playing.
+     */
+
+    if (
+        event.data ===
+        YT.PlayerState.PLAYING
+    ) {
+
+        updateOSD();
+
+        hideMessage();
+
+    }
+
+
+    /*
+     * Video has finished.
+     */
+
+    if (
+        event.data ===
+        YT.PlayerState.ENDED
+    ) {
+
+        console.log(
+            "Video ended. Loading next video."
+        );
+
+        playNextVideo();
+
+    }
+
+}
+
+
+/* =========================
+   YOUTUBE VIDEO ERROR
+   ========================= */
+
+function onPlayerError(event) {
+
+    console.warn(
+        "YouTube video error:",
+        event.data
+    );
+
+    /*
+     * Rather than stopping the whole TV channel,
+     * skip videos that cannot be played.
+     */
 
     showOSD(
-        `CH ${String(channel.id).padStart(2, '0')}`,
-        channel.name,
-        video.title
+        "Video unavailable — skipping..."
     );
+
+    setTimeout(
+        function () {
+
+            playNextVideo();
+
+        },
+        1200
+    );
+
 }
+
+
+/* =========================
+   PLAY NEXT VIDEO
+   ========================= */
+
+function playNextVideo() {
+
+    const channel =
+        CHANNELS[currentChannelIndex];
+
+    if (
+        !channel ||
+        !Array.isArray(channel.playlist) ||
+        channel.playlist.length === 0
+    ) {
+
+        return;
+
+    }
+
+
+    currentVideoIndex++;
+
+
+    /*
+     * Loop back to the first video
+     * when the channel reaches the end.
+     */
+
+    if (
+        currentVideoIndex >=
+        channel.playlist.length
+    ) {
+
+        currentVideoIndex = 0;
+
+    }
+
+
+    const video =
+        channel.playlist[currentVideoIndex];
+
+
+    if (!video || !video.id) {
+
+        console.warn(
+            "Invalid video entry:",
+            video
+        );
+
+        playNextVideo();
+
+        return;
+
+    }
+
+
+    console.log(
+        "Loading next video:",
+        video.id
+    );
+
+
+    if (player) {
+
+        player.loadVideoById(
+            video.id
+        );
+
+    }
+
+}
+
+
+/* =========================
+   LOAD SPECIFIC VIDEO
+   ========================= */
+
+function loadVideo(index) {
+
+    const channel =
+        CHANNELS[currentChannelIndex];
+
+    if (
+        !channel ||
+        !channel.playlist ||
+        !channel.playlist.length
+    ) {
+
+        return;
+
+    }
+
+
+    currentVideoIndex = index;
+
+
+    /*
+     * Keep index inside the playlist.
+     */
+
+    if (
+        currentVideoIndex < 0
+    ) {
+
+        currentVideoIndex =
+            channel.playlist.length - 1;
+
+    }
+
+
+    if (
+        currentVideoIndex >=
+        channel.playlist.length
+    ) {
+
+        currentVideoIndex = 0;
+
+    }
+
+
+    const video =
+        channel.playlist[currentVideoIndex];
+
+
+    if (!video || !video.id) {
+
+        console.warn(
+            "Invalid video:",
+            video
+        );
+
+        playNextVideo();
+
+        return;
+
+    }
+
+
+    console.log(
+        "Loading:",
+        video.id
+    );
+
+
+    if (player) {
+
+        player.loadVideoById(
+            video.id
+        );
+
+    }
+
+
+    updateOSD();
+
+}
+
+
+/* =========================
+   NEXT CHANNEL
+   ========================= */
+
+function nextChannel() {
+
+    if (!CHANNELS.length) {
+
+        return;
+
+    }
+
+
+    currentChannelIndex++;
+
+
+    if (
+        currentChannelIndex >=
+        CHANNELS.length
+    ) {
+
+        currentChannelIndex = 0;
+
+    }
+
+
+    currentVideoIndex = 0;
+
+
+    console.log(
+        "Next channel:",
+        currentChannelIndex
+    );
+
+
+    loadVideo(0);
+
+}
+
+
+/* =========================
+   PREVIOUS CHANNEL
+   ========================= */
+
+function prevChannel() {
+
+    if (!CHANNELS.length) {
+
+        return;
+
+    }
+
+
+    currentChannelIndex--;
+
+
+    if (
+        currentChannelIndex < 0
+    ) {
+
+        currentChannelIndex =
+            CHANNELS.length - 1;
+
+    }
+
+
+    currentVideoIndex = 0;
+
+
+    console.log(
+        "Previous channel:",
+        currentChannelIndex
+    );
+
+
+    loadVideo(0);
+
+}
+
+
+/* =========================
+   MUTE / UNMUTE
+   ========================= */
+
+function toggleMute() {
+
+    if (!player) {
+
+        return;
+
+    }
+
+
+    if (
+        player.isMuted()
+    ) {
+
+        player.unMute();
+
+    } else {
+
+        player.mute();
+
+    }
+
+
+    updateMuteButton();
+
+}
+
+
+/* =========================
+   UPDATE MUTE BUTTON
+   ========================= */
+
+function updateMuteButton() {
+
+    const button =
+        document.getElementById(
+            "mute-btn"
+        );
+
+    if (!button || !player) {
+
+        return;
+
+    }
+
+
+    if (player.isMuted()) {
+
+        button.textContent =
+            "🔊 Unmute";
+
+    } else {
+
+        button.textContent =
+            "🔇 Mute";
+
+    }
+
+}
+
+
+/* =========================
+   UPDATE OSD
+   ========================= */
+
+function updateOSD() {
+
+    if (!CHANNELS.length) {
+
+        return;
+
+    }
+
+
+    const channel =
+        CHANNELS[currentChannelIndex];
+
+
+    let title =
+        "YouTube video";
+
+
+    /*
+     * Try to get the real YouTube
+     * title from the player.
+     */
+
+    if (player) {
+
+        try {
+
+            const videoData =
+                player.getVideoData();
+
+            if (
+                videoData &&
+                videoData.title
+            ) {
+
+                title =
+                    videoData.title;
+
+            }
+
+        } catch (error) {
+
+            console.log(
+                "Could not get video title."
+            );
+
+        }
+
+    }
+
+
+    document.getElementById(
+        "osd-num"
+    ).textContent =
+        "CH " +
+        String(
+            currentChannelIndex + 1
+        ).padStart(2, "0");
+
+
+    document.getElementById(
+        "osd-name"
+    ).textContent =
+        channel.name ||
+        "Channel";
+
+
+    document.getElementById(
+        "osd-title"
+    ).textContent =
+        title;
+
+
+    showOSD();
+
+}
+
+
+/* =========================
+   SHOW OSD
+   ========================= */
+
+function showOSD(customTitle) {
+
+    const osd =
+        document.getElementById(
+            "osd"
+        );
+
+
+    if (customTitle) {
+
+        document.getElementById(
+            "osd-title"
+        ).textContent =
+            customTitle;
+
+    }
+
+
+    osd.classList.add(
+        "visible"
+    );
+
+
+    clearTimeout(
+        osdTimer
+    );
+
+
+    osdTimer =
+        setTimeout(
+            function () {
+
+                osd.classList.remove(
+                    "visible"
+                );
+
+            },
+            5000
+        );
+
+}
+
+
+/* =========================
+   EPG
+   ========================= */
+
+function toggleEPG() {
+
+    epgVisible =
+        !epgVisible;
+
+
+    const epg =
+        document.getElementById(
+            "epg"
+        );
+
+
+    if (epgVisible) {
+
+        epg.classList.add(
+            "visible"
+        );
+
+        buildEPG();
+
+    } else {
+
+        epg.classList.remove(
+            "visible"
+        );
+
+    }
+
+}
+
+
+/* =========================
+   BUILD EPG
+   ========================= */
+
+function buildEPG() {
+
+    const container =
+        document.getElementById(
+            "epg-content"
+        );
+
+
+    container.innerHTML = "";
+
+
+    CHANNELS.forEach(
+        function(channel, index) {
+
+            const row =
+                document.createElement(
+                    "div"
+                );
+
+
+            row.className =
+                "epg-row";
+
+
+            if (
+                index ===
+                currentChannelIndex
+            ) {
+
+                row.classList.add(
+                    "current"
+                );
+
+            }
+
+
+            const channelName =
+                document.createElement(
+                    "div"
+                );
+
+
+            channelName.className =
+                "epg-channel";
+
+
+            channelName.textContent =
+                "CH " +
+                String(
+                    index + 1
+                ).padStart(2, "0") +
+                " — " +
+                (
+                    channel.name ||
+                    "Channel"
+                );
+
+
+            const programme =
+                document.createElement(
+                    "div"
+                );
+
+
+            programme.className =
+                "epg-programme";
+
+
+            const programmeTitle =
+                document.createElement(
+                    "div"
+                );
+
+
+            programmeTitle.className =
+                "epg-programme-title";
+
+
+            let text =
+                "YouTube playlist";
+
+
+            if (
+                index ===
+                currentChannelIndex
+            ) {
+
+                text =
+                    "Playing video " +
+                    (
+                        currentVideoIndex + 1
+                    ) +
+                    " of " +
+                    channel.playlist.length;
+
+            } else {
+
+                text =
+                    channel.playlist.length +
+                    " videos";
+
+            }
+
+
+            programmeTitle.textContent =
+                text;
+
+
+            const programmeNumber =
+                document.createElement(
+                    "div"
+                );
+
+
+            programmeNumber.className =
+                "epg-programme-number";
+
+
+            programmeNumber.textContent =
+                "Press ▲ / ▼ to change channel";
+
+
+            programme.appendChild(
+                programmeTitle
+            );
+
+            programme.appendChild(
+                programmeNumber
+            );
+
+
+            row.appendChild(
+                channelName
+            );
+
+            row.appendChild(
+                programme
+            );
+
+
+            /*
+             * Clicking an EPG row changes channel.
+             */
+
+            row.addEventListener(
+                "click",
+                function() {
+
+                    currentChannelIndex =
+                        index;
+
+                    currentVideoIndex =
+                        0;
+
+                    loadVideo(0);
+
+                    toggleEPG();
+
+                }
+            );
+
+
+            container.appendChild(
+                row
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================
+   CLOCK
+   ========================= */
+
+function updateClock() {
+
+    const clock =
+        document.getElementById(
+            "epg-clock"
+        );
+
+
+    const now =
+        new Date();
+
+
+    clock.textContent =
+        now.toLocaleTimeString(
+            [],
+            {
+                hour: "2-digit",
+                minute: "2-digit",
+                second: "2-digit"
+            }
+        );
+
+}
+
+
+/* =========================
+   MESSAGE
+   ========================= */
+
+function showMessage(
+    title,
+    text
+) {
+
+    document.getElementById(
+        "message-title"
+    ).textContent =
+        title;
+
+
+    document.getElementById(
+        "message-text"
+    ).innerHTML =
+        text;
+
+
+    document.getElementById(
+        "message"
+    ).classList.remove(
+        "hidden"
+    );
+
+}
+
+
+/* =========================
+   HIDE MESSAGE
+   ========================= */
+
+function hideMessage() {
+
+    document.getElementById(
+        "message"
+    ).classList.add(
+        "hidden"
+    );
+
+}
+
+
+/* =========================
+   KEYBOARD CONTROLS
+   ========================= */
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        /*
+         * Up = previous channel
+         */
+
+        if (
+            event.key === "ArrowUp"
+        ) {
+
+            prevChannel();
+
+        }
+
+
+        /*
+         * Down = next channel
+         */
+
+        else if (
+            event.key === "ArrowDown"
+        ) {
+
+            nextChannel();
+
+        }
+
+
+        /*
+         * M = mute
+         */
+
+        else if (
+            event.key.toLowerCase() === "m"
+        ) {
+
+            toggleMute();
+
+        }
+
+
+        /*
+         * G = TV Guide
+         */
+
+        else if (
+            event.key.toLowerCase() === "g"
+        ) {
+
+            toggleEPG();
+
+        }
+
+
+        /*
+         * Escape closes TV Guide
+         */
+
+        else if (
+            event.key === "Escape" &&
+            epgVisible
+        ) {
+
+            toggleEPG();
+
+        }
+
+    }
+);
+
+
+/* =========================
+   START CLOCK
+   ========================= */
+
+setInterval(
+    updateClock,
+    1000
+);
+
+updateClock();
+
+
+/* =========================
+   LOAD CHANNELS
+   ========================= */
+
+loadChannels();
+
 </script>
 
-  <!-- Load YouTube IFrame API -->
-  <script src="https://www.youtube.com/iframe_api"></script>
 </body>
 </html>
