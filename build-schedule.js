@@ -141,6 +141,15 @@ async function generateSchedule() {
 
   // Helper filter function for metadata matching
   const matchesCriteria = (item, ch) => {
+       // Check for explicitly included titles first
+    if (ch.includeTitles && ch.includeTitles.length > 0) {
+      const isIncluded = ch.includeTitles.some(title => 
+        item.Name.toLowerCase() === title.toLowerCase() || 
+        item.Name.toLowerCase().includes(title.toLowerCase())
+      );
+      if (!isIncluded) return false;
+    }
+  
     // Check for Studio rules first
     if (ch.studios && ch.studios.length > 0) {
       // Jellyfin returns studios as an array of objects, so we map to the name
