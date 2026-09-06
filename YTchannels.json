@@ -3,7 +3,13 @@
     "id": 1,
     "name": "Test Channel",
     "playlist": [
-      {
+            {
+        "id": "UQDZmENoI3c"
+      },
+       {
+        "id": "EMBIODmknro"
+      },
+            {
         "id": "Ln1MI6xjqgE"
       }
     ]
