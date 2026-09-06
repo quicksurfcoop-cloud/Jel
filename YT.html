@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -408,86 +407,6 @@ let startupSeeking = false;
 
 
 /* =========================================================
-   LOCAL STORAGE
-   ========================================================= */
-
-const DURATION_STORAGE_KEY =
-    "jelTV_video_durations_v1";
-
-
-function getSavedDurations() {
-
-    try {
-
-        return JSON.parse(
-            localStorage.getItem(
-                DURATION_STORAGE_KEY
-            ) || "{}"
-        );
-
-    } catch (error) {
-
-        console.warn(
-            "Could not read saved durations."
-        );
-
-        return {};
-    }
-}
-
-
-function saveVideoDuration(videoId, duration) {
-
-    if (
-        !videoId ||
-        !duration ||
-        !isFinite(duration)
-    ) {
-        return;
-    }
-
-    const durations =
-        getSavedDurations();
-
-    durations[videoId] =
-        Number(duration);
-
-    try {
-
-        localStorage.setItem(
-            DURATION_STORAGE_KEY,
-            JSON.stringify(durations)
-        );
-
-    } catch (error) {
-
-        console.warn(
-            "Could not save video duration."
-        );
-    }
-}
-
-
-function getSavedDuration(videoId) {
-
-    const durations =
-        getSavedDurations();
-
-    if (
-        durations[videoId] &&
-        isFinite(durations[videoId])
-    ) {
-
-        return Number(
-            durations[videoId]
-        );
-    }
-
-    return 0;
-}
-
-
-/* =========================================================
    BROADCAST START
    ========================================================= */
 
@@ -622,18 +541,6 @@ function onYouTubeIframeAPIReady() {
    CALCULATE CURRENT BROADCAST POSITION
    ========================================================= */
 
-/*
-   Uses the durations we already know.
-
-   If every video has a saved duration,
-   this can calculate exactly where the
-   channel should currently be.
-
-   If some durations are unknown, we use
-   the first unknown video as the point
-   where we need to learn more.
-*/
-
 function calculateBroadcastPosition(channel) {
 
     if (
@@ -659,67 +566,27 @@ function calculateBroadcastPosition(channel) {
         now.getMinutes() * 60 +
         now.getSeconds();
 
-    /*
-       Seconds since today's broadcast start.
-    */
-
     let elapsed =
         currentSeconds -
         broadcastStart;
-
-    /*
-       If broadcastStart is later than
-       the current time, treat it as
-       yesterday's broadcast.
-    */
 
     if (elapsed < 0) {
 
         elapsed += 86400;
     }
 
-
-    /*
-       Calculate the total known cycle.
-    */
-
     let totalDuration = 0;
 
-    let allKnown = true;
+    for (let i = 0; i < playlist.length; i++) {
 
-    for (
-        let i = 0;
-        i < playlist.length;
-        i++
-    ) {
+        const video = playlist[i];
 
-        const video =
-            playlist[i];
-
-        const duration =
-            getSavedDuration(
-                video.id
-            );
-
-        if (duration <= 0) {
-
-            allKnown = false;
-            break;
-        }
+        const duration = Number(video.duration) || 0;
 
         totalDuration += duration;
     }
 
-
-    /*
-       If all durations are known,
-       calculate the exact position.
-    */
-
-    if (
-        allKnown &&
-        totalDuration > 0
-    ) {
+    if (totalDuration > 0) {
 
         const position =
             elapsed %
@@ -727,69 +594,23 @@ function calculateBroadcastPosition(channel) {
 
         let accumulated = 0;
 
-        for (
-            let i = 0;
-            i < playlist.length;
-            i++
-        ) {
+        for (let i = 0; i < playlist.length; i++) {
 
-            const duration =
-                getSavedDuration(
-                    playlist[i].id
-                );
+            const duration = Number(playlist[i].duration) || 0;
 
-            if (
-                position <
-                accumulated + duration
-            ) {
+            if (position < accumulated + duration) {
 
                 return {
 
                     index: i,
 
-                    offset:
-                        position -
-                        accumulated,
+                    offset: position - accumulated,
 
                     exact: true
                 };
             }
 
             accumulated += duration;
-        }
-    }
-
-
-    /*
-       If durations aren't fully known,
-       start at the first video that we
-       haven't learned yet.
-
-       This allows the channel to learn
-       the playlist naturally.
-    */
-
-    for (
-        let i = 0;
-        i < playlist.length;
-        i++
-    ) {
-
-        const duration =
-            getSavedDuration(
-                playlist[i].id
-            );
-
-        if (duration <= 0) {
-
-            return {
-
-                index: i,
-
-                offset: 0,
-
-                exact: false
-            };
         }
     }
 
@@ -832,12 +653,6 @@ function initPlayer() {
 
         return;
     }
-
-
-    /*
-       Work out which programme should
-       currently be on.
-    */
 
     const position =
         calculateBroadcastPosition(
@@ -950,21 +765,8 @@ function onPlayerReady(event) {
 
     buildEPG();
 
-
-    /*
-       After the player has loaded,
-       save its real duration.
-    */
-
     setTimeout(
         function() {
-
-            learnCurrentDuration();
-
-            /*
-               If we know the exact broadcast
-               position, seek to it.
-            */
 
             const channel =
                 CHANNELS[
@@ -1014,59 +816,6 @@ function onPlayerReady(event) {
 
 
 /* =========================================================
-   LEARN CURRENT VIDEO DURATION
-   ========================================================= */
-
-function learnCurrentDuration() {
-
-    if (!player) return;
-
-    const channel =
-        CHANNELS[
-            currentChannelIndex
-        ];
-
-    if (!channel) return;
-
-    const video =
-        channel.playlist[
-            currentVideoIndex
-        ];
-
-    if (!video) return;
-
-    try {
-
-        const duration =
-            player.getDuration();
-
-        if (
-            duration &&
-            duration > 0
-        ) {
-
-            saveVideoDuration(
-                video.id,
-                duration
-            );
-
-            console.log(
-                "Saved duration:",
-                video.id,
-                duration
-            );
-        }
-
-    } catch (error) {
-
-        console.warn(
-            "Could not read duration."
-        );
-    }
-}
-
-
-/* =========================================================
    PLAYER STATE CHANGES
    ========================================================= */
 
@@ -1087,8 +836,6 @@ function onPlayerStateChange(event) {
 
         updateOSD();
 
-        learnCurrentDuration();
-
         buildEPG();
 
         startupSeeking = false;
@@ -1099,8 +846,6 @@ function onPlayerStateChange(event) {
         event.data ===
         YT.PlayerState.ENDED
     ) {
-
-        learnCurrentDuration();
 
         console.log(
             "Video ended."
@@ -1744,13 +1489,6 @@ function buildEPG() {
                 "epg-programmes";
 
 
-            /*
-               For the current channel,
-               display the current programme
-               first, followed by the next
-               programmes.
-            */
-
             let startIndex = 0;
 
             if (
@@ -1786,10 +1524,7 @@ function buildEPG() {
                     ];
 
 
-                const duration =
-                    getSavedDuration(
-                        video.id
-                    );
+                const duration = Number(video.duration) || 0;
 
 
                 const programme =
@@ -1924,7 +1659,7 @@ function buildEPG() {
                 } else {
 
                     meta.textContent =
-                        "Duration not yet learned";
+                        "Unknown duration";
                 }
 
 
@@ -2041,12 +1776,6 @@ function buildEPG() {
 
                     currentChannelIndex =
                         channelIndex;
-
-                    /*
-                       When manually changing
-                       channel, start the selected
-                       channel at its first video.
-                    */
 
                     currentVideoIndex = 0;
 
@@ -2201,4 +1930,3 @@ loadChannels();
 
 </body>
 </html>
-```
