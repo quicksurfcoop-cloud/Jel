@@ -41,7 +41,7 @@ const CHANNELS = [
     genres: [],
     excludeGenres: ['Documentary'],
     allowedRatings: ['TV-Y7', 'TV-G', 'TV-PG', 'G', 'PG'],
-    excludeTitles: ['Sailor Moon', 'Dragon Ball', 'Aria', 'Avatar: The Last Airbender', 'Adventure Time', 'ThunderCats','Teenage Mutant Ninja Turtles', 'Penn & Teller: Fool Us', 'Dragon Ball GT', 'Halloween Wars'],
+    excludeTitles: ['Sailor Moon', 'Dragon Ball', 'Aria', 'Halloween Baking Championship', 'Avatar: The Last Airbender', 'Adventure Time', 'ThunderCats','Teenage Mutant Ninja Turtles', 'Penn & Teller: Fool Us', 'Dragon Ball GT', 'Halloween Wars'],
     startYear: 1970,
     endYear: 2026
   },
@@ -49,7 +49,7 @@ const CHANNELS = [
     id: 'superhero-tv',
     name: 'Superhero TV',
     includeItemTypes: ['Series'], 
-    tags: ['superhero', 'superhero team', 'female superhero', 'masked superhero'],
+    tags: ['superhero', 'Power Ranger', 'superhero team', 'female superhero', 'masked superhero'],
     excludeGenres: ['Anime'],
     excludeTags: ['Anime']
   },
