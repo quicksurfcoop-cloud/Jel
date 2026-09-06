@@ -25,12 +25,75 @@
   },
   {
     "id": 2,
-    "name": "Test 2",
-    "broadcastStart": "01:00",
+    "name": "Scuzz",
+    "broadcastStart": "00:00",
     "playlist": [
       {
-        "id": "L8WKoLwkw0"
+        "id": "Ys1rRnG6vzM",
+        "title": "Track 1",
+        "duration": 240
+      },
+      {
+        "id": "SPfFpxqYRnw",
+        "title": "Track 2",
+        "duration": 240
+      },
+      {
+        "id": "JiDnB-CrrNs",
+        "title": "Killswitch Engage - The End Of Heartache",
+        "duration": 245
+      },
+      {
+        "id": "PgMsACFMIq8",
+        "title": "Killswitch Engage - Rose Of Sharyn",
+        "duration": 232
+      },
+      {
+        "id": "HL9kaJZw8iw",
+        "title": "Track 5",
+        "duration": 240
+      },
+      {
+        "id": "oZzXzXx-xng",
+        "title": "Lamb of God - Now You've Got Something to Die For",
+        "duration": 222
+      },
+      {
+        "id": "7gOroLFHcF0",
+        "title": "Track 7",
+        "duration": 240
+      },
+      {
+        "id": "GRiC35zeziU",
+        "title": "In Flames - Take This Life",
+        "duration": 228
+      },
+      {
+        "id": "TsdIO8RHMTc",
+        "title": "Track 9",
+        "duration": 240
+      },
+      {
+        "id": "5SgN5lvWZwQ",
+        "title": "Track 10",
+        "duration": 240
+      },
+      {
+        "id": "uX-kf3s_6DQ",
+        "title": "Track 11",
+        "duration": 240
+      },
+      {
+        "id": "x0fwvLXQdUc",
+        "title": "Track 12",
+        "duration": 240
+      },
+      {
+        "id": "IwOPi8uyI2M",
+        "title": "Alexisonfire - This Could Be Anywhere In The World",
+        "duration": 253
       }
     ]
+  }
   }
 ]
