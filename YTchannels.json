@@ -22,5 +22,15 @@
         "duration": 7921
       }
     ]
+  },
+   {
+    "id": 2,
+    "name": "Test 2",
+    "broadcastStart": "00:00",
+    "playlist": [
+      {
+        "id": "L8WKoLwkw0",
+      }
+    ]
   }
 ]
