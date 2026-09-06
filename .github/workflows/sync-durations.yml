@@ -1,0 +1,35 @@
+name: Auto Fetch YouTube Durations
+
+on:
+  push:
+    paths:
+      - 'YTchannels.json'
+  workflow_dispatch:
+
+jobs:
+  update-json:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Fetch Durations
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+        run: node update-durations.js
+
+      - name: Commit and Push Updated YTchannels.json
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add YTchannels.json
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update video durations via GitHub Action" && git push)
