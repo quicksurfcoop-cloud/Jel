@@ -284,30 +284,52 @@
             return;
         }
 
-        player = new YT.Player('player', {
+function initPlayer() {
+  const channel = CHANNELS[currentChannelIdx];
 
-            playerVars: {
-                autoplay: 1,
-                controls: 0,
-                disablekb: 1,
-                modestbranding: 1,
-                rel: 0,
-                mute: 1
-            },
+  player = new YT.Player('player', {
+    playerVars: {
+      autoplay: 1,
+      controls: 0,
+      disablekb: 1,
+      modestbranding: 1,
+      rel: 0,
+      mute: 1,
+      listType: 'playlist',
+      list: channel.youtubePlaylist
+    },
 
-            events: {
-                onReady: function () {
-                    console.log('YouTube player ready');
+    events: {
+      onReady: function(event) {
+        console.log("YouTube player ready");
+        console.log("Loading playlist:", channel.youtubePlaylist);
 
-                    loadChannel(currentChannelIdx);
-                },
+        event.target.setLoop(true);
+        event.target.playVideo();
 
-                onStateChange: onPlayerStateChange,
+        showOSD(
+          `CH ${String(channel.id).padStart(2, '0')}`,
+          channel.name,
+          "Loading playlist..."
+        );
 
-                onError: onPlayerError
-            }
-        });
+        syncMuteButtonState();
+      },
+
+      onStateChange: onPlayerStateChange,
+
+      onError: function(event) {
+        console.error("YouTube player error:", event.data);
+
+        showOSD(
+          `CH ${String(channel.id).padStart(2, '0')}`,
+          channel.name,
+          `YouTube Error ${event.data}`
+        );
+      }
     }
+  });
+}
 
 
     /*
@@ -388,65 +410,59 @@
      * ============================================================
      */
 
-    function loadChannel(index) {
+function loadChannel(index) {
+  if (!CHANNELS.length || !player) return;
 
-        if (!CHANNELS.length || !player) {
-            return;
-        }
+  currentChannelIdx = index;
 
-        currentChannelIdx = index;
+  const channel = CHANNELS[currentChannelIdx];
 
-        const channel = CHANNELS[currentChannelIdx];
+  console.log("Switching to channel:", channel.name);
+  console.log("Playlist ID:", channel.youtubePlaylist);
 
-        if (!channel.youtubePlaylist) {
+  player.loadPlaylist({
+    list: channel.youtubePlaylist,
+    listType: 'playlist',
+    index: 0
+  });
 
-            showOSD(
-                `CH ${String(channel.id).padStart(2, '0')}`,
-                channel.name,
-                'No YouTube playlist configured'
-            );
+  player.setLoop(true);
+  player.playVideo();
 
-            return;
-        }
+  showOSD(
+    `CH ${String(channel.id).padStart(2, '0')}`,
+    channel.name,
+    "Loading playlist..."
+  );
 
-        console.log(
-            `Loading channel ${channel.id}:`,
-            channel.youtubePlaylist
-        );
+  syncMuteButtonState();
 
+  if (epgVisible) {
+    renderEPG();
+  }
+}
 
-        /*
-         * Load the entire YouTube playlist.
-         *
-         * YouTube handles:
-         * - playlist order
-         * - advancing to the next video
-         * - playlist playback
-         */
+      function onPlayerStateChange(event) {
+  console.log("YouTube player state:", event.data);
 
-        player.loadPlaylist(
-            channel.youtubePlaylist
-        );
+  // Playing
+  if (event.data === YT.PlayerState.PLAYING) {
+    const channel = CHANNELS[currentChannelIdx];
 
+    const title = player.getVideoData().title || "Playing";
 
-        player.playVideo();
+    showOSD(
+      `CH ${String(channel.id).padStart(2, '0')}`,
+      channel.name,
+      title
+    );
+  }
 
-
-        showOSD(
-            `CH ${String(channel.id).padStart(2, '0')}`,
-            channel.name,
-            'Playlist'
-        );
-
-
-        syncMuteButtonState();
-
-
-        if (epgVisible) {
-            renderEPG();
-        }
-    }
-
+  // Video ended
+  if (event.data === YT.PlayerState.ENDED) {
+    player.nextVideo();
+  }
+}
 
     /*
      * Restart the current playlist when it reaches the end.
