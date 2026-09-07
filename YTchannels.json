@@ -271,5 +271,177 @@
         "duration": 1192
       }
     ]
+  },
+  {
+    "id": 4,
+    "name": "UK VHS",
+    "broadcastStart": "00:00",
+    "playlist": [
+      {
+        "id": "RkbbTo6dUZg",
+        "title": "UK VHS Closing: Treasure Planet (2003)",
+        "duration": 32
+      },
+      {
+        "id": "PchVVTqLFGo",
+        "title": "Toy Story 2 UK VHS: Opening",
+        "duration": 581
+      },
+      {
+        "id": "kbjwyNVdbMg",
+        "title": "1996 Buena Vista Home Entertainment UK in-store loop tape FULL VHSRIP 50FPS",
+        "duration": 1689
+      },
+      {
+        "id": "Wey8tRkrDQA",
+        "title": "Opening to Dinosaur UK VHS (2001)",
+        "duration": 397
+      },
+      {
+        "id": "U5W7ShOEJvU",
+        "title": "Original VHS Opening and Closing to A Question of Taste UK VHS Tape",
+        "duration": 167
+      },
+      {
+        "id": "_8_wMVrmBg8",
+        "title": "Original VHS Opening & Closing: Juice (UK Rental/Timecode Tape)",
+        "duration": 793
+      },
+      {
+        "id": "e1xouV55YIo",
+        "title": "All Thomas The Tank Engine UK VHS Intros and Credits",
+        "duration": 1776
+      },
+      {
+        "id": "GAmw8GE2yyk",
+        "title": "Original VHS Opening: Ice Age (2002 UK Rental Tape)",
+        "duration": 565
+      },
+      {
+        "id": "ovQORKpseTo",
+        "title": "Basil the Great Mouse Detective (1986) . 5th October 1992 - UK VHS",
+        "duration": 629
+      },
+      {
+        "id": "W_X7OmAxTb0",
+        "title": "Aladdin and the king of thieves (UK VHS opening 1997 Edition)",
+        "duration": 722
+      },
+      {
+        "id": "sRMsFVEcRoM",
+        "title": "Opening to A Bug's Life UK VHS (1999)",
+        "duration": 602
+      },
+      {
+        "id": "mprDt755DZ4",
+        "title": "Original VHS Opening and Closing to The Banana Splits UK VHS Tape",
+        "duration": 360
+      },
+      {
+        "id": "9pVlEa_X-ZY",
+        "title": "Original VHS Opening and Closing to Soccer's Hard Men UK VHS Tape",
+        "duration": 89
+      },
+      {
+        "id": "2BK9xaYvL0k",
+        "title": "Lavender Castle - In The Beginning and Other Stories (UK VHS 1999) (FANMADE)",
+        "duration": 30
+      },
+      {
+        "id": "0AtceqKMEIg",
+        "title": "Original VHS Opening and Closing to Beauty and the Beast UK VHS Tape",
+        "duration": 642
+      },
+      {
+        "id": "wFYeFIMIGpk",
+        "title": "A VHS opening/closing into Thomasand the Magic Railroad, (UK VHS)",
+        "duration": 880
+      },
+      {
+        "id": "qIT4SlTyAVI",
+        "title": "Opening to The Aristocats UK VHS (1995)",
+        "duration": 499
+      },
+      {
+        "id": "S1_uZDB3iTg",
+        "title": "Original VHS Opening and Closing to Titan AE UK VHS Tape",
+        "duration": 488
+      },
+      {
+        "id": "nKelj9V_j2M",
+        "title": "South park: bigger longer uncut Song: Moutain Town( Uk VHS RIP)",
+        "duration": 239
+      },
+      {
+        "id": "43mF3NnoljY",
+        "title": "Opening To The Animal Kingdom Movies Space Adventure UK VHS 2026",
+        "duration": 933
+      },
+      {
+        "id": "Wb_qLl7F7Vc",
+        "title": "Opening to Mulan UK VHS (1999)",
+        "duration": 453
+      },
+      {
+        "id": "OvU-Et-PMzU",
+        "title": "Original VHS Opening and Closing to Thomas and Friends Happy Holidays UK VHS Tape",
+        "duration": 112
+      },
+      {
+        "id": "_RP6yCHAbO0",
+        "title": "The Lion King (1994) . 20th September 1995 - UK VHS",
+        "duration": 1029
+      },
+      {
+        "id": "CoUNru0lPj4",
+        "title": "Opening to Harry Potter and the Philosopher's Stone UK VHS (2002)",
+        "duration": 203
+      },
+      {
+        "id": "VrbipDXix0w",
+        "title": "Opening to Ice Age UK VHS (2002)",
+        "duration": 480
+      },
+      {
+        "id": "jttHXMOhmcQ",
+        "title": "Robocop 1987 US Vs UK VHS Tape Remix with @RobsVintageVideo #robocop #vhstape",
+        "duration": 40
+      },
+      {
+        "id": "cS8DUA-7IQI",
+        "title": "Opening to The Jungle Book UK VHS (1993)",
+        "duration": 479
+      },
+      {
+        "id": "UI5anZTMANs",
+        "title": "The Snowman (1982 UK VHS)",
+        "duration": 1613
+      },
+      {
+        "id": "rvr3z6WTXjA",
+        "title": "Original VHS Opening & Closing: Thomas and the Magic Railroad (UK Retail Tape)",
+        "duration": 439
+      },
+      {
+        "id": "edmwTBlL9xA",
+        "title": "Willy Wonka & The Chocolate Factory: VHS UK (1997)",
+        "duration": 360
+      },
+      {
+        "id": "0W7R4sJXzK4",
+        "title": "UK VHS Opening: Spiderman - The Ultimate Villain Showdown (2002)",
+        "duration": 488
+      },
+      {
+        "id": "8tQxWCPr5ro",
+        "title": "Opening to Jiminy Cricket's Christmas UK VHS [1995]",
+        "duration": 484
+      },
+      {
+        "id": "Ysuuf675_Qs",
+        "title": "Fun With Pingu (1998 UK VHS)",
+        "duration": 1615
+      }
+    ]
   }
 ]
