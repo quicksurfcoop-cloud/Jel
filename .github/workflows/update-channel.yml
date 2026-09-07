@@ -1,0 +1,59 @@
+name: Generate Channel from YouTube Search
+
+on:
+  workflow_dispatch:
+    inputs:
+      keyword:
+        description: 'Search Keyword (e.g. "2000s metalcore music videos")'
+        required: true
+        type: string
+      channel_id:
+        description: 'Channel ID Number (e.g. 3)'
+        required: true
+        type: string
+      channel_name:
+        description: 'Channel Name Display (e.g. 2000s Metalcore)'
+        required: true
+        type: string
+      max_results:
+        description: 'Number of videos to fetch'
+        required: false
+        default: '15'
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  build-channel:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js environment
+        uses: actions/checkout@v4
+        with:
+          node-version: '20'
+
+      - name: Install Google API package
+        run: npm install googleapis
+
+      - name: Fetch YouTube Data & Update JSON
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+        run: |
+          node scripts/generateChannel.js \
+            "${{ inputs.keyword }}" \
+            "${{ inputs.channel_id }}" \
+            "${{ inputs.channel_name }}" \
+            "${{ inputs.max_results }}"
+
+      - name: Commit and push updated YTchannels.json
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add YTchannels.json
+          git commit -m "Auto-update Channel ${{ inputs.channel_id }} via search query: ${{ inputs.keyword }}" || echo "No changes to commit"
+          git push
