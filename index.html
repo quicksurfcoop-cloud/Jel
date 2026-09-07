@@ -8,14 +8,13 @@
   <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
   <style>
     body {
-      background-color: #000;
-      color: #fff;
-      font-family: system-ui, -apple-system, sans-serif;
+      background-color: #0a0a0a;
+      color: #ffffff;
       margin: 0;
+      font-family: Arial, sans-serif;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
       min-height: 100vh;
     }
     .container { width: 100%; max-width: 900px; padding: 10px; box-sizing: border-box; }
@@ -31,95 +30,100 @@
     }
     .info { margin-top: 10px; font-size: 14px; color: #aaa; }
   
-  #tv-header {
-  background-color: #02020a; /* Deep blue matching the logo edges */
-  text-align: center;
-  padding: 15px 0;
-  border-bottom: 2px solid #5a83c2; /* Light blue accent line */
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-  width: 100%;
-}
+    #tv-header {
+      background-color: #02020a;
+      text-align: center;
+      padding: 15px 0;
+      border-bottom: 2px solid #5a83c2;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+      width: 100%;
+    }
 
-#brand-logo {
-  height: 150px; /* Adjust this value to scale the logo up or down */
-  width: auto;
-  display: block;
-  margin: 0 auto;
-}
+    #brand-logo {
+      height: 150px;
+      width: auto;
+      display: block;
+      margin: 0 auto;
+    }
 
-/* Optional: Dark theme for the rest of the body to match the new vibe */
-body {
-  background-color: #0a0a0a;
-  color: #ffffff;
-  margin: 0;
-  font-family: Arial, sans-serif;
-}
-#tv-guide-container {
-  max-width: 800px;
-  margin: 20px auto;
-  background-color: #050514;
-  border: 1px solid #1a2a4a;
-  border-radius: 8px;
-  padding: 15px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-}
+    #tv-guide-container {
+      width: 100%;
+      max-width: 900px;
+      margin: 20px auto;
+      background-color: #050514;
+      border: 1px solid #1a2a4a;
+      border-radius: 8px;
+      padding: 15px;
+      box-sizing: border-box;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    }
 
-#tv-guide-container h2 {
-  text-align: center;
-  color: #5a83c2;
-  margin-top: 0;
-  border-bottom: 1px solid #1a2a4a;
-  padding-bottom: 10px;
-}
+    #tv-guide-container h2 {
+      text-align: center;
+      color: #5a83c2;
+      margin-top: 0;
+      border-bottom: 1px solid #1a2a4a;
+      padding-bottom: 10px;
+    }
 
-.epg-row {
-  display: flex;
-  flex-direction: column;
-  padding: 12px 0;
-  border-bottom: 1px solid #10182b;
-}
+    .epg-row {
+      display: flex;
+      flex-direction: column;
+      padding: 12px 10px;
+      border-bottom: 1px solid #10182b;
+      border-radius: 4px;
+      transition: background 0.2s;
+    }
 
-.epg-row:last-child {
-  border-bottom: none;
-}
+    .epg-row:hover {
+      background-color: #0d152c;
+    }
 
-.epg-channel-name {
-  font-size: 1.2em;
-  font-weight: bold;
-  color: #ffffff;
-  margin-bottom: 5px;
-}
+    .epg-row:last-child {
+      border-bottom: none;
+    }
 
-.epg-shows {
-  display: flex;
-  justify-content: space-between;
-  font-size: 0.9em;
-  color: #a0aec0;
-}
+    .epg-channel-name {
+      font-size: 1.2em;
+      font-weight: bold;
+      color: #ffffff;
+      margin-bottom: 5px;
+    }
 
-.epg-now {
-  color: #48bb78; /* Green tint for live status */
-}
+    .epg-shows {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.9em;
+      color: #a0aec0;
+      gap: 15px;
+    }
 
+    .epg-now {
+      color: #48bb78;
+    }
   </style>
 </head>
 <body>
   <header id="tv-header">
-  <img src="IMG_1942.jpeg" alt="Skyline TV Logo" id="brand-logo">
-</header>
+    <img src="image.png" alt="Skyline TV Logo" id="brand-logo">
+  </header>
 
+  <div class="container">
+    <video id="tvPlayer" controls autoplay muted playsinline></video>
+    
+    <div class="controls">
+      <label for="channelSelect">Channel:</label>
+      <select id="channelSelect" onchange="switchChannel()"></select>
+      <button onclick="syncPlayback()">Sync Live Offset</button>
+    </div>
 
-<div class="container">
-  <video id="tvPlayer" controls autoplay muted playsinline></video>
-  
-  <div class="controls">
-    <label for="channelSelect">Channel:</label>
-    <select id="channelSelect" onchange="switchChannel()"></select>
-    <button onclick="syncPlayback()">Sync Live Offset</button>
+    <div class="info" id="nowPlaying">Loading schedule...</div>
   </div>
 
-  <div class="info" id="nowPlaying">Loading schedule...</div>
-</div>
+  <div id="tv-guide-container">
+    <h2>Live TV Guide</h2>
+    <div id="epg-list">Loading guide...</div>
+  </div>
 
 <script>
   const JELLYFIN_URL = "https://spread.thepebbles.tech"; 
@@ -151,9 +155,13 @@ body {
 
       currentChannelKey = channelKeys[0];
       syncPlayback();
+
+      // Render the EPG immediately upon loading data
+      renderEPG(scheduleData);
     } catch (err) {
       console.error(err);
       document.getElementById('nowPlaying').innerText = "Error loading schedule.";
+      document.getElementById('epg-list').innerText = "Failed to load guide data.";
     }
   }
 
@@ -162,8 +170,6 @@ body {
 
     const channel = scheduleData.channels[currentChannelKey];
     const nowSeconds = Math.floor(Date.now() / 1000);
-    
-    // Fixed reference point (Jan 1, 2026 00:00:00 UTC) so updates don't reset the timeline
     const FIXED_EPOCH_SECONDS = 1767225600; 
     
     const elapsedSeconds = (nowSeconds - FIXED_EPOCH_SECONDS) % channel.totalLoopSeconds;
@@ -183,7 +189,6 @@ body {
     const player = document.getElementById('tvPlayer');
     const apiKey = scheduleData.apiKey || '';
     
-    // Fully parameterized Jellyfin HLS stream request
     const streamUrl = `${JELLYFIN_URL}/Videos/${activeItem.id}/master.m3u8?` + 
       `api_key=${apiKey}` +
       `&MediaSourceId=${activeItem.id}` +
@@ -194,7 +199,6 @@ body {
       `&SegmentContainer=ts` +
       `&VideoBitrate=8000000`;
 
-    // 1. Desktop / Xbox Edge (Uses Hls.js library)
     if (Hls.isSupported()) {
       if (hlsEngine) {
         hlsEngine.destroy();
@@ -214,18 +218,15 @@ body {
         const playPromise = player.play();
         if (playPromise !== undefined) {
           playPromise.catch(() => {
-            console.log("Autoplay blocked - attempting muted fallback");
             player.muted = true;
             player.play();
           });
         }
       });
-    } 
-    // 2. Mobile Safari / iOS Native HLS
-    else if (player.canPlayType('application/vnd.apple.mpegurl')) {
+    } else if (player.canPlayType('application/vnd.apple.mpegurl')) {
       player.src = streamUrl;
       player.currentTime = seekOffset;
-      player.play().catch(() => console.log("Autoplay blocked"));
+      player.play().catch(() => {});
     }
 
     document.getElementById('nowPlaying').innerText = 
@@ -244,73 +245,66 @@ body {
       hlsEngine = null;
     }
 
-    // Clear source completely
     player.src = "";
     player.load();
 
-    // Small delay prevents Xbox Edge hardware decoder pipeline lockups
     setTimeout(() => {
       syncPlayback();
     }, 150);
   }
 
-  init();
   function renderEPG(schedule) {
-  const epgList = document.getElementById('epg-list');
-  epgList.innerHTML = ''; // Clear loading text
+    const epgList = document.getElementById('epg-list');
+    epgList.innerHTML = ''; 
 
-  const nowSeconds = Math.floor(Date.now() / 1000);
-  const FIXED_EPOCH_SECONDS = 1767225600; // Matches your build script
+    const nowSeconds = Math.floor(Date.now() / 1000);
+    const FIXED_EPOCH_SECONDS = 1767225600; 
 
-  for (const [channelId, channel] of Object.entries(schedule.channels)) {
-    const elapsedSeconds = (nowSeconds - FIXED_EPOCH_SECONDS) % channel.totalLoopSeconds;
-    
-    let activeItem = channel.items[0];
-    let nextItem = channel.items[1 % channel.items.length];
+    for (const [channelId, channel] of Object.entries(schedule.channels)) {
+      const elapsedSeconds = (nowSeconds - FIXED_EPOCH_SECONDS) % channel.totalLoopSeconds;
+      
+      let activeItem = channel.items[0];
+      let nextItem = channel.items[1 % channel.items.length];
 
-    for (let i = 0; i < channel.items.length; i++) {
-      const item = channel.items[i];
-      if (elapsedSeconds >= item.start && elapsedSeconds < item.start + item.duration) {
-        activeItem = item;
-        nextItem = channel.items[(i + 1) % channel.items.length];
-        break;
+      for (let i = 0; i < channel.items.length; i++) {
+        const item = channel.items[i];
+        if (elapsedSeconds >= item.start && elapsedSeconds < item.start + item.duration) {
+          activeItem = item;
+          nextItem = channel.items[(i + 1) % channel.items.length];
+          break;
+        }
       }
+
+      const formatTitle = (item) => item.series ? `${item.series} - ${item.title}` : item.title;
+
+      const row = document.createElement('div');
+      row.className = 'epg-row';
+      row.innerHTML = `
+        <div class="epg-channel-name">${channel.name}</div>
+        <div class="epg-shows">
+          <span class="epg-now">▶ Now: ${formatTitle(activeItem)}</span>
+          <span class="epg-next">Next: ${formatTitle(nextItem)}</span>
+        </div>
+      `;
+      
+      // Click row to change channel instantly
+      row.style.cursor = 'pointer';
+      row.onclick = () => {
+        document.getElementById('channelSelect').value = channelId;
+        switchChannel();
+      };
+
+      epgList.appendChild(row);
     }
-
-    const formatTitle = (item) => item.series ? `${item.series} - ${item.title}` : item.title;
-
-    const row = document.createElement('div');
-    row.className = 'epg-row';
-    row.innerHTML = `
-      <div class="epg-channel-name">${channel.name}</div>
-      <div class="epg-shows">
-        <span class="epg-now">▶ Now: ${formatTitle(activeItem)}</span>
-        <span class="epg-next">Next: ${formatTitle(nextItem)}</span>
-      </div>
-    `;
-    
-    // Optional: Make clicking the row tune the video player to that channel
-    row.style.cursor = 'pointer';
-    row.onclick = () => {
-      // Replace playChannel with whatever your actual tune function is named
-      console.log(`Tuning to ${channelId}...`); 
-    };
-
-    epgList.appendChild(row);
   }
-}
 
-// Set it to refresh the guide automatically every 60 seconds
-setInterval(() => {
-  // Assuming 'globalSchedule' is the variable where you saved the fetched channels.json
-  if (typeof globalSchedule !== 'undefined') renderEPG(globalSchedule); 
-}, 60000);
+  // Auto-refresh guide data every 60 seconds
+  setInterval(() => {
+    if (scheduleData) renderEPG(scheduleData); 
+  }, 60000);
 
+  // Initialize application
+  init();
 </script>
-<div id="tv-guide-container">
-  <h2>Live TV Guide</h2>
-  <div id="epg-list">Loading guide...</div>
-</div>
-
 </body>
 </html>
