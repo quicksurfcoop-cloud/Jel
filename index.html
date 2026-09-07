@@ -54,6 +54,52 @@ body {
   margin: 0;
   font-family: Arial, sans-serif;
 }
+#tv-guide-container {
+  max-width: 800px;
+  margin: 20px auto;
+  background-color: #050514;
+  border: 1px solid #1a2a4a;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+#tv-guide-container h2 {
+  text-align: center;
+  color: #5a83c2;
+  margin-top: 0;
+  border-bottom: 1px solid #1a2a4a;
+  padding-bottom: 10px;
+}
+
+.epg-row {
+  display: flex;
+  flex-direction: column;
+  padding: 12px 0;
+  border-bottom: 1px solid #10182b;
+}
+
+.epg-row:last-child {
+  border-bottom: none;
+}
+
+.epg-channel-name {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 5px;
+}
+
+.epg-shows {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9em;
+  color: #a0aec0;
+}
+
+.epg-now {
+  color: #48bb78; /* Green tint for live status */
+}
 
   </style>
 </head>
@@ -209,7 +255,62 @@ body {
   }
 
   init();
+  function renderEPG(schedule) {
+  const epgList = document.getElementById('epg-list');
+  epgList.innerHTML = ''; // Clear loading text
+
+  const nowSeconds = Math.floor(Date.now() / 1000);
+  const FIXED_EPOCH_SECONDS = 1767225600; // Matches your build script
+
+  for (const [channelId, channel] of Object.entries(schedule.channels)) {
+    const elapsedSeconds = (nowSeconds - FIXED_EPOCH_SECONDS) % channel.totalLoopSeconds;
+    
+    let activeItem = channel.items[0];
+    let nextItem = channel.items[1 % channel.items.length];
+
+    for (let i = 0; i < channel.items.length; i++) {
+      const item = channel.items[i];
+      if (elapsedSeconds >= item.start && elapsedSeconds < item.start + item.duration) {
+        activeItem = item;
+        nextItem = channel.items[(i + 1) % channel.items.length];
+        break;
+      }
+    }
+
+    const formatTitle = (item) => item.series ? `${item.series} - ${item.title}` : item.title;
+
+    const row = document.createElement('div');
+    row.className = 'epg-row';
+    row.innerHTML = `
+      <div class="epg-channel-name">${channel.name}</div>
+      <div class="epg-shows">
+        <span class="epg-now">▶ Now: ${formatTitle(activeItem)}</span>
+        <span class="epg-next">Next: ${formatTitle(nextItem)}</span>
+      </div>
+    `;
+    
+    // Optional: Make clicking the row tune the video player to that channel
+    row.style.cursor = 'pointer';
+    row.onclick = () => {
+      // Replace playChannel with whatever your actual tune function is named
+      console.log(`Tuning to ${channelId}...`); 
+    };
+
+    epgList.appendChild(row);
+  }
+}
+
+// Set it to refresh the guide automatically every 60 seconds
+setInterval(() => {
+  // Assuming 'globalSchedule' is the variable where you saved the fetched channels.json
+  if (typeof globalSchedule !== 'undefined') renderEPG(globalSchedule); 
+}, 60000);
+
 </script>
+<div id="tv-guide-container">
+  <h2>Live TV Guide</h2>
+  <div id="epg-list">Loading guide...</div>
+</div>
 
 </body>
 </html>
