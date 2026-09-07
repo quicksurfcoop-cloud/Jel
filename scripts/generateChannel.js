@@ -17,45 +17,88 @@ function parseISODuration(durationStr) {
   return hours * 3600 + minutes * 60 + seconds;
 }
 
-async function generateChannel(keyword, channelId, channelName, targetCount = 200) {
+// Extracts playlist ID from full URL or returns string if already ID
+function extractPlaylistId(input) {
+  if (input.includes('list=')) {
+    try {
+      const urlParams = new URLSearchParams(input.split('?')[1]);
+      return urlParams.get('list');
+    } catch (e) {
+      return null;
+    }
+  }
+  if (input.startsWith('PL') || input.startsWith('OLAK5a') || input.startsWith('FL') || input.startsWith('LL')) {
+    return input;
+  }
+  return null;
+}
+
+async function generateChannel(input, channelId, channelName, targetCount = 200) {
   let videoIds = [];
   let nextPageToken = null;
 
-  console.log(`Searching for up to ${targetCount} videos matching "${keyword}"...`);
+  const playlistId = extractPlaylistId(input);
 
-  // 1. Loop through search pages using nextPageToken
-  while (videoIds.length < targetCount) {
-    // API max limit per call is 50
-    const fetchAmount = Math.min(50, targetCount - videoIds.length);
+  if (playlistId) {
+    console.log(`Detected Playlist ID "${playlistId}". Extracting tracks up to ${targetCount}...`);
 
-    const searchRes = await youtube.search.list({
-      part: ['snippet'],
-      q: keyword,
-      type: ['video'],
-      videoEmbeddable: 'true',
-      maxResults: fetchAmount,
-      pageToken: nextPageToken || undefined,
-    });
+    while (videoIds.length < targetCount) {
+      const fetchAmount = Math.min(50, targetCount - videoIds.length);
 
-    const items = searchRes.data.items || [];
-    const newIds = items.map((item) => item.id.videoId).filter(Boolean);
+      const playlistRes = await youtube.playlistItems.list({
+        part: ['contentDetails', 'snippet'],
+        playlistId: playlistId,
+        maxResults: fetchAmount,
+        pageToken: nextPageToken || undefined,
+      });
 
-    videoIds.push(...newIds);
+      const items = playlistRes.data.items || [];
+      const newIds = items
+        .map((item) => item.contentDetails?.videoId || item.snippet?.resourceId?.videoId)
+        .filter(Boolean);
 
-    nextPageToken = searchRes.data.nextPageToken;
+      videoIds.push(...newIds);
+      nextPageToken = playlistRes.data.nextPageToken;
 
-    // Break if there are no more pages available from YouTube
-    if (!nextPageToken || items.length === 0) break;
+      if (!nextPageToken || items.length === 0) break;
+    }
+
+  } else {
+    console.log(`Searching for up to ${targetCount} videos matching keyword "${input}"...`);
+
+    while (videoIds.length < targetCount) {
+      const fetchAmount = Math.min(50, targetCount - videoIds.length);
+
+      const searchRes = await youtube.search.list({
+        part: ['snippet'],
+        q: input,
+        type: ['video'],
+        videoEmbeddable: 'true',
+        order: 'relevance',
+        regionCode: 'GB',
+        relevanceLanguage: 'en',
+        maxResults: fetchAmount,
+        pageToken: nextPageToken || undefined,
+      });
+
+      const items = searchRes.data.items || [];
+      const newIds = items.map((item) => item.id.videoId).filter(Boolean);
+
+      videoIds.push(...newIds);
+      nextPageToken = searchRes.data.nextPageToken;
+
+      if (!nextPageToken || items.length === 0) break;
+    }
   }
 
   if (!videoIds.length) {
-    console.log(`No videos found for keyword: ${keyword}`);
+    console.log(`No videos found for input: ${input}`);
     return;
   }
 
-  console.log(`Found ${videoIds.length} raw video IDs. Fetching durations and filtering...`);
+  console.log(`Retrieved ${videoIds.length} video IDs. Fetching metadata and durations...`);
 
-  // 2. Fetch video details in batches of 50 (YouTube API limit for videos.list)
+  // Fetch video details in batches of 50
   const playlist = [];
 
   for (let i = 0; i < videoIds.length; i += 50) {
@@ -80,7 +123,7 @@ async function generateChannel(keyword, channelId, channelName, targetCount = 20
     }
   }
 
-  // 3. Load existing YTchannels.json file or create a new array
+  // Load existing YTchannels.json file or create a new array
   const jsonPath = path.join(__dirname, '..', 'YTchannels.json');
   let channels = [];
   if (fs.existsSync(jsonPath)) {
@@ -94,7 +137,6 @@ async function generateChannel(keyword, channelId, channelName, targetCount = 20
     playlist: playlist,
   };
 
-  // Replace existing channel with same ID, or append new channel
   const existingIdx = channels.findIndex((c) => c.id === newChannel.id);
   if (existingIdx !== -1) {
     channels[existingIdx] = newChannel;
@@ -102,11 +144,10 @@ async function generateChannel(keyword, channelId, channelName, targetCount = 20
     channels.push(newChannel);
   }
 
-  // Write updated data back to YTchannels.json
   fs.writeFileSync(jsonPath, JSON.stringify(channels, null, 2));
   console.log(`Successfully updated Channel ${channelId}: "${channelName}" with ${playlist.length} valid tracks.`);
 }
 
 // Read arguments passed from GitHub Action CLI
-const [keyword, channelId, channelName, maxResults] = process.argv.slice(2);
-generateChannel(keyword, channelId, channelName, maxResults ? parseInt(maxResults, 10) : 200);
+const [input, channelId, channelName, maxResults] = process.argv.slice(2);
+generateChannel(input, channelId, channelName, maxResults ? parseInt(maxResults, 10) : 200);
