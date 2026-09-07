@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       keyword:
-        description: 'Search Keyword (e.g. "2000s metalcore music videos")'
+        description: 'Search Keyword OR Playlist URL/ID'
         required: true
         type: string
       channel_id:
@@ -18,7 +18,7 @@ on:
       max_results:
         description: 'Number of videos to fetch'
         required: false
-        default: '15'
+        default: '200'
         type: string
 
 permissions:
@@ -33,7 +33,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Setup Node.js environment
-        uses: actions/checkout@v4
+        uses: actions/setup-node@v4
         with:
           node-version: '20'
 
@@ -43,17 +43,24 @@ jobs:
       - name: Fetch YouTube Data & Update JSON
         env:
           YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+          INPUT_KEYWORD: ${{ inputs.keyword }}
+          INPUT_CHANNEL_ID: ${{ inputs.channel_id }}
+          INPUT_CHANNEL_NAME: ${{ inputs.channel_name }}
+          INPUT_MAX_RESULTS: ${{ inputs.max_results }}
         run: |
           node scripts/generateChannel.js \
-            "${{ inputs.keyword }}" \
-            "${{ inputs.channel_id }}" \
-            "${{ inputs.channel_name }}" \
-            "${{ inputs.max_results }}"
+            "$INPUT_KEYWORD" \
+            "$INPUT_CHANNEL_ID" \
+            "$INPUT_CHANNEL_NAME" \
+            "$INPUT_MAX_RESULTS"
 
       - name: Commit and push updated YTchannels.json
+        env:
+          INPUT_CHANNEL_ID: ${{ inputs.channel_id }}
+          INPUT_KEYWORD: ${{ inputs.keyword }}
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add YTchannels.json
-          git commit -m "Auto-update Channel ${{ inputs.channel_id }} via search query: ${{ inputs.keyword }}" || echo "No changes to commit"
+          git commit -m "Auto-update Channel $INPUT_CHANNEL_ID via query/playlist: $INPUT_KEYWORD" || echo "No changes to commit"
           git push
