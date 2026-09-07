@@ -1,0 +1,2655 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tv generator-info-name="Nostalgex TV">
+  <channel id="cartoons">
+    <display-name>90s Cartoons</display-name>
+  </channel>
+  <channel id="sitcoms">
+    <display-name>Retro Sitcoms</display-name>
+  </channel>
+  <channel id="BBC">
+    <display-name>BBC</display-name>
+  </channel>
+  <channel id="scream-kids">
+    <display-name>SCREAM KIDS</display-name>
+  </channel>
+  <channel id="superhero-tv">
+    <display-name>Superhero TV</display-name>
+  </channel>
+  <channel id="superhero-movies">
+    <display-name>Superhero Cinema</display-name>
+  </channel>
+  <channel id="Period-dramas">
+    <display-name>Period Dramas &amp; History</display-name>
+  </channel>
+  <channel id="box-office">
+    <display-name>Sky Box Office - Latest Movies</display-name>
+  </channel>
+  <programme start="20260907153634 +0000" stop="20260907155908 +0000" channel="cartoons">
+    <title lang="en">Recess</title>
+    <sub-title lang="en">My Funny Valentines</sub-title>
+  </programme>
+  <programme start="20260907155908 +0000" stop="20260907161012 +0000" channel="cartoons">
+    <title lang="en">SpongeBob SquarePants</title>
+    <sub-title lang="en">Karen for Spot</sub-title>
+  </programme>
+  <programme start="20260907161012 +0000" stop="20260907163154 +0000" channel="cartoons">
+    <title lang="en">Tiny Toon Adventures</title>
+    <sub-title lang="en">The Acme Home Shopping Show</sub-title>
+  </programme>
+  <programme start="20260907163154 +0000" stop="20260907165446 +0000" channel="cartoons">
+    <title lang="en">Hey Arnold!</title>
+    <sub-title lang="en">Ms. Perfect</sub-title>
+  </programme>
+  <programme start="20260907165446 +0000" stop="20260907171643 +0000" channel="cartoons">
+    <title lang="en">Pokémon</title>
+    <sub-title lang="en">A Keeper for Keeps?</sub-title>
+  </programme>
+  <programme start="20260907171643 +0000" stop="20260907172907 +0000" channel="cartoons">
+    <title lang="en">The Ren &amp; Stimpy Show</title>
+    <sub-title lang="en">Dog Tags</sub-title>
+  </programme>
+  <programme start="20260907172907 +0000" stop="20260907173159 +0000" channel="cartoons">
+    <title lang="en">Animaniacs</title>
+    <sub-title lang="en">Valuable Lesson</sub-title>
+  </programme>
+  <programme start="20260907173159 +0000" stop="20260907175310 +0000" channel="cartoons">
+    <title lang="en">Pokémon</title>
+    <sub-title lang="en">Slaking Kong!</sub-title>
+  </programme>
+  <programme start="20260907175310 +0000" stop="20260907175959 +0000" channel="cartoons">
+    <title lang="en">Tom &amp; Jerry Kids Show</title>
+    <sub-title lang="en">Deep Space Droopy</sub-title>
+  </programme>
+  <programme start="20260907175959 +0000" stop="20260907182430 +0000" channel="cartoons">
+    <title lang="en">Pokémon</title>
+    <sub-title lang="en">A Full Battle Bounty!</sub-title>
+  </programme>
+  <programme start="20260907182430 +0000" stop="20260907185517 +0000" channel="cartoons">
+    <title lang="en">VeggieTales</title>
+    <sub-title lang="en">&apos;Twas The Night Before Easter</sub-title>
+  </programme>
+  <programme start="20260907185517 +0000" stop="20260907191657 +0000" channel="cartoons">
+    <title lang="en">Tiny Toon Adventures</title>
+    <sub-title lang="en">Stuff That Goes Bump in the Night</sub-title>
+  </programme>
+  <programme start="20260907191657 +0000" stop="20260907192549 +0000" channel="cartoons">
+    <title lang="en">Kipper</title>
+    <sub-title lang="en">The Costume Party</sub-title>
+  </programme>
+  <programme start="20260907192549 +0000" stop="20260907194700 +0000" channel="cartoons">
+    <title lang="en">Pokémon</title>
+    <sub-title lang="en">League Unleashed!</sub-title>
+  </programme>
+  <programme start="20260907194700 +0000" stop="20260907201656 +0000" channel="cartoons">
+    <title lang="en">Arthur</title>
+    <sub-title lang="en">The Agent of Change</sub-title>
+  </programme>
+  <programme start="20260907201656 +0000" stop="20260907204301 +0000" channel="cartoons">
+    <title lang="en">Arthur</title>
+    <sub-title lang="en">What&apos;s in a Name?</sub-title>
+  </programme>
+  <programme start="20260907204301 +0000" stop="20260907210615 +0000" channel="cartoons">
+    <title lang="en">Rugrats</title>
+    <sub-title lang="en">Discover America</sub-title>
+  </programme>
+  <programme start="20260907210615 +0000" stop="20260907213015 +0000" channel="cartoons">
+    <title lang="en">Little Bear</title>
+    <sub-title lang="en">Cat&apos;s Shortcut</sub-title>
+  </programme>
+  <programme start="20260907213015 +0000" stop="20260907215346 +0000" channel="cartoons">
+    <title lang="en">SpongeBob SquarePants</title>
+    <sub-title lang="en">Grandpappy the Pirate</sub-title>
+  </programme>
+  <programme start="20260907215346 +0000" stop="20260907221524 +0000" channel="cartoons">
+    <title lang="en">Tiny Toon Adventures</title>
+    <sub-title lang="en">Strange Tales of Weird Science</sub-title>
+  </programme>
+  <programme start="20260907221524 +0000" stop="20260907223852 +0000" channel="cartoons">
+    <title lang="en">Back to the Future</title>
+    <sub-title lang="en">Solar Sailors</sub-title>
+  </programme>
+  <programme start="20260907223852 +0000" stop="20260907230234 +0000" channel="cartoons">
+    <title lang="en">Hey Arnold!</title>
+    <sub-title lang="en">Old Iron Man</sub-title>
+  </programme>
+  <programme start="20260907230234 +0000" stop="20260907232514 +0000" channel="cartoons">
+    <title lang="en">Pokémon</title>
+    <sub-title lang="en">For Crying Out Loud</sub-title>
+  </programme>
+  <programme start="20260907232514 +0000" stop="20260907233514 +0000" channel="cartoons">
+    <title lang="en">Bob the Builder</title>
+    <sub-title lang="en">Lofty’s Comet</sub-title>
+  </programme>
+  <programme start="20260907233514 +0000" stop="20260907235800 +0000" channel="cartoons">
+    <title lang="en">Darkwing Duck</title>
+    <sub-title lang="en">Jail Bird</sub-title>
+  </programme>
+  <programme start="20260907235800 +0000" stop="20260908001849 +0000" channel="cartoons">
+    <title lang="en">Pokémon</title>
+    <sub-title lang="en">Pokémon - S16E93 - All Eyes on the Future!</sub-title>
+  </programme>
+  <programme start="20260908001849 +0000" stop="20260908004854 +0000" channel="cartoons">
+    <title lang="en">The Real Adventures of Jonny Quest</title>
+    <sub-title lang="en">Digital Doublecross</sub-title>
+  </programme>
+  <programme start="20260908004854 +0000" stop="20260908010003 +0000" channel="cartoons">
+    <title lang="en">Bob the Builder</title>
+    <sub-title lang="en">Bob the Builder - S19E21 - Dino Park[WEBDL</sub-title>
+  </programme>
+  <programme start="20260908010003 +0000" stop="20260908010848 +0000" channel="cartoons">
+    <title lang="en">Kipper</title>
+    <sub-title lang="en">Pig&apos;s Sweater</sub-title>
+  </programme>
+  <programme start="20260908010848 +0000" stop="20260908013229 +0000" channel="cartoons">
+    <title lang="en">Hey Arnold!</title>
+    <sub-title lang="en">Oskar Can&apos;t Read?</sub-title>
+  </programme>
+  <programme start="20260908013229 +0000" stop="20260908020256 +0000" channel="cartoons">
+    <title lang="en">VeggieTales</title>
+    <sub-title lang="en">Sumo of the Opera</sub-title>
+  </programme>
+  <programme start="20260908020256 +0000" stop="20260908021440 +0000" channel="cartoons">
+    <title lang="en">Aaahh!!! Real Monsters</title>
+    <sub-title lang="en">Out of the Past</sub-title>
+  </programme>
+  <programme start="20260908021440 +0000" stop="20260908022430 +0000" channel="cartoons">
+    <title lang="en">Bob the Builder</title>
+    <sub-title lang="en">Scratch’s Star Turn</sub-title>
+  </programme>
+  <programme start="20260908022430 +0000" stop="20260908023612 +0000" channel="cartoons">
+    <title lang="en">SpongeBob SquarePants</title>
+    <sub-title lang="en">One Trick Sponge</sub-title>
+  </programme>
+  <programme start="20260908023612 +0000" stop="20260908024838 +0000" channel="cartoons">
+    <title lang="en">SpongeBob SquarePants</title>
+    <sub-title lang="en">SpongeBob SquarePants - S10E51 - Mutiny on the Krusty[WEBDL</sub-title>
+  </programme>
+  <programme start="20260908024838 +0000" stop="20260908030931 +0000" channel="cartoons">
+    <title lang="en">Pinky and the Brain</title>
+    <sub-title lang="en">But That&apos;s Not All, Folks!</sub-title>
+  </programme>
+  <programme start="20260908030931 +0000" stop="20260908033043 +0000" channel="cartoons">
+    <title lang="en">Pokémon</title>
+    <sub-title lang="en">The Apple Corp!</sub-title>
+  </programme>
+  <programme start="20260908033043 +0000" stop="20260908035205 +0000" channel="cartoons">
+    <title lang="en">Pokémon</title>
+    <sub-title lang="en">Over the Mountain of Snow!</sub-title>
+  </programme>
+  <programme start="20260908035205 +0000" stop="20260908041315 +0000" channel="cartoons">
+    <title lang="en">Chibi Maruko-chan</title>
+    <sub-title lang="en">Mother&apos;s Day Part 2</sub-title>
+  </programme>
+  <programme start="20260908041315 +0000" stop="20260908043609 +0000" channel="cartoons">
+    <title lang="en">Franklin</title>
+    <sub-title lang="en">Franklin and the Puppet Play</sub-title>
+  </programme>
+  <programme start="20260908043609 +0000" stop="20260908045830 +0000" channel="cartoons">
+    <title lang="en">Batman: The Animated Series</title>
+    <sub-title lang="en">The Laughing Fish</sub-title>
+  </programme>
+  <programme start="20260908045830 +0000" stop="20260908052018 +0000" channel="cartoons">
+    <title lang="en">Sonic Underground</title>
+    <sub-title lang="en">Tangled Webs</sub-title>
+  </programme>
+  <programme start="20260908052018 +0000" stop="20260908053021 +0000" channel="cartoons">
+    <title lang="en">Bob the Builder</title>
+    <sub-title lang="en">Off Road Scrambler</sub-title>
+  </programme>
+  <programme start="20260908053021 +0000" stop="20260908055131 +0000" channel="cartoons">
+    <title lang="en">Pokémon</title>
+    <sub-title lang="en">One Big Happiny Family!</sub-title>
+  </programme>
+  <programme start="20260908055131 +0000" stop="20260908061531 +0000" channel="cartoons">
+    <title lang="en">Little Bear</title>
+    <sub-title lang="en">The Campout</sub-title>
+  </programme>
+  <programme start="20260908061531 +0000" stop="20260908063824 +0000" channel="cartoons">
+    <title lang="en">Franklin</title>
+    <sub-title lang="en">Franklin and Wolvie</sub-title>
+  </programme>
+  <programme start="20260908063824 +0000" stop="20260908070106 +0000" channel="cartoons">
+    <title lang="en">101 Dalmatians: The Series</title>
+    <sub-title lang="en">Cruella World</sub-title>
+  </programme>
+  <programme start="20260908070106 +0000" stop="20260908072215 +0000" channel="cartoons">
+    <title lang="en">Pokémon</title>
+    <sub-title lang="en">Great Bowls of Fire!</sub-title>
+  </programme>
+  <programme start="20260908072215 +0000" stop="20260908074436 +0000" channel="cartoons">
+    <title lang="en">Pokémon</title>
+    <sub-title lang="en">Sparks Fly for Magnemite</sub-title>
+  </programme>
+  <programme start="20260908074436 +0000" stop="20260908075446 +0000" channel="cartoons">
+    <title lang="en">The Ren &amp; Stimpy Show</title>
+    <sub-title lang="en">A Hard Days Luck</sub-title>
+  </programme>
+  <programme start="20260908075446 +0000" stop="20260908081608 +0000" channel="cartoons">
+    <title lang="en">Pokémon</title>
+    <sub-title lang="en">Showdown at the Shalour Gym!</sub-title>
+  </programme>
+  <programme start="20260908081608 +0000" stop="20260908083953 +0000" channel="cartoons">
+    <title lang="en">The Angry Beavers</title>
+    <sub-title lang="en">Stinky Toe / House Broken</sub-title>
+  </programme>
+  <programme start="20260908083953 +0000" stop="20260908090133 +0000" channel="cartoons">
+    <title lang="en">Pokémon</title>
+    <sub-title lang="en">Hoenn Alone!</sub-title>
+  </programme>
+  <programme start="20260908090133 +0000" stop="20260908092839 +0000" channel="cartoons">
+    <title lang="en">Arthur</title>
+    <sub-title lang="en">Arthur Bounces Back</sub-title>
+  </programme>
+  <programme start="20260908092839 +0000" stop="20260908095120 +0000" channel="cartoons">
+    <title lang="en">Duckman</title>
+    <sub-title lang="en">In the Nam of the Father</sub-title>
+  </programme>
+  <programme start="20260908095120 +0000" stop="20260908101527 +0000" channel="cartoons">
+    <title lang="en">Dragon Ball GT</title>
+    <sub-title lang="en">Lord Luud&apos;s Curse</sub-title>
+  </programme>
+  <programme start="20260908101527 +0000" stop="20260908103809 +0000" channel="cartoons">
+    <title lang="en">101 Dalmatians: The Series</title>
+    <sub-title lang="en">Every Little Crooked Nanny / Cone Head</sub-title>
+  </programme>
+  <programme start="20260908103809 +0000" stop="20260908105918 +0000" channel="cartoons">
+    <title lang="en">Batman Beyond</title>
+    <sub-title lang="en">Untouchable</sub-title>
+  </programme>
+  <programme start="20260908105918 +0000" stop="20260908112917 +0000" channel="cartoons">
+    <title lang="en">The Real Adventures of Jonny Quest</title>
+    <sub-title lang="en">Escape to Questworld</sub-title>
+  </programme>
+  <programme start="20260908112917 +0000" stop="20260908115326 +0000" channel="cartoons">
+    <title lang="en">Sailor Moon</title>
+    <sub-title lang="en">Friendly Foes</sub-title>
+  </programme>
+  <programme start="20260908115326 +0000" stop="20260908120745 +0000" channel="cartoons">
+    <title lang="en">The Ren &amp; Stimpy Show</title>
+    <sub-title lang="en">In the Army</sub-title>
+  </programme>
+  <programme start="20260908120745 +0000" stop="20260908121930 +0000" channel="cartoons">
+    <title lang="en">Aaahh!!! Real Monsters</title>
+    <sub-title lang="en">Fear, Thy Name Is Ickis</sub-title>
+  </programme>
+  <programme start="20260908121930 +0000" stop="20260908123042 +0000" channel="cartoons">
+    <title lang="en">Bob the Builder</title>
+    <sub-title lang="en">Bob the Builder - S19E26 - Here Be Dragons[WEBDL</sub-title>
+  </programme>
+  <programme start="20260908123042 +0000" stop="20260908125153 +0000" channel="cartoons">
+    <title lang="en">Pokémon</title>
+    <sub-title lang="en">Pokémon Ranger and the Kidnapped Riolu! (1)</sub-title>
+  </programme>
+  <programme start="20260908125153 +0000" stop="20260908131328 +0000" channel="cartoons">
+    <title lang="en">Pokémon</title>
+    <sub-title lang="en">Hooked on Onix</sub-title>
+  </programme>
+  <programme start="20260908131328 +0000" stop="20260908134029 +0000" channel="cartoons">
+    <title lang="en">Super Why!</title>
+    <sub-title lang="en">The Ugly Duckling</sub-title>
+  </programme>
+  <programme start="20260908134029 +0000" stop="20260908140459 +0000" channel="cartoons">
+    <title lang="en">Pokémon</title>
+    <sub-title lang="en">Partner Promises!</sub-title>
+  </programme>
+  <programme start="20260908140459 +0000" stop="20260908142547 +0000" channel="cartoons">
+    <title lang="en">Pokémon</title>
+    <sub-title lang="en">Pokémon - S16E84 - Adventures in Running Errands![SDTV</sub-title>
+  </programme>
+  <programme start="20260908142547 +0000" stop="20260908144843 +0000" channel="cartoons">
+    <title lang="en">Captain Planet and the Planeteers</title>
+    <sub-title lang="en">Bug Off</sub-title>
+  </programme>
+  <programme start="20260908144843 +0000" stop="20260908151005 +0000" channel="cartoons">
+    <title lang="en">Pokémon</title>
+    <sub-title lang="en">Cloudy Fate, Bright Future!</sub-title>
+  </programme>
+  <programme start="20260908151005 +0000" stop="20260908153341 +0000" channel="cartoons">
+    <title lang="en">Hey Arnold!</title>
+    <sub-title lang="en">Coach Wittenberg / Four-Eyed Jack</sub-title>
+  </programme>
+  <programme start="20260908153341 +0000" stop="20260908155503 +0000" channel="cartoons">
+    <title lang="en">Pokémon</title>
+    <sub-title lang="en">Fairy-Type Trickery!</sub-title>
+  </programme>
+  <programme start="20260908155503 +0000" stop="20260908161716 +0000" channel="cartoons">
+    <title lang="en">Tom &amp; Jerry Kids Show</title>
+    <sub-title lang="en">Alien Mouse / Droopy Man / Abusement Park</sub-title>
+  </programme>
+  <programme start="20260908161716 +0000" stop="20260908162604 +0000" channel="cartoons">
+    <title lang="en">Kipper</title>
+    <sub-title lang="en">The Paddling Pool</sub-title>
+  </programme>
+  <programme start="20260908162604 +0000" stop="20260908163612 +0000" channel="cartoons">
+    <title lang="en">Bob the Builder</title>
+    <sub-title lang="en">Roley’s Rovers</sub-title>
+  </programme>
+  <programme start="20260908163612 +0000" stop="20260908165727 +0000" channel="cartoons">
+    <title lang="en">TaleSpin</title>
+    <sub-title lang="en">Citizen Khan</sub-title>
+  </programme>
+  <programme start="20260908165727 +0000" stop="20260908170905 +0000" channel="cartoons">
+    <title lang="en">SpongeBob SquarePants</title>
+    <sub-title lang="en">SpongeBob&apos;s Bad Habit</sub-title>
+  </programme>
+  <programme start="20260908170905 +0000" stop="20260908173235 +0000" channel="cartoons">
+    <title lang="en">The Wild Thornberrys</title>
+    <sub-title lang="en">Luck Be an Aye-Aye</sub-title>
+  </programme>
+  <programme start="20260908173235 +0000" stop="20260908174420 +0000" channel="cartoons">
+    <title lang="en">SpongeBob SquarePants</title>
+    <sub-title lang="en">SpongeBob SquarePants - S10E50 - Bulletin Board[WEBDL</sub-title>
+  </programme>
+  <programme start="20260908174420 +0000" stop="20260908180831 +0000" channel="cartoons">
+    <title lang="en">Rolie Polie Olie</title>
+    <sub-title lang="en">Family Portrait / Show and Tell / Little Helping Hand</sub-title>
+  </programme>
+  <programme start="20260908180831 +0000" stop="20260908182953 +0000" channel="cartoons">
+    <title lang="en">Pokémon</title>
+    <sub-title lang="en">Mission: Defeat Your Rival!</sub-title>
+  </programme>
+  <programme start="20260908182953 +0000" stop="20260908185114 +0000" channel="cartoons">
+    <title lang="en">Pokémon</title>
+    <sub-title lang="en">A Performance Pop Quiz!</sub-title>
+  </programme>
+  <programme start="20260908185114 +0000" stop="20260908191455 +0000" channel="cartoons">
+    <title lang="en">CatDog</title>
+    <sub-title lang="en">Extra! Extra! / CatDog Squared</sub-title>
+  </programme>
+  <programme start="20260908191455 +0000" stop="20260908192534 +0000" channel="cartoons">
+    <title lang="en">Animaniacs</title>
+    <sub-title lang="en">Boot Camping</sub-title>
+  </programme>
+  <programme start="20260908192534 +0000" stop="20260908194905 +0000" channel="cartoons">
+    <title lang="en">The Wild Thornberrys</title>
+    <sub-title lang="en">Temple of Eliza</sub-title>
+  </programme>
+  <programme start="20260908194905 +0000" stop="20260908200041 +0000" channel="cartoons">
+    <title lang="en">SpongeBob SquarePants</title>
+    <sub-title lang="en">Bulletin Board</sub-title>
+  </programme>
+  <programme start="20260908200041 +0000" stop="20260908202411 +0000" channel="cartoons">
+    <title lang="en">SpongeBob SquarePants</title>
+    <sub-title lang="en">Ghoul Fools</sub-title>
+  </programme>
+  <programme start="20260908202411 +0000" stop="20260908204600 +0000" channel="cartoons">
+    <title lang="en">Sonic Underground</title>
+    <sub-title lang="en">When in Rome...</sub-title>
+  </programme>
+  <programme start="20260908204600 +0000" stop="20260908205605 +0000" channel="cartoons">
+    <title lang="en">Bob the Builder</title>
+    <sub-title lang="en">Buffalo Bob</sub-title>
+  </programme>
+  <programme start="20260908205605 +0000" stop="20260908210758 +0000" channel="cartoons">
+    <title lang="en">SpongeBob SquarePants</title>
+    <sub-title lang="en">Culture Shock</sub-title>
+  </programme>
+  <programme start="20260908210758 +0000" stop="20260908211910 +0000" channel="cartoons">
+    <title lang="en">Bob the Builder</title>
+    <sub-title lang="en">Bob the Builder - S19E06 - Bob the Brave[WEBDL</sub-title>
+  </programme>
+  <programme start="20260908211910 +0000" stop="20260908214150 +0000" channel="cartoons">
+    <title lang="en">Pokémon</title>
+    <sub-title lang="en">The Superhero Secret</sub-title>
+  </programme>
+  <programme start="20260908214150 +0000" stop="20260908220403 +0000" channel="cartoons">
+    <title lang="en">Adventures of Sonic the Hedgehog</title>
+    <sub-title lang="en">Blackbot the Pirate</sub-title>
+  </programme>
+  <programme start="20260908220403 +0000" stop="20260908221630 +0000" channel="cartoons">
+    <title lang="en">SpongeBob SquarePants</title>
+    <sub-title lang="en">Spatula of the Heavens</sub-title>
+  </programme>
+  <programme start="20260908221630 +0000" stop="20260908223742 +0000" channel="cartoons">
+    <title lang="en">Chibi Maruko-chan</title>
+    <sub-title lang="en">Maru-chan Goes Into The Haunted House Part 1</sub-title>
+  </programme>
+  <programme start="20260908223742 +0000" stop="20260908230148 +0000" channel="cartoons">
+    <title lang="en">Rolie Polie Olie</title>
+    <sub-title lang="en">Little Bot Zoo / Zowie Soupy Hero / Coupy Won&apos;t Fit</sub-title>
+  </programme>
+  <programme start="20260908230148 +0000" stop="20260908232258 +0000" channel="cartoons">
+    <title lang="en">Chibi Maruko-chan</title>
+    <sub-title lang="en">Maruko-chan is still feeling down</sub-title>
+  </programme>
+  <programme start="20260908232258 +0000" stop="20260908234541 +0000" channel="cartoons">
+    <title lang="en">Darkwing Duck</title>
+    <sub-title lang="en">Mutantcy on the Bouncy</sub-title>
+  </programme>
+  <programme start="20260908234541 +0000" stop="20260909000948 +0000" channel="cartoons">
+    <title lang="en">Dragon Ball GT</title>
+    <sub-title lang="en">Terror on Imecka</sub-title>
+  </programme>
+  <programme start="20260909000948 +0000" stop="20260909003105 +0000" channel="cartoons">
+    <title lang="en">Pokémon</title>
+    <sub-title lang="en">A Pyramiding Rage!</sub-title>
+  </programme>
+  <programme start="20260909003105 +0000" stop="20260909004105 +0000" channel="cartoons">
+    <title lang="en">Bob the Builder</title>
+    <sub-title lang="en">Tumbler And The Ice Rink</sub-title>
+  </programme>
+  <programme start="20260909004105 +0000" stop="20260909010635 +0000" channel="cartoons">
+    <title lang="en">Animaniacs</title>
+    <sub-title lang="en">Animaniacs - S07E26-27-28-29 - What is That + Mouse Madness + Christopher Columbusted + Fake Medicines[WEBDL</sub-title>
+  </programme>
+  <programme start="20260909010635 +0000" stop="20260909011821 +0000" channel="cartoons">
+    <title lang="en">Aaahh!!! Real Monsters</title>
+    <sub-title lang="en">The War Is Over</sub-title>
+  </programme>
+  <programme start="20260909011821 +0000" stop="20260909014251 +0000" channel="cartoons">
+    <title lang="en">Pokémon</title>
+    <sub-title lang="en">Lulled to La-La Land!</sub-title>
+  </programme>
+  <programme start="20260909014251 +0000" stop="20260909020513 +0000" channel="cartoons">
+    <title lang="en">Batman: The Animated Series</title>
+    <sub-title lang="en">The Worry Men</sub-title>
+  </programme>
+  <programme start="20260909020513 +0000" stop="20260909022922 +0000" channel="cartoons">
+    <title lang="en">Sailor Moon</title>
+    <sub-title lang="en">An Animated Mess</sub-title>
+  </programme>
+  <programme start="20260909022922 +0000" stop="20260909025332 +0000" channel="cartoons">
+    <title lang="en">Dragon Ball GT</title>
+    <sub-title lang="en">Dragon Ball GT - S02E23 - Baby Put to Rest</sub-title>
+  </programme>
+  <programme start="20260909025332 +0000" stop="20260909025731 +0000" channel="cartoons">
+    <title lang="en">Animaniacs</title>
+    <sub-title lang="en">The Helpinki Formula</sub-title>
+  </programme>
+  <programme start="20260909025731 +0000" stop="20260909032047 +0000" channel="cartoons">
+    <title lang="en">SpongeBob SquarePants</title>
+    <sub-title lang="en">Have You Seen This Snail? / Dunces and Dragons</sub-title>
+  </programme>
+  <programme start="20260909032047 +0000" stop="20260909034512 +0000" channel="cartoons">
+    <title lang="en">Moomin</title>
+    <sub-title lang="en">Moomin Saves the Tigers</sub-title>
+  </programme>
+  <programme start="20260909034512 +0000" stop="20260909040100 +0000" channel="cartoons">
+    <title lang="en">Animaniacs</title>
+    <sub-title lang="en">Bully For Skippy</sub-title>
+  </programme>
+  <programme start="20260909040100 +0000" stop="20260909041205 +0000" channel="cartoons">
+    <title lang="en">Pepper Ann</title>
+    <sub-title lang="en">A Is for Average</sub-title>
+  </programme>
+  <programme start="20260909041205 +0000" stop="20260909043327 +0000" channel="cartoons">
+    <title lang="en">Pokémon</title>
+    <sub-title lang="en">Mending a Broken Spirit!</sub-title>
+  </programme>
+  <programme start="20260909043327 +0000" stop="20260909044015 +0000" channel="cartoons">
+    <title lang="en">Tom &amp; Jerry Kids Show</title>
+    <sub-title lang="en">Tom and Jerry Kids Show - S01E65 - McWolfenstein[WEBDL</sub-title>
+  </programme>
+  <programme start="20260909044015 +0000" stop="20260909050347 +0000" channel="cartoons">
+    <title lang="en">The Wild Thornberrys</title>
+    <sub-title lang="en">Rumble in the Jungle</sub-title>
+  </programme>
+  <programme start="20260909050347 +0000" stop="20260909052435 +0000" channel="cartoons">
+    <title lang="en">Where on Earth Is Carmen Sandiego?</title>
+    <sub-title lang="en">The Remnants</sub-title>
+  </programme>
+  <programme start="20260909052435 +0000" stop="20260909054906 +0000" channel="cartoons">
+    <title lang="en">Pokémon</title>
+    <sub-title lang="en">Pokémon - S20E48 - Shine! The Glimmer of Fire and Art</sub-title>
+  </programme>
+  <programme start="20260909054906 +0000" stop="20260909061151 +0000" channel="cartoons">
+    <title lang="en">101 Dalmatians: The Series</title>
+    <sub-title lang="en">Dalmatian Vacation (1): Road Warriors</sub-title>
+  </programme>
+  <programme start="20260909061151 +0000" stop="20260909063440 +0000" channel="cartoons">
+    <title lang="en">Sonic the Hedgehog</title>
+    <sub-title lang="en">No Brainer</sub-title>
+  </programme>
+  <programme start="20260909063440 +0000" stop="20260909065847 +0000" channel="cartoons">
+    <title lang="en">Rolie Polie Olie</title>
+    <sub-title lang="en">Blast From The Past / Gone Screwy / Mother Giz</sub-title>
+  </programme>
+  <programme start="20260909065847 +0000" stop="20260909072242 +0000" channel="cartoons">
+    <title lang="en">Rugrats</title>
+    <sub-title lang="en">Vacation / Babysitting Fluffy</sub-title>
+  </programme>
+  <programme start="20260909072242 +0000" stop="20260909073242 +0000" channel="cartoons">
+    <title lang="en">Bob the Builder</title>
+    <sub-title lang="en">The Three Musketrucks</sub-title>
+  </programme>
+  <programme start="20260909073242 +0000" stop="20260909075941 +0000" channel="cartoons">
+    <title lang="en">Super Why!</title>
+    <sub-title lang="en">The Story Of Mother Goose</sub-title>
+  </programme>
+  <programme start="20260909075941 +0000" stop="20260909082103 +0000" channel="cartoons">
+    <title lang="en">Pokémon</title>
+    <sub-title lang="en">Beauties Battling for Pride and Prestige!</sub-title>
+  </programme>
+  <programme start="20260909082103 +0000" stop="20260909084221 +0000" channel="cartoons">
+    <title lang="en">Pokémon</title>
+    <sub-title lang="en">Tasting the Bitter with the Sweet!</sub-title>
+  </programme>
+  <programme start="20260909084221 +0000" stop="20260909090417 +0000" channel="cartoons">
+    <title lang="en">Pokémon</title>
+    <sub-title lang="en">Pokémon - S19E80 - Trial on a Golden Scale![WEBDL</sub-title>
+  </programme>
+  <programme start="20260909090417 +0000" stop="20260909092322 +0000" channel="cartoons">
+    <title lang="en">Digimon: Digital Monsters</title>
+    <sub-title lang="en">The Last Temptation of the DigiDestined</sub-title>
+  </programme>
+  <programme start="20260909092322 +0000" stop="20260909094614 +0000" channel="cartoons">
+    <title lang="en">101 Dalmatians: The Series</title>
+    <sub-title lang="en">Citizen Canine</sub-title>
+  </programme>
+  <programme start="20260909094614 +0000" stop="20260909095801 +0000" channel="cartoons">
+    <title lang="en">SpongeBob SquarePants</title>
+    <sub-title lang="en">Firehouse Bob</sub-title>
+  </programme>
+  <programme start="20260909095801 +0000" stop="20260909102837 +0000" channel="cartoons">
+    <title lang="en">The Real Adventures of Jonny Quest</title>
+    <sub-title lang="en">Ezekiel Rage</sub-title>
+  </programme>
+  <programme start="20260909102837 +0000" stop="20260909104943 +0000" channel="cartoons">
+    <title lang="en">Digimon: Digital Monsters</title>
+    <sub-title lang="en">Beelzemon&apos;s Big Day</sub-title>
+  </programme>
+  <programme start="20260909104943 +0000" stop="20260909105948 +0000" channel="cartoons">
+    <title lang="en">Recess</title>
+    <sub-title lang="en">Prince Randall</sub-title>
+  </programme>
+  <programme start="20260909105948 +0000" stop="20260909112321 +0000" channel="cartoons">
+    <title lang="en">X-Men</title>
+    <sub-title lang="en">Night of the Sentinels (2)</sub-title>
+  </programme>
+  <programme start="20260909112321 +0000" stop="20260909114524 +0000" channel="cartoons">
+    <title lang="en">Spider-Man</title>
+    <sub-title lang="en">Neogenic Nightmare: Enter the Punisher</sub-title>
+  </programme>
+  <programme start="20260909114524 +0000" stop="20260909120804 +0000" channel="cartoons">
+    <title lang="en">Dexter&apos;s Laboratory</title>
+    <sub-title lang="en">Sister Mom / The Laughing</sub-title>
+  </programme>
+  <programme start="20260909120804 +0000" stop="20260909122926 +0000" channel="cartoons">
+    <title lang="en">Pokémon</title>
+    <sub-title lang="en">The Bonds of Evolution!</sub-title>
+  </programme>
+  <programme start="20260909122926 +0000" stop="20260909123916 +0000" channel="cartoons">
+    <title lang="en">Bob the Builder</title>
+    <sub-title lang="en">Whizzy Dizzy</sub-title>
+  </programme>
+  <programme start="20260909123916 +0000" stop="20260909130231 +0000" channel="cartoons">
+    <title lang="en">Captain Planet and the Planeteers</title>
+    <sub-title lang="en">The Night of the Wolf</sub-title>
+  </programme>
+  <programme start="20260909130231 +0000" stop="20260909131512 +0000" channel="cartoons">
+    <title lang="en">Arthur</title>
+    <sub-title lang="en">Arthur Rides the Bandwagon</sub-title>
+  </programme>
+  <programme start="20260909131512 +0000" stop="20260909133852 +0000" channel="cartoons">
+    <title lang="en">Hey Arnold!</title>
+    <sub-title lang="en">Back to School</sub-title>
+  </programme>
+  <programme start="20260909133852 +0000" stop="20260909140004 +0000" channel="cartoons">
+    <title lang="en">Pokémon</title>
+    <sub-title lang="en">All That Glitters!</sub-title>
+  </programme>
+  <programme start="20260909140004 +0000" stop="20260909142619 +0000" channel="cartoons">
+    <title lang="en">Arthur</title>
+    <sub-title lang="en">Whistling in the Wind</sub-title>
+  </programme>
+  <programme start="20260909142619 +0000" stop="20260909144754 +0000" channel="cartoons">
+    <title lang="en">Pokémon</title>
+    <sub-title lang="en">A Little Rocket R &amp; R!</sub-title>
+  </programme>
+  <programme start="20260909144754 +0000" stop="20260909145926 +0000" channel="cartoons">
+    <title lang="en">Pepper Ann</title>
+    <sub-title lang="en">Hazelnut&apos;s Finest</sub-title>
+  </programme>
+  <programme start="20260909145926 +0000" stop="20260909152320 +0000" channel="cartoons">
+    <title lang="en">Rocket Power</title>
+    <sub-title lang="en">Super McVarial 900 / Loss of Squid</sub-title>
+  </programme>
+  <programme start="20260909152320 +0000" stop="20260909154442 +0000" channel="cartoons">
+    <title lang="en">Pokémon</title>
+    <sub-title lang="en">Party Dancecapades!</sub-title>
+  </programme>
+  <programme start="20260909154442 +0000" stop="20260909160735 +0000" channel="cartoons">
+    <title lang="en">Franklin</title>
+    <sub-title lang="en">Franklin and Betty</sub-title>
+  </programme>
+  <programme start="20260907152037 +0000" stop="20260907154613 +0000" channel="sitcoms">
+    <title lang="en">Green Acres</title>
+    <sub-title lang="en">Hail to the Fire Chief</sub-title>
+  </programme>
+  <programme start="20260907154613 +0000" stop="20260907161003 +0000" channel="sitcoms">
+    <title lang="en">The Golden Girls</title>
+    <sub-title lang="en">If at Last You Do Succeed</sub-title>
+  </programme>
+  <programme start="20260907161003 +0000" stop="20260907163916 +0000" channel="sitcoms">
+    <title lang="en">Waiting for God</title>
+    <sub-title lang="en">Tell the Truth</sub-title>
+  </programme>
+  <programme start="20260907163916 +0000" stop="20260907170338 +0000" channel="sitcoms">
+    <title lang="en">Spaced</title>
+    <sub-title lang="en">Mettle</sub-title>
+  </programme>
+  <programme start="20260907170338 +0000" stop="20260907172515 +0000" channel="sitcoms">
+    <title lang="en">Becker</title>
+    <sub-title lang="en">Pain in the Aspirin</sub-title>
+  </programme>
+  <programme start="20260907172515 +0000" stop="20260907175125 +0000" channel="sitcoms">
+    <title lang="en">All in the Family</title>
+    <sub-title lang="en">Edith Writes a Song</sub-title>
+  </programme>
+  <programme start="20260907175125 +0000" stop="20260907181431 +0000" channel="sitcoms">
+    <title lang="en">The Nanny</title>
+    <sub-title lang="en">An Offer She Can&apos;t Refuse</sub-title>
+  </programme>
+  <programme start="20260907181431 +0000" stop="20260907183957 +0000" channel="sitcoms">
+    <title lang="en">Bewitched</title>
+    <sub-title lang="en">Mixed Doubles</sub-title>
+  </programme>
+  <programme start="20260907183957 +0000" stop="20260907190529 +0000" channel="sitcoms">
+    <title lang="en">All in the Family</title>
+    <sub-title lang="en">Oh Say Can You See</sub-title>
+  </programme>
+  <programme start="20260907190529 +0000" stop="20260907192801 +0000" channel="sitcoms">
+    <title lang="en">Everybody Loves Raymond</title>
+    <sub-title lang="en">Debra Makes Something Good</sub-title>
+  </programme>
+  <programme start="20260907192801 +0000" stop="20260907195105 +0000" channel="sitcoms">
+    <title lang="en">The Simpsons</title>
+    <sub-title lang="en">Treehouse of Horror III</sub-title>
+  </programme>
+  <programme start="20260907195105 +0000" stop="20260907201319 +0000" channel="sitcoms">
+    <title lang="en">Friends</title>
+    <sub-title lang="en">The One Where Rachel Smokes</sub-title>
+  </programme>
+  <programme start="20260907201319 +0000" stop="20260907203832 +0000" channel="sitcoms">
+    <title lang="en">The Bob Newhart Show</title>
+    <sub-title lang="en">Brutally Yours, Bob Hartley</sub-title>
+  </programme>
+  <programme start="20260907203832 +0000" stop="20260907210158 +0000" channel="sitcoms">
+    <title lang="en">Designing Women</title>
+    <sub-title lang="en">Last Tango in Atlanta</sub-title>
+  </programme>
+  <programme start="20260907210158 +0000" stop="20260907212724 +0000" channel="sitcoms">
+    <title lang="en">Bewitched</title>
+    <sub-title lang="en">Illegal Separation</sub-title>
+  </programme>
+  <programme start="20260907212724 +0000" stop="20260907215055 +0000" channel="sitcoms">
+    <title lang="en">Home Improvement</title>
+    <sub-title lang="en">What You See Is What You Get</sub-title>
+  </programme>
+  <programme start="20260907215055 +0000" stop="20260907221159 +0000" channel="sitcoms">
+    <title lang="en">Sabrina, the Teenage Witch</title>
+    <sub-title lang="en">Sabrina&apos;s Real World</sub-title>
+  </programme>
+  <programme start="20260907221159 +0000" stop="20260907223404 +0000" channel="sitcoms">
+    <title lang="en">South Park</title>
+    <sub-title lang="en">Kenny Dies</sub-title>
+  </programme>
+  <programme start="20260907223404 +0000" stop="20260907225534 +0000" channel="sitcoms">
+    <title lang="en">The King of Queens</title>
+    <sub-title lang="en">Oxy Moron</sub-title>
+  </programme>
+  <programme start="20260907225534 +0000" stop="20260907231715 +0000" channel="sitcoms">
+    <title lang="en">Frasier</title>
+    <sub-title lang="en">Roe to Perdition</sub-title>
+  </programme>
+  <programme start="20260907231715 +0000" stop="20260907234255 +0000" channel="sitcoms">
+    <title lang="en">M*A*S*H</title>
+    <sub-title lang="en">Tuttle</sub-title>
+  </programme>
+  <programme start="20260907234255 +0000" stop="20260908003418 +0000" channel="sitcoms">
+    <title lang="en">I Love Lucy</title>
+    <sub-title lang="en">I Love Lucy - S09E02 - The Ricardos Go to Japan</sub-title>
+  </programme>
+  <programme start="20260908003418 +0000" stop="20260908005944 +0000" channel="sitcoms">
+    <title lang="en">Bewitched</title>
+    <sub-title lang="en">Salem, Here We Come</sub-title>
+  </programme>
+  <programme start="20260908005944 +0000" stop="20260908012527 +0000" channel="sitcoms">
+    <title lang="en">Gomer Pyle, U.S.M.C.</title>
+    <sub-title lang="en">Gomer Makes the Honor Guard</sub-title>
+  </programme>
+  <programme start="20260908012527 +0000" stop="20260908014642 +0000" channel="sitcoms">
+    <title lang="en">The Fresh Prince of Bel-Air</title>
+    <sub-title lang="en">I, Clownius</sub-title>
+  </programme>
+  <programme start="20260908014642 +0000" stop="20260908021210 +0000" channel="sitcoms">
+    <title lang="en">Green Acres</title>
+    <sub-title lang="en">The Picnic</sub-title>
+  </programme>
+  <programme start="20260908021210 +0000" stop="20260908023407 +0000" channel="sitcoms">
+    <title lang="en">3rd Rock from the Sun</title>
+    <sub-title lang="en">A Nightmare on Dick Street (2)</sub-title>
+  </programme>
+  <programme start="20260908023407 +0000" stop="20260908025942 +0000" channel="sitcoms">
+    <title lang="en">The Mary Tyler Moore Show</title>
+    <sub-title lang="en">The Six-and-a-Half-Year Itch</sub-title>
+  </programme>
+  <programme start="20260908025942 +0000" stop="20260908032545 +0000" channel="sitcoms">
+    <title lang="en">All in the Family</title>
+    <sub-title lang="en">Archie and the FBI</sub-title>
+  </programme>
+  <programme start="20260908032545 +0000" stop="20260908034919 +0000" channel="sitcoms">
+    <title lang="en">Designing Women</title>
+    <sub-title lang="en">Miss Trial</sub-title>
+  </programme>
+  <programme start="20260908034919 +0000" stop="20260908042237 +0000" channel="sitcoms">
+    <title lang="en">Fawlty Towers</title>
+    <sub-title lang="en">The Wedding Party</sub-title>
+  </programme>
+  <programme start="20260908042237 +0000" stop="20260908044756 +0000" channel="sitcoms">
+    <title lang="en">Gilligan&apos;s Island</title>
+    <sub-title lang="en">Not Guilty</sub-title>
+  </programme>
+  <programme start="20260908044756 +0000" stop="20260908051025 +0000" channel="sitcoms">
+    <title lang="en">Benson</title>
+    <sub-title lang="en">On the Road</sub-title>
+  </programme>
+  <programme start="20260908051025 +0000" stop="20260908053218 +0000" channel="sitcoms">
+    <title lang="en">Becker</title>
+    <sub-title lang="en">It Had to Be Ew</sub-title>
+  </programme>
+  <programme start="20260908053218 +0000" stop="20260908055513 +0000" channel="sitcoms">
+    <title lang="en">Full House</title>
+    <sub-title lang="en">Michelle Rides Again (2)</sub-title>
+  </programme>
+  <programme start="20260908055513 +0000" stop="20260908061919 +0000" channel="sitcoms">
+    <title lang="en">Taxi</title>
+    <sub-title lang="en">Alex the Gofer</sub-title>
+  </programme>
+  <programme start="20260908061919 +0000" stop="20260908064405 +0000" channel="sitcoms">
+    <title lang="en">All in the Family</title>
+    <sub-title lang="en">Archie and the Kiss</sub-title>
+  </programme>
+  <programme start="20260908064405 +0000" stop="20260908070936 +0000" channel="sitcoms">
+    <title lang="en">Gomer Pyle, U.S.M.C.</title>
+    <sub-title lang="en">Grandma Pyle, Fortune Teller</sub-title>
+  </programme>
+  <programme start="20260908070936 +0000" stop="20260908073519 +0000" channel="sitcoms">
+    <title lang="en">The Andy Griffith Show</title>
+    <sub-title lang="en">The Manicurist</sub-title>
+  </programme>
+  <programme start="20260908073519 +0000" stop="20260908075657 +0000" channel="sitcoms">
+    <title lang="en">Spin City</title>
+    <sub-title lang="en">Hello Charlie</sub-title>
+  </programme>
+  <programme start="20260908075657 +0000" stop="20260908082002 +0000" channel="sitcoms">
+    <title lang="en">Perfect Strangers</title>
+    <sub-title lang="en">Lethal Weapon</sub-title>
+  </programme>
+  <programme start="20260908082002 +0000" stop="20260908084522 +0000" channel="sitcoms">
+    <title lang="en">F Troop</title>
+    <sub-title lang="en">El Diablo</sub-title>
+  </programme>
+  <programme start="20260908084522 +0000" stop="20260908091056 +0000" channel="sitcoms">
+    <title lang="en">The Lucy Show</title>
+    <sub-title lang="en">Lucy and the Golden Greek</sub-title>
+  </programme>
+  <programme start="20260908091056 +0000" stop="20260908093306 +0000" channel="sitcoms">
+    <title lang="en">South Park</title>
+    <sub-title lang="en">Imaginationland</sub-title>
+  </programme>
+  <programme start="20260908093306 +0000" stop="20260908095727 +0000" channel="sitcoms">
+    <title lang="en">Kenan &amp; Kel</title>
+    <sub-title lang="en">The April Fools</sub-title>
+  </programme>
+  <programme start="20260908095727 +0000" stop="20260908102203 +0000" channel="sitcoms">
+    <title lang="en">The Golden Girls</title>
+    <sub-title lang="en">The Return of Dorothy&apos;s Ex</sub-title>
+  </programme>
+  <programme start="20260908102203 +0000" stop="20260908104939 +0000" channel="sitcoms">
+    <title lang="en">Are You Being Served?</title>
+    <sub-title lang="en">The Sweet Smell of Success</sub-title>
+  </programme>
+  <programme start="20260908104939 +0000" stop="20260908111545 +0000" channel="sitcoms">
+    <title lang="en">The Flintstones</title>
+    <sub-title lang="en">Dino Goes Hollyrock</sub-title>
+  </programme>
+  <programme start="20260908111545 +0000" stop="20260908114114 +0000" channel="sitcoms">
+    <title lang="en">The Mary Tyler Moore Show</title>
+    <sub-title lang="en">The Care and Feeding of Parents</sub-title>
+  </programme>
+  <programme start="20260908114114 +0000" stop="20260908120409 +0000" channel="sitcoms">
+    <title lang="en">Married... with Children</title>
+    <sub-title lang="en">Magnificent Seven</sub-title>
+  </programme>
+  <programme start="20260908120409 +0000" stop="20260908122608 +0000" channel="sitcoms">
+    <title lang="en">The Simpsons</title>
+    <sub-title lang="en">Four Great Women and a Manicure</sub-title>
+  </programme>
+  <programme start="20260908122608 +0000" stop="20260908124951 +0000" channel="sitcoms">
+    <title lang="en">I Love Lucy</title>
+    <sub-title lang="en">The Quiz Show</sub-title>
+  </programme>
+  <programme start="20260908124951 +0000" stop="20260908131231 +0000" channel="sitcoms">
+    <title lang="en">Everybody Loves Raymond</title>
+    <sub-title lang="en">The Sigh</sub-title>
+  </programme>
+  <programme start="20260908131231 +0000" stop="20260908133712 +0000" channel="sitcoms">
+    <title lang="en">The Golden Girls</title>
+    <sub-title lang="en">Diamond in the Rough</sub-title>
+  </programme>
+  <programme start="20260908133712 +0000" stop="20260908140002 +0000" channel="sitcoms">
+    <title lang="en">Frasier</title>
+    <sub-title lang="en">Daphne&apos;s Room</sub-title>
+  </programme>
+  <programme start="20260908140002 +0000" stop="20260908142537 +0000" channel="sitcoms">
+    <title lang="en">The Mary Tyler Moore Show</title>
+    <sub-title lang="en">The Five-Minute Dress</sub-title>
+  </programme>
+  <programme start="20260908142537 +0000" stop="20260908144741 +0000" channel="sitcoms">
+    <title lang="en">Happy Days</title>
+    <sub-title lang="en">The Spirit Is Willing</sub-title>
+  </programme>
+  <programme start="20260908144741 +0000" stop="20260908151029 +0000" channel="sitcoms">
+    <title lang="en">Seinfeld</title>
+    <sub-title lang="en">The Sponge</sub-title>
+  </programme>
+  <programme start="20260908151029 +0000" stop="20260908153342 +0000" channel="sitcoms">
+    <title lang="en">Married... with Children</title>
+    <sub-title lang="en">My Mom, the Mom</sub-title>
+  </programme>
+  <programme start="20260908153342 +0000" stop="20260908155536 +0000" channel="sitcoms">
+    <title lang="en">Family Matters</title>
+    <sub-title lang="en">Odd Man In</sub-title>
+  </programme>
+  <programme start="20260908155536 +0000" stop="20260908162106 +0000" channel="sitcoms">
+    <title lang="en">Hogan&apos;s Heroes</title>
+    <sub-title lang="en">Art for Hogan&apos;s Sake</sub-title>
+  </programme>
+  <programme start="20260908162106 +0000" stop="20260908164420 +0000" channel="sitcoms">
+    <title lang="en">Married... with Children</title>
+    <sub-title lang="en">The Gas Station Show</sub-title>
+  </programme>
+  <programme start="20260908164420 +0000" stop="20260908170858 +0000" channel="sitcoms">
+    <title lang="en">All in the Family</title>
+    <sub-title lang="en">The Commercial</sub-title>
+  </programme>
+  <programme start="20260908170858 +0000" stop="20260908173057 +0000" channel="sitcoms">
+    <title lang="en">Night Court</title>
+    <sub-title lang="en">Wedding Bell Blues (1)</sub-title>
+  </programme>
+  <programme start="20260908173057 +0000" stop="20260908175309 +0000" channel="sitcoms">
+    <title lang="en">That &apos;70s Show</title>
+    <sub-title lang="en">Garage Sale</sub-title>
+  </programme>
+  <programme start="20260908175309 +0000" stop="20260908181512 +0000" channel="sitcoms">
+    <title lang="en">Roseanne</title>
+    <sub-title lang="en">Busted</sub-title>
+  </programme>
+  <programme start="20260908181512 +0000" stop="20260908184048 +0000" channel="sitcoms">
+    <title lang="en">The Dick Van Dyke Show</title>
+    <sub-title lang="en">Boy #1, Boy #2</sub-title>
+  </programme>
+  <programme start="20260908184048 +0000" stop="20260908190246 +0000" channel="sitcoms">
+    <title lang="en">3rd Rock from the Sun</title>
+    <sub-title lang="en">Dickmalion</sub-title>
+  </programme>
+  <programme start="20260908190246 +0000" stop="20260908192520 +0000" channel="sitcoms">
+    <title lang="en">The Simpsons</title>
+    <sub-title lang="en">The Mansion Family</sub-title>
+  </programme>
+  <programme start="20260908192520 +0000" stop="20260908195003 +0000" channel="sitcoms">
+    <title lang="en">Taxi</title>
+    <sub-title lang="en">Latka&apos;s Revolting</sub-title>
+  </programme>
+  <programme start="20260908195003 +0000" stop="20260908201537 +0000" channel="sitcoms">
+    <title lang="en">The Dick Van Dyke Show</title>
+    <sub-title lang="en">The Man from My Uncle</sub-title>
+  </programme>
+  <programme start="20260908201537 +0000" stop="20260908204037 +0000" channel="sitcoms">
+    <title lang="en">Green Acres</title>
+    <sub-title lang="en">Water, Water Everywhere</sub-title>
+  </programme>
+  <programme start="20260908204037 +0000" stop="20260908210307 +0000" channel="sitcoms">
+    <title lang="en">Benson</title>
+    <sub-title lang="en">Down the Drain</sub-title>
+  </programme>
+  <programme start="20260908210307 +0000" stop="20260908212556 +0000" channel="sitcoms">
+    <title lang="en">The Simpsons</title>
+    <sub-title lang="en">Homer&apos;s Phobia</sub-title>
+  </programme>
+  <programme start="20260908212556 +0000" stop="20260908215121 +0000" channel="sitcoms">
+    <title lang="en">Good Times</title>
+    <sub-title lang="en">Something Old, Something New</sub-title>
+  </programme>
+  <programme start="20260908215121 +0000" stop="20260908221659 +0000" channel="sitcoms">
+    <title lang="en">Benson</title>
+    <sub-title lang="en">Benson&apos;s Groupie</sub-title>
+  </programme>
+  <programme start="20260908221659 +0000" stop="20260908224233 +0000" channel="sitcoms">
+    <title lang="en">Benson</title>
+    <sub-title lang="en">Kraus&apos;s Deadly Mistake</sub-title>
+  </programme>
+  <programme start="20260908224233 +0000" stop="20260908230427 +0000" channel="sitcoms">
+    <title lang="en">The Simpsons</title>
+    <sub-title lang="en">Poppa&apos;s Got a Brand New Badge</sub-title>
+  </programme>
+  <programme start="20260908230427 +0000" stop="20260908233018 +0000" channel="sitcoms">
+    <title lang="en">Leave It to Beaver</title>
+    <sub-title lang="en">Wally&apos;s Dream Girl</sub-title>
+  </programme>
+  <programme start="20260908233018 +0000" stop="20260909000425 +0000" channel="sitcoms">
+    <title lang="en">Gimme Gimme Gimme</title>
+    <sub-title lang="en">Teacher&apos;s Pet</sub-title>
+  </programme>
+  <programme start="20260909000425 +0000" stop="20260909003000 +0000" channel="sitcoms">
+    <title lang="en">Benson</title>
+    <sub-title lang="en">Wild Irish Rose</sub-title>
+  </programme>
+  <programme start="20260909003000 +0000" stop="20260909005304 +0000" channel="sitcoms">
+    <title lang="en">The Simpsons</title>
+    <sub-title lang="en">Last Exit to Springfield</sub-title>
+  </programme>
+  <programme start="20260909005304 +0000" stop="20260909011705 +0000" channel="sitcoms">
+    <title lang="en">Happy Days</title>
+    <sub-title lang="en">You Go to My Head</sub-title>
+  </programme>
+  <programme start="20260909011705 +0000" stop="20260909013913 +0000" channel="sitcoms">
+    <title lang="en">The King of Queens</title>
+    <sub-title lang="en">Catching Hell</sub-title>
+  </programme>
+  <programme start="20260909013913 +0000" stop="20260909020158 +0000" channel="sitcoms">
+    <title lang="en">Seinfeld</title>
+    <sub-title lang="en">The Secretary</sub-title>
+  </programme>
+  <programme start="20260909020158 +0000" stop="20260909022421 +0000" channel="sitcoms">
+    <title lang="en">Boy Meets World</title>
+    <sub-title lang="en">Rave On</sub-title>
+  </programme>
+  <programme start="20260909022421 +0000" stop="20260909024548 +0000" channel="sitcoms">
+    <title lang="en">Spin City</title>
+    <sub-title lang="en">The Pig Whisperer</sub-title>
+  </programme>
+  <programme start="20260909024548 +0000" stop="20260909030822 +0000" channel="sitcoms">
+    <title lang="en">Futurama</title>
+    <sub-title lang="en">A Tale of Two Santas</sub-title>
+  </programme>
+  <programme start="20260909030822 +0000" stop="20260909033052 +0000" channel="sitcoms">
+    <title lang="en">Benson</title>
+    <sub-title lang="en">Let&apos;s Play Doctor</sub-title>
+  </programme>
+  <programme start="20260909033052 +0000" stop="20260909035248 +0000" channel="sitcoms">
+    <title lang="en">That &apos;70s Show</title>
+    <sub-title lang="en">&apos;Til the Next Goodbye</sub-title>
+  </programme>
+  <programme start="20260909035248 +0000" stop="20260909041659 +0000" channel="sitcoms">
+    <title lang="en">Newhart</title>
+    <sub-title lang="en">Camp Stephanie</sub-title>
+  </programme>
+  <programme start="20260909041659 +0000" stop="20260909050436 +0000" channel="sitcoms">
+    <title lang="en">WKRP in Cincinnati</title>
+    <sub-title lang="en">Dr. Fever and Mr. Tide: Part 1</sub-title>
+  </programme>
+  <programme start="20260909050436 +0000" stop="20260909052804 +0000" channel="sitcoms">
+    <title lang="en">Newhart</title>
+    <sub-title lang="en">Pillow Fight</sub-title>
+  </programme>
+  <programme start="20260909052804 +0000" stop="20260909055108 +0000" channel="sitcoms">
+    <title lang="en">Everybody Loves Raymond</title>
+    <sub-title lang="en">Fascinatin&apos; Debra</sub-title>
+  </programme>
+  <programme start="20260909055108 +0000" stop="20260909061303 +0000" channel="sitcoms">
+    <title lang="en">Night Court</title>
+    <sub-title lang="en">Murder</sub-title>
+  </programme>
+  <programme start="20260909061303 +0000" stop="20260909063543 +0000" channel="sitcoms">
+    <title lang="en">Everybody Loves Raymond</title>
+    <sub-title lang="en">Debra&apos;s Workout</sub-title>
+  </programme>
+  <programme start="20260909063543 +0000" stop="20260909065738 +0000" channel="sitcoms">
+    <title lang="en">Mayberry R.F.D.</title>
+    <sub-title lang="en">The Panel Show</sub-title>
+  </programme>
+  <programme start="20260909065738 +0000" stop="20260909071955 +0000" channel="sitcoms">
+    <title lang="en">The Fresh Prince of Bel-Air</title>
+    <sub-title lang="en">Stress Related</sub-title>
+  </programme>
+  <programme start="20260909071955 +0000" stop="20260909074143 +0000" channel="sitcoms">
+    <title lang="en">Sabrina, the Teenage Witch</title>
+    <sub-title lang="en">It&apos;s a Hot, Hot, Hot, Hot Christmas</sub-title>
+  </programme>
+  <programme start="20260909074143 +0000" stop="20260909080709 +0000" channel="sitcoms">
+    <title lang="en">The Dick Van Dyke Show</title>
+    <sub-title lang="en">Dear Sally Rogers</sub-title>
+  </programme>
+  <programme start="20260909080709 +0000" stop="20260909082959 +0000" channel="sitcoms">
+    <title lang="en">The Simpsons</title>
+    <sub-title lang="en">The Two Mrs. Nahasapeemapetilons</sub-title>
+  </programme>
+  <programme start="20260909082959 +0000" stop="20260909085530 +0000" channel="sitcoms">
+    <title lang="en">The Andy Griffith Show</title>
+    <sub-title lang="en">Off to Hollywood</sub-title>
+  </programme>
+  <programme start="20260909085530 +0000" stop="20260909091819 +0000" channel="sitcoms">
+    <title lang="en">Frasier</title>
+    <sub-title lang="en">Crane vs. Crane</sub-title>
+  </programme>
+  <programme start="20260909091819 +0000" stop="20260909094129 +0000" channel="sitcoms">
+    <title lang="en">Married... with Children</title>
+    <sub-title lang="en">Wabbit Season</sub-title>
+  </programme>
+  <programme start="20260909094129 +0000" stop="20260909100613 +0000" channel="sitcoms">
+    <title lang="en">The Beverly Hillbillies</title>
+    <sub-title lang="en">Elly&apos;s Animals</sub-title>
+  </programme>
+  <programme start="20260909100613 +0000" stop="20260909102932 +0000" channel="sitcoms">
+    <title lang="en">Seinfeld</title>
+    <sub-title lang="en">The Opposite</sub-title>
+  </programme>
+  <programme start="20260909102932 +0000" stop="20260909105312 +0000" channel="sitcoms">
+    <title lang="en">The Fresh Prince of Bel-Air</title>
+    <sub-title lang="en">Courting Disaster</sub-title>
+  </programme>
+  <programme start="20260909105312 +0000" stop="20260909111701 +0000" channel="sitcoms">
+    <title lang="en">Designing Women</title>
+    <sub-title lang="en">There She Is</sub-title>
+  </programme>
+  <programme start="20260909111701 +0000" stop="20260909113913 +0000" channel="sitcoms">
+    <title lang="en">Duckman</title>
+    <sub-title lang="en">Four Weddings Inconceivable</sub-title>
+  </programme>
+  <programme start="20260909113913 +0000" stop="20260909120443 +0000" channel="sitcoms">
+    <title lang="en">My Three Sons</title>
+    <sub-title lang="en">The Elopement</sub-title>
+  </programme>
+  <programme start="20260909120443 +0000" stop="20260909122927 +0000" channel="sitcoms">
+    <title lang="en">The Cosby Show</title>
+    <sub-title lang="en">Clair&apos;s Case</sub-title>
+  </programme>
+  <programme start="20260909122927 +0000" stop="20260909125152 +0000" channel="sitcoms">
+    <title lang="en">South Park</title>
+    <sub-title lang="en">Cartman Finds Love</sub-title>
+  </programme>
+  <programme start="20260909125152 +0000" stop="20260909131313 +0000" channel="sitcoms">
+    <title lang="en">The King of Queens</title>
+    <sub-title lang="en">Offensive Fowl</sub-title>
+  </programme>
+  <programme start="20260909131313 +0000" stop="20260909133618 +0000" channel="sitcoms">
+    <title lang="en">Designing Women</title>
+    <sub-title lang="en">I&apos;ll See You in Court</sub-title>
+  </programme>
+  <programme start="20260909133618 +0000" stop="20260909135821 +0000" channel="sitcoms">
+    <title lang="en">The King of Queens</title>
+    <sub-title lang="en">Damned Yanky</sub-title>
+  </programme>
+  <programme start="20260909135821 +0000" stop="20260909142152 +0000" channel="sitcoms">
+    <title lang="en">The Cosby Show</title>
+    <sub-title lang="en">The Lost Weekend</sub-title>
+  </programme>
+  <programme start="20260909142152 +0000" stop="20260909144725 +0000" channel="sitcoms">
+    <title lang="en">Bewitched</title>
+    <sub-title lang="en">Samantha the Dressmaker</sub-title>
+  </programme>
+  <programme start="20260909144725 +0000" stop="20260909151258 +0000" channel="sitcoms">
+    <title lang="en">The Andy Griffith Show</title>
+    <sub-title lang="en">Aunt Bee and the Lecturer</sub-title>
+  </programme>
+  <programme start="20260909151258 +0000" stop="20260909153430 +0000" channel="sitcoms">
+    <title lang="en">The Parkers</title>
+    <sub-title lang="en">Taking Tae-Bo with My Beau</sub-title>
+  </programme>
+  <programme start="20260909153430 +0000" stop="20260909155656 +0000" channel="sitcoms">
+    <title lang="en">The Beverly Hillbillies</title>
+    <sub-title lang="en">Sam Drucker&apos;s Visit</sub-title>
+  </programme>
+  <programme start="20260907151146 +0000" stop="20260907160703 +0000" channel="BBC">
+    <title lang="en">Shetland</title>
+    <sub-title lang="en">Episode 4</sub-title>
+  </programme>
+  <programme start="20260907160703 +0000" stop="20260907170525 +0000" channel="BBC">
+    <title lang="en">Death in Paradise</title>
+    <sub-title lang="en">An Unpleasant Homecoming</sub-title>
+  </programme>
+  <programme start="20260907170525 +0000" stop="20260907173444 +0000" channel="BBC">
+    <title lang="en">The Cleaner</title>
+    <sub-title lang="en">The Housekeeper</sub-title>
+  </programme>
+  <programme start="20260907173444 +0000" stop="20260907182203 +0000" channel="BBC">
+    <title lang="en">I Kissed a Girl</title>
+    <sub-title lang="en">Episode 4</sub-title>
+  </programme>
+  <programme start="20260907182203 +0000" stop="20260907191345 +0000" channel="BBC">
+    <title lang="en">Lark Rise to Candleford</title>
+    <sub-title lang="en">Episode 4</sub-title>
+  </programme>
+  <programme start="20260907191345 +0000" stop="20260907201131 +0000" channel="BBC">
+    <title lang="en">Doctor Who</title>
+    <sub-title lang="en">The Ultimate Guide</sub-title>
+  </programme>
+  <programme start="20260907201131 +0000" stop="20260907203629 +0000" channel="BBC">
+    <title lang="en">Doctor Who</title>
+    <sub-title lang="en">Terminus (1)</sub-title>
+  </programme>
+  <programme start="20260907203629 +0000" stop="20260907212401 +0000" channel="BBC">
+    <title lang="en">Doctor Who</title>
+    <sub-title lang="en">Love &amp; Monsters</sub-title>
+  </programme>
+  <programme start="20260907212401 +0000" stop="20260907212546 +0000" channel="BBC">
+    <title lang="en">Doctor Who</title>
+    <sub-title lang="en">The Making of the Gunslinger (A Town Called Mercy Prequel)</sub-title>
+  </programme>
+  <programme start="20260907212546 +0000" stop="20260907222210 +0000" channel="BBC">
+    <title lang="en">World on Fire</title>
+    <sub-title lang="en">Episode 2</sub-title>
+  </programme>
+  <programme start="20260907222210 +0000" stop="20260907224642 +0000" channel="BBC">
+    <title lang="en">Doctor Who</title>
+    <sub-title lang="en">Frontios (3)</sub-title>
+  </programme>
+  <programme start="20260907224642 +0000" stop="20260907231128 +0000" channel="BBC">
+    <title lang="en">Doctor Who</title>
+    <sub-title lang="en">The Trial of a Time Lord: Part 8</sub-title>
+  </programme>
+  <programme start="20260907231128 +0000" stop="20260908003320 +0000" channel="BBC">
+    <title lang="en">Red Dwarf</title>
+    <sub-title lang="en">Back in the Red (1) / Back in the Red (2) / Back in the Red (3)</sub-title>
+  </programme>
+  <programme start="20260908003320 +0000" stop="20260908010234 +0000" channel="BBC">
+    <title lang="en">Wallace &amp; Gromit&apos;s World of Invention</title>
+    <sub-title lang="en">Nature Knows Best</sub-title>
+  </programme>
+  <programme start="20260908010234 +0000" stop="20260908014804 +0000" channel="BBC">
+    <title lang="en">Doctor Who</title>
+    <sub-title lang="en">Revelation of the Daleks (2)</sub-title>
+  </programme>
+  <programme start="20260908014804 +0000" stop="20260908024636 +0000" channel="BBC">
+    <title lang="en">The Traitors</title>
+    <sub-title lang="en">Episode 5</sub-title>
+  </programme>
+  <programme start="20260908024636 +0000" stop="20260908031628 +0000" channel="BBC">
+    <title lang="en">That Mitchell and Webb Look</title>
+    <sub-title lang="en">Episode 1</sub-title>
+  </programme>
+  <programme start="20260908031628 +0000" stop="20260908041359 +0000" channel="BBC">
+    <title lang="en">Blue Lights</title>
+    <sub-title lang="en">Bad Batch</sub-title>
+  </programme>
+  <programme start="20260908041359 +0000" stop="20260908044300 +0000" channel="BBC">
+    <title lang="en">Inside No. 9</title>
+    <sub-title lang="en">The Understudy</sub-title>
+  </programme>
+  <programme start="20260908044300 +0000" stop="20260908051146 +0000" channel="BBC">
+    <title lang="en">Would I Lie to You?</title>
+    <sub-title lang="en">Rylan Clark-Neal, Sara Pascoe, Mary Portas and Paul Sinha</sub-title>
+  </programme>
+  <programme start="20260908051146 +0000" stop="20260908053542 +0000" channel="BBC">
+    <title lang="en">Doctor Who</title>
+    <sub-title lang="en">Planet of the Spiders (4)</sub-title>
+  </programme>
+  <programme start="20260908053542 +0000" stop="20260908060109 +0000" channel="BBC">
+    <title lang="en">The World of Peter Rabbit and Friends</title>
+    <sub-title lang="en">The Tale of Mr. Tod</sub-title>
+  </programme>
+  <programme start="20260908060109 +0000" stop="20260908065816 +0000" channel="BBC">
+    <title lang="en">Shetland</title>
+    <sub-title lang="en">Episode 4</sub-title>
+  </programme>
+  <programme start="20260908065816 +0000" stop="20260908070425 +0000" channel="BBC">
+    <title lang="en">Shaun the Sheep</title>
+    <sub-title lang="en">Hoof Fashion</sub-title>
+  </programme>
+  <programme start="20260908070425 +0000" stop="20260908075504 +0000" channel="BBC">
+    <title lang="en">Doctor Who</title>
+    <sub-title lang="en">Survivors of the Flux</sub-title>
+  </programme>
+  <programme start="20260908075504 +0000" stop="20260908085302 +0000" channel="BBC">
+    <title lang="en">Interior Design Masters with Alan Carr</title>
+    <sub-title lang="en">Episode 1</sub-title>
+  </programme>
+  <programme start="20260908085302 +0000" stop="20260908091716 +0000" channel="BBC">
+    <title lang="en">Doctor Who</title>
+    <sub-title lang="en">Battlefield (3)</sub-title>
+  </programme>
+  <programme start="20260908091716 +0000" stop="20260908101242 +0000" channel="BBC">
+    <title lang="en">The Last Kingdom</title>
+    <sub-title lang="en">Episode 9</sub-title>
+  </programme>
+  <programme start="20260908101242 +0000" stop="20260908111033 +0000" channel="BBC">
+    <title lang="en">The Great British Bake Off</title>
+    <sub-title lang="en">Dessert Week</sub-title>
+  </programme>
+  <programme start="20260908111033 +0000" stop="20260908121233 +0000" channel="BBC">
+    <title lang="en">Top Gear</title>
+    <sub-title lang="en">Episode 1</sub-title>
+  </programme>
+  <programme start="20260908121233 +0000" stop="20260908131032 +0000" channel="BBC">
+    <title lang="en">The Repair Shop</title>
+    <sub-title lang="en">Barber&apos;s Chair</sub-title>
+  </programme>
+  <programme start="20260908131032 +0000" stop="20260908140932 +0000" channel="BBC">
+    <title lang="en">Call the Midwife</title>
+    <sub-title lang="en">Episode 7</sub-title>
+  </programme>
+  <programme start="20260908140932 +0000" stop="20260908150438 +0000" channel="BBC">
+    <title lang="en">Shetland</title>
+    <sub-title lang="en">Episode 2</sub-title>
+  </programme>
+  <programme start="20260908150438 +0000" stop="20260908151428 +0000" channel="BBC">
+    <title lang="en">Bob the Builder</title>
+    <sub-title lang="en">Muck’s Beach Tower</sub-title>
+  </programme>
+  <programme start="20260908151428 +0000" stop="20260908154321 +0000" channel="BBC">
+    <title lang="en">Would I Lie to You?</title>
+    <sub-title lang="en">John Cooper Clarke, Judi Love, Chris McCausland and Caroline Quentin</sub-title>
+  </programme>
+  <programme start="20260908154321 +0000" stop="20260908162655 +0000" channel="BBC">
+    <title lang="en">The Repair Shop</title>
+    <sub-title lang="en">Ornate Wooden Piano Stool</sub-title>
+  </programme>
+  <programme start="20260908162655 +0000" stop="20260908171029 +0000" channel="BBC">
+    <title lang="en">The Repair Shop</title>
+    <sub-title lang="en">Episode 17</sub-title>
+  </programme>
+  <programme start="20260908171029 +0000" stop="20260908173928 +0000" channel="BBC">
+    <title lang="en">Ghosts</title>
+    <sub-title lang="en">Last Resort</sub-title>
+  </programme>
+  <programme start="20260908173928 +0000" stop="20260908180353 +0000" channel="BBC">
+    <title lang="en">Doctor Who</title>
+    <sub-title lang="en">The Dæmons (4)</sub-title>
+  </programme>
+  <programme start="20260908180353 +0000" stop="20260908184742 +0000" channel="BBC">
+    <title lang="en">Doctor Who</title>
+    <sub-title lang="en">Empress of Mars</sub-title>
+  </programme>
+  <programme start="20260908184742 +0000" stop="20260908185742 +0000" channel="BBC">
+    <title lang="en">Bob the Builder</title>
+    <sub-title lang="en">Bob’s Top Team</sub-title>
+  </programme>
+  <programme start="20260908185742 +0000" stop="20260908192423 +0000" channel="BBC">
+    <title lang="en">Fleabag</title>
+    <sub-title lang="en">Episode 2</sub-title>
+  </programme>
+  <programme start="20260908192423 +0000" stop="20260908201435 +0000" channel="BBC">
+    <title lang="en">Happy Valley</title>
+    <sub-title lang="en">Episode 1</sub-title>
+  </programme>
+  <programme start="20260908201435 +0000" stop="20260908211503 +0000" channel="BBC">
+    <title lang="en">Doctor Who</title>
+    <sub-title lang="en">Hell Bent (2)</sub-title>
+  </programme>
+  <programme start="20260908211503 +0000" stop="20260908221425 +0000" channel="BBC">
+    <title lang="en">Glow Up: Britain&apos;s Next Make-Up Star</title>
+    <sub-title lang="en">Episode 4</sub-title>
+  </programme>
+  <programme start="20260908221425 +0000" stop="20260908224124 +0000" channel="BBC">
+    <title lang="en">Normal People</title>
+    <sub-title lang="en">Episode 7</sub-title>
+  </programme>
+  <programme start="20260908224124 +0000" stop="20260908234915 +0000" channel="BBC">
+    <title lang="en">The Great British Bake Off</title>
+    <sub-title lang="en">Biscuit Week</sub-title>
+  </programme>
+  <programme start="20260908234915 +0000" stop="20260909004710 +0000" channel="BBC">
+    <title lang="en">The Repair Shop</title>
+    <sub-title lang="en">Prayer Book</sub-title>
+  </programme>
+  <programme start="20260909004710 +0000" stop="20260909014610 +0000" channel="BBC">
+    <title lang="en">The Great British Sewing Bee</title>
+    <sub-title lang="en">Holiday Week</sub-title>
+  </programme>
+  <programme start="20260909014610 +0000" stop="20260909020734 +0000" channel="BBC">
+    <title lang="en">Bob the Builder</title>
+    <sub-title lang="en">Bob&apos;s Boots / Mucky Muck</sub-title>
+  </programme>
+  <programme start="20260909020734 +0000" stop="20260909031030 +0000" channel="BBC">
+    <title lang="en">The Traitors</title>
+    <sub-title lang="en">Episode 1</sub-title>
+  </programme>
+  <programme start="20260909031030 +0000" stop="20260909041419 +0000" channel="BBC">
+    <title lang="en">The Traitors</title>
+    <sub-title lang="en">Episode 7</sub-title>
+  </programme>
+  <programme start="20260909041419 +0000" stop="20260909051315 +0000" channel="BBC">
+    <title lang="en">The Great British Countryside</title>
+    <sub-title lang="en">South Downs</sub-title>
+  </programme>
+  <programme start="20260909051315 +0000" stop="20260909053504 +0000" channel="BBC">
+    <title lang="en">Doctor Who</title>
+    <sub-title lang="en">The Krotons (3)</sub-title>
+  </programme>
+  <programme start="20260909053504 +0000" stop="20260909060031 +0000" channel="BBC">
+    <title lang="en">Doctor Who</title>
+    <sub-title lang="en">The Executioners</sub-title>
+  </programme>
+  <programme start="20260909060031 +0000" stop="20260909062928 +0000" channel="BBC">
+    <title lang="en">Would I Lie to You?</title>
+    <sub-title lang="en">Unseen Bits</sub-title>
+  </programme>
+  <programme start="20260909062928 +0000" stop="20260909063527 +0000" channel="BBC">
+    <title lang="en">Shaun the Sheep</title>
+    <sub-title lang="en">Bitzer Puts His Foot In It</sub-title>
+  </programme>
+  <programme start="20260909063527 +0000" stop="20260909075145 +0000" channel="BBC">
+    <title lang="en">Top Gear</title>
+    <sub-title lang="en">Bolivia Special</sub-title>
+  </programme>
+  <programme start="20260909075145 +0000" stop="20260909084216 +0000" channel="BBC">
+    <title lang="en">Top of the Lake</title>
+    <sub-title lang="en">No Goodbyes Thanks</sub-title>
+  </programme>
+  <programme start="20260909084216 +0000" stop="20260909091149 +0000" channel="BBC">
+    <title lang="en">Red Dwarf</title>
+    <sub-title lang="en">Better Than Life</sub-title>
+  </programme>
+  <programme start="20260909091149 +0000" stop="20260909101304 +0000" channel="BBC">
+    <title lang="en">Top Gear</title>
+    <sub-title lang="en">Episode 7</sub-title>
+  </programme>
+  <programme start="20260909101304 +0000" stop="20260909105659 +0000" channel="BBC">
+    <title lang="en">The Repair Shop</title>
+    <sub-title lang="en">Barber&apos;s Chair</sub-title>
+  </programme>
+  <programme start="20260909105659 +0000" stop="20260909110719 +0000" channel="BBC">
+    <title lang="en">Bob the Builder</title>
+    <sub-title lang="en">Bob the Farmer</sub-title>
+  </programme>
+  <programme start="20260909110719 +0000" stop="20260909113617 +0000" channel="BBC">
+    <title lang="en">Inside No. 9</title>
+    <sub-title lang="en">The Referee&apos;s A W***er</sub-title>
+  </programme>
+  <programme start="20260909113617 +0000" stop="20260909115953 +0000" channel="BBC">
+    <title lang="en">Doctor Who</title>
+    <sub-title lang="en">The Mind of Evil (5)</sub-title>
+  </programme>
+  <programme start="20260909115953 +0000" stop="20260909121053 +0000" channel="BBC">
+    <title lang="en">Bob the Builder</title>
+    <sub-title lang="en">Mr Beasley&apos;s DIY Disaster</sub-title>
+  </programme>
+  <programme start="20260909121053 +0000" stop="20260909130908 +0000" channel="BBC">
+    <title lang="en">Call the Midwife</title>
+    <sub-title lang="en">Episode 4</sub-title>
+  </programme>
+  <programme start="20260909130908 +0000" stop="20260909133349 +0000" channel="BBC">
+    <title lang="en">Doctor Who</title>
+    <sub-title lang="en">The Face of Evil (3)</sub-title>
+  </programme>
+  <programme start="20260909133349 +0000" stop="20260909141833 +0000" channel="BBC">
+    <title lang="en">Doctor Who</title>
+    <sub-title lang="en">The Forest of Fear</sub-title>
+  </programme>
+  <programme start="20260909141833 +0000" stop="20260909144232 +0000" channel="BBC">
+    <title lang="en">Doctor Who</title>
+    <sub-title lang="en">The Creature from the Pit (3)</sub-title>
+  </programme>
+  <programme start="20260909144232 +0000" stop="20260909152746 +0000" channel="BBC">
+    <title lang="en">Doctor Who</title>
+    <sub-title lang="en">Temple of Secrets</sub-title>
+  </programme>
+  <programme start="20260909152746 +0000" stop="20260909164251 +0000" channel="BBC">
+    <title lang="en">Lark Rise to Candleford</title>
+    <sub-title lang="en">Episode 1</sub-title>
+  </programme>
+  <programme start="20260907154344 +0000" stop="20260907160608 +0000" channel="scream-kids">
+    <title lang="en">Ghostbusters</title>
+    <sub-title lang="en">No Pharoah at All</sub-title>
+  </programme>
+  <programme start="20260907160608 +0000" stop="20260907161758 +0000" channel="scream-kids">
+    <title lang="en">Aaahh!!! Real Monsters</title>
+    <sub-title lang="en">Slumber Scare</sub-title>
+  </programme>
+  <programme start="20260907161758 +0000" stop="20260907164040 +0000" channel="scream-kids">
+    <title lang="en">The New Scooby and Scrappy-Doo Show</title>
+    <sub-title lang="en">The Scooby-Doo Show - S03E02 - A Creepy Tangle in the Bermuda Triangle[WEBDL</sub-title>
+  </programme>
+  <programme start="20260907164040 +0000" stop="20260907170251 +0000" channel="scream-kids">
+    <title lang="en">The Grim Adventures of Billy and Mandy</title>
+    <sub-title lang="en">Recipe for Disaster</sub-title>
+  </programme>
+  <programme start="20260907170251 +0000" stop="20260907172415 +0000" channel="scream-kids">
+    <title lang="en">Goosebumps</title>
+    <sub-title lang="en">Don&apos;t Go to Sleep</sub-title>
+  </programme>
+  <programme start="20260907172415 +0000" stop="20260907173559 +0000" channel="scream-kids">
+    <title lang="en">Aaahh!!! Real Monsters</title>
+    <sub-title lang="en">Ickis and the Red Zimbo</sub-title>
+  </programme>
+  <programme start="20260907173559 +0000" stop="20260907175831 +0000" channel="scream-kids">
+    <title lang="en">The Real Ghostbusters</title>
+    <sub-title lang="en">Egon on the Rampage</sub-title>
+  </programme>
+  <programme start="20260907175831 +0000" stop="20260907182059 +0000" channel="scream-kids">
+    <title lang="en">The Real Ghostbusters</title>
+    <sub-title lang="en">The Old College Spirit</sub-title>
+  </programme>
+  <programme start="20260907182059 +0000" stop="20260907184622 +0000" channel="scream-kids">
+    <title lang="en">Bewitched</title>
+    <sub-title lang="en">How Green Was My Grass</sub-title>
+  </programme>
+  <programme start="20260907184622 +0000" stop="20260907190915 +0000" channel="scream-kids">
+    <title lang="en">Eerie, Indiana</title>
+    <sub-title lang="en">Mr. Chaney</sub-title>
+  </programme>
+  <programme start="20260907190915 +0000" stop="20260907193159 +0000" channel="scream-kids">
+    <title lang="en">The Grim Adventures of Billy and Mandy</title>
+    <sub-title lang="en">Druid, Where&apos;s My Car?</sub-title>
+  </programme>
+  <programme start="20260907193159 +0000" stop="20260907195516 +0000" channel="scream-kids">
+    <title lang="en">The Real Ghostbusters</title>
+    <sub-title lang="en">Not Now, Slimer!</sub-title>
+  </programme>
+  <programme start="20260907195516 +0000" stop="20260907200701 +0000" channel="scream-kids">
+    <title lang="en">Aaahh!!! Real Monsters</title>
+    <sub-title lang="en">Fear, Thy Name Is Ickis</sub-title>
+  </programme>
+  <programme start="20260907200701 +0000" stop="20260907202911 +0000" channel="scream-kids">
+    <title lang="en">The Grim Adventures of Billy and Mandy</title>
+    <sub-title lang="en">Opposite Day</sub-title>
+  </programme>
+  <programme start="20260907202911 +0000" stop="20260907205444 +0000" channel="scream-kids">
+    <title lang="en">Bewitched</title>
+    <sub-title lang="en">Alias Darrin Stephens</sub-title>
+  </programme>
+  <programme start="20260907205444 +0000" stop="20260907213935 +0000" channel="scream-kids">
+    <title lang="en">Beyond Belief: Fact or Fiction</title>
+    <sub-title lang="en">Candlestick / The Diner / From the Agency / The Magic Rose Garden / The Jeep</sub-title>
+  </programme>
+  <programme start="20260907213935 +0000" stop="20260907220141 +0000" channel="scream-kids">
+    <title lang="en">The Grim Adventures of Billy and Mandy</title>
+    <sub-title lang="en">Grim or Gregory?</sub-title>
+  </programme>
+  <programme start="20260907220141 +0000" stop="20260907222401 +0000" channel="scream-kids">
+    <title lang="en">Beetlejuice</title>
+    <sub-title lang="en">Ear&apos;s Looking at You</sub-title>
+  </programme>
+  <programme start="20260907222401 +0000" stop="20260907224925 +0000" channel="scream-kids">
+    <title lang="en">Bewitched</title>
+    <sub-title lang="en">The Crone of Cawdor</sub-title>
+  </programme>
+  <programme start="20260907224925 +0000" stop="20260907231145 +0000" channel="scream-kids">
+    <title lang="en">Beetlejuice</title>
+    <sub-title lang="en">Prairie Strife</sub-title>
+  </programme>
+  <programme start="20260907231145 +0000" stop="20260907233437 +0000" channel="scream-kids">
+    <title lang="en">The Grim Adventures of Billy and Mandy</title>
+    <sub-title lang="en">Billy and Mandy vs. the Martians</sub-title>
+  </programme>
+  <programme start="20260907233437 +0000" stop="20260907234630 +0000" channel="scream-kids">
+    <title lang="en">Aaahh!!! Real Monsters</title>
+    <sub-title lang="en">The Master Monster</sub-title>
+  </programme>
+  <programme start="20260907234630 +0000" stop="20260908001123 +0000" channel="scream-kids">
+    <title lang="en">Bewitched</title>
+    <sub-title lang="en">The Short, Happy Circuit of Aunt Clara</sub-title>
+  </programme>
+  <programme start="20260908001123 +0000" stop="20260908002314 +0000" channel="scream-kids">
+    <title lang="en">Aaahh!!! Real Monsters</title>
+    <sub-title lang="en">Loch Ness Mess</sub-title>
+  </programme>
+  <programme start="20260908002314 +0000" stop="20260908004841 +0000" channel="scream-kids">
+    <title lang="en">Bewitched</title>
+    <sub-title lang="en">Out of the Mouths of Babes</sub-title>
+  </programme>
+  <programme start="20260908004841 +0000" stop="20260908011405 +0000" channel="scream-kids">
+    <title lang="en">Bewitched</title>
+    <sub-title lang="en">Soapbox Derby</sub-title>
+  </programme>
+  <programme start="20260908011405 +0000" stop="20260908013914 +0000" channel="scream-kids">
+    <title lang="en">Bewitched</title>
+    <sub-title lang="en">Samantha&apos;s Wedding Present</sub-title>
+  </programme>
+  <programme start="20260908013914 +0000" stop="20260908020511 +0000" channel="scream-kids">
+    <title lang="en">The Munsters</title>
+    <sub-title lang="en">The Most Beautiful Ghoul in the World</sub-title>
+  </programme>
+  <programme start="20260908020511 +0000" stop="20260908022731 +0000" channel="scream-kids">
+    <title lang="en">The Real Ghostbusters</title>
+    <sub-title lang="en">Transylvanian Homesick Blues</sub-title>
+  </programme>
+  <programme start="20260908022731 +0000" stop="20260908025254 +0000" channel="scream-kids">
+    <title lang="en">Bewitched</title>
+    <sub-title lang="en">No More Mr. Nice Guy</sub-title>
+  </programme>
+  <programme start="20260908025254 +0000" stop="20260908033727 +0000" channel="scream-kids">
+    <title lang="en">Beyond Belief: Fact or Fiction</title>
+    <sub-title lang="en">House of Shadows, One Hand in the Till, Teasdale&apos;s Motor Car, The Vision &amp; The Grave</sub-title>
+  </programme>
+  <programme start="20260908033727 +0000" stop="20260908034919 +0000" channel="scream-kids">
+    <title lang="en">Aaahh!!! Real Monsters</title>
+    <sub-title lang="en">Fistful of Toenails</sub-title>
+  </programme>
+  <programme start="20260908034919 +0000" stop="20260908041443 +0000" channel="scream-kids">
+    <title lang="en">Bewitched</title>
+    <sub-title lang="en">Daddy Does His Thing</sub-title>
+  </programme>
+  <programme start="20260908041443 +0000" stop="20260908044006 +0000" channel="scream-kids">
+    <title lang="en">Bewitched</title>
+    <sub-title lang="en">Mother Meets What&apos;s His Name</sub-title>
+  </programme>
+  <programme start="20260908044006 +0000" stop="20260908045149 +0000" channel="scream-kids">
+    <title lang="en">Aaahh!!! Real Monsters</title>
+    <sub-title lang="en">Krumm Gets Ahead</sub-title>
+  </programme>
+  <programme start="20260908045149 +0000" stop="20260908051739 +0000" channel="scream-kids">
+    <title lang="en">The Munsters</title>
+    <sub-title lang="en">The Treasure of Mockingbird Heights</sub-title>
+  </programme>
+  <programme start="20260908051739 +0000" stop="20260908055535 +0000" channel="scream-kids">
+    <title lang="en">Goosebumps</title>
+    <sub-title lang="en">The Cuckoo Clock of Doom</sub-title>
+  </programme>
+  <programme start="20260908055535 +0000" stop="20260908061829 +0000" channel="scream-kids">
+    <title lang="en">The Grim Adventures of Billy and Mandy</title>
+    <sub-title lang="en">Lil&apos; Porkchop</sub-title>
+  </programme>
+  <programme start="20260908061829 +0000" stop="20260908064049 +0000" channel="scream-kids">
+    <title lang="en">Amazing Stories</title>
+    <sub-title lang="en">Without Diana</sub-title>
+  </programme>
+  <programme start="20260908064049 +0000" stop="20260908070534 +0000" channel="scream-kids">
+    <title lang="en">Amazing Stories</title>
+    <sub-title lang="en">Boo!</sub-title>
+  </programme>
+  <programme start="20260908070534 +0000" stop="20260908072800 +0000" channel="scream-kids">
+    <title lang="en">Ghostbusters</title>
+    <sub-title lang="en">The Headless Horseman Caper</sub-title>
+  </programme>
+  <programme start="20260908072800 +0000" stop="20260908080416 +0000" channel="scream-kids">
+    <title lang="en">Goosebumps</title>
+    <sub-title lang="en">Welcome to Camp Nightmare (1)</sub-title>
+  </programme>
+  <programme start="20260908080416 +0000" stop="20260908082810 +0000" channel="scream-kids">
+    <title lang="en">The Real Ghostbusters</title>
+    <sub-title lang="en">Citizen Ghost</sub-title>
+  </programme>
+  <programme start="20260908082810 +0000" stop="20260908085254 +0000" channel="scream-kids">
+    <title lang="en">Amazing Stories</title>
+    <sub-title lang="en">One For the Road</sub-title>
+  </programme>
+  <programme start="20260908085254 +0000" stop="20260908091521 +0000" channel="scream-kids">
+    <title lang="en">Count Duckula</title>
+    <sub-title lang="en">The Return of the Curse of the Secret of the Mummy&apos;s Tomb Meets Frankenduckula&apos;s Monster and the Wolf-Man and the Intergalactic Cabbage...</sub-title>
+  </programme>
+  <programme start="20260908091521 +0000" stop="20260908100133 +0000" channel="scream-kids">
+    <title lang="en">Amazing Stories</title>
+    <sub-title lang="en">The Mission</sub-title>
+  </programme>
+  <programme start="20260908100133 +0000" stop="20260908102523 +0000" channel="scream-kids">
+    <title lang="en">Amazing Stories</title>
+    <sub-title lang="en">Moving Day</sub-title>
+  </programme>
+  <programme start="20260908102523 +0000" stop="20260908105048 +0000" channel="scream-kids">
+    <title lang="en">Bewitched</title>
+    <sub-title lang="en">Once in a Vial</sub-title>
+  </programme>
+  <programme start="20260908105048 +0000" stop="20260908111325 +0000" channel="scream-kids">
+    <title lang="en">The Grim Adventures of Billy and Mandy</title>
+    <sub-title lang="en">The Crass Unicorn / Billy &amp; Mandy Begins</sub-title>
+  </programme>
+  <programme start="20260908111325 +0000" stop="20260908115834 +0000" channel="scream-kids">
+    <title lang="en">Beyond Belief: Fact or Fiction</title>
+    <sub-title lang="en">The Viewing / The Subway / Kid in the Closet / Justice is Served / The Tractor</sub-title>
+  </programme>
+  <programme start="20260908115834 +0000" stop="20260908121022 +0000" channel="scream-kids">
+    <title lang="en">Aaahh!!! Real Monsters</title>
+    <sub-title lang="en">Amulet of Enfarg</sub-title>
+  </programme>
+  <programme start="20260908121022 +0000" stop="20260908123544 +0000" channel="scream-kids">
+    <title lang="en">Bewitched</title>
+    <sub-title lang="en">Samantha&apos;s Secret Spell</sub-title>
+  </programme>
+  <programme start="20260908123544 +0000" stop="20260908131155 +0000" channel="scream-kids">
+    <title lang="en">Goosebumps</title>
+    <sub-title lang="en">Reader Beware</sub-title>
+  </programme>
+  <programme start="20260908131155 +0000" stop="20260908135743 +0000" channel="scream-kids">
+    <title lang="en">Beyond Belief: Fact or Fiction</title>
+    <sub-title lang="en">Devil&apos;s Tattoo, Static Man, The Bloody Hand, Where Have All the Heroes Gone &amp; War Surplus</sub-title>
+  </programme>
+  <programme start="20260908135743 +0000" stop="20260908142015 +0000" channel="scream-kids">
+    <title lang="en">The Real Ghostbusters</title>
+    <sub-title lang="en">Victor the Happy Ghost</sub-title>
+  </programme>
+  <programme start="20260908142015 +0000" stop="20260908144254 +0000" channel="scream-kids">
+    <title lang="en">Count Duckula</title>
+    <sub-title lang="en">Ghostly Gold</sub-title>
+  </programme>
+  <programme start="20260908144254 +0000" stop="20260908150632 +0000" channel="scream-kids">
+    <title lang="en">Amazing Stories</title>
+    <sub-title lang="en">Life on Death Row</sub-title>
+  </programme>
+  <programme start="20260908150632 +0000" stop="20260908155220 +0000" channel="scream-kids">
+    <title lang="en">Beyond Belief: Fact or Fiction</title>
+    <sub-title lang="en">The Handyman, Anatole, Makeup Magic, Screwdriver &amp; Charlie</sub-title>
+  </programme>
+  <programme start="20260908155220 +0000" stop="20260908161444 +0000" channel="scream-kids">
+    <title lang="en">Count Duckula</title>
+    <sub-title lang="en">The Show Must Go On</sub-title>
+  </programme>
+  <programme start="20260908161444 +0000" stop="20260908163707 +0000" channel="scream-kids">
+    <title lang="en">Count Duckula</title>
+    <sub-title lang="en">Beau Duckula</sub-title>
+  </programme>
+  <programme start="20260908163707 +0000" stop="20260908165831 +0000" channel="scream-kids">
+    <title lang="en">Goosebumps</title>
+    <sub-title lang="en">An Old Story</sub-title>
+  </programme>
+  <programme start="20260908165831 +0000" stop="20260908172358 +0000" channel="scream-kids">
+    <title lang="en">Bewitched</title>
+    <sub-title lang="en">Eye of the Beholder</sub-title>
+  </programme>
+  <programme start="20260908172358 +0000" stop="20260908174627 +0000" channel="scream-kids">
+    <title lang="en">The Real Ghostbusters</title>
+    <sub-title lang="en">Drool, the Dog Faced Goblin</sub-title>
+  </programme>
+  <programme start="20260908174627 +0000" stop="20260908183034 +0000" channel="scream-kids">
+    <title lang="en">Goosebumps</title>
+    <sub-title lang="en">The Haunted Mask II (1)</sub-title>
+  </programme>
+  <programme start="20260908183034 +0000" stop="20260908185554 +0000" channel="scream-kids">
+    <title lang="en">Bewitched</title>
+    <sub-title lang="en">The Generation Zap</sub-title>
+  </programme>
+  <programme start="20260908185554 +0000" stop="20260908192007 +0000" channel="scream-kids">
+    <title lang="en">The New Scooby and Scrappy-Doo Show</title>
+    <sub-title lang="en">The Bee Team</sub-title>
+  </programme>
+  <programme start="20260908192007 +0000" stop="20260908194537 +0000" channel="scream-kids">
+    <title lang="en">Bewitched</title>
+    <sub-title lang="en">Divided He Falls</sub-title>
+  </programme>
+  <programme start="20260908194537 +0000" stop="20260908195727 +0000" channel="scream-kids">
+    <title lang="en">Aaahh!!! Real Monsters</title>
+    <sub-title lang="en">Bigfoot, Don&apos;t Fail Me Now</sub-title>
+  </programme>
+  <programme start="20260908195727 +0000" stop="20260908201947 +0000" channel="scream-kids">
+    <title lang="en">Beetlejuice</title>
+    <sub-title lang="en">Raging Skull</sub-title>
+  </programme>
+  <programme start="20260908201947 +0000" stop="20260908204210 +0000" channel="scream-kids">
+    <title lang="en">Count Duckula</title>
+    <sub-title lang="en">Duck and the Broccoli Stalk</sub-title>
+  </programme>
+  <programme start="20260908204210 +0000" stop="20260908210736 +0000" channel="scream-kids">
+    <title lang="en">Bewitched</title>
+    <sub-title lang="en">Mixed Doubles</sub-title>
+  </programme>
+  <programme start="20260908210736 +0000" stop="20260908213004 +0000" channel="scream-kids">
+    <title lang="en">Count Duckula</title>
+    <sub-title lang="en">Castle Duckula: Open to the Public</sub-title>
+  </programme>
+  <programme start="20260908213004 +0000" stop="20260908215532 +0000" channel="scream-kids">
+    <title lang="en">Bewitched</title>
+    <sub-title lang="en">Laugh, Clown, Laugh</sub-title>
+  </programme>
+  <programme start="20260908215532 +0000" stop="20260908220717 +0000" channel="scream-kids">
+    <title lang="en">Aaahh!!! Real Monsters</title>
+    <sub-title lang="en">Cement Heads</sub-title>
+  </programme>
+  <programme start="20260908220717 +0000" stop="20260908221906 +0000" channel="scream-kids">
+    <title lang="en">Aaahh!!! Real Monsters</title>
+    <sub-title lang="en">Bad Hair Day</sub-title>
+  </programme>
+  <programme start="20260908221906 +0000" stop="20260908224426 +0000" channel="scream-kids">
+    <title lang="en">Bewitched</title>
+    <sub-title lang="en">That Was No Chick, That Was My Wife</sub-title>
+  </programme>
+  <programme start="20260908224426 +0000" stop="20260908230820 +0000" channel="scream-kids">
+    <title lang="en">The Real Ghostbusters</title>
+    <sub-title lang="en">Mr. Sandman, Dream Me a Dream</sub-title>
+  </programme>
+  <programme start="20260908230820 +0000" stop="20260908233005 +0000" channel="scream-kids">
+    <title lang="en">Goosebumps</title>
+    <sub-title lang="en">The Blob That Ate Everyone</sub-title>
+  </programme>
+  <programme start="20260908233005 +0000" stop="20260908235253 +0000" channel="scream-kids">
+    <title lang="en">Beetlejuice</title>
+    <sub-title lang="en">Scummer Vacation</sub-title>
+  </programme>
+  <programme start="20260908235253 +0000" stop="20260909001542 +0000" channel="scream-kids">
+    <title lang="en">The Grim Adventures of Billy and Mandy</title>
+    <sub-title lang="en">Nursery Crimes</sub-title>
+  </programme>
+  <programme start="20260909001542 +0000" stop="20260909004109 +0000" channel="scream-kids">
+    <title lang="en">Bewitched</title>
+    <sub-title lang="en">The Return of Darrin the Bold</sub-title>
+  </programme>
+  <programme start="20260909004109 +0000" stop="20260909005301 +0000" channel="scream-kids">
+    <title lang="en">Aaahh!!! Real Monsters</title>
+    <sub-title lang="en">Monster Blues</sub-title>
+  </programme>
+  <programme start="20260909005301 +0000" stop="20260909013801 +0000" channel="scream-kids">
+    <title lang="en">Amazing Stories</title>
+    <sub-title lang="en">Go to the Head of the Class</sub-title>
+  </programme>
+  <programme start="20260909013801 +0000" stop="20260909022350 +0000" channel="scream-kids">
+    <title lang="en">Beyond Belief: Fact or Fiction</title>
+    <sub-title lang="en">The Nightmare/The Stalker/The Impossible Car Dream/The Dresser/The Burial</sub-title>
+  </programme>
+  <programme start="20260909022350 +0000" stop="20260909030845 +0000" channel="scream-kids">
+    <title lang="en">Goosebumps</title>
+    <sub-title lang="en">Be Careful What You Wish For</sub-title>
+  </programme>
+  <programme start="20260909030845 +0000" stop="20260909033114 +0000" channel="scream-kids">
+    <title lang="en">The Real Ghostbusters</title>
+    <sub-title lang="en">Knock, Knock</sub-title>
+  </programme>
+  <programme start="20260909033114 +0000" stop="20260909035238 +0000" channel="scream-kids">
+    <title lang="en">Goosebumps</title>
+    <sub-title lang="en">Click</sub-title>
+  </programme>
+  <programme start="20260909035238 +0000" stop="20260909041634 +0000" channel="scream-kids">
+    <title lang="en">The Real Ghostbusters</title>
+    <sub-title lang="en">The Boogieman Cometh</sub-title>
+  </programme>
+  <programme start="20260909041634 +0000" stop="20260909043926 +0000" channel="scream-kids">
+    <title lang="en">The Grim Adventures of Billy and Mandy</title>
+    <sub-title lang="en">Brown Evil</sub-title>
+  </programme>
+  <programme start="20260909043926 +0000" stop="20260909050448 +0000" channel="scream-kids">
+    <title lang="en">Bewitched</title>
+    <sub-title lang="en">The Corn is as High as a Guernsey&apos;s Eye</sub-title>
+  </programme>
+  <programme start="20260909050448 +0000" stop="20260909052641 +0000" channel="scream-kids">
+    <title lang="en">Goosebumps</title>
+    <sub-title lang="en">It Came from Beneath the Sink</sub-title>
+  </programme>
+  <programme start="20260909052641 +0000" stop="20260909054902 +0000" channel="scream-kids">
+    <title lang="en">Beetlejuice</title>
+    <sub-title lang="en">Two Heads Are Better Than None</sub-title>
+  </programme>
+  <programme start="20260909054902 +0000" stop="20260909061433 +0000" channel="scream-kids">
+    <title lang="en">The Munsters</title>
+    <sub-title lang="en">Grandpa’s Call of the Wild</sub-title>
+  </programme>
+  <programme start="20260909061433 +0000" stop="20260909063702 +0000" channel="scream-kids">
+    <title lang="en">Count Duckula</title>
+    <sub-title lang="en">A Mountie Always Gets His Duck</sub-title>
+  </programme>
+  <programme start="20260909063702 +0000" stop="20260909070226 +0000" channel="scream-kids">
+    <title lang="en">Bewitched</title>
+    <sub-title lang="en">Hippie, Hippie, Hooray</sub-title>
+  </programme>
+  <programme start="20260909070226 +0000" stop="20260909074545 +0000" channel="scream-kids">
+    <title lang="en">Goosebumps</title>
+    <sub-title lang="en">Revenge of the Lawn Gnomes</sub-title>
+  </programme>
+  <programme start="20260909074545 +0000" stop="20260909081118 +0000" channel="scream-kids">
+    <title lang="en">The Munsters</title>
+    <sub-title lang="en">A Man for Marilyn</sub-title>
+  </programme>
+  <programme start="20260909081118 +0000" stop="20260909083349 +0000" channel="scream-kids">
+    <title lang="en">Count Duckula</title>
+    <sub-title lang="en">Autoduck</sub-title>
+  </programme>
+  <programme start="20260909083349 +0000" stop="20260909085612 +0000" channel="scream-kids">
+    <title lang="en">The Real Ghostbusters</title>
+    <sub-title lang="en">A Fright at the Opera</sub-title>
+  </programme>
+  <programme start="20260909085612 +0000" stop="20260909094020 +0000" channel="scream-kids">
+    <title lang="en">Goosebumps</title>
+    <sub-title lang="en">The Haunted Mask</sub-title>
+  </programme>
+  <programme start="20260909094020 +0000" stop="20260909100612 +0000" channel="scream-kids">
+    <title lang="en">The Munsters</title>
+    <sub-title lang="en">Grandpa’s Lost Wife</sub-title>
+  </programme>
+  <programme start="20260909100612 +0000" stop="20260909103143 +0000" channel="scream-kids">
+    <title lang="en">Bewitched</title>
+    <sub-title lang="en">Follow That Witch (1)</sub-title>
+  </programme>
+  <programme start="20260909103143 +0000" stop="20260909105503 +0000" channel="scream-kids">
+    <title lang="en">The Real Ghostbusters</title>
+    <sub-title lang="en">The Halloween Door</sub-title>
+  </programme>
+  <programme start="20260909105503 +0000" stop="20260909111723 +0000" channel="scream-kids">
+    <title lang="en">Beetlejuice</title>
+    <sub-title lang="en">Rotten Sports</sub-title>
+  </programme>
+  <programme start="20260909111723 +0000" stop="20260909112905 +0000" channel="scream-kids">
+    <title lang="en">Aaahh!!! Real Monsters</title>
+    <sub-title lang="en">Hats Off</sub-title>
+  </programme>
+  <programme start="20260909112905 +0000" stop="20260909121343 +0000" channel="scream-kids">
+    <title lang="en">Beyond Belief: Fact or Fiction</title>
+    <sub-title lang="en">The Wreath, Terror Night, Tants, The Candidate &amp; The Ring</sub-title>
+  </programme>
+  <programme start="20260909121343 +0000" stop="20260909123912 +0000" channel="scream-kids">
+    <title lang="en">Bewitched</title>
+    <sub-title lang="en">Baby&apos;s First Paragraph</sub-title>
+  </programme>
+  <programme start="20260909123912 +0000" stop="20260909130448 +0000" channel="scream-kids">
+    <title lang="en">The Munsters</title>
+    <sub-title lang="en">The Musician</sub-title>
+  </programme>
+  <programme start="20260909130448 +0000" stop="20260909133014 +0000" channel="scream-kids">
+    <title lang="en">Bewitched</title>
+    <sub-title lang="en">Be it Ever So Mortgaged</sub-title>
+  </programme>
+  <programme start="20260909133014 +0000" stop="20260909135243 +0000" channel="scream-kids">
+    <title lang="en">The Grim Adventures of Billy and Mandy</title>
+    <sub-title lang="en">Toadblatt&apos;s School of Sorcery</sub-title>
+  </programme>
+  <programme start="20260909135243 +0000" stop="20260909141814 +0000" channel="scream-kids">
+    <title lang="en">Bewitched</title>
+    <sub-title lang="en">The Dancing Bear</sub-title>
+  </programme>
+  <programme start="20260909141814 +0000" stop="20260909144043 +0000" channel="scream-kids">
+    <title lang="en">The Real Ghostbusters</title>
+    <sub-title lang="en">Beneath These Streets</sub-title>
+  </programme>
+  <programme start="20260909144043 +0000" stop="20260909150311 +0000" channel="scream-kids">
+    <title lang="en">Ghostbusters</title>
+    <sub-title lang="en">The Battle For Ghost Command</sub-title>
+  </programme>
+  <programme start="20260909150311 +0000" stop="20260909152934 +0000" channel="scream-kids">
+    <title lang="en">The Real Ghostbusters</title>
+    <sub-title lang="en">Venk-Man!</sub-title>
+  </programme>
+  <programme start="20260909152934 +0000" stop="20260909155416 +0000" channel="scream-kids">
+    <title lang="en">Amazing Stories</title>
+    <sub-title lang="en">Guilt Trip</sub-title>
+  </programme>
+  <programme start="20260907153517 +0000" stop="20260907155711 +0000" channel="superhero-tv">
+    <title lang="en">Green Lantern: The Animated Series</title>
+    <sub-title lang="en">Heir Apparent</sub-title>
+  </programme>
+  <programme start="20260907155711 +0000" stop="20260907161853 +0000" channel="superhero-tv">
+    <title lang="en">Justice League</title>
+    <sub-title lang="en">Paradise Lost (2)</sub-title>
+  </programme>
+  <programme start="20260907161853 +0000" stop="20260907164016 +0000" channel="superhero-tv">
+    <title lang="en">Batman Beyond</title>
+    <sub-title lang="en">Lost Soul</sub-title>
+  </programme>
+  <programme start="20260907164016 +0000" stop="20260907165149 +0000" channel="superhero-tv">
+    <title lang="en">OK K.O.! Let&apos;s Be Heroes</title>
+    <sub-title lang="en">Let&apos;s Be Friends</sub-title>
+  </programme>
+  <programme start="20260907165149 +0000" stop="20260907173430 +0000" channel="superhero-tv">
+    <title lang="en">Smallville</title>
+    <sub-title lang="en">Plastique</sub-title>
+  </programme>
+  <programme start="20260907173430 +0000" stop="20260907181810 +0000" channel="superhero-tv">
+    <title lang="en">Smallville</title>
+    <sub-title lang="en">Krypto</sub-title>
+  </programme>
+  <programme start="20260907181810 +0000" stop="20260907190053 +0000" channel="superhero-tv">
+    <title lang="en">Smallville</title>
+    <sub-title lang="en">Committed</sub-title>
+  </programme>
+  <programme start="20260907190053 +0000" stop="20260907192146 +0000" channel="superhero-tv">
+    <title lang="en">Power Rangers</title>
+    <sub-title lang="en">Honey, I Shrunk The Rangers (2)</sub-title>
+  </programme>
+  <programme start="20260907192146 +0000" stop="20260907194428 +0000" channel="superhero-tv">
+    <title lang="en">Rise of the Teenage Mutant Ninja Turtles</title>
+    <sub-title lang="en">Mystic Mayhem</sub-title>
+  </programme>
+  <programme start="20260907194428 +0000" stop="20260907203027 +0000" channel="superhero-tv">
+    <title lang="en">Doom Patrol</title>
+    <sub-title lang="en">Hope Patrol</sub-title>
+  </programme>
+  <programme start="20260907203027 +0000" stop="20260907205335 +0000" channel="superhero-tv">
+    <title lang="en">The Spectacular Spider-Man</title>
+    <sub-title lang="en">Persona</sub-title>
+  </programme>
+  <programme start="20260907205335 +0000" stop="20260907210420 +0000" channel="superhero-tv">
+    <title lang="en">OK K.O.! Let&apos;s Be Heroes</title>
+    <sub-title lang="en">Plaza Shorts</sub-title>
+  </programme>
+  <programme start="20260907210420 +0000" stop="20260907212755 +0000" channel="superhero-tv">
+    <title lang="en">Power Rangers</title>
+    <sub-title lang="en">Besties 4Eva</sub-title>
+  </programme>
+  <programme start="20260907212755 +0000" stop="20260907215040 +0000" channel="superhero-tv">
+    <title lang="en">The Venture Bros.</title>
+    <sub-title lang="en">The Silent Partners</sub-title>
+  </programme>
+  <programme start="20260907215040 +0000" stop="20260907223257 +0000" channel="superhero-tv">
+    <title lang="en">The Flash</title>
+    <sub-title lang="en">Blocked</sub-title>
+  </programme>
+  <programme start="20260907223257 +0000" stop="20260907225539 +0000" channel="superhero-tv">
+    <title lang="en">Darkwing Duck</title>
+    <sub-title lang="en">The Steerminator</sub-title>
+  </programme>
+  <programme start="20260907225539 +0000" stop="20260907234501 +0000" channel="superhero-tv">
+    <title lang="en">Titans</title>
+    <sub-title lang="en">Faux Hawk</sub-title>
+  </programme>
+  <programme start="20260907234501 +0000" stop="20260907235635 +0000" channel="superhero-tv">
+    <title lang="en">OK K.O.! Let&apos;s Be Heroes</title>
+    <sub-title lang="en">You Have to Care</sub-title>
+  </programme>
+  <programme start="20260907235635 +0000" stop="20260908002040 +0000" channel="superhero-tv">
+    <title lang="en">Spidey and His Amazing Friends</title>
+    <sub-title lang="en">Li&apos;l Hulk</sub-title>
+  </programme>
+  <programme start="20260908002040 +0000" stop="20260908005114 +0000" channel="superhero-tv">
+    <title lang="en">What If...?</title>
+    <sub-title lang="en">What If... Captain Carter Fought the Hydra Stomper?</sub-title>
+  </programme>
+  <programme start="20260908005114 +0000" stop="20260908014206 +0000" channel="superhero-tv">
+    <title lang="en">Titans</title>
+    <sub-title lang="en">Purple Rain</sub-title>
+  </programme>
+  <programme start="20260908014206 +0000" stop="20260908020419 +0000" channel="superhero-tv">
+    <title lang="en">Teenage Mutant Ninja Turtles</title>
+    <sub-title lang="en">Michaelangelo Toys Around</sub-title>
+  </programme>
+  <programme start="20260908020419 +0000" stop="20260908022651 +0000" channel="superhero-tv">
+    <title lang="en">Power Rangers</title>
+    <sub-title lang="en">Tuba Triumph</sub-title>
+  </programme>
+  <programme start="20260908022651 +0000" stop="20260908025028 +0000" channel="superhero-tv">
+    <title lang="en">The Venture Bros.</title>
+    <sub-title lang="en">Blood of the Father, Heart of Steel</sub-title>
+  </programme>
+  <programme start="20260908025028 +0000" stop="20260908031200 +0000" channel="superhero-tv">
+    <title lang="en">Teenage Mutant Ninja Turtles</title>
+    <sub-title lang="en">City Under Siege</sub-title>
+  </programme>
+  <programme start="20260908031200 +0000" stop="20260908033317 +0000" channel="superhero-tv">
+    <title lang="en">Batman Beyond</title>
+    <sub-title lang="en">The Call (2)</sub-title>
+  </programme>
+  <programme start="20260908033317 +0000" stop="20260908041550 +0000" channel="superhero-tv">
+    <title lang="en">DC&apos;s Legends of Tomorrow</title>
+    <sub-title lang="en">Out of Time</sub-title>
+  </programme>
+  <programme start="20260908041550 +0000" stop="20260908050521 +0000" channel="superhero-tv">
+    <title lang="en">Marvel&apos;s Daredevil</title>
+    <sub-title lang="en">No Good Deed</sub-title>
+  </programme>
+  <programme start="20260908050521 +0000" stop="20260908052721 +0000" channel="superhero-tv">
+    <title lang="en">Big Hero 6 The Series</title>
+    <sub-title lang="en">The MiSFIT / Return to Sycorax</sub-title>
+  </programme>
+  <programme start="20260908052721 +0000" stop="20260908054928 +0000" channel="superhero-tv">
+    <title lang="en">Marvel&apos;s Avengers</title>
+    <sub-title lang="en">The Citadel</sub-title>
+  </programme>
+  <programme start="20260908054928 +0000" stop="20260908061213 +0000" channel="superhero-tv">
+    <title lang="en">Power Rangers</title>
+    <sub-title lang="en">Serious Business</sub-title>
+  </programme>
+  <programme start="20260908061213 +0000" stop="20260908065920 +0000" channel="superhero-tv">
+    <title lang="en">Marvel&apos;s Jessica Jones</title>
+    <sub-title lang="en">AKA 1,000 Cuts</sub-title>
+  </programme>
+  <programme start="20260908065920 +0000" stop="20260908071931 +0000" channel="superhero-tv">
+    <title lang="en">Power Rangers</title>
+    <sub-title lang="en">A Different Shade of Pink (2)</sub-title>
+  </programme>
+  <programme start="20260908071931 +0000" stop="20260908074451 +0000" channel="superhero-tv">
+    <title lang="en">Batman</title>
+    <sub-title lang="en">The Clock King&apos;s Crazy Crimes</sub-title>
+  </programme>
+  <programme start="20260908074451 +0000" stop="20260908080752 +0000" channel="superhero-tv">
+    <title lang="en">Power Rangers</title>
+    <sub-title lang="en">Double Ranger, Double Danger</sub-title>
+  </programme>
+  <programme start="20260908080752 +0000" stop="20260908085022 +0000" channel="superhero-tv">
+    <title lang="en">DC&apos;s Legends of Tomorrow</title>
+    <sub-title lang="en">Invasion! (IV)</sub-title>
+  </programme>
+  <programme start="20260908085022 +0000" stop="20260908091254 +0000" channel="superhero-tv">
+    <title lang="en">The Batman</title>
+    <sub-title lang="en">Riddler&apos;s Revenge</sub-title>
+  </programme>
+  <programme start="20260908091254 +0000" stop="20260908093008 +0000" channel="superhero-tv">
+    <title lang="en">Underdog</title>
+    <sub-title lang="en">Go Snow Part 2</sub-title>
+  </programme>
+  <programme start="20260908093008 +0000" stop="20260908095132 +0000" channel="superhero-tv">
+    <title lang="en">Power Rangers</title>
+    <sub-title lang="en">From Out of Nowhere (2)</sub-title>
+  </programme>
+  <programme start="20260908095132 +0000" stop="20260908101344 +0000" channel="superhero-tv">
+    <title lang="en">Power Rangers</title>
+    <sub-title lang="en">Ranger Red</sub-title>
+  </programme>
+  <programme start="20260908101344 +0000" stop="20260908103547 +0000" channel="superhero-tv">
+    <title lang="en">Spider-Man</title>
+    <sub-title lang="en">Doctor Octopus: Armed and Dangerous</sub-title>
+  </programme>
+  <programme start="20260908103547 +0000" stop="20260908105952 +0000" channel="superhero-tv">
+    <title lang="en">Spidey and His Amazing Friends</title>
+    <sub-title lang="en">Superhero Hiccups</sub-title>
+  </programme>
+  <programme start="20260908105952 +0000" stop="20260908111646 +0000" channel="superhero-tv">
+    <title lang="en">Underdog</title>
+    <sub-title lang="en">The Great Gold Robbery, Part 4</sub-title>
+  </programme>
+  <programme start="20260908111646 +0000" stop="20260908113815 +0000" channel="superhero-tv">
+    <title lang="en">Power Rangers</title>
+    <sub-title lang="en">Clash for Control (1)</sub-title>
+  </programme>
+  <programme start="20260908113815 +0000" stop="20260908120155 +0000" channel="superhero-tv">
+    <title lang="en">Teenage Mutant Ninja Turtles</title>
+    <sub-title lang="en">Donatello Makes Time</sub-title>
+  </programme>
+  <programme start="20260908120155 +0000" stop="20260908122424 +0000" channel="superhero-tv">
+    <title lang="en">Marvel&apos;s Guardians of the Galaxy</title>
+    <sub-title lang="en">Come and Gut Your Love</sub-title>
+  </programme>
+  <programme start="20260908122424 +0000" stop="20260908124706 +0000" channel="superhero-tv">
+    <title lang="en">The Venture Bros.</title>
+    <sub-title lang="en">The Inamorata Consequence</sub-title>
+  </programme>
+  <programme start="20260908124706 +0000" stop="20260908130855 +0000" channel="superhero-tv">
+    <title lang="en">Teenage Mutant Ninja Turtles</title>
+    <sub-title lang="en">The Freaks Come Out at Night</sub-title>
+  </programme>
+  <programme start="20260908130855 +0000" stop="20260908132010 +0000" channel="superhero-tv">
+    <title lang="en">Ben 10</title>
+    <sub-title lang="en">Beach Heads</sub-title>
+  </programme>
+  <programme start="20260908132010 +0000" stop="20260908134251 +0000" channel="superhero-tv">
+    <title lang="en">Power Rangers</title>
+    <sub-title lang="en">Path of the Rhino</sub-title>
+  </programme>
+  <programme start="20260908134251 +0000" stop="20260908140439 +0000" channel="superhero-tv">
+    <title lang="en">Teenage Mutant Ninja Turtles</title>
+    <sub-title lang="en">Fly Me to the Moon</sub-title>
+  </programme>
+  <programme start="20260908140439 +0000" stop="20260908142743 +0000" channel="superhero-tv">
+    <title lang="en">PJ Masks</title>
+    <sub-title lang="en">Owlette and the Moonflower / Slowpoke Gekko</sub-title>
+  </programme>
+  <programme start="20260908142743 +0000" stop="20260908145857 +0000" channel="superhero-tv">
+    <title lang="en">X-Men &apos;97</title>
+    <sub-title lang="en">Lifedeath (2)</sub-title>
+  </programme>
+  <programme start="20260908145857 +0000" stop="20260908154200 +0000" channel="superhero-tv">
+    <title lang="en">Marvel&apos;s Agents of S.H.I.E.L.D.</title>
+    <sub-title lang="en">Fear and Loathing on the Planet of Kitson</sub-title>
+  </programme>
+  <programme start="20260908154200 +0000" stop="20260908155341 +0000" channel="superhero-tv">
+    <title lang="en">Ben 10</title>
+    <sub-title lang="en">Max to the Max</sub-title>
+  </programme>
+  <programme start="20260908155341 +0000" stop="20260908163553 +0000" channel="superhero-tv">
+    <title lang="en">Arrow</title>
+    <sub-title lang="en">Damaged</sub-title>
+  </programme>
+  <programme start="20260908163553 +0000" stop="20260908165954 +0000" channel="superhero-tv">
+    <title lang="en">PJ Masks</title>
+    <sub-title lang="en">PJ Party Mountain / Wolfies of the Pagoda</sub-title>
+  </programme>
+  <programme start="20260908165954 +0000" stop="20260908172355 +0000" channel="superhero-tv">
+    <title lang="en">PJ Masks</title>
+    <sub-title lang="en">Gekko and the Mighty Moon Problem</sub-title>
+  </programme>
+  <programme start="20260908172355 +0000" stop="20260908173517 +0000" channel="superhero-tv">
+    <title lang="en">Ben 10</title>
+    <sub-title lang="en">Freaky Gwen Ben</sub-title>
+  </programme>
+  <programme start="20260908173517 +0000" stop="20260908180426 +0000" channel="superhero-tv">
+    <title lang="en">I&apos;m a Virgo</title>
+    <sub-title lang="en">A Metaphor for What</sub-title>
+  </programme>
+  <programme start="20260908180426 +0000" stop="20260908185547 +0000" channel="superhero-tv">
+    <title lang="en">The Sandman</title>
+    <sub-title lang="en">More Devils Than Vast Hell Can Hold</sub-title>
+  </programme>
+  <programme start="20260908185547 +0000" stop="20260908193427 +0000" channel="superhero-tv">
+    <title lang="en">Peacemaker</title>
+    <sub-title lang="en">Need I Say Door</sub-title>
+  </programme>
+  <programme start="20260908193427 +0000" stop="20260908201658 +0000" channel="superhero-tv">
+    <title lang="en">Smallville</title>
+    <sub-title lang="en">Lucy</sub-title>
+  </programme>
+  <programme start="20260908201658 +0000" stop="20260908204103 +0000" channel="superhero-tv">
+    <title lang="en">Spidey and His Amazing Friends</title>
+    <sub-title lang="en">CAT-astrophe</sub-title>
+  </programme>
+  <programme start="20260908204103 +0000" stop="20260908210507 +0000" channel="superhero-tv">
+    <title lang="en">Spidey and His Amazing Friends</title>
+    <sub-title lang="en">Clean Power / Doc Ock &amp; The Rocktobots</sub-title>
+  </programme>
+  <programme start="20260908210507 +0000" stop="20260908212748 +0000" channel="superhero-tv">
+    <title lang="en">Darkwing Duck</title>
+    <sub-title lang="en">Easy Come, Easy Grows</sub-title>
+  </programme>
+  <programme start="20260908212748 +0000" stop="20260908214951 +0000" channel="superhero-tv">
+    <title lang="en">Marvel&apos;s Avengers</title>
+    <sub-title lang="en">T&apos;Challa Royale</sub-title>
+  </programme>
+  <programme start="20260908214951 +0000" stop="20260908221159 +0000" channel="superhero-tv">
+    <title lang="en">Marvel&apos;s Avengers</title>
+    <sub-title lang="en">Super Adaptoid</sub-title>
+  </programme>
+  <programme start="20260908221159 +0000" stop="20260908223534 +0000" channel="superhero-tv">
+    <title lang="en">Power Rangers</title>
+    <sub-title lang="en">Doom Signal</sub-title>
+  </programme>
+  <programme start="20260908223534 +0000" stop="20260908225838 +0000" channel="superhero-tv">
+    <title lang="en">The Batman</title>
+    <sub-title lang="en">Team Penguin</sub-title>
+  </programme>
+  <programme start="20260908225838 +0000" stop="20260908234608 +0000" channel="superhero-tv">
+    <title lang="en">Invincible</title>
+    <sub-title lang="en">IT&apos;S ABOUT TIME</sub-title>
+  </programme>
+  <programme start="20260908234608 +0000" stop="20260909000920 +0000" channel="superhero-tv">
+    <title lang="en">Justice League</title>
+    <sub-title lang="en">Comfort and Joy</sub-title>
+  </programme>
+  <programme start="20260909000920 +0000" stop="20260909005750 +0000" channel="superhero-tv">
+    <title lang="en">Invincible</title>
+    <sub-title lang="en">THIS WAS SUPPOSED TO BE EASY</sub-title>
+  </programme>
+  <programme start="20260909005750 +0000" stop="20260909010906 +0000" channel="superhero-tv">
+    <title lang="en">Hamster &amp; Gretel</title>
+    <sub-title lang="en">Lair Necessities</sub-title>
+  </programme>
+  <programme start="20260909010906 +0000" stop="20260909013034 +0000" channel="superhero-tv">
+    <title lang="en">Power Rangers</title>
+    <sub-title lang="en">A Face from the Past</sub-title>
+  </programme>
+  <programme start="20260909013034 +0000" stop="20260909015242 +0000" channel="superhero-tv">
+    <title lang="en">Marvel&apos;s Ultimate Spider-Man</title>
+    <sub-title lang="en">House Arrest</sub-title>
+  </programme>
+  <programme start="20260909015242 +0000" stop="20260909023508 +0000" channel="superhero-tv">
+    <title lang="en">The Flash</title>
+    <sub-title lang="en">All&apos;s Wells That Ends Wells</sub-title>
+  </programme>
+  <programme start="20260909023508 +0000" stop="20260909025912 +0000" channel="superhero-tv">
+    <title lang="en">Spidey and His Amazing Friends</title>
+    <sub-title lang="en">Spidey Tidies Up / Oh No, Tomatoes!</sub-title>
+  </programme>
+  <programme start="20260909025912 +0000" stop="20260909034424 +0000" channel="superhero-tv">
+    <title lang="en">Smallville</title>
+    <sub-title lang="en">Metamorphosis</sub-title>
+  </programme>
+  <programme start="20260909034424 +0000" stop="20260909040542 +0000" channel="superhero-tv">
+    <title lang="en">Static Shock</title>
+    <sub-title lang="en">Consequences</sub-title>
+  </programme>
+  <programme start="20260909040542 +0000" stop="20260909044845 +0000" channel="superhero-tv">
+    <title lang="en">Marvel&apos;s Agents of S.H.I.E.L.D.</title>
+    <sub-title lang="en">What We&apos;re Fighting For</sub-title>
+  </programme>
+  <programme start="20260909044845 +0000" stop="20260909053109 +0000" channel="superhero-tv">
+    <title lang="en">Supergirl</title>
+    <sub-title lang="en">Myriad</sub-title>
+  </programme>
+  <programme start="20260909053109 +0000" stop="20260909055941 +0000" channel="superhero-tv">
+    <title lang="en">Extraordinary</title>
+    <sub-title lang="en">Ready to Rumble</sub-title>
+  </programme>
+  <programme start="20260909055941 +0000" stop="20260909064204 +0000" channel="superhero-tv">
+    <title lang="en">The Flash</title>
+    <sub-title lang="en">Heart of the Matter (2)</sub-title>
+  </programme>
+  <programme start="20260909064204 +0000" stop="20260909070421 +0000" channel="superhero-tv">
+    <title lang="en">Teenage Mutant Ninja Turtles</title>
+    <sub-title lang="en">Corporate Raiders from Dimension X</sub-title>
+  </programme>
+  <programme start="20260909070421 +0000" stop="20260909071617 +0000" channel="superhero-tv">
+    <title lang="en">Rise of the Teenage Mutant Ninja Turtles</title>
+    <sub-title lang="en">How to Make Enemies and Bend People to Your Will</sub-title>
+  </programme>
+  <programme start="20260909071617 +0000" stop="20260909073829 +0000" channel="superhero-tv">
+    <title lang="en">Teenage Mutant Ninja Turtles</title>
+    <sub-title lang="en">The Grybyx</sub-title>
+  </programme>
+  <programme start="20260909073829 +0000" stop="20260909080234 +0000" channel="superhero-tv">
+    <title lang="en">Spidey and His Amazing Friends</title>
+    <sub-title lang="en">Electro&apos;s Gotta Glow</sub-title>
+  </programme>
+  <programme start="20260909080234 +0000" stop="20260909080703 +0000" channel="superhero-tv">
+    <title lang="en">Marvel&apos;s Guardians of the Galaxy</title>
+    <sub-title lang="en">Marvel&apos;s Guardians of the Galaxy - S00E17 - Gamora Strikes![WEBDL</sub-title>
+  </programme>
+  <programme start="20260909080703 +0000" stop="20260909090119 +0000" channel="superhero-tv">
+    <title lang="en">Doom Patrol</title>
+    <sub-title lang="en">Dead Patrol</sub-title>
+  </programme>
+  <programme start="20260909090119 +0000" stop="20260909092402 +0000" channel="superhero-tv">
+    <title lang="en">OK K.O.! Let&apos;s Be Heroes</title>
+    <sub-title lang="en">T.K.O.</sub-title>
+  </programme>
+  <programme start="20260909092402 +0000" stop="20260909094532 +0000" channel="superhero-tv">
+    <title lang="en">Power Rangers</title>
+    <sub-title lang="en">Thunder Strangers (2)</sub-title>
+  </programme>
+  <programme start="20260909094532 +0000" stop="20260909100539 +0000" channel="superhero-tv">
+    <title lang="en">Power Rangers</title>
+    <sub-title lang="en">Blue Ranger Gone Bad</sub-title>
+  </programme>
+  <programme start="20260909100539 +0000" stop="20260909102751 +0000" channel="superhero-tv">
+    <title lang="en">Power Rangers</title>
+    <sub-title lang="en">Control-Alt-Delete</sub-title>
+  </programme>
+  <programme start="20260909102751 +0000" stop="20260909111105 +0000" channel="superhero-tv">
+    <title lang="en">Smallville</title>
+    <sub-title lang="en">Splinter</sub-title>
+  </programme>
+  <programme start="20260909111105 +0000" stop="20260909112238 +0000" channel="superhero-tv">
+    <title lang="en">OK K.O.! Let&apos;s Be Heroes</title>
+    <sub-title lang="en">A Hero&apos;s Fate</sub-title>
+  </programme>
+  <programme start="20260909112238 +0000" stop="20260909114247 +0000" channel="superhero-tv">
+    <title lang="en">Underdog</title>
+    <sub-title lang="en">Underdog vs. Overcat, Part 3</sub-title>
+  </programme>
+  <programme start="20260909114247 +0000" stop="20260909122705 +0000" channel="superhero-tv">
+    <title lang="en">The Umbrella Academy</title>
+    <sub-title lang="en">Changes</sub-title>
+  </programme>
+  <programme start="20260909122705 +0000" stop="20260909130927 +0000" channel="superhero-tv">
+    <title lang="en">Smallville</title>
+    <sub-title lang="en">Arrow</sub-title>
+  </programme>
+  <programme start="20260909130927 +0000" stop="20260909133044 +0000" channel="superhero-tv">
+    <title lang="en">X-Men</title>
+    <sub-title lang="en">The Final Decision</sub-title>
+  </programme>
+  <programme start="20260909133044 +0000" stop="20260909135232 +0000" channel="superhero-tv">
+    <title lang="en">The Venture Bros.</title>
+    <sub-title lang="en">Are You There, God? It&apos;s Me, Dean</sub-title>
+  </programme>
+  <programme start="20260909135232 +0000" stop="20260909140726 +0000" channel="superhero-tv">
+    <title lang="en">Teen Titans</title>
+    <sub-title lang="en">Teen Titans - S00E10 - Know Your Foes</sub-title>
+  </programme>
+  <programme start="20260909140726 +0000" stop="20260909143005 +0000" channel="superhero-tv">
+    <title lang="en">Darkwing Duck</title>
+    <sub-title lang="en">The Quiverwing Quack</sub-title>
+  </programme>
+  <programme start="20260909143005 +0000" stop="20260909145134 +0000" channel="superhero-tv">
+    <title lang="en">Power Rangers</title>
+    <sub-title lang="en">Reinforcements from the Future (1)</sub-title>
+  </programme>
+  <programme start="20260909145134 +0000" stop="20260909153402 +0000" channel="superhero-tv">
+    <title lang="en">Smallville</title>
+    <sub-title lang="en">Ambush</sub-title>
+  </programme>
+  <programme start="20260909153402 +0000" stop="20260909155637 +0000" channel="superhero-tv">
+    <title lang="en">Power Rangers</title>
+    <sub-title lang="en">Old Foes</sub-title>
+  </programme>
+  <programme start="20260907132228 +0000" stop="20260907154549 +0000" channel="superhero-movies">
+    <title lang="en">Aquaman</title>
+  </programme>
+  <programme start="20260907154549 +0000" stop="20260907180614 +0000" channel="superhero-movies">
+    <title lang="en">Masters of the Universe</title>
+  </programme>
+  <programme start="20260907180614 +0000" stop="20260907200939 +0000" channel="superhero-movies">
+    <title lang="en">Ghost Rider</title>
+  </programme>
+  <programme start="20260907200939 +0000" stop="20260907221634 +0000" channel="superhero-movies">
+    <title lang="en">Kraven the Hunter</title>
+  </programme>
+  <programme start="20260907221634 +0000" stop="20260907235307 +0000" channel="superhero-movies">
+    <title lang="en">My Super Ex-Girlfriend</title>
+  </programme>
+  <programme start="20260907235307 +0000" stop="20260908015051 +0000" channel="superhero-movies">
+    <title lang="en">Kick-Ass</title>
+  </programme>
+  <programme start="20260908015051 +0000" stop="20260908035520 +0000" channel="superhero-movies">
+    <title lang="en">Ant-Man and the Wasp: Quantumania</title>
+  </programme>
+  <programme start="20260908035520 +0000" stop="20260908055919 +0000" channel="superhero-movies">
+    <title lang="en">Power Rangers</title>
+  </programme>
+  <programme start="20260908055919 +0000" stop="20260908075128 +0000" channel="superhero-movies">
+    <title lang="en">Shin Ultraman</title>
+  </programme>
+  <programme start="20260908075128 +0000" stop="20260908094530 +0000" channel="superhero-movies">
+    <title lang="en">Green Lantern</title>
+  </programme>
+  <programme start="20260908094530 +0000" stop="20260908105616 +0000" channel="superhero-movies">
+    <title lang="en">LEGO Batman: The Movie - DC Super Heroes Unite</title>
+  </programme>
+  <programme start="20260908105616 +0000" stop="20260908130244 +0000" channel="superhero-movies">
+    <title lang="en">Batman Returns</title>
+  </programme>
+  <programme start="20260908130244 +0000" stop="20260908150201 +0000" channel="superhero-movies">
+    <title lang="en">Birdman or (The Unexpected Virtue of Ignorance)</title>
+  </programme>
+  <programme start="20260908150201 +0000" stop="20260908170203 +0000" channel="superhero-movies">
+    <title lang="en">Justice League</title>
+  </programme>
+  <programme start="20260908170203 +0000" stop="20260908184238 +0000" channel="superhero-movies">
+    <title lang="en">The Lego Movie</title>
+  </programme>
+  <programme start="20260908184238 +0000" stop="20260908200950 +0000" channel="superhero-movies">
+    <title lang="en">Reign of the Supermen</title>
+  </programme>
+  <programme start="20260908200950 +0000" stop="20260908214433 +0000" channel="superhero-movies">
+    <title lang="en">Justice League: Crisis on Infinite Earths Part Two</title>
+  </programme>
+  <programme start="20260908214433 +0000" stop="20260909001645 +0000" channel="superhero-movies">
+    <title lang="en">The Dark Knight</title>
+  </programme>
+  <programme start="20260909001645 +0000" stop="20260909013447 +0000" channel="superhero-movies">
+    <title lang="en">Scooby-Doo! and Krypto, Too!</title>
+  </programme>
+  <programme start="20260909013447 +0000" stop="20260909040554 +0000" channel="superhero-movies">
+    <title lang="en">Wonder Woman 1984</title>
+  </programme>
+  <programme start="20260909040554 +0000" stop="20260909061044 +0000" channel="superhero-movies">
+    <title lang="en">Black Adam</title>
+  </programme>
+  <programme start="20260909061044 +0000" stop="20260909083218 +0000" channel="superhero-movies">
+    <title lang="en">The Amazing Spider-Man 2</title>
+  </programme>
+  <programme start="20260909083218 +0000" stop="20260909100207 +0000" channel="superhero-movies">
+    <title lang="en">Superman IV: The Quest for Peace</title>
+  </programme>
+  <programme start="20260909100207 +0000" stop="20260909120051 +0000" channel="superhero-movies">
+    <title lang="en">Thor: Love and Thunder</title>
+  </programme>
+  <programme start="20260909120051 +0000" stop="20260909141118 +0000" channel="superhero-movies">
+    <title lang="en">The Legend of Zorro</title>
+  </programme>
+  <programme start="20260909141118 +0000" stop="20260909164258 +0000" channel="superhero-movies">
+    <title lang="en">Batman v Superman: Dawn of Justice</title>
+  </programme>
+  <programme start="20260907154504 +0000" stop="20260907163243 +0000" channel="Period-dramas">
+    <title lang="en">Downton Abbey</title>
+    <sub-title lang="en">Episode 5</sub-title>
+  </programme>
+  <programme start="20260907163243 +0000" stop="20260907172152 +0000" channel="Period-dramas">
+    <title lang="en">Little House on the Prairie</title>
+    <sub-title lang="en">A Harvest of Friends</sub-title>
+  </programme>
+  <programme start="20260907172152 +0000" stop="20260907181207 +0000" channel="Period-dramas">
+    <title lang="en">Daniel Boone</title>
+    <sub-title lang="en">The Accused</sub-title>
+  </programme>
+  <programme start="20260907181207 +0000" stop="20260907190113 +0000" channel="Period-dramas">
+    <title lang="en">Little House on the Prairie</title>
+    <sub-title lang="en">Doctor&apos;s Lady</sub-title>
+  </programme>
+  <programme start="20260907190113 +0000" stop="20260907200011 +0000" channel="Period-dramas">
+    <title lang="en">Call the Midwife</title>
+    <sub-title lang="en">Episode 7</sub-title>
+  </programme>
+  <programme start="20260907200011 +0000" stop="20260907205316 +0000" channel="Period-dramas">
+    <title lang="en">Miss Scarlet</title>
+    <sub-title lang="en">A Pauper&apos;s Grave</sub-title>
+  </programme>
+  <programme start="20260907205316 +0000" stop="20260907215216 +0000" channel="Period-dramas">
+    <title lang="en">Lark Rise to Candleford</title>
+    <sub-title lang="en">Episode 10</sub-title>
+  </programme>
+  <programme start="20260907215216 +0000" stop="20260907224019 +0000" channel="Period-dramas">
+    <title lang="en">Mad Men</title>
+    <sub-title lang="en">The Hobo Code</sub-title>
+  </programme>
+  <programme start="20260907224019 +0000" stop="20260907233138 +0000" channel="Period-dramas">
+    <title lang="en">The Big Valley</title>
+    <sub-title lang="en">Ambush</sub-title>
+  </programme>
+  <programme start="20260907233138 +0000" stop="20260908001930 +0000" channel="Period-dramas">
+    <title lang="en">Bonanza</title>
+    <sub-title lang="en">Child</sub-title>
+  </programme>
+  <programme start="20260908001930 +0000" stop="20260908010427 +0000" channel="Period-dramas">
+    <title lang="en">Bonanza</title>
+    <sub-title lang="en">The Cheating Game</sub-title>
+  </programme>
+  <programme start="20260908010427 +0000" stop="20260908014937 +0000" channel="Period-dramas">
+    <title lang="en">Father Brown</title>
+    <sub-title lang="en">The Quick One</sub-title>
+  </programme>
+  <programme start="20260908014937 +0000" stop="20260908023558 +0000" channel="Period-dramas">
+    <title lang="en">Little House on the Prairie</title>
+    <sub-title lang="en">Once Upon A Time</sub-title>
+  </programme>
+  <programme start="20260908023558 +0000" stop="20260908033311 +0000" channel="Period-dramas">
+    <title lang="en">Poldark</title>
+    <sub-title lang="en">Episode 4</sub-title>
+  </programme>
+  <programme start="20260908033311 +0000" stop="20260908042422 +0000" channel="Period-dramas">
+    <title lang="en">Daniel Boone</title>
+    <sub-title lang="en">The Jasper Ledbedder Story</sub-title>
+  </programme>
+  <programme start="20260908042422 +0000" stop="20260908051537 +0000" channel="Period-dramas">
+    <title lang="en">The Big Valley</title>
+    <sub-title lang="en">Judgement in Heaven</sub-title>
+  </programme>
+  <programme start="20260908051537 +0000" stop="20260908061040 +0000" channel="Period-dramas">
+    <title lang="en">Marie Antoinette</title>
+    <sub-title lang="en">A Poison Pen</sub-title>
+  </programme>
+  <programme start="20260908061040 +0000" stop="20260908071942 +0000" channel="Period-dramas">
+    <title lang="en">Downton Abbey</title>
+    <sub-title lang="en">Episode 1</sub-title>
+  </programme>
+  <programme start="20260908071942 +0000" stop="20260908080056 +0000" channel="Period-dramas">
+    <title lang="en">Reign</title>
+    <sub-title lang="en">No Way Out</sub-title>
+  </programme>
+  <programme start="20260908080056 +0000" stop="20260908085957 +0000" channel="Period-dramas">
+    <title lang="en">Call the Midwife</title>
+    <sub-title lang="en">Episode 7</sub-title>
+  </programme>
+  <programme start="20260908085957 +0000" stop="20260908094511 +0000" channel="Period-dramas">
+    <title lang="en">Bonanza</title>
+    <sub-title lang="en">The Horse Breaker</sub-title>
+  </programme>
+  <programme start="20260908094511 +0000" stop="20260908102956 +0000" channel="Period-dramas">
+    <title lang="en">Halt and Catch Fire</title>
+    <sub-title lang="en">Play with Friends</sub-title>
+  </programme>
+  <programme start="20260908102956 +0000" stop="20260908111831 +0000" channel="Period-dramas">
+    <title lang="en">Father Brown</title>
+    <sub-title lang="en">The Three Tools of Death</sub-title>
+  </programme>
+  <programme start="20260908111831 +0000" stop="20260908120831 +0000" channel="Period-dramas">
+    <title lang="en">Daniel Boone</title>
+    <sub-title lang="en">The Family Fluellen</sub-title>
+  </programme>
+  <programme start="20260908120831 +0000" stop="20260908125933 +0000" channel="Period-dramas">
+    <title lang="en">Daniel Boone</title>
+    <sub-title lang="en">The Matchmaker</sub-title>
+  </programme>
+  <programme start="20260908125933 +0000" stop="20260908134511 +0000" channel="Period-dramas">
+    <title lang="en">Bonanza</title>
+    <sub-title lang="en">She Walks in Beauty</sub-title>
+  </programme>
+  <programme start="20260908134511 +0000" stop="20260908143134 +0000" channel="Period-dramas">
+    <title lang="en">Little House on the Prairie</title>
+    <sub-title lang="en">The Last Summer</sub-title>
+  </programme>
+  <programme start="20260908143134 +0000" stop="20260908152851 +0000" channel="Period-dramas">
+    <title lang="en">Poldark</title>
+    <sub-title lang="en">Episode 1</sub-title>
+  </programme>
+  <programme start="20260908152851 +0000" stop="20260908161655 +0000" channel="Period-dramas">
+    <title lang="en">Little House on the Prairie</title>
+    <sub-title lang="en">Money Crop</sub-title>
+  </programme>
+  <programme start="20260908161655 +0000" stop="20260908171108 +0000" channel="Period-dramas">
+    <title lang="en">Halt and Catch Fire</title>
+    <sub-title lang="en">Goodwill</sub-title>
+  </programme>
+  <programme start="20260908171108 +0000" stop="20260908175814 +0000" channel="Period-dramas">
+    <title lang="en">Bonanza</title>
+    <sub-title lang="en">Judgment at Olympus</sub-title>
+  </programme>
+  <programme start="20260908175814 +0000" stop="20260908184241 +0000" channel="Period-dramas">
+    <title lang="en">Bonanza</title>
+    <sub-title lang="en">The Sisters</sub-title>
+  </programme>
+  <programme start="20260908184241 +0000" stop="20260908193515 +0000" channel="Period-dramas">
+    <title lang="en">Upstairs, Downstairs</title>
+    <sub-title lang="en">The Joy Ride</sub-title>
+  </programme>
+  <programme start="20260908193515 +0000" stop="20260908202611 +0000" channel="Period-dramas">
+    <title lang="en">Daniel Boone</title>
+    <sub-title lang="en">Three Score and Ten</sub-title>
+  </programme>
+  <programme start="20260908202611 +0000" stop="20260908211244 +0000" channel="Period-dramas">
+    <title lang="en">Bonanza</title>
+    <sub-title lang="en">The First Born</sub-title>
+  </programme>
+  <programme start="20260908211244 +0000" stop="20260908220019 +0000" channel="Period-dramas">
+    <title lang="en">Mad Men</title>
+    <sub-title lang="en">Guy Walks Into an Advertising Agency</sub-title>
+  </programme>
+  <programme start="20260908220019 +0000" stop="20260908224238 +0000" channel="Period-dramas">
+    <title lang="en">Reign</title>
+    <sub-title lang="en">Getaway</sub-title>
+  </programme>
+  <programme start="20260908224238 +0000" stop="20260908232453 +0000" channel="Period-dramas">
+    <title lang="en">Hell on Wheels</title>
+    <sub-title lang="en">Immoral Mathematics</sub-title>
+  </programme>
+  <programme start="20260908232453 +0000" stop="20260909001644 +0000" channel="Period-dramas">
+    <title lang="en">Lark Rise to Candleford</title>
+    <sub-title lang="en">Episode 2</sub-title>
+  </programme>
+  <programme start="20260909001644 +0000" stop="20260909010534 +0000" channel="Period-dramas">
+    <title lang="en">Little House on the Prairie</title>
+    <sub-title lang="en">Back to School (2)</sub-title>
+  </programme>
+  <programme start="20260909010534 +0000" stop="20260909015422 +0000" channel="Period-dramas">
+    <title lang="en">Little House on the Prairie</title>
+    <sub-title lang="en">Mortal Mission</sub-title>
+  </programme>
+  <programme start="20260909015422 +0000" stop="20260909025356 +0000" channel="Period-dramas">
+    <title lang="en">Call the Midwife</title>
+    <sub-title lang="en">Episode 4</sub-title>
+  </programme>
+  <programme start="20260909025356 +0000" stop="20260909034426 +0000" channel="Period-dramas">
+    <title lang="en">Lark Rise to Candleford</title>
+    <sub-title lang="en">Episode 3</sub-title>
+  </programme>
+  <programme start="20260909034426 +0000" stop="20260909043644 +0000" channel="Period-dramas">
+    <title lang="en">Miss Scarlet</title>
+    <sub-title lang="en">Hotel St Marc</sub-title>
+  </programme>
+  <programme start="20260909043644 +0000" stop="20260909051752 +0000" channel="Period-dramas">
+    <title lang="en">Reign</title>
+    <sub-title lang="en">To the Death</sub-title>
+  </programme>
+  <programme start="20260909051752 +0000" stop="20260909060914 +0000" channel="Period-dramas">
+    <title lang="en">The Big Valley</title>
+    <sub-title lang="en">Ladykiller</sub-title>
+  </programme>
+  <programme start="20260909060914 +0000" stop="20260909065344 +0000" channel="Period-dramas">
+    <title lang="en">Genius</title>
+    <sub-title lang="en">No One Sleeps</sub-title>
+  </programme>
+  <programme start="20260909065344 +0000" stop="20260909074109 +0000" channel="Period-dramas">
+    <title lang="en">Bonanza</title>
+    <sub-title lang="en">The Dowry</sub-title>
+  </programme>
+  <programme start="20260909074109 +0000" stop="20260909082959 +0000" channel="Period-dramas">
+    <title lang="en">Little House on the Prairie</title>
+    <sub-title lang="en">Little House on the Prairie - S06E24 - He Loves Me, He Loves Me Not (2</sub-title>
+  </programme>
+  <programme start="20260909082959 +0000" stop="20260909092125 +0000" channel="Period-dramas">
+    <title lang="en">The Big Valley</title>
+    <sub-title lang="en">Brother Love</sub-title>
+  </programme>
+  <programme start="20260909092125 +0000" stop="20260909101003 +0000" channel="Period-dramas">
+    <title lang="en">Little House on the Prairie</title>
+    <sub-title lang="en">Going Home</sub-title>
+  </programme>
+  <programme start="20260909101003 +0000" stop="20260909105847 +0000" channel="Period-dramas">
+    <title lang="en">Little House on the Prairie</title>
+    <sub-title lang="en">Laura Ingalls Wilder (1)</sub-title>
+  </programme>
+  <programme start="20260909105847 +0000" stop="20260909114702 +0000" channel="Period-dramas">
+    <title lang="en">Little House on the Prairie</title>
+    <sub-title lang="en">I Remember, I Remember</sub-title>
+  </programme>
+  <programme start="20260909114702 +0000" stop="20260909123416 +0000" channel="Period-dramas">
+    <title lang="en">Bonanza</title>
+    <sub-title lang="en">Enter Mark Twain</sub-title>
+  </programme>
+  <programme start="20260909123416 +0000" stop="20260909132319 +0000" channel="Period-dramas">
+    <title lang="en">Little House on the Prairie</title>
+    <sub-title lang="en">Circus Man</sub-title>
+  </programme>
+  <programme start="20260909132319 +0000" stop="20260909140919 +0000" channel="Period-dramas">
+    <title lang="en">The Gilded Age</title>
+    <sub-title lang="en">Money Isn&apos;t Everything</sub-title>
+  </programme>
+  <programme start="20260909140919 +0000" stop="20260909150113 +0000" channel="Period-dramas">
+    <title lang="en">Mad Men</title>
+    <sub-title lang="en">The Wheel</sub-title>
+  </programme>
+  <programme start="20260909150113 +0000" stop="20260909154706 +0000" channel="Period-dramas">
+    <title lang="en">Bonanza</title>
+    <sub-title lang="en">The Night Virginia City Died</sub-title>
+  </programme>
+  <programme start="20260907141507 +0000" stop="20260907160551 +0000" channel="box-office">
+    <title lang="en">The Life of Chuck</title>
+  </programme>
+  <programme start="20260907160551 +0000" stop="20260907180423 +0000" channel="box-office">
+    <title lang="en">Captain America: Brave New World</title>
+  </programme>
+  <programme start="20260907180423 +0000" stop="20260907195520 +0000" channel="box-office">
+    <title lang="en">Finding Emily</title>
+  </programme>
+  <programme start="20260907195520 +0000" stop="20260907213804 +0000" channel="box-office">
+    <title lang="en">How to Lose a Popularity Contest</title>
+  </programme>
+  <programme start="20260907213804 +0000" stop="20260907232526 +0000" channel="box-office">
+    <title lang="en">Death of a Unicorn</title>
+  </programme>
+  <programme start="20260907232526 +0000" stop="20260908013110 +0000" channel="box-office">
+    <title lang="en">Hamnet</title>
+  </programme>
+  <programme start="20260908013110 +0000" stop="20260908033800 +0000" channel="box-office">
+    <title lang="en">Thunderbolts*</title>
+  </programme>
+  <programme start="20260908033800 +0000" stop="20260908052100 +0000" channel="box-office">
+    <title lang="en">Sorry, Baby</title>
+  </programme>
+  <programme start="20260908052100 +0000" stop="20260908065110 +0000" channel="box-office">
+    <title lang="en">Stop! That! Train!</title>
+  </programme>
+  <programme start="20260908065110 +0000" stop="20260908084048 +0000" channel="box-office">
+    <title lang="en">Novocaine</title>
+  </programme>
+  <programme start="20260908084048 +0000" stop="20260908101613 +0000" channel="box-office">
+    <title lang="en">Apex</title>
+  </programme>
+  <programme start="20260908101613 +0000" stop="20260908122010 +0000" channel="box-office">
+    <title lang="en">Downton Abbey: The Grand Finale</title>
+  </programme>
+  <programme start="20260908122010 +0000" stop="20260908141852 +0000" channel="box-office">
+    <title lang="en">Die My Love</title>
+  </programme>
+  <programme start="20260908141852 +0000" stop="20260908160811 +0000" channel="box-office">
+    <title lang="en">War Machine</title>
+  </programme>
+  <programme start="20260908160811 +0000" stop="20260908173851 +0000" channel="box-office">
+    <title lang="en">Trust</title>
+  </programme>
+  <programme start="20260908173851 +0000" stop="20260908192301 +0000" channel="box-office">
+    <title lang="en">Madea&apos;s Destination Wedding</title>
+  </programme>
+  <programme start="20260908192301 +0000" stop="20260908215130 +0000" channel="box-office">
+    <title lang="en">Eddington</title>
+  </programme>
+  <programme start="20260908215130 +0000" stop="20260908233756 +0000" channel="box-office">
+    <title lang="en">Deep Water</title>
+  </programme>
+  <programme start="20260908233756 +0000" stop="20260909010109 +0000" channel="box-office">
+    <title lang="en">Love Hurts</title>
+  </programme>
+  <programme start="20260909010109 +0000" stop="20260909030938 +0000" channel="box-office">
+    <title lang="en">The Electric State</title>
+  </programme>
+  <programme start="20260909030938 +0000" stop="20260909045047 +0000" channel="box-office">
+    <title lang="en">A Minecraft Movie</title>
+  </programme>
+  <programme start="20260909045047 +0000" stop="20260909065126 +0000" channel="box-office">
+    <title lang="en">Is This Thing On?</title>
+  </programme>
+  <programme start="20260909065126 +0000" stop="20260909091350 +0000" channel="box-office">
+    <title lang="en">Crime 101</title>
+  </programme>
+  <programme start="20260909091350 +0000" stop="20260909111621 +0000" channel="box-office">
+    <title lang="en">Colony</title>
+  </programme>
+  <programme start="20260909111621 +0000" stop="20260909125149 +0000" channel="box-office">
+    <title lang="en">Warfare</title>
+  </programme>
+  <programme start="20260909125149 +0000" stop="20260909160857 +0000" channel="box-office">
+    <title lang="en">Avatar: Fire and Ash</title>
+  </programme>
+</tv>
