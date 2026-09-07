@@ -1071,8 +1071,389 @@
   },
   {
     "id": 5,
-    "name": "DPRK Cinema",
+    "name": "TubeNet Cinema DPRK",
     "broadcastStart": "00:00",
-    "playlist": []
+    "playlist": [
+      {
+        "id": "klvQ756EcGw",
+        "title": "My Home Village 1949",
+        "duration": 5449
+      },
+      {
+        "id": "jmR5kSzYOnE",
+        "title": "So nyun bbal jjin san Yoon Yong Gyu AKA Teen Guerillas AKA Boy Partisans (1951) (DPRK)",
+        "duration": 5840
+      },
+      {
+        "id": "oSHvXvPaMA4",
+        "title": "Х/ф На железной дороге / On.the.Railway / Cheolgil Ueseo (КНДР, 1966).",
+        "duration": 5452
+      },
+      {
+        "id": "sth1Lahxyig",
+        "title": "The Flower Girl (1972)",
+        "duration": 7274
+      },
+      {
+        "id": "TulTyPZFLdc",
+        "title": "When We Pick Apples - North Korean Movie (English subtitles) DPRK",
+        "duration": 6138
+      },
+      {
+        "id": "smFckOI0Vnk",
+        "title": "Center Forward 1978",
+        "duration": 4038
+      },
+      {
+        "id": "jqgy61bzO6o",
+        "title": "Anjunggeun ideungbangmuneul ssoda AKA An Jung Gun Shoots Ito Hirobumi (1979) (DPRK)",
+        "duration": 8504
+      },
+      {
+        "id": "mQyvPQgTCko",
+        "title": "Unsung Heroes, Episode 1 (《적후에서》Behind Enemy Lines) - North Korean Spy TV Show",
+        "duration": 3639
+      },
+      {
+        "id": "D3ZeUATRU1E",
+        "title": "Unsung Heroes, Episode 2 (《적후에서 또 적후에로》Behind Enemy Lines Again) - North Korean Spy TV Show",
+        "duration": 3517
+      },
+      {
+        "id": "-i_vGSVhIH0",
+        "title": "Notes of a War Correspondent 1980",
+        "duration": 4603
+      },
+      {
+        "id": "drRJZ8It5U8",
+        "title": "The Tale of Chun hyang Part 1 (North Korea) 1980",
+        "duration": 4218
+      },
+      {
+        "id": "6AREs18S7dU",
+        "title": "The Tale of Chunhyang Part 2 1980",
+        "duration": 4566
+      },
+      {
+        "id": "y0qjeqIkLrE",
+        "title": "A Forest Is Swaying (1982, English Subtitles)",
+        "duration": 4690
+      },
+      {
+        "id": "CUXPJR22Vcs",
+        "title": "Lighthouse (1983) [DPRK]",
+        "duration": 4743
+      },
+      {
+        "id": "Oh3dfpN2LO0",
+        "title": "Повесть о пятнадцати мальчишках и девчонках / The Tale of 15 Children",
+        "duration": 8251
+      },
+      {
+        "id": "UVnXAuaFY_s",
+        "title": "Hong Kil Dong (1986, English Subtitles)",
+        "duration": 6273
+      },
+      {
+        "id": "-RYV5u82cls",
+        "title": "Let Us Go to Mt.  Kumgang - North Korean Movie (English subtitles) DPRK",
+        "duration": 4346
+      },
+      {
+        "id": "yR9uvqCrCWg",
+        "title": "Song of Retrospection (North Korea)",
+        "duration": 4383
+      },
+      {
+        "id": "hN_Rqkek7nY",
+        "title": "Order No. 27 (North Korean Film) (English Subtitles)",
+        "duration": 4474
+      },
+      {
+        "id": "_Ge2TQfqwX4",
+        "title": "A Traffic Controller on Crossroads (North Korea)",
+        "duration": 3540
+      },
+      {
+        "id": "_Wb3VaCElcY",
+        "title": "A Broad Bellflower (North Korea)",
+        "duration": 5005
+      },
+      {
+        "id": "7Z1Zh_damoU",
+        "title": "Ask Yourself (North Korea)",
+        "duration": 5830
+      },
+      {
+        "id": "bK4Hihab5Z4",
+        "title": "haerhet5hjryj",
+        "duration": 4843
+      },
+      {
+        "id": "6bKwSD_JjZA",
+        "title": "The Country I Saw - Part 1 (North Korea)",
+        "duration": 5265
+      },
+      {
+        "id": "4C3sZIRRb84",
+        "title": "Our Teacher 1989",
+        "duration": 2790
+      },
+      {
+        "id": "CalkPIfkMhQ",
+        "title": "Traces of life / 생의 흔적 (DPRK movie, 1989, in korean +eng sub).",
+        "duration": 7339
+      },
+      {
+        "id": "KzFgHF_13iI",
+        "title": "lfbnsilaghasiopdgnaosuigh",
+        "duration": 3756
+      },
+      {
+        "id": "N-FjXNr7vqU",
+        "title": "rshDETJntrtjtjnxfrjy",
+        "duration": 3532
+      },
+      {
+        "id": "Tk5LzRlk69g",
+        "title": "A Family Bright With Songs (DPRK)",
+        "duration": 4558
+      },
+      {
+        "id": "7tR2F2f7ZZI",
+        "title": "From 5PM to 5AM [DPRK] (Eng sub)",
+        "duration": 4555
+      },
+      {
+        "id": "twMiMbRWC7k",
+        "title": "Τα κορίτσια του Χωριού μου (Αγγλικοί υπότιτλοι) {Girls of my hometown - Eng Sub}",
+        "duration": 7428
+      },
+      {
+        "id": "bTortGcH_v4",
+        "title": "The Story of a Blooming Flower 1992",
+        "duration": 5487
+      },
+      {
+        "id": "G1Gjw9GucKk",
+        "title": "Urban girl comes to get married / 도시처녀 시집와요 (DPRK, 1993, in korean + engl. sub.).",
+        "duration": 4422
+      },
+      {
+        "id": "jDwfueFaC0g",
+        "title": "DPRK movie －\"They met on the Taedong River\" with English subtitle",
+        "duration": 6334
+      },
+      {
+        "id": "roD0yVmWGrU",
+        "title": "An Unattached Unit [DPRK] (Eng sub)",
+        "duration": 4824
+      },
+      {
+        "id": "DfTHJjSWF_4",
+        "title": "Flower In Snow (DPRK)",
+        "duration": 5232
+      },
+      {
+        "id": "-32wJ9yK8Sc",
+        "title": "O Youth! (1994, English Subtitles)",
+        "duration": 5280
+      },
+      {
+        "id": "wFwAqXJDhEY",
+        "title": "Nation and Destiny - Part 1 (North Korea)",
+        "duration": 6000
+      },
+      {
+        "id": "xg-YvVpuXPc",
+        "title": "Nation and Destiny - Part 3 (North Korea)",
+        "duration": 5661
+      },
+      {
+        "id": "hMoDmpTJ4o4",
+        "title": "Nation and Destiny - Part 4 (North Korea)",
+        "duration": 4449
+      },
+      {
+        "id": "ludBMJb_qZg",
+        "title": "Nation and Destiny - Part 5 (North Korea)",
+        "duration": 5934
+      },
+      {
+        "id": "Ncxf3rU9dng",
+        "title": "Nation and Destiny - Part 6 (North Korea)",
+        "duration": 4136
+      },
+      {
+        "id": "4iuWqLhnmsM",
+        "title": "Nation and Destiny - Part 7 (North Korea)",
+        "duration": 3849
+      },
+      {
+        "id": "XRQKjOF1ZYI",
+        "title": "Nation and Destiny - Part 8 (North Korea)",
+        "duration": 5210
+      },
+      {
+        "id": "uYwnp6GzTcY",
+        "title": "Nation and Destiny - Part 9 (North Korea)",
+        "duration": 5255
+      },
+      {
+        "id": "kug2T7G_pSI",
+        "title": "Nation and Destiny - Part 10 (North Korea)",
+        "duration": 4578
+      },
+      {
+        "id": "24bztrYrs1Q",
+        "title": "Nation and Destiny - Part 11 (North Korea)",
+        "duration": 4965
+      },
+      {
+        "id": "vFMUU81bgLM",
+        "title": "Nation and Destiny - Part 12 (North Korea)",
+        "duration": 3637
+      },
+      {
+        "id": "7YW6lY2mHIU",
+        "title": "Nation and Destiny - Part 13 (North Korea)",
+        "duration": 3746
+      },
+      {
+        "id": "E1HX6c8HjRM",
+        "title": "Two Families in Haeun-dong - North Korean Movie (English subtitles) DPRK",
+        "duration": 5350
+      },
+      {
+        "id": "9B00HyJLlpY",
+        "title": "Lightning and Thunder (Part one) Korean film with Eng subtitles",
+        "duration": 3857
+      },
+      {
+        "id": "1gYJ-u6Vnbg",
+        "title": "Lightning and Thunder (Part two) Korean film with Eng subtitles",
+        "duration": 4274
+      },
+      {
+        "id": "ctbTOrBmVCA",
+        "title": "Myself in the Distant Future (North Korea)",
+        "duration": 6158
+      },
+      {
+        "id": "SKzQt1vcA48",
+        "title": "A Family Basketball Team (1998) [DPRK]",
+        "duration": 4449
+      },
+      {
+        "id": "5EElFv5RGuc",
+        "title": "The Kite Flying in The Sky (DPRK)",
+        "duration": 5615
+      },
+      {
+        "id": "myC3pz5ixEY",
+        "title": "Х/ф Бегом до самых небес (КНДР, 2000 г.).",
+        "duration": 5307
+      },
+      {
+        "id": "eb9Rks-HJQQ",
+        "title": "On the Green Carpet (North Korea)",
+        "duration": 4751
+      },
+      {
+        "id": "V-FKpQ1qdAs",
+        "title": "Our Lifeline (DPRK, 2002, eng.sub.) 1/2.",
+        "duration": 4660
+      },
+      {
+        "id": "c-JNWZ-4LxE",
+        "title": "Our Lifeline (DPRK, 2002, eng.sub.) 2/2.",
+        "duration": 3817
+      },
+      {
+        "id": "AtuXVFPcAHE",
+        "title": "DPRK movie - Our Fragrance.",
+        "duration": 4908
+      },
+      {
+        "id": "s_3kZIha-No",
+        "title": "The Blood Stained Route Map Part 1 (2002, English Subtitles)",
+        "duration": 4094
+      },
+      {
+        "id": "5MaJQ3Lja1E",
+        "title": "The Blood Stained Route Map Part 2 (2002, English Subtitles)",
+        "duration": 4235
+      },
+      {
+        "id": "paG4tadxV08",
+        "title": "The First Year After The Wedding 2003",
+        "duration": 4127
+      },
+      {
+        "id": "TU4QJxnoDPs",
+        "title": "Mother's Happiness 2003 (North Korea)",
+        "duration": 4913
+      },
+      {
+        "id": "6X7TrJnyH6U",
+        "title": "평양 날파람/Pyongyang Nalpharam (2006, in korean without sub.)",
+        "duration": 6181
+      },
+      {
+        "id": "6ucZomSdFNs",
+        "title": "A Schoolgirl's Diary 2006",
+        "duration": 5427
+      },
+      {
+        "id": "3q6qkmLd5E4",
+        "title": "The Country I Saw - Part 2 (North Korea)",
+        "duration": 3802
+      },
+      {
+        "id": "FLQtB6ZcTJw",
+        "title": "The Country I Saw - Part 3 (North Korea)",
+        "duration": 5028
+      },
+      {
+        "id": "JFBEUxtpPfg",
+        "title": "The Name Given by the Era (2009) (DPRK)",
+        "duration": 4991
+      },
+      {
+        "id": "b2pFRyYsl9Q",
+        "title": "The Wheels of Happiness (2010) (DPRK)",
+        "duration": 4205
+      },
+      {
+        "id": "RP5lr3svUqQ",
+        "title": "Wish 2011 (North Korea)",
+        "duration": 5965
+      },
+      {
+        "id": "LM7rhr7nxO0",
+        "title": "Дело закрыто / Case closed / There is nothing unsettled / Migyŏl kŏn ŭn ŏpta",
+        "duration": 4275
+      },
+      {
+        "id": "ky9pDv8-Zxk",
+        "title": "Maengsu sanyangkun AKA The Big Game Hunter (2011) (DPRK)",
+        "duration": 5025
+      },
+      {
+        "id": "_jSSTOew6vk",
+        "title": "《平壤之约》/Meet in Pyongyang / 아리랑  赴一场“抗美援朝”之约 （ 刘冬 / 李梦男 / 高扬棋）|中朝首部合拍电影 Drama",
+        "duration": 5500
+      },
+      {
+        "id": "2326wJLq4So",
+        "title": "The Other Side of the Mountain (2012 DPRK Movie) [Eng Sub]",
+        "duration": 6418
+      },
+      {
+        "id": "ZQrIY7G5Bf8",
+        "title": "The Story of Our Home (2016) (DPRK)",
+        "duration": 6029
+      }
+    ]
   }
 ]
