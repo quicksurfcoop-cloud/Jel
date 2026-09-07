@@ -19,18 +19,66 @@ html, body {
     overflow: hidden;
 }
 
-#player-wrapper {
-    position: fixed;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    background: #000;
-    z-index: 1;
+/* =========================
+   APP LAYOUT (FLEXBOX)
+   ========================= */
+
+#app-container {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+    overflow: hidden;
 }
 
-#player {
+#player-wrapper {
+    flex: 1;
     width: 100%;
-    height: 100%;
+    position: relative;
+    background: #000;
+}
+
+#player-wrapper iframe,
+#player {
+    width: 100% !important;
+    height: 100% !important;
+    border: none;
+}
+
+/* =========================
+   DEDICATED BOTTOM BAR
+   ========================= */
+
+#control-bar {
+    height: 60px;
+    width: 100%;
+    background-color: #111;
+    border-top: 1px solid #222;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 30;
+    flex-shrink: 0;
+}
+
+#controls {
+    display: flex;
+    gap: 12px;
+}
+
+#controls button {
+    background: #222;
+    color: #fff;
+    border: 1px solid #444;
+    padding: 8px 16px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+#controls button:hover {
+    background: #333;
 }
 
 /* =========================
@@ -38,9 +86,9 @@ html, body {
    ========================= */
 
 #osd {
-    position: fixed;
+    position: absolute;
     left: 30px;
-    bottom: 45px;
+    bottom: 20px;
     z-index: 20;
     min-width: 330px;
     max-width: 70%;
@@ -72,40 +120,6 @@ html, body {
     font-size: 16px;
     color: #ddd;
 }
-
-#controls {
-    position: fixed;
-    left: 50%;
-    bottom: 20px;
-    transform: translateX(-50%);
-    z-index: 30;
-    display: flex;
-    gap: 8px;
-    opacity: 1; /* Changed from 0 so it displays immediately on load */
-    pointer-events: auto;
-    transition: opacity 0.4s ease;
-}
-
-#controls.hidden {
-    opacity: 0;
-    pointer-events: none;
-}
-
-#controls button {
-    background: rgba(0, 0, 0, 0.85);
-    color: #fff;
-    border: 1px solid #555;
-    padding: 9px 14px;
-    font-size: 14px;
-    cursor: pointer;
-    border-radius: 4px;
-}
-
-#controls button:hover {
-    background: #333;
-}
-
-
 
 /* =========================
    EPG
@@ -284,31 +298,33 @@ html, body {
 }
 
 /* =========================
-   MOBILE
+   MOBILE ADJUSTMENTS
    ========================= */
 
-@media (max-width:700px) {
+@media (max-width: 700px) {
+
+    #control-bar {
+        height: 50px;
+    }
+
+    #controls {
+        gap: 6px;
+    }
+
+    #controls button {
+        padding: 6px 10px;
+        font-size: 12px;
+    }
 
     #osd {
         left: 15px;
-        bottom: 70px;
+        bottom: 15px;
         min-width: 0;
         max-width: calc(100% - 30px);
     }
 
     #osd-name {
         font-size: 20px;
-    }
-
-    #controls {
-        width: 100%;
-        justify-content: center;
-        flex-wrap: wrap;
-    }
-
-    #controls button {
-        padding: 7px 10px;
-        font-size: 12px;
     }
 
     #epg-header {
@@ -347,32 +363,32 @@ html, body {
 
 <body>
 
-<div id="player-wrapper">
-    <div id="player"></div>
-</div>
+<div id="app-container">
+    <div id="player-wrapper">
+        <div id="player"></div>
+        <div id="osd">
+            <div id="osd-num">CH 01</div>
+            <div id="osd-name">Loading...</div>
+            <div id="osd-title">Loading...</div>
+        </div>
+    </div>
 
-<div id="osd">
-    <div id="osd-num">CH 01</div>
-    <div id="osd-name">Loading...</div>
-    <div id="osd-title">Loading...</div>
-</div>
-
-<div id="controls">
-    <button onclick="prevChannel()">▲ CH Prev</button>
-    <button onclick="nextChannel()">▼ CH Next</button>
-    <button id="mute-btn" onclick="toggleMute()">🔇 Unmute</button>
-    <button onclick="toggleEPG()">📺 TV Guide (G)</button>
+    <div id="control-bar">
+        <div id="controls">
+            <button onclick="prevChannel()">▲ CH Prev</button>
+            <button onclick="nextChannel()">▼ CH Next</button>
+            <button id="mute-btn" onclick="toggleMute()">🔇 Unmute</button>
+            <button onclick="toggleEPG()">📺 TV Guide (G)</button>
+        </div>
+    </div>
 </div>
 
 <div id="epg">
-
     <div id="epg-header">
         <div id="epg-title">TV GUIDE</div>
         <div id="epg-clock">00:00:00</div>
     </div>
-
     <div id="epg-content"></div>
-
 </div>
 
 <div id="message">
@@ -407,86 +423,22 @@ let epgVisible = false;
 
 let startupSeeking = false;
 
-let controlsTimer = null;
-
-function wakeControls() {
-    const controls = document.getElementById("controls");
-    if (!controls) return;
-
-    controls.classList.remove("hidden");
-
-    clearTimeout(controlsTimer);
-
-    // Hide controls after 3 seconds of no movement
-    controlsTimer = setTimeout(function() {
-        // Only hide if the TV guide isn't open
-        if (!epgVisible) {
-            controls.classList.add("hidden");
-        }
-    }, 3000);
-}
-
-// Listen for activity across the window
-window.addEventListener("mousemove", wakeControls);
-window.addEventListener("touchstart", wakeControls);
-window.addEventListener("click", wakeControls);
-
-// Trigger initial timer on load
-wakeControls();
-
-function showOSD(customTitle) {
-    wakeControls(); // Keeps controls visible while OSD is showing
-    
-    const osd = document.getElementById("osd");
-    if (customTitle) {
-        document.getElementById("osd-title").textContent = customTitle;
-    }
-
-    osd.classList.add("visible");
-    clearTimeout(osdTimer);
-
-    osdTimer = setTimeout(function() {
-        osd.classList.remove("visible");
-    }, 5000);
-}
-
-
 
 /* =========================================================
    BROADCAST START
    ========================================================= */
 
 function getBroadcastStart(channel) {
-
-    if (
-        channel &&
-        typeof channel.broadcastStart === "string"
-    ) {
-
-        const parts =
-            channel.broadcastStart.split(":");
-
+    if (channel && typeof channel.broadcastStart === "string") {
+        const parts = channel.broadcastStart.split(":");
         if (parts.length >= 2) {
-
-            const hours =
-                parseInt(parts[0], 10);
-
-            const minutes =
-                parseInt(parts[1], 10);
-
-            if (
-                !isNaN(hours) &&
-                !isNaN(minutes)
-            ) {
-
-                return (
-                    hours * 3600 +
-                    minutes * 60
-                );
+            const hours = parseInt(parts[0], 10);
+            const minutes = parseInt(parts[1], 10);
+            if (!isNaN(hours) && !isNaN(minutes)) {
+                return hours * 3600 + minutes * 60;
             }
         }
     }
-
     return 0;
 }
 
@@ -496,63 +448,35 @@ function getBroadcastStart(channel) {
    ========================================================= */
 
 async function loadChannels() {
-
     try {
-
-        const response =
-            await fetch(
-                "./YTchannels.json?v=" +
-                Date.now()
-            );
+        const response = await fetch("./YTchannels.json?v=" + Date.now());
 
         if (!response.ok) {
-
-            throw new Error(
-                "HTTP " +
-                response.status
-            );
+            throw new Error("HTTP " + response.status);
         }
 
-        const data =
-            await response.json();
+        const data = await response.json();
 
         if (!Array.isArray(data)) {
-
-            throw new Error(
-                "YTchannels.json is not an array."
-            );
+            throw new Error("YTchannels.json is not an array.");
         }
 
         if (data.length === 0) {
-
-            throw new Error(
-                "YTchannels.json contains no channels."
-            );
+            throw new Error("YTchannels.json contains no channels.");
         }
 
         CHANNELS = data;
-
         configurationLoaded = true;
 
-        console.log(
-            "Loaded channels:",
-            CHANNELS
-        );
-
+        console.log("Loaded channels:", CHANNELS);
         hideMessage();
 
         if (youtubeAPIReady) {
-
             initPlayer();
         }
 
     } catch (error) {
-
-        console.error(
-            "Could not load YTchannels.json:",
-            error
-        );
-
+        console.error("Could not load YTchannels.json:", error);
         showMessage(
             "Configuration Error",
             "Failed to load YTchannels.json.<br><br>" +
@@ -569,15 +493,10 @@ async function loadChannels() {
    ========================================================= */
 
 function onYouTubeIframeAPIReady() {
-
-    console.log(
-        "YouTube IFrame API ready."
-    );
-
+    console.log("YouTube IFrame API ready.");
     youtubeAPIReady = true;
 
     if (configurationLoaded) {
-
         initPlayer();
     }
 }
@@ -588,84 +507,46 @@ function onYouTubeIframeAPIReady() {
    ========================================================= */
 
 function calculateBroadcastPosition(channel) {
-
-    if (
-        !channel ||
-        !Array.isArray(channel.playlist) ||
-        channel.playlist.length === 0
-    ) {
-
+    if (!channel || !Array.isArray(channel.playlist) || channel.playlist.length === 0) {
         return null;
     }
 
-    const playlist =
-        channel.playlist;
+    const playlist = channel.playlist;
+    const broadcastStart = getBroadcastStart(channel);
+    const now = new Date();
 
-    const broadcastStart =
-        getBroadcastStart(channel);
-
-    const now =
-        new Date();
-
-    const currentSeconds =
-        now.getHours() * 3600 +
-        now.getMinutes() * 60 +
-        now.getSeconds();
-
-    let elapsed =
-        currentSeconds -
-        broadcastStart;
+    const currentSeconds = now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds();
+    let elapsed = currentSeconds - broadcastStart;
 
     if (elapsed < 0) {
-
         elapsed += 86400;
     }
 
     let totalDuration = 0;
-
     for (let i = 0; i < playlist.length; i++) {
-
-        const video = playlist[i];
-
-        const duration = Number(video.duration) || 0;
-
-        totalDuration += duration;
+        totalDuration += Number(playlist[i].duration) || 0;
     }
 
     if (totalDuration > 0) {
-
-        const position =
-            elapsed %
-            totalDuration;
-
+        const position = elapsed % totalDuration;
         let accumulated = 0;
 
         for (let i = 0; i < playlist.length; i++) {
-
             const duration = Number(playlist[i].duration) || 0;
-
             if (position < accumulated + duration) {
-
                 return {
-
                     index: i,
-
                     offset: position - accumulated,
-
                     exact: true
                 };
             }
-
             accumulated += duration;
         }
     }
 
     return {
-
         index: 0,
-
         offset: 0,
-
         exact: false
     };
 }
@@ -676,118 +557,48 @@ function calculateBroadcastPosition(channel) {
    ========================================================= */
 
 function initPlayer() {
+    if (player || !CHANNELS.length) return;
 
-    if (player) return;
+    const channel = CHANNELS[currentChannelIndex];
 
-    if (!CHANNELS.length) return;
-
-    const channel =
-        CHANNELS[currentChannelIndex];
-
-    if (
-        !channel.playlist ||
-        !Array.isArray(channel.playlist) ||
-        channel.playlist.length === 0
-    ) {
-
-        showMessage(
-            "Channel Error",
-            "Channel " +
-            (channel.name || "") +
-            " does not contain a playlist."
-        );
-
+    if (!channel.playlist || !Array.isArray(channel.playlist) || channel.playlist.length === 0) {
+        showMessage("Channel Error", "Channel " + (channel.name || "") + " does not contain a playlist.");
         return;
     }
 
-    const position =
-        calculateBroadcastPosition(
-            channel
-        );
+    const position = calculateBroadcastPosition(channel);
+    currentVideoIndex = position ? position.index : 0;
 
-    if (position) {
-
-        currentVideoIndex =
-            position.index;
-    } else {
-
-        currentVideoIndex = 0;
-    }
-
-
-    const video =
-        channel.playlist[
-            currentVideoIndex
-        ];
+    const video = channel.playlist[currentVideoIndex];
 
     if (!video || !video.id) {
-
-        showMessage(
-            "Video Error",
-            "The selected video does not contain a valid YouTube ID."
-        );
-
+        showMessage("Video Error", "The selected video does not contain a valid YouTube ID.");
         return;
     }
 
-    console.log(
-        "Starting channel:",
-        channel.name
-    );
+    console.log("Starting channel:", channel.name);
+    console.log("Starting video:", video.id);
+    console.log("Calculated broadcast position:", position);
 
-    console.log(
-        "Starting video:",
-        video.id
-    );
-
-    console.log(
-        "Calculated broadcast position:",
-        position
-    );
-
-
-    player =
-        new YT.Player(
-            "player",
-            {
-
-                width: "100%",
-
-                height: "100%",
-
-                videoId:
-                    video.id,
-
-                playerVars: {
-
-                    autoplay: 1,
-
-                    controls: 0,
-
-                    disablekb: 1,
-
-                    modestbranding: 1,
-
-                    rel: 0,
-
-                    playsinline: 1,
-
-                    fs: 0
-                },
-
-                events: {
-
-                    onReady:
-                        onPlayerReady,
-
-                    onStateChange:
-                        onPlayerStateChange,
-
-                    onError:
-                        onPlayerError
-                }
-            }
-        );
+    player = new YT.Player("player", {
+        width: "100%",
+        height: "100%",
+        videoId: video.id,
+        playerVars: {
+            autoplay: 1,
+            controls: 0,
+            disablekb: 1,
+            modestbranding: 1,
+            rel: 0,
+            playsinline: 1,
+            fs: 0
+        },
+        events: {
+            onReady: onPlayerReady,
+            onStateChange: onPlayerStateChange,
+            onError: onPlayerError
+        }
+    });
 }
 
 
@@ -796,68 +607,29 @@ function initPlayer() {
    ========================================================= */
 
 function onPlayerReady(event) {
-
-    console.log(
-        "Player ready."
-    );
-
+    console.log("Player ready.");
     event.target.mute();
-
     event.target.playVideo();
 
     updateMuteButton();
-
     updateOSD();
-
     buildEPG();
 
-    setTimeout(
-        function() {
+    setTimeout(function() {
+        const channel = CHANNELS[currentChannelIndex];
+        const position = calculateBroadcastPosition(channel);
 
-            const channel =
-                CHANNELS[
-                    currentChannelIndex
-                ];
-
-            const position =
-                calculateBroadcastPosition(
-                    channel
-                );
-
-            if (
-                position &&
-                position.exact &&
-                position.offset > 0
-            ) {
-
-                startupSeeking = true;
-
-                console.log(
-                    "Seeking to broadcast position:",
-                    position.offset
-                );
-
-                try {
-
-                    event.target.seekTo(
-                        position.offset,
-                        true
-                    );
-
-                    event.target.playVideo();
-
-                } catch (error) {
-
-                    console.warn(
-                        "Could not seek:",
-                        error
-                    );
-                }
+        if (position && position.exact && position.offset > 0) {
+            startupSeeking = true;
+            console.log("Seeking to broadcast position:", position.offset);
+            try {
+                event.target.seekTo(position.offset, true);
+                event.target.playVideo();
+            } catch (error) {
+                console.warn("Could not seek:", error);
             }
-
-        },
-        1500
-    );
+        }
+    }, 1500);
 }
 
 
@@ -866,37 +638,17 @@ function onPlayerReady(event) {
    ========================================================= */
 
 function onPlayerStateChange(event) {
+    console.log("Player state:", event.data);
 
-    console.log(
-        "Player state:",
-        event.data
-    );
-
-
-    if (
-        event.data ===
-        YT.PlayerState.PLAYING
-    ) {
-
+    if (event.data === YT.PlayerState.PLAYING) {
         hideMessage();
-
         updateOSD();
-
         buildEPG();
-
         startupSeeking = false;
     }
 
-
-    if (
-        event.data ===
-        YT.PlayerState.ENDED
-    ) {
-
-        console.log(
-            "Video ended."
-        );
-
+    if (event.data === YT.PlayerState.ENDED) {
+        console.log("Video ended.");
         playNextVideo();
     }
 }
@@ -907,24 +659,12 @@ function onPlayerStateChange(event) {
    ========================================================= */
 
 function onPlayerError(event) {
+    console.warn("YouTube video error:", event.data);
+    showOSD("Video unavailable — skipping...");
 
-    console.warn(
-        "YouTube video error:",
-        event.data
-    );
-
-    showOSD(
-        "Video unavailable — skipping..."
-    );
-
-    setTimeout(
-        function() {
-
-            playNextVideo();
-
-        },
-        1200
-    );
+    setTimeout(function() {
+        playNextVideo();
+    }, 1200);
 }
 
 
@@ -933,65 +673,29 @@ function onPlayerError(event) {
    ========================================================= */
 
 function playNextVideo() {
+    const channel = CHANNELS[currentChannelIndex];
 
-    const channel =
-        CHANNELS[
-            currentChannelIndex
-        ];
-
-    if (
-        !channel ||
-        !Array.isArray(
-            channel.playlist
-        ) ||
-        channel.playlist.length === 0
-    ) {
-
+    if (!channel || !Array.isArray(channel.playlist) || channel.playlist.length === 0) {
         return;
     }
 
-
     currentVideoIndex++;
-
-    if (
-        currentVideoIndex >=
-        channel.playlist.length
-    ) {
-
+    if (currentVideoIndex >= channel.playlist.length) {
         currentVideoIndex = 0;
     }
 
-
-    const video =
-        channel.playlist[
-            currentVideoIndex
-        ];
+    const video = channel.playlist[currentVideoIndex];
 
     if (!video || !video.id) {
-
-        console.warn(
-            "Invalid video entry:",
-            video
-        );
-
+        console.warn("Invalid video entry:", video);
         playNextVideo();
-
         return;
     }
 
-
-    console.log(
-        "Loading next video:",
-        video.id
-    );
-
+    console.log("Loading next video:", video.id);
 
     if (player) {
-
-        player.loadVideoById(
-            video.id,
-            0
-        );
+        player.loadVideoById(video.id, 0);
     }
 
     buildEPG();
@@ -1003,81 +707,37 @@ function playNextVideo() {
    ========================================================= */
 
 function loadVideo(index, startSeconds = 0) {
+    const channel = CHANNELS[currentChannelIndex];
 
-    const channel =
-        CHANNELS[
-            currentChannelIndex
-        ];
-
-    if (
-        !channel ||
-        !channel.playlist ||
-        !channel.playlist.length
-    ) {
-
+    if (!channel || !channel.playlist || !channel.playlist.length) {
         return;
     }
 
+    currentVideoIndex = index;
 
-    currentVideoIndex =
-        index;
-
-
-    if (
-        currentVideoIndex < 0
-    ) {
-
-        currentVideoIndex =
-            channel.playlist.length - 1;
+    if (currentVideoIndex < 0) {
+        currentVideoIndex = channel.playlist.length - 1;
     }
 
-
-    if (
-        currentVideoIndex >=
-        channel.playlist.length
-    ) {
-
+    if (currentVideoIndex >= channel.playlist.length) {
         currentVideoIndex = 0;
     }
 
-
-    const video =
-        channel.playlist[
-            currentVideoIndex
-        ];
+    const video = channel.playlist[currentVideoIndex];
 
     if (!video || !video.id) {
-
-        console.warn(
-            "Invalid video:",
-            video
-        );
-
+        console.warn("Invalid video:", video);
         playNextVideo();
-
         return;
     }
 
-
-    console.log(
-        "Loading:",
-        video.id,
-        "at offset:",
-        startSeconds
-    );
-
+    console.log("Loading:", video.id, "at offset:", startSeconds);
 
     if (player) {
-
-        player.loadVideoById(
-            video.id,
-            startSeconds
-        );
+        player.loadVideoById(video.id, startSeconds);
     }
 
-
     updateOSD();
-
     buildEPG();
 }
 
@@ -1087,7 +747,6 @@ function loadVideo(index, startSeconds = 0) {
    ========================================================= */
 
 function switchChannel(targetIndex) {
-
     if (!CHANNELS.length) return;
 
     if (targetIndex < 0) {
@@ -1111,27 +770,15 @@ function switchChannel(targetIndex) {
         }
     }
 
-    console.log(
-        "Switching to channel:",
-        currentChannelIndex,
-        "Video Index:",
-        videoIndex,
-        "Offset:",
-        startSeconds
-    );
-
+    console.log("Switching to channel:", currentChannelIndex, "Video Index:", videoIndex, "Offset:", startSeconds);
     loadVideo(videoIndex, startSeconds);
 }
 
-
 function nextChannel() {
-
     switchChannel(currentChannelIndex + 1);
 }
 
-
 function prevChannel() {
-
     switchChannel(currentChannelIndex - 1);
 }
 
@@ -1141,40 +788,25 @@ function prevChannel() {
    ========================================================= */
 
 function toggleMute() {
-
     if (!player) return;
 
     if (player.isMuted()) {
-
         player.unMute();
-
     } else {
-
         player.mute();
     }
 
     updateMuteButton();
 }
 
-
 function updateMuteButton() {
-
-    const button =
-        document.getElementById(
-            "mute-btn"
-        );
-
+    const button = document.getElementById("mute-btn");
     if (!button || !player) return;
 
     if (player.isMuted()) {
-
-        button.textContent =
-            "🔊 Unmute";
-
+        button.textContent = "🔊 Unmute";
     } else {
-
-        button.textContent =
-            "🔇 Mute";
+        button.textContent = "🔇 Mute";
     }
 }
 
@@ -1184,101 +816,40 @@ function updateMuteButton() {
    ========================================================= */
 
 function updateOSD() {
-
     if (!CHANNELS.length) return;
 
-    const channel =
-        CHANNELS[
-            currentChannelIndex
-        ];
-
-    let title =
-        "YouTube video";
-
+    const channel = CHANNELS[currentChannelIndex];
+    let title = "YouTube video";
 
     if (player) {
-
         try {
-
-            const videoData =
-                player.getVideoData();
-
-            if (
-                videoData &&
-                videoData.title
-            ) {
-
-                title =
-                    videoData.title;
+            const videoData = player.getVideoData();
+            if (videoData && videoData.title) {
+                title = videoData.title;
             }
-
         } catch (error) {}
     }
 
-
-    document.getElementById(
-        "osd-num"
-    ).textContent =
-        "CH " +
-        String(
-            currentChannelIndex + 1
-        ).padStart(2, "0");
-
-
-    document.getElementById(
-        "osd-name"
-    ).textContent =
-        channel.name ||
-        "Channel";
-
-
-    document.getElementById(
-        "osd-title"
-    ).textContent =
-        title;
-
+    document.getElementById("osd-num").textContent = "CH " + String(currentChannelIndex + 1).padStart(2, "0");
+    document.getElementById("osd-name").textContent = channel.name || "Channel";
+    document.getElementById("osd-title").textContent = title;
 
     showOSD();
 }
 
-
 function showOSD(customTitle) {
-
-    const osd =
-        document.getElementById(
-            "osd"
-        );
+    const osd = document.getElementById("osd");
 
     if (customTitle) {
-
-        document.getElementById(
-            "osd-title"
-        ).textContent =
-            customTitle;
+        document.getElementById("osd-title").textContent = customTitle;
     }
 
+    osd.classList.add("visible");
+    clearTimeout(osdTimer);
 
-    osd.classList.add(
-        "visible"
-    );
-
-
-    clearTimeout(
-        osdTimer
-    );
-
-
-    osdTimer =
-        setTimeout(
-            function() {
-
-                osd.classList.remove(
-                    "visible"
-                );
-
-            },
-            5000
-        );
+    osdTimer = setTimeout(function() {
+        osd.classList.remove("visible");
+    }, 5000);
 }
 
 
@@ -1287,28 +858,14 @@ function showOSD(customTitle) {
    ========================================================= */
 
 function toggleEPG() {
-
-    epgVisible =
-        !epgVisible;
-
-    const epg =
-        document.getElementById(
-            "epg"
-        );
+    epgVisible = !epgVisible;
+    const epg = document.getElementById("epg");
 
     if (epgVisible) {
-
-        epg.classList.add(
-            "visible"
-        );
-
+        epg.classList.add("visible");
         buildEPG();
-
     } else {
-
-        epg.classList.remove(
-            "visible"
-        );
+        epg.classList.remove("visible");
     }
 }
 
@@ -1318,53 +875,20 @@ function toggleEPG() {
    ========================================================= */
 
 function formatDuration(seconds) {
-
-    if (
-        !isFinite(seconds) ||
-        seconds < 0
-    ) {
-
+    if (!isFinite(seconds) || seconds < 0) {
         return "--:--";
     }
 
-
-    seconds =
-        Math.floor(seconds);
-
-
-    const hours =
-        Math.floor(
-            seconds / 3600
-        );
-
-
-    const minutes =
-        Math.floor(
-            (seconds % 3600) / 60
-        );
-
-
-    const secs =
-        seconds % 60;
-
+    seconds = Math.floor(seconds);
+    const hours = Math.floor(seconds / 3600);
+    const minutes = Math.floor((seconds % 3600) / 60);
+    const secs = seconds % 60;
 
     if (hours > 0) {
-
-        return (
-            String(hours).padStart(2, "0") +
-            ":" +
-            String(minutes).padStart(2, "0") +
-            ":" +
-            String(secs).padStart(2, "0")
-        );
+        return String(hours).padStart(2, "0") + ":" + String(minutes).padStart(2, "0") + ":" + String(secs).padStart(2, "0");
     }
 
-
-    return (
-        String(minutes).padStart(2, "0") +
-        ":" +
-        String(secs).padStart(2, "0")
-    );
+    return String(minutes).padStart(2, "0") + ":" + String(secs).padStart(2, "0");
 }
 
 
@@ -1373,15 +897,11 @@ function formatDuration(seconds) {
    ========================================================= */
 
 function formatClock(date) {
-
-    return date.toLocaleTimeString(
-        [],
-        {
-            hour: "2-digit",
-            minute: "2-digit",
-            second: "2-digit"
-        }
-    );
+    return date.toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit"
+    });
 }
 
 
@@ -1389,55 +909,29 @@ function formatClock(date) {
    GET VIDEO TITLE
    ========================================================= */
 
-function getVideoTitle(
-    video,
-    index
-) {
-
-    if (
-        player &&
-        index === currentVideoIndex
-    ) {
-
+function getVideoTitle(video, index) {
+    if (player && index === currentVideoIndex) {
         try {
-
-            const data =
-                player.getVideoData();
-
-            if (
-                data &&
-                data.title
-            ) {
-
+            const data = player.getVideoData();
+            if (data && data.title) {
                 return data.title;
             }
-
         } catch (error) {}
     }
 
-
-    if (
-        video &&
-        video.title
-    ) {
-
+    if (video && video.title) {
         return video.title;
     }
 
-
-    return (
-        "Programme " +
-        (index + 1)
-    );
+    return "Programme " + (index + 1);
 }
 
 
 /* =========================================================
-   BUILD EPG (Calculates Air Clock Times relative to Local Today)
+   BUILD EPG
    ========================================================= */
 
 function buildEPG() {
-
     const container = document.getElementById("epg-content");
     if (!container) return;
 
@@ -1445,7 +939,6 @@ function buildEPG() {
     if (!CHANNELS.length) return;
 
     CHANNELS.forEach(function(channel, channelIndex) {
-
         const row = document.createElement("div");
         row.className = "epg-row";
 
@@ -1453,7 +946,6 @@ function buildEPG() {
             row.classList.add("current");
         }
 
-        /* CHANNEL HEADER */
         const header = document.createElement("div");
         header.className = "epg-channel-header";
 
@@ -1469,29 +961,24 @@ function buildEPG() {
         header.appendChild(channelNumber);
         row.appendChild(header);
 
-        /* PROGRAMMES */
         const programmes = document.createElement("div");
         programmes.className = "epg-programmes";
 
         const count = channel.playlist.length;
         const broadcastStartSecs = getBroadcastStart(channel);
 
-        // Base date: Today at Midnight Local Time + Broadcast Start
         const now = new Date();
         let airTimeDate = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 0, 0, 0);
         airTimeDate.setSeconds(broadcastStartSecs);
 
         for (let videoIndex = 0; videoIndex < count; videoIndex++) {
-
             const video = channel.playlist[videoIndex];
             const duration = Number(video.duration) || 0;
 
-            // Format Air Time in local HH:MM
             const airHours = String(airTimeDate.getHours()).padStart(2, "0");
             const airMins = String(airTimeDate.getMinutes()).padStart(2, "0");
             const airTimeFormatted = airHours + ":" + airMins;
 
-            // Advance clock for the next item
             airTimeDate.setSeconds(airTimeDate.getSeconds() + duration);
 
             const programme = document.createElement("div");
@@ -1503,7 +990,6 @@ function buildEPG() {
                 programme.classList.add("now");
             }
 
-            /* TIME DISPLAY */
             const time = document.createElement("div");
             time.className = "epg-time";
 
@@ -1523,7 +1009,6 @@ function buildEPG() {
                 time.textContent = airTimeFormatted;
             }
 
-            /* INFO */
             const info = document.createElement("div");
             info.className = "epg-programme-info";
 
@@ -1538,7 +1023,6 @@ function buildEPG() {
             info.appendChild(title);
             info.appendChild(meta);
 
-            /* NOW / NEXT */
             const label = document.createElement("div");
             label.className = "epg-now";
 
@@ -1548,7 +1032,6 @@ function buildEPG() {
                 label.textContent = "NEXT";
             }
 
-            /* PROGRESS */
             if (isCurrent && player && duration > 0) {
                 let currentTime = 0;
                 try {
@@ -1580,24 +1063,16 @@ function buildEPG() {
 }
 
 
-
 /* =========================================================
    LIVE EPG UPDATE
    ========================================================= */
 
-setInterval(
-    function() {
-
-        updateClock();
-
-        if (epgVisible) {
-
-            buildEPG();
-        }
-
-    },
-    1000
-);
+setInterval(function() {
+    updateClock();
+    if (epgVisible) {
+        buildEPG();
+    }
+}, 1000);
 
 
 /* =========================================================
@@ -1605,18 +1080,10 @@ setInterval(
    ========================================================= */
 
 function updateClock() {
-
-    const clock =
-        document.getElementById(
-            "epg-clock"
-        );
-
+    const clock = document.getElementById("epg-clock");
     if (!clock) return;
 
-    clock.textContent =
-        formatClock(
-            new Date()
-        );
+    clock.textContent = formatClock(new Date());
 }
 
 
@@ -1624,36 +1091,14 @@ function updateClock() {
    MESSAGES
    ========================================================= */
 
-function showMessage(
-    title,
-    text
-) {
-
-    document.getElementById(
-        "message-title"
-    ).textContent =
-        title;
-
-    document.getElementById(
-        "message-text"
-    ).innerHTML =
-        text;
-
-    document.getElementById(
-        "message"
-    ).classList.remove(
-        "hidden"
-    );
+function showMessage(title, text) {
+    document.getElementById("message-title").textContent = title;
+    document.getElementById("message-text").innerHTML = text;
+    document.getElementById("message").classList.remove("hidden");
 }
 
-
 function hideMessage() {
-
-    document.getElementById(
-        "message"
-    ).classList.add(
-        "hidden"
-    );
+    document.getElementById("message").classList.add("hidden");
 }
 
 
@@ -1661,71 +1106,19 @@ function hideMessage() {
    KEYBOARD CONTROLS
    ========================================================= */
 
-document.addEventListener(
-    "keydown",
-    function(event) {
-
-        if (
-            event.key ===
-            "ArrowUp"
-        ) {
-
-            prevChannel();
-
-        } else if (
-            event.key ===
-            "ArrowDown"
-        ) {
-
-            nextChannel();
-
-        } else if (
-            event.key.toLowerCase() ===
-            "m"
-        ) {
-
-            toggleMute();
-
-        } else if (
-            event.key.toLowerCase() ===
-            "g"
-        ) {
-
-            toggleEPG();
-
-        } else if (
-            event.key ===
-            "Escape" &&
-            epgVisible
-        ) {
-
-            toggleEPG();
-        }
+document.addEventListener("keydown", function(event) {
+    if (event.key === "ArrowUp") {
+        prevChannel();
+    } else if (event.key === "ArrowDown") {
+        nextChannel();
+    } else if (event.key.toLowerCase() === "m") {
+        toggleMute();
+    } else if (event.key.toLowerCase() === "g") {
+        toggleEPG();
+    } else if (event.key === "Escape" && epgVisible) {
+        toggleEPG();
     }
-);
-
-/* =========================================================
-   AUTO-HIDE CONTROLS
-   ========================================================= */
-
-function showControls() {
-    const controls = document.getElementById("controls");
-    if (!controls) return;
-
-    controls.classList.add("visible");
-
-    // Clear any existing hide timer
-    clearTimeout(controlsTimer);
-
-    // Hide automatically after 3 seconds of inactivity
-    controlsTimer = setTimeout(function() {
-        controls.classList.remove("visible");
-    }, 3000);
-}
-
-// Wake controls on mouse move or screen touch
-document.addEventListener("mousemove", showControls);
-document.addEventListener("touchstart", showControls);
+});
 
 
 /* =========================================================
@@ -1733,7 +1126,6 @@ document.addEventListener("touchstart", showControls);
    ========================================================= */
 
 updateClock();
-
 loadChannels();
 
 </script>
