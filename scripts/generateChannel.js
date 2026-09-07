@@ -113,7 +113,7 @@ async function generateChannel(input, channelId, channelName, targetCount = 200)
       const durationSeconds = parseISODuration(item.contentDetails.duration);
 
       // Filter out shorts (<30s) or ultra-long videos (>30m)
-      if (durationSeconds >= 30 && durationSeconds <= 1800) {
+      if (durationSeconds >= 30 && durationSeconds <= 14400) {
         playlist.push({
           id: item.id,
           title: item.snippet.title,
