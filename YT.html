@@ -1385,8 +1385,384 @@ function getVideoTitle(
     );
 }
 
+   /* =========================================================
+   BUILD EPG (With Broadcast Air Times)
+   ========================================================= */
 
-/* =========================================================
+function buildEPG() {
+
+    const container =
+        document.getElementById(
+            "epg-content"
+        );
+
+    if (!container) return;
+
+    container.innerHTML = "";
+
+    if (!CHANNELS.length) return;
+
+
+    CHANNELS.forEach(
+        function(
+            channel,
+            channelIndex
+        ) {
+
+            const row =
+                document.createElement(
+                    "div"
+                );
+
+            row.className =
+                "epg-row";
+
+
+            if (
+                channelIndex ===
+                currentChannelIndex
+            ) {
+
+                row.classList.add(
+                    "current"
+                );
+            }
+
+
+            /* CHANNEL HEADER */
+
+            const header =
+                document.createElement(
+                    "div"
+                );
+
+            header.className =
+                "epg-channel-header";
+
+
+            const channelName =
+                document.createElement(
+                    "div"
+                );
+
+            channelName.className =
+                "epg-channel-name";
+
+            channelName.textContent =
+                channel.name ||
+                "Channel";
+
+
+            const channelNumber =
+                document.createElement(
+                    "div"
+                );
+
+            channelNumber.className =
+                "epg-channel-number";
+
+            channelNumber.textContent =
+                "CH " +
+                String(
+                    channelIndex + 1
+                ).padStart(2, "0");
+
+
+            header.appendChild(
+                channelName
+            );
+
+            header.appendChild(
+                channelNumber
+            );
+
+            row.appendChild(
+                header
+            );
+
+
+            /* PROGRAMMES */
+
+            const programmes =
+                document.createElement(
+                    "div"
+                );
+
+            programmes.className =
+                "epg-programmes";
+
+
+            const count = channel.playlist.length;
+            const broadcastStartSecs = getBroadcastStart(channel);
+
+            // Calculate running cumulative time for scheduled start times
+            let runningTimeSecs = broadcastStartSecs;
+
+
+            for (
+                let videoIndex = 0;
+                videoIndex < count;
+                videoIndex++
+            ) {
+
+                const video =
+                    channel.playlist[
+                        videoIndex
+                    ];
+
+                const duration = Number(video.duration) || 0;
+
+                // Calculate Air Time (HH:MM)
+                const airHours = Math.floor(runningTimeSecs / 3600) % 24;
+                const airMins = Math.floor((runningTimeSecs % 3600) / 60);
+                const timeFormatted = 
+                    String(airHours).padStart(2, "0") + ":" + 
+                    String(airMins).padStart(2, "0");
+
+                // Advance running time for the next programme
+                runningTimeSecs += duration;
+
+
+                const programme =
+                    document.createElement(
+                        "div"
+                    );
+
+                programme.className =
+                    "epg-programme";
+
+
+                const isCurrent =
+                    channelIndex ===
+                    currentChannelIndex &&
+                    videoIndex ===
+                    currentVideoIndex;
+
+
+                if (isCurrent) {
+
+                    programme.classList.add(
+                        "now"
+                    );
+                }
+
+
+                /* TIME DISPLAY (Air Time + Remaining/Duration) */
+
+                const time =
+                    document.createElement(
+                        "div"
+                    );
+
+                time.className =
+                    "epg-time";
+
+
+                if (
+                    isCurrent &&
+                    player
+                ) {
+
+                    let currentTime = 0;
+
+                    try {
+
+                        currentTime =
+                            player.getCurrentTime();
+
+                    } catch (error) {}
+
+
+                    if (duration > 0) {
+
+                        const remaining =
+                            Math.max(
+                                0,
+                                duration -
+                                currentTime
+                            );
+
+                        time.textContent =
+                            timeFormatted + " (" + formatDuration(remaining) + " left)";
+
+                    } else {
+
+                        time.textContent =
+                            timeFormatted + " (NOW)";
+                    }
+
+                } else {
+
+                    time.textContent =
+                        timeFormatted + " (" + formatDuration(duration) + ")";
+                }
+
+
+                /* INFO */
+
+                const info =
+                    document.createElement(
+                        "div"
+                    );
+
+                info.className =
+                    "epg-programme-info";
+
+
+                const title =
+                    document.createElement(
+                        "div"
+                    );
+
+                title.className =
+                    "epg-programme-title";
+
+                title.textContent =
+                    getVideoTitle(
+                        video,
+                        videoIndex
+                    );
+
+
+                const meta =
+                    document.createElement(
+                        "div"
+                    );
+
+                meta.className =
+                    "epg-programme-meta";
+
+                meta.textContent =
+                    "Starts at " + timeFormatted + " • Duration: " + formatDuration(duration);
+
+
+                info.appendChild(
+                    title
+                );
+
+                info.appendChild(
+                    meta
+                );
+
+
+                /* NOW / NEXT */
+
+                const label =
+                    document.createElement(
+                        "div"
+                    );
+
+                label.className =
+                    "epg-now";
+
+
+                if (isCurrent) {
+
+                    label.textContent =
+                        "▶ NOW";
+
+                } else if (
+                    videoIndex === (currentVideoIndex + 1) % count
+                ) {
+
+                    label.textContent =
+                        "NEXT";
+                }
+
+
+                /* PROGRESS */
+
+                if (
+                    isCurrent &&
+                    player &&
+                    duration > 0
+                ) {
+
+                    let currentTime = 0;
+
+                    try {
+
+                        currentTime =
+                            player.getCurrentTime();
+
+                    } catch (error) {}
+
+
+                    const percentage =
+                        Math.min(
+                            100,
+                            (
+                                currentTime /
+                                duration
+                            ) * 100
+                        );
+
+
+                    const progress =
+                        document.createElement(
+                            "div"
+                        );
+
+                    progress.className =
+                        "epg-progress";
+
+                    progress.style.width =
+                        percentage +
+                        "%";
+
+
+                    programme.appendChild(
+                        progress
+                    );
+                }
+
+
+                programme.appendChild(
+                    time
+                );
+
+                programme.appendChild(
+                    info
+                );
+
+                programme.appendChild(
+                    label
+                );
+
+
+                programmes.appendChild(
+                    programme
+                );
+            }
+
+
+            row.appendChild(
+                programmes
+            );
+
+
+            /* CLICK CHANNEL */
+
+            header.addEventListener(
+                "click",
+                function() {
+
+                    switchChannel(channelIndex);
+
+                    toggleEPG();
+                }
+            );
+
+
+            container.appendChild(
+                row
+            );
+        }
+    );
+}
+ 
+
+    /* =========================================================
    BUILD EPG
    ========================================================= */
 
