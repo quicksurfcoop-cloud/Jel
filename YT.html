@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jel TV</title>
+<title>TubeNet</title>
 
 <style>
 * { box-sizing: border-box; }
@@ -73,10 +73,6 @@ html, body {
     color: #ddd;
 }
 
-/* =========================
-   CONTROLS
-   ========================= */
-
 #controls {
     position: fixed;
     left: 50%;
@@ -85,14 +81,14 @@ html, body {
     z-index: 30;
     display: flex;
     gap: 8px;
-    opacity: 0;
-    pointer-events: none;
+    opacity: 1; /* Changed from 0 so it displays immediately on load */
+    pointer-events: auto;
     transition: opacity 0.4s ease;
 }
 
-#controls.visible {
-    opacity: 1;
-    pointer-events: auto;
+#controls.hidden {
+    opacity: 0;
+    pointer-events: none;
 }
 
 #controls button {
@@ -108,6 +104,7 @@ html, body {
 #controls button:hover {
     background: #333;
 }
+
 
 
 /* =========================
@@ -411,6 +408,47 @@ let epgVisible = false;
 let startupSeeking = false;
 
 let controlsTimer = null;
+
+function wakeControls() {
+    const controls = document.getElementById("controls");
+    if (!controls) return;
+
+    controls.classList.remove("hidden");
+
+    clearTimeout(controlsTimer);
+
+    // Hide controls after 3 seconds of no movement
+    controlsTimer = setTimeout(function() {
+        // Only hide if the TV guide isn't open
+        if (!epgVisible) {
+            controls.classList.add("hidden");
+        }
+    }, 3000);
+}
+
+// Listen for activity across the window
+window.addEventListener("mousemove", wakeControls);
+window.addEventListener("touchstart", wakeControls);
+window.addEventListener("click", wakeControls);
+
+// Trigger initial timer on load
+wakeControls();
+
+function showOSD(customTitle) {
+    wakeControls(); // Keeps controls visible while OSD is showing
+    
+    const osd = document.getElementById("osd");
+    if (customTitle) {
+        document.getElementById("osd-title").textContent = customTitle;
+    }
+
+    osd.classList.add("visible");
+    clearTimeout(osdTimer);
+
+    osdTimer = setTimeout(function() {
+        osd.classList.remove("visible");
+    }, 5000);
+}
 
 
 
