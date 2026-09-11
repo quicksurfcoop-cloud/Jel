@@ -70,6 +70,8 @@ const CHANNELS = [
     name: 'Forbidon Plannet', 
     genres: ['Sci-fi', 'Fantasy'],
     tags: ['fantasy', 'science fiction', 'science Fantasy', 'Space oepera', 'sci-fy', 'monster movie', 'Sci-fi'],
+   excludeGenres: ['Anime'],
+    excludeTags: ['Anime'],
     startYear: 1900,
     endYear: 2026
   },
