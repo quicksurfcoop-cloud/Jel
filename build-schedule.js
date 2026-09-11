@@ -65,6 +65,14 @@ const CHANNELS = [
     startYear: 1900,
     endYear: 2026
   },
+  { 
+    id: 'sci-fan', 
+    name: 'Forbidon Plannet', 
+    genres: ['Sci-fi', 'Fantasy'],
+    tags: ['fantasy', 'science fiction', 'science Fantasy', 'Space oepera', 'sci-fy', 'monster movie', 'Sci-fi'],
+    startYear: 1900,
+    endYear: 2026
+  },
   {
     id: 'box-office',
     name: 'Sky Box Office - Latest Movies',
