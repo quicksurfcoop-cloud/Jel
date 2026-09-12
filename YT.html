@@ -126,14 +126,14 @@ html, body {
 }
 
 /* =========================
-   EPG
+   HORIZONTAL GRID EPG
    ========================= */
 
 #epg {
     position: fixed;
     inset: 0;
     z-index: 50;
-    background: rgba(0,0,0,.97);
+    background: #111;
     display: none;
     flex-direction: column;
 }
@@ -143,126 +143,177 @@ html, body {
 }
 
 #epg-header {
-    height: 75px;
+    height: 60px;
     flex-shrink: 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 30px;
-    border-bottom: 1px solid #444;
+    padding: 0 20px;
+    background: #181818;
+    border-bottom: 1px solid #333;
 }
 
 #epg-title {
-    font-size: 28px;
+    font-size: 22px;
     font-weight: bold;
+    color: #fff;
 }
 
 #epg-clock {
-    font-size: 22px;
-}
-
-#epg-content {
-    flex: 1;
-    overflow: auto;
-    padding: 20px;
-}
-
-.epg-row {
-    margin-bottom: 18px;
-    border: 1px solid #333;
-    background: #111;
-}
-
-.epg-row.current {
-    border-color: #fff;
-}
-
-.epg-channel-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 14px 18px;
-    background: #181818;
-    border-bottom: 1px solid #333;
-    cursor: pointer;
-}
-
-.epg-channel-name {
-    font-size: 20px;
+    font-size: 18px;
+    color: #e50914;
     font-weight: bold;
 }
 
-.epg-channel-number {
-    font-size: 15px;
-    color: #aaa;
+/* Outer Scrollable Grid Container */
+#epg-content {
+    flex: 1;
+    overflow: auto;
+    position: relative;
+    background: #0a0a0a;
 }
 
-.epg-programmes {
-    padding: 0;
+.epg-grid {
+    display: min-content;
+    min-width: 100%;
 }
 
-.epg-programme {
+/* Timeline Header Row */
+.epg-timeline-row {
     display: flex;
-    min-height: 70px;
-    border-bottom: 1px solid #222;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: #181818;
+    border-bottom: 2px solid #333;
+    height: 40px;
+}
+
+.epg-timeline-corner {
+    width: 140px;
+    flex-shrink: 0;
+    position: sticky;
+    left: 0;
+    z-index: 15;
+    background: #181818;
+    border-right: 1px solid #333;
+}
+
+.epg-timeline-slots {
+    display: flex;
     position: relative;
 }
 
-.epg-programme:last-child {
-    border-bottom: none;
-}
-
-.epg-programme.now {
-    background: #202020;
-}
-
-.epg-time {
-    width: 200px;
+.time-slot {
+    width: 300px; /* 300px per hour scale */
     flex-shrink: 0;
-    padding: 15px;
+    padding: 10px;
+    font-size: 13px;
+    font-weight: bold;
     color: #aaa;
+    border-right: 1px solid #282828;
+}
+
+/* Channel Rows */
+.epg-channel-row {
+    display: flex;
+    height: 70px;
+    border-bottom: 1px solid #222;
+}
+
+.epg-channel-row.active-channel {
+    background: rgba(229, 9, 20, 0.05);
+}
+
+.epg-sticky-sidebar {
+    width: 140px;
+    flex-shrink: 0;
+    position: sticky;
+    left: 0;
+    z-index: 5;
+    background: #141414;
+    border-right: 1px solid #333;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.epg-sticky-sidebar:hover {
+    background: #222;
+}
+
+.epg-sidebar-name {
     font-size: 14px;
-    line-height: 1.4;
-}
-
-.epg-programme-info {
-    flex: 1;
-    min-width: 0;
-    padding: 13px 15px;
-}
-
-.epg-programme-title {
-    font-size: 17px;
     font-weight: bold;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
-.epg-programme-meta {
-    margin-top: 5px;
-    color: #888;
-    font-size: 13px;
-}
-
-.epg-now {
-    width: 80px;
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.epg-sidebar-num {
     font-size: 12px;
-    font-weight: bold;
+    color: #888;
 }
 
-.epg-progress {
+/* Track Container for Block Items */
+.epg-track {
+    position: relative;
+    display: flex;
+    height: 100%;
+}
+
+.epg-block {
     position: absolute;
-    left: 0;
+    top: 4px;
+    bottom: 4px;
+    background: #1f1f1f;
+    border: 1px solid #333;
+    border-radius: 4px;
+    padding: 8px 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.epg-block:hover {
+    background: #2a2a2a;
+    border-color: #555;
+}
+
+.epg-block.is-now {
+    background: #2b1a1c;
+    border-color: #e50914;
+}
+
+.epg-block-title {
+    font-size: 13px;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #fff;
+}
+
+.epg-block-time {
+    font-size: 11px;
+    color: #aaa;
+    margin-top: 2px;
+}
+
+/* Current Time Red Line Indicator */
+.epg-now-indicator {
+    position: absolute;
+    top: 40px;
     bottom: 0;
-    height: 3px;
-    background: #fff;
-    width: 0%;
-    transition: width .5s linear;
+    width: 2px;
+    background: #e50914;
+    z-index: 8;
+    pointer-events: none;
 }
 
 /* =========================
@@ -932,7 +983,7 @@ function getVideoTitle(video, index) {
 
 
 /* =========================================================
-   BUILD EPG
+   BUILD HORIZONTAL GRID EPG
    ========================================================= */
 
 function buildEPG() {
@@ -942,128 +993,128 @@ function buildEPG() {
     container.innerHTML = "";
     if (!CHANNELS.length) return;
 
+    const PIXELS_PER_SECOND = 300 / 3600; // 300px per hour scale
+
+    const now = new Date();
+    const currentSeconds = now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds();
+
+    // Establish Grid Frame (Starts at 00:00 midnight)
+    const grid = document.createElement("div");
+    grid.className = "epg-grid";
+
+    // 1. Timeline Header (00:00 to 23:00)
+    const timelineRow = document.createElement("div");
+    timelineRow.className = "epg-timeline-row";
+
+    const corner = document.createElement("div");
+    corner.className = "epg-timeline-corner";
+    timelineRow.appendChild(corner);
+
+    const slots = document.createElement("div");
+    slots.className = "epg-timeline-slots";
+
+    for (let h = 0; h < 24; h++) {
+        const slot = document.createElement("div");
+        slot.className = "time-slot";
+        const timeStr = String(h).padStart(2, "0") + ":00";
+        slot.textContent = timeStr;
+        slots.appendChild(slot);
+    }
+    timelineRow.appendChild(slots);
+    grid.appendChild(timelineRow);
+
+    // 2. Channel Rows
     CHANNELS.forEach(function(channel, channelIndex) {
         const row = document.createElement("div");
-        row.className = "epg-row";
-
+        row.className = "epg-channel-row";
         if (channelIndex === currentChannelIndex) {
-            row.classList.add("current");
+            row.classList.add("active-channel");
         }
 
-        const header = document.createElement("div");
-        header.className = "epg-channel-header";
-
-        const channelName = document.createElement("div");
-        channelName.className = "epg-channel-name";
-        channelName.textContent = channel.name || "Channel";
-
-        const channelNumber = document.createElement("div");
-        channelNumber.className = "epg-channel-number";
-        channelNumber.textContent = "CH " + String(channelIndex + 1).padStart(2, "0");
-
-        header.appendChild(channelName);
-        header.appendChild(channelNumber);
-        row.appendChild(header);
-
-        const programmes = document.createElement("div");
-        programmes.className = "epg-programmes";
-
-        const count = channel.playlist.length;
-        const broadcastStartSecs = getBroadcastStart(channel);
-
-        const now = new Date();
-        let airTimeDate = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 0, 0, 0);
-        airTimeDate.setSeconds(broadcastStartSecs);
-
-        for (let videoIndex = 0; videoIndex < count; videoIndex++) {
-            const video = channel.playlist[videoIndex];
-            const duration = Number(video.duration) || 0;
-
-            const airHours = String(airTimeDate.getHours()).padStart(2, "0");
-            const airMins = String(airTimeDate.getMinutes()).padStart(2, "0");
-            const airTimeFormatted = airHours + ":" + airMins;
-
-            airTimeDate.setSeconds(airTimeDate.getSeconds() + duration);
-
-            const programme = document.createElement("div");
-            programme.className = "epg-programme";
-
-            const isCurrent = channelIndex === currentChannelIndex && videoIndex === currentVideoIndex;
-
-            if (isCurrent) {
-                programme.classList.add("now");
-            }
-
-            const time = document.createElement("div");
-            time.className = "epg-time";
-
-            if (isCurrent && player) {
-                let currentTime = 0;
-                try {
-                    currentTime = player.getCurrentTime();
-                } catch (error) {}
-
-                if (duration > 0) {
-                    const remaining = Math.max(0, duration - currentTime);
-                    time.textContent = airTimeFormatted + " (" + formatDuration(remaining) + " left)";
-                } else {
-                    time.textContent = airTimeFormatted + " (NOW)";
-                }
-            } else {
-                time.textContent = airTimeFormatted;
-            }
-
-            const info = document.createElement("div");
-            info.className = "epg-programme-info";
-
-            const title = document.createElement("div");
-            title.className = "epg-programme-title";
-            title.textContent = getVideoTitle(video, videoIndex);
-
-            const meta = document.createElement("div");
-            meta.className = "epg-programme-meta";
-            meta.textContent = "Starts at " + airTimeFormatted + " • Duration: " + formatDuration(duration);
-
-            info.appendChild(title);
-            info.appendChild(meta);
-
-            const label = document.createElement("div");
-            label.className = "epg-now";
-
-            if (isCurrent) {
-                label.textContent = "▶ NOW";
-            } else if (videoIndex === (currentVideoIndex + 1) % count) {
-                label.textContent = "NEXT";
-            }
-
-            if (isCurrent && player && duration > 0) {
-                let currentTime = 0;
-                try {
-                    currentTime = player.getCurrentTime();
-                } catch (error) {}
-
-                const percentage = Math.min(100, (currentTime / duration) * 100);
-                const progress = document.createElement("div");
-                progress.className = "epg-progress";
-                progress.style.width = percentage + "%";
-                programme.appendChild(progress);
-            }
-
-            programme.appendChild(time);
-            programme.appendChild(info);
-            programme.appendChild(label);
-            programmes.appendChild(programme);
-        }
-
-        row.appendChild(programmes);
-
-        header.addEventListener("click", function() {
+        // Sticky Left Sidebar
+        const sidebar = document.createElement("div");
+        sidebar.className = "epg-sticky-sidebar";
+        sidebar.innerHTML = `
+            <div class="epg-sidebar-name">${channel.name || 'Channel'}</div>
+            <div class="epg-sidebar-num">CH ${String(channelIndex + 1).padStart(2, '0')}</div>
+        `;
+        sidebar.addEventListener("click", function() {
             switchChannel(channelIndex);
             toggleEPG();
         });
+        row.appendChild(sidebar);
 
-        container.appendChild(row);
+        // Track containing timed program blocks
+        const track = document.createElement("div");
+        track.className = "epg-track";
+        track.style.width = (24 * 300) + "px"; // 24 hours width
+
+        const broadcastStartSecs = getBroadcastStart(channel);
+        let accumulatedSecs = broadcastStartSecs;
+
+        const count = channel.playlist ? channel.playlist.length : 0;
+
+        for (let i = 0; i < count; i++) {
+            const video = channel.playlist[i];
+            const duration = Number(video.duration) || 0;
+
+            const startPosSecs = accumulatedSecs;
+            const endPosSecs = startPosSecs + duration;
+
+            // Determine if playing right now
+            const isNow = currentSeconds >= startPosSecs && currentSeconds < endPosSecs && channelIndex === currentChannelIndex;
+
+            const block = document.createElement("div");
+            block.className = "epg-block" + (isNow ? " is-now" : "");
+
+            // Calculate pixel positioning relative to midnight
+            const leftPx = startPosSecs * PIXELS_PER_SECOND;
+            const widthPx = Math.max(duration * PIXELS_PER_SECOND, 40); // minimum 40px width
+
+            block.style.left = leftPx + "px";
+            block.style.width = (widthPx - 4) + "px"; // 4px margin gap
+
+            // Air time formatting
+            const startHour = String(Math.floor(startPosSecs / 3600) % 24).padStart(2, "0");
+            const startMin = String(Math.floor((startPosSecs % 3600) / 60)).padStart(2, "0");
+            const timeFormatted = startHour + ":" + startMin;
+
+            const titleText = getVideoTitle(video, i);
+
+            block.innerHTML = `
+                <div class="epg-block-title">${titleText}</div>
+                <div class="epg-block-time">${timeFormatted} (${formatDuration(duration)})</div>
+            `;
+
+            block.addEventListener("click", function() {
+                currentChannelIndex = channelIndex;
+                loadVideo(i, 0);
+                toggleEPG();
+            });
+
+            track.appendChild(block);
+
+            accumulatedSecs += duration;
+            if (accumulatedSecs >= 86400) break; // End of 24-hr layout block
+        }
+
+        row.appendChild(track);
+        grid.appendChild(row);
     });
+
+    // 3. Red "NOW" Line Indicator
+    const nowLine = document.createElement("div");
+    nowLine.className = "epg-now-indicator";
+    const nowLeftPx = 140 + (currentSeconds * PIXELS_PER_SECOND); // 140px sidebar offset
+    nowLine.style.left = nowLeftPx + "px";
+    grid.appendChild(nowLine);
+
+    container.appendChild(grid);
+
+    // Auto-scroll horizontally to current time position when opened
+    setTimeout(function() {
+        container.scrollLeft = nowLeftPx - 300;
+    }, 50);
 }
 
 
