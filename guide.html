@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skyline TV - Program Guide</title>
+  <style>
+    body {
+      background-color: #0b132b;
+      color: #ffffff;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    /* Classic Sky Banner Header */
+    header {
+      background: linear-gradient(to bottom, #1c2d59, #0f1c3f);
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 3px solid #ffcc00;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    }
+
+    .brand-title {
+      font-size: 24px;
+      font-weight: bold;
+      color: #ffffff;
+      letter-spacing: 1px;
+    }
+
+    .brand-title span {
+      color: #ffcc00;
+    }
+
+    .nav-links a {
+      color: #a0aec0;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: bold;
+    }
+
+    .nav-links a:hover {
+      color: #ffffff;
+    }
+
+    /* EPG Grid Layout */
+    .epg-wrapper {
+      padding: 20px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .epg-header-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .epg-title {
+      font-size: 20px;
+      color: #ffcc00;
+      font-weight: bold;
+    }
+
+    .time-grid-container {
+      background-color: #060a17;
+      border: 2px solid #223a73;
+      border-radius: 6px;
+      overflow-x: auto;
+      box-shadow: inset 0 0 20px rgba(0,0,0,0.8);
+    }
+
+    /* Grid Table Structure */
+    .epg-table {
+      display: grid;
+      grid-template-columns: 180px repeat(6, 200px); /* Channel column + 6 half-hour blocks */
+      width: max-content;
+    }
+
+    .epg-time-header {
+      background: linear-gradient(to bottom, #243b75, #14244f);
+      padding: 12px;
+      text-align: center;
+      font-weight: bold;
+      border-right: 1px solid #2c4a96;
+      border-bottom: 2px solid #2c4a96;
+      font-size: 14px;
+      color: #e2e8f0;
+    }
+
+    .epg-channel-cell {
+      background: linear-gradient(to right, #14244f, #1b316b);
+      padding: 15px 10px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid #1c2d59;
+      border-right: 2px solid #2c4a96;
+      font-size: 15px;
+      color: #ffffff;
+    }
+
+    .epg-slot {
+      background-color: #0f1c3f;
+      border-bottom: 1px solid #1c2d59;
+      border-right: 1px solid #1c2d59;
+      padding: 12px;
+      font-size: 13px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.15s, border 0.15s;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    /* Classic Sky Blue/Yellow Selection Highlighting */
+    .epg-slot:hover {
+      background: linear-gradient(to bottom, #2b4c9f, #1e3573);
+      border: 1px solid #ffcc00;
+      color: #ffcc00;
+    }
+
+    .slot-show-title {
+      font-weight: bold;
+      color: #ffffff;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .slot-show-sub {
+      font-size: 11px;
+      color: #90cdf4;
+      margin-top: 3px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* Footer Info Panel */
+    .info-panel {
+      margin-top: 20px;
+      background: linear-gradient(to bottom, #14244f, #0b132b);
+      border: 1px solid #223a73;
+      border-radius: 6px;
+      padding: 15px 20px;
+      min-height: 60px;
+    }
+
+    .info-title {
+      font-size: 16px;
+      font-weight: bold;
+      color: #ffcc00;
+    }
+
+    .info-desc {
+      font-size: 13px;
+      color: #cbd5e0;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="brand-title">SKYLINE <span>TV GUIDE</span></div>
+    <div class="nav-links">
+      <a href="index.html">Watch Live</a>
+      <a href="guide.html">Full TV Guide</a>
+    </div>
+  </header>
+
+  <div class="epg-wrapper">
+    <div class="epg-header-bar">
+      <div class="epg-title" id="currentDateLabel">Today's Schedule</div>
+    </div>
+
+    <div class="time-grid-container">
+      <div class="epg-table" id="epgTableGrid">
+        <!-- Dynamically injected via JavaScript -->
+      </div>
+    </div>
+
+    <div class="info-panel">
+      <div class="info-title" id="infoTitle">Select a program to view details</div>
+      <div class="info-desc" id="infoDesc">Use the grid to explore upcoming broadcasts across all Skyline TV channels. Click any slot to jump straight to watching!</div>
+    </div>
+  </div>
+
+<script>
+  const FIXED_EPOCH_SECONDS = 1767225600; // Matches your build script epoch
+
+  async function loadGuide() {
+    try {
+      const res = await fetch(`./channels.json?t=${Date.now()}`);
+      const scheduleData = await res.json();
+
+      buildGrid(scheduleData);
+    } catch (err) {
+      console.error('Failed to load schedule for EPG:', err);
+      document.getElementById('epgTableGrid').innerHTML = '<div style="padding: 20px; color: #fc8181;">Error loading channel guide data.</div>';
+    }
+  }
+
+  function buildGrid(scheduleData) {
+    const gridEl = document.getElementById('epgTableGrid');
+    gridEl.innerHTML = '';
+
+    const channels = scheduleData.channels;
+    const channelKeys = Object.keys(channels);
+
+    if (channelKeys.length === 0) return;
+
+    // Define time slots (e.g., 6 upcoming 30-block intervals starting from the current hour block)
+    const now = new Date();
+    // Round down to the nearest half hour
+    now.setMinutes(now.getMinutes() < 30 ? 0 : 30, 0, 0);
+    const gridStartSeconds = Math.floor(now.getTime() / 1000);
+    const slotDuration = 1800; // 30 minutes per column block
+    const totalSlots = 6;      // 6 columns = 3 hours of grid view
+
+    // 1. Build Header Row (Time slots)
+    let headerHtml = `<div class="epg-time-header" style="background: #0f1c3f;">Channels</div>`;
+    for (let i = 0; i < totalSlots; i++) {
+      const slotTime = new Date((gridStartSeconds + (i * slotDuration)) * 1000);
+      const timeString = slotTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false });
+      headerHtml += `<div class="epg-time-header">${timeString}</div>`;
+    }
+    gridEl.style.gridTemplateColumns = `180px repeat(${totalSlots}, 200px)`;
+    gridEl.innerHTML += headerHtml;
+
+    // Set Date label
+    document.getElementById('currentDateLabel').innerText = now.toLocaleDateString([], { weekday: 'long', month: 'short', day: 'numeric' });
+
+    // 2. Build Channel Rows
+    channelKeys.forEach(key => {
+      const channel = channels[key];
+
+      // Channel Name Column
+      let rowHtml = `<div class="epg-channel-cell">${channel.name}</div>`;
+
+      // 30-minute block columns
+      for (let i = 0; i < totalSlots; i++) {
+        const targetTime = gridStartSeconds + (i * slotDuration);
+        const loopElapsed = (targetTime - FIXED_EPOCH_SECONDS) % channel.totalLoopSeconds;
+
+        // Find which item is playing at this precise 30-min block window
+        let matchedItem = channel.items[0];
+        for (const item of channel.items) {
+          const itemEnd = item.start + item.duration;
+          if (loopElapsed >= item.start && loopElapsed < itemEnd) {
+            matchedItem = item;
+            break;
+          }
+        }
+
+        const displayTitle = matchedItem.series ? matchedItem.series : matchedItem.title;
+        const displaySub = matchedItem.series ? matchedItem.title : '';
+
+        rowHtml += `
+          <div class="epg-slot" onclick="selectProgram('${channel.key || key}', '${escapeJs(displayTitle)}', '${escapeJs(displaySub)}')">
+            <div class="slot-show-title">${displayTitle}</div>
+            <div class="slot-show-sub">${displaySub || 'Feature Broadcast'}</div>
+          </div>
+        `;
+      }
+
+      gridEl.innerHTML += rowHtml;
+    });
+  }
+
+  function selectProgram(channelId, title, subtitle) {
+    document.getElementById('infoTitle').innerText = subtitle ? `${title} — ${subtitle}` : title;
+    document.getElementById('infoDesc').innerText = `Click to switch to this channel on the main player.`;
+    
+    // Optional feature: clicking a grid cell takes you straight to index.html with that channel selected
+    setTimeout(() => {
+      window.location.href = `index.html?channel=${channelId}`;
+    }, 400);
+  }
+
+  function escapeJs(str) {
+    return (str || '').replace(/'/g, "\\'").replace("/g, '\\"');
+  }
+
+  // Initial load
+  loadGuide();
+</script>
+
+</body>
+</html>
