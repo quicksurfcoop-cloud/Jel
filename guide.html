@@ -199,18 +199,30 @@
   async function loadGuide() {
     try {
       console.log('Fetching channels.json...');
-      // Try absolute path relative to the repo root first, fallback to relative
-      let res = await fetch('./channels.json?t=' + Date.now());
+      
+      // Build a bulletproof path based on the current domain/repo structure
+      const basePath = window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/'));
+      const fetchUrl = `${window.location.origin}${basePath}/channels.json?t=${Date.now()}`;
+      
+      console.log('Target URL:', fetchUrl);
+
+      let res = await fetch(fetchUrl);
+      if (!res.ok) {
+        // Fallback to simple relative path if absolute path fails
+        res = await fetch(`./channels.json?t=${Date.now()}`);
+      }
+      
       if (!res.ok) {
         throw new Error(`HTTP error! status: ${res.status}`);
       }
+
       const scheduleData = await res.json();
       console.log('Schedule loaded successfully:', scheduleData);
 
       buildGrid(scheduleData);
     } catch (err) {
       console.error('Failed to load schedule for EPG:', err);
-      document.getElementById('epgTableGrid').innerHTML = `<div style="padding: 20px; color: #fc8181;">Error loading channel guide: ${err.message}. Check if channels.json is in the root directory.</div>`;
+      document.getElementById('epgTableGrid').innerHTML = `<div style="padding: 20px; color: #fc8181;">Error loading channel guide: ${err.message}.</div>`;
     }
   }
 
