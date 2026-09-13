@@ -235,15 +235,13 @@
 
     if (channelKeys.length === 0) return;
 
-    // Define time slots (e.g., 6 upcoming 30-block intervals starting from the current hour block)
     const now = new Date();
-    // Round down to the nearest half hour
     now.setMinutes(now.getMinutes() < 30 ? 0 : 30, 0, 0);
     const gridStartSeconds = Math.floor(now.getTime() / 1000);
-    const slotDuration = 1800; // 30 minutes per column block
-    const totalSlots = 6;      // 6 columns = 3 hours of grid view
+    const slotDuration = 1800; 
+    const totalSlots = 6;      
 
-    // 1. Build Header Row (Time slots)
+    // 1. Build Header Row
     let headerHtml = `<div class="epg-time-header" style="background: #0f1c3f;">Channels</div>`;
     for (let i = 0; i < totalSlots; i++) {
       const slotTime = new Date((gridStartSeconds + (i * slotDuration)) * 1000);
@@ -251,24 +249,25 @@
       headerHtml += `<div class="epg-time-header">${timeString}</div>`;
     }
     gridEl.style.gridTemplateColumns = `180px repeat(${totalSlots}, 200px)`;
-    gridEl.innerHTML += headerHtml;
+    gridEl.innerHTML = headerHtml; // Set initial header
 
-    // Set Date label
     document.getElementById('currentDateLabel').innerText = now.toLocaleDateString([], { weekday: 'long', month: 'short', day: 'numeric' });
 
-    // 2. Build Channel Rows
+    // 2. Build Channel Rows and append them safely via DOM elements
     channelKeys.forEach(key => {
       const channel = channels[key];
 
-      // Channel Name Column
-      let rowHtml = `<div class="epg-channel-cell">${channel.name}</div>`;
+      // Channel Name Column Element
+      const channelCell = document.createElement('div');
+      channelCell.className = 'epg-channel-cell';
+      channelCell.innerText = channel.name;
+      gridEl.appendChild(channelCell);
 
       // 30-minute block columns
       for (let i = 0; i < totalSlots; i++) {
         const targetTime = gridStartSeconds + (i * slotDuration);
         const loopElapsed = (targetTime - FIXED_EPOCH_SECONDS) % channel.totalLoopSeconds;
 
-        // Find which item is playing at this precise 30-min block window
         let matchedItem = channel.items[0];
         for (const item of channel.items) {
           const itemEnd = item.start + item.duration;
@@ -277,6 +276,34 @@
             break;
           }
         }
+
+        const displayTitle = matchedItem.series ? matchedItem.series : matchedItem.title;
+        const displaySub = matchedItem.series ? matchedItem.title : '';
+
+        // Create slot element safely without inline string interpolation bugs
+        const slotEl = document.createElement('div');
+        slotEl.className = 'epg-slot';
+        slotEl.innerHTML = `
+          <div class="slot-show-title">${escapeHtml(displayTitle)}</div>
+          <div class="slot-show-sub">${escapeHtml(displaySub || 'Feature Broadcast')}</div>
+        `;
+
+        // Attach click handler safely via JS property assignment
+        slotEl.onclick = () => {
+          selectProgram(key, displayTitle, displaySub);
+        };
+
+        gridEl.appendChild(slotEl);
+      }
+    });
+  }
+
+  // Simple HTML escaper for safety
+  function escapeHtml(str) {
+    return (str || '').replace(/[&<>'"]/g, 
+      tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag)
+    );
+  }
 
         const displayTitle = matchedItem.series ? matchedItem.series : matchedItem.title;
         const displaySub = matchedItem.series ? matchedItem.title : '';
