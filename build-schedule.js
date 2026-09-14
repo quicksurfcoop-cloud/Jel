@@ -34,6 +34,11 @@ const CHANNELS = [
     name: 'BBC', 
     studios: ['BBC', 'BBC One', 'BBC Two', 'BBC Three', 'BBC Four'],
   },
+    { 
+    id: 'GW', 
+    name: 'GW TV', 
+    studios: ['Warhammer TV'],
+  },
   {
     id: 'scream-kids',
     name: 'SCREAM KIDS',
