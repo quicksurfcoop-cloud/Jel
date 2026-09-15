@@ -49,7 +49,7 @@ const CHANNELS = [
       'The Doctor Blake Mysteries', 
       'ER', 
       'Firefly', 
-      'Found', 
+      'Found'
       ],
     excludeGenres: ['Reality']
   },
