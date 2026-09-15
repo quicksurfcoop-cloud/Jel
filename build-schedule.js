@@ -37,7 +37,14 @@ const CHANNELS = [
       'Bones', 
       'Boston Blue', 
       'Brilliant Minds', 
-      'Buffy the Vampire Slayer'],
+      'Buffy the Vampire Slayer',
+      'The Chelsea Detective', 
+      'Chicago Med', 
+      'Chicago P.D.', 
+      'Cold Case', 
+      'Code Black', 
+      'Criminal Minds', 
+      'CSI: Crime Scene Investigation'],
     excludeGenres: ['Reality']
   },
   { 
