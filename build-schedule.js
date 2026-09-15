@@ -34,7 +34,6 @@ const CHANNELS = [
     name: 'Krissy ONE',
     includeTitles: ['Annika', 'Blue Lights', 'Bones', 'Boston Blue', 'Brilliant Minds', 'Buffy the Vampire Slayer', 'The Chelsea Detective', 'Chicago Med', 'Chicago P.D.', 'Cold Case', 'Code Black', 'Criminal Minds', 'CSI: Crime Scene Investigation', 'Dexter', 'The Doctor Blake Mysteries', 'ER', 'Firefly',
                     'Found', 'Happy Valley', 'House', 'Luther', 'The Mentalist', 'Midsomer Murders', 'Monk', 'Rizzoli & Isles', 'Shetland', 'Southland', 'Watson'], // Replace these with your actual Jellyfin show titles
-    includeItemTypes: ['Series']
   },
   { 
     id: 'BBC', 
@@ -50,7 +49,6 @@ const CHANNELS = [
     id: 'scream-kids',
     name: 'SCREAM KIDS',
     includeTitles: ['Goosebumps','The Munsters', 'Eerie, Indiana', 'Aaahh!!! Real Monsters', 'Amazing Stories', 'Beetlejuice', 'Bewitched', 'Beyond Belief: Fact or Fiction', 'Count Duckula', 'Ghostbusters', 'The Grim Adventures of Billy and Mandy', 'The New Scooby and Scrappy-Doo Show'], // Replace these with your actual Jellyfin show titles
-    includeItemTypes: ['Series']
   },
   {
     id: 'superhero-tv',
