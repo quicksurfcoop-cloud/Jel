@@ -29,6 +29,13 @@ const CHANNELS = [
     startYear: 1900,
     endYear: 1999
   },
+   {
+    id: 'Krissy One',
+    name: 'Krissy ONE',
+    includeTitles: ['Annika', 'Blue Lights', 'Bones', 'Boston Blue', 'Brilliant Minds', 'Buffy the Vampire Slayer', 'The Chelsea Detective', 'Chicago Med', 'Chicago P.D.', 'Cold Case', 'Code Black', 'Criminal Minds', 'CSI: Crime Scene Investigation', 'Dexter', 'The Doctor Blake Mysteries', 'ER', 'Firefly', 'Found
+', 'Happy Valley', 'House', 'Luther', 'The Mentalist', 'Midsomer Murders', 'Monk', 'Rizzoli & Isles', 'Shetland', 'Southland', 'Watson'], // Replace these with your actual Jellyfin show titles
+    includeItemTypes: ['Series']
+  },
   { 
     id: 'BBC', 
     name: 'BBC', 
