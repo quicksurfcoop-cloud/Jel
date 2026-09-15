@@ -244,15 +244,15 @@
       return;
     }
 
-    const now = new Date();
-    now.setMinutes(now.getMinutes() < 30 ? 0 : 30, 0, 0);
+  const now = new Date();
     const gridStartSeconds = Math.floor(now.getTime() / 1000);
-    const slotDuration = 1800; 
-    const totalSlots = 6;      
+    const slotDuration = 1800; // 30 minutes per column
+    const totalSlots = 6;      // 6 columns = 3 hours
 
-    // 1. Build Header Row
+    // 1. Build Header Row (Exact time alignment)
     let headerHtml = `<div class="epg-time-header" style="background: #0f1c3f;">Channels</div>`;
     for (let i = 0; i < totalSlots; i++) {
+      // Calculate each 30-min slot dynamically based on current time
       const slotTime = new Date((gridStartSeconds + (i * slotDuration)) * 1000);
       const timeString = slotTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false });
       headerHtml += `<div class="epg-time-header">${timeString}</div>`;
