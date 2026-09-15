@@ -1,6 +1,6 @@
 {
-  "apiKey": "76b7ab6903e54788aab8259de95f8a8e",
-  "generatedAt": 1789505335723,
+  "apiKey": "31b01cda5726406d84436ea2c439e65c",
+  "generatedAt": 1789505507013,
   "channels": {
     "cartoons": {
       "name": "90s Cartoons",
@@ -129957,91 +129957,4025 @@
     },
     "krissy-one": {
       "name": "Krissy ONE",
-      "totalLoopSeconds": 34067,
+      "totalLoopSeconds": 1519588,
       "items": [
         {
-          "id": "73e9b28d4ac8b78131135a5c03783c84",
-          "title": "Episode 5",
-          "series": "Annika",
+          "id": "9815393bad78ee8619f6631f2d79eff8",
+          "title": "The Donor in the Drink",
+          "series": "Bones",
           "start": 0,
-          "duration": 2844
+          "duration": 2600
         },
         {
-          "id": "d1c5697c1552a5670a6a477c75161a3e",
-          "title": "Episode 6",
-          "series": "Annika",
-          "start": 2844,
-          "duration": 2841
+          "id": "1caaacf3eff326671eed6c3b2c2c0d8e",
+          "title": "Starting From Scratch in the Southside Neighborhood",
+          "series": "Good Bones",
+          "start": 2600,
+          "duration": 2578
         },
         {
-          "id": "87d4b6da8001bd6beb181d2f155cc087",
-          "title": "Episode 3",
-          "series": "Annika",
-          "start": 5685,
-          "duration": 2854
+          "id": "dd91e8aefe334d962bab09ec0602dab6",
+          "title": "Lie to Me",
+          "series": "Buffy the Vampire Slayer",
+          "start": 5178,
+          "duration": 2695
         },
         {
-          "id": "19ce81bd8319ac9e2b50a736118e22c4",
-          "title": "Episode 2",
-          "series": "Annika",
-          "start": 8539,
-          "duration": 2855
+          "id": "d3801eebc655260c35602f9d531636b9",
+          "title": "The Rider",
+          "series": "Brilliant Minds",
+          "start": 7873,
+          "duration": 2403
         },
         {
-          "id": "c7fb7cbfe4a9f17e41058ed5d0d5bd96",
-          "title": "Episode 3",
-          "series": "Annika",
-          "start": 11394,
-          "duration": 2825
+          "id": "d44e8501347394828dba4dbc4a56086e",
+          "title": "Iceberg",
+          "series": "Blue Lights",
+          "start": 10276,
+          "duration": 3422
         },
         {
-          "id": "373a7ff44ec2df2e73f6b742de56f7c0",
-          "title": "Episode 6",
-          "series": "Annika",
-          "start": 14219,
-          "duration": 2844
+          "id": "0099b9f8d719a251bc23ca074cd1980c",
+          "title": "The Cheat in the Retreat",
+          "series": "Bones",
+          "start": 13698,
+          "duration": 2561
         },
         {
-          "id": "9e87e3823d1df49ff6023e8f9ffda688",
-          "title": "Episode 1",
-          "series": "Annika",
-          "start": 17063,
-          "duration": 2854
+          "id": "5117fe33a119e923cf0d85e12cec7326",
+          "title": "The Pinocchio in the Planter",
+          "series": "Bones",
+          "start": 16259,
+          "duration": 2586
         },
         {
-          "id": "9c301b0a077d3142bdeaed9b1c7f4e8a",
-          "title": "Episode 1",
-          "series": "Annika",
-          "start": 19917,
-          "duration": 2849
+          "id": "5d0a66645430444b9d9f5a29400acc9e",
+          "title": "Normal Again",
+          "series": "Buffy the Vampire Slayer",
+          "start": 18845,
+          "duration": 2605
         },
         {
-          "id": "c6d48ac4b132765b1ee32e60770cc5e8",
-          "title": "Episode 4",
-          "series": "Annika",
-          "start": 22766,
-          "duration": 2824
+          "id": "a4f1ed009b983c43c4dcb176a80589e0",
+          "title": "The Woman in the Car",
+          "series": "Bones",
+          "start": 21450,
+          "duration": 2655
         },
         {
-          "id": "ef73f05f6dcf9533fc1cc6f4543fb1b0",
-          "title": "Episode 2",
-          "series": "Annika",
-          "start": 25590,
-          "duration": 2823
+          "id": "7625770607a06edb870258b34ac17675",
+          "title": "Duplex Remodel, Double Trouble",
+          "series": "Good Bones",
+          "start": 24105,
+          "duration": 2555
+        },
+        {
+          "id": "e611b773d3ff5febbfb5dcaae0b6f656",
+          "title": "From Warehouse to Storefront",
+          "series": "Good Bones",
+          "start": 26660,
+          "duration": 2580
+        },
+        {
+          "id": "f15129dbcf0a8eb5de73c29dd71b93a6",
+          "title": "An Office Becomes a Home",
+          "series": "Good Bones",
+          "start": 29240,
+          "duration": 2595
+        },
+        {
+          "id": "ed5095f74963fc74676117fde1269d2a",
+          "title": "The Hot Dog in the Competition",
+          "series": "Bones",
+          "start": 31835,
+          "duration": 2638
+        },
+        {
+          "id": "18585917aa0ddb94a244d8d63e1dbcfb",
+          "title": "Bring on the Night",
+          "series": "Buffy the Vampire Slayer",
+          "start": 34473,
+          "duration": 2571
+        },
+        {
+          "id": "909c5ae75d86f591926b696abd88fe6a",
+          "title": "The Contestant",
+          "series": "Brilliant Minds",
+          "start": 37044,
+          "duration": 2529
+        },
+        {
+          "id": "8aa78376064a544592befe3a6703a3f2",
+          "title": "The Repo Man in the Septic Tank",
+          "series": "Bones",
+          "start": 39573,
+          "duration": 2628
+        },
+        {
+          "id": "b5aa0b935c050f2e638442af5fa9ffa6",
+          "title": "The Con Man in the Meth Lab",
+          "series": "Bones",
+          "start": 42201,
+          "duration": 2637
+        },
+        {
+          "id": "afbf335b52fe5632a4a861c707455d2a",
+          "title": "High Treason in the Holiday Season",
+          "series": "Bones",
+          "start": 44838,
+          "duration": 2634
+        },
+        {
+          "id": "3584b8707670ca9973277f9f8906f5d9",
+          "title": "The Missing Person",
+          "series": "Brilliant Minds",
+          "start": 47472,
+          "duration": 2522
+        },
+        {
+          "id": "f79fd9f5097b19cb2dce840930fb9db7",
+          "title": "The Death in the Defense",
+          "series": "Bones",
+          "start": 49994,
+          "duration": 2634
+        },
+        {
+          "id": "9308fbb8ff371699c4852de8e07ffee6",
+          "title": "Faith and Family",
+          "series": "Boston Blue",
+          "start": 52628,
+          "duration": 2590
+        },
+        {
+          "id": "c92f8342e955682272f7496319b842d1",
+          "title": "Big Build Big Risk",
+          "series": "Good Bones",
+          "start": 55218,
+          "duration": 2581
+        },
+        {
+          "id": "b144ef60ed64c9c5b578e5cfa50397a0",
+          "title": "Showtime",
+          "series": "Buffy the Vampire Slayer",
+          "start": 57799,
+          "duration": 2570
+        },
+        {
+          "id": "cffbfbfa3551b6c31c3e9f0492ded709",
+          "title": "The Lost Love in the Foreign Land",
+          "series": "Bones",
+          "start": 60369,
+          "duration": 2723
+        },
+        {
+          "id": "281b6ed29926fd819cddf0b7c8ee9a5f",
+          "title": "A Charred Charmer for Cory",
+          "series": "Good Bones",
+          "start": 63092,
+          "duration": 2580
+        },
+        {
+          "id": "a8f7ef369b6288839a2b75318e022972",
+          "title": "Nothin's Easy on East Street",
+          "series": "Good Bones",
+          "start": 65672,
+          "duration": 2592
+        },
+        {
+          "id": "0e6bb4b1b7e88b65708eb3900459bd74",
+          "title": "The Stiff in the Cliff",
+          "series": "Bones",
+          "start": 68264,
+          "duration": 2626
+        },
+        {
+          "id": "32027b202fe5218ffa327398a330a03f",
+          "title": "The First Responder",
+          "series": "Brilliant Minds",
+          "start": 70890,
+          "duration": 2558
+        },
+        {
+          "id": "df611c75d81f0c7906e5e0319743d9c9",
+          "title": "Bewitched, Bothered and Bewildered",
+          "series": "Buffy the Vampire Slayer",
+          "start": 73448,
+          "duration": 2694
+        },
+        {
+          "id": "585f6993535de8b854a248d1c7b68def",
+          "title": "Band Candy",
+          "series": "Buffy the Vampire Slayer",
+          "start": 76142,
+          "duration": 2665
+        },
+        {
+          "id": "d3e57df81740601c9ef28af55b6382b3",
+          "title": "The Conspiracy in the Corpse",
+          "series": "Bones",
+          "start": 78807,
+          "duration": 2633
+        },
+        {
+          "id": "fc54e4f32bde10369f6fc0b136aa8991",
+          "title": "The Girl in Suite 2103",
+          "series": "Bones",
+          "start": 81440,
+          "duration": 2522
+        },
+        {
+          "id": "a4b73753f131240f5218aa9c6c1962d3",
+          "title": "Tough Love",
+          "series": "Buffy the Vampire Slayer",
+          "start": 83962,
+          "duration": 2673
+        },
+        {
+          "id": "ead308d9c7c700f703bb850bc19021ad",
+          "title": "Hell's Bells",
+          "series": "Buffy the Vampire Slayer",
+          "start": 86635,
+          "duration": 2605
+        },
+        {
+          "id": "29aa440671aa8adcb1979d357fc37d35",
+          "title": "The Man in the Fallout Shelter",
+          "series": "Bones",
+          "start": 89240,
+          "duration": 2656
+        },
+        {
+          "id": "58f83db383754b313575fdddef6deabb",
+          "title": "This Too Shall Pass",
+          "series": "Blue Lights",
+          "start": 91896,
+          "duration": 3447
+        },
+        {
+          "id": "ce694e586b31b657064b8cf57d0384e6",
+          "title": "The Dude in the Dam",
+          "series": "Bones",
+          "start": 95343,
+          "duration": 2583
+        },
+        {
+          "id": "de035cd174c152b81631c2b7b801e4cd",
+          "title": "The Spark in the Park",
+          "series": "Bones",
+          "start": 97926,
+          "duration": 2591
+        },
+        {
+          "id": "a1466998330aa3a8c916d381aafed03c",
+          "title": "Remodeling Dad's House",
+          "series": "Good Bones",
+          "start": 100517,
+          "duration": 2528
+        },
+        {
+          "id": "4aead456b2282b92e0ee7788d288130c",
+          "title": "Mom & Daughter Renovate Homes",
+          "series": "Good Bones",
+          "start": 103045,
+          "duration": 2505
+        },
+        {
+          "id": "3f13ff870c68bd5063929c0247beaac5",
+          "title": "The Jewel in the Crown",
+          "series": "Bones",
+          "start": 105550,
+          "duration": 2637
+        },
+        {
+          "id": "2cc540bd2297b235d0c4aef57660a2f4",
+          "title": "The Price for the Past",
+          "series": "Bones",
+          "start": 108187,
+          "duration": 2604
+        },
+        {
+          "id": "7808683181b9aae4e0daac83b1394021",
+          "title": "Tiny Condo, Big Reno",
+          "series": "Good Bones",
+          "start": 110791,
+          "duration": 2581
+        },
+        {
+          "id": "b4b754d4a0a90c62c665be455b0812ac",
+          "title": "As You Were",
+          "series": "Buffy the Vampire Slayer",
+          "start": 113372,
+          "duration": 2605
         },
         {
           "id": "5c4e60bb0290264f26d3207057767d48",
           "title": "Episode 4",
           "series": "Annika",
-          "start": 28413,
+          "start": 115977,
           "duration": 2844
+        },
+        {
+          "id": "84333c5f3859277ae2cd57f7a5d58aa3",
+          "title": "Love Knows",
+          "series": "Blue Lights",
+          "start": 118821,
+          "duration": 3521
+        },
+        {
+          "id": "cecbe1301599f957fc24cc3bdded651f",
+          "title": "The Party in the Pants",
+          "series": "Bones",
+          "start": 122342,
+          "duration": 2605
+        },
+        {
+          "id": "c0f0f83f0d18330ca886a3db25dfa547",
+          "title": "Two Bodies in the Lab",
+          "series": "Bones",
+          "start": 124947,
+          "duration": 2654
+        },
+        {
+          "id": "322e657a44c336e7a438478482632173",
+          "title": "Buffy vs. Dracula",
+          "series": "Buffy the Vampire Slayer",
+          "start": 127601,
+          "duration": 2611
+        },
+        {
+          "id": "efaaeb4c2f1c86d345c2e24488fe81b5",
+          "title": "The Twisted Bones in the Melted Truck",
+          "series": "Bones",
+          "start": 130212,
+          "duration": 2618
+        },
+        {
+          "id": "d2898560ed30fb619c0f00e9783d1906",
+          "title": "The Male in the Mail",
+          "series": "Bones",
+          "start": 132830,
+          "duration": 2628
+        },
+        {
+          "id": "d4063a4556fe43c0315574acbe408d2f",
+          "title": "The Doctor in the Photo",
+          "series": "Bones",
+          "start": 135458,
+          "duration": 2638
+        },
+        {
+          "id": "8f7f0db38c21712851b527050bfeda91",
+          "title": "The Salt in the Wounds",
+          "series": "Bones",
+          "start": 138096,
+          "duration": 2639
+        },
+        {
+          "id": "c6f138fb74c7c2b148419e944ce5a646",
+          "title": "Aliens in a Spaceship",
+          "series": "Bones",
+          "start": 140735,
+          "duration": 2516
+        },
+        {
+          "id": "e7eba4ad8d13147f1dc097f6d4372273",
+          "title": "The Doom in the Gloom",
+          "series": "Bones",
+          "start": 143251,
+          "duration": 2609
+        },
+        {
+          "id": "a4aa54cdc3b3540ee64251bb24e13122",
+          "title": "The Turn in the Urn",
+          "series": "Bones",
+          "start": 145860,
+          "duration": 2532
+        },
+        {
+          "id": "7eca161662931e79acb7f7b324a31f99",
+          "title": "Stargazer in a Puddle",
+          "series": "Bones",
+          "start": 148392,
+          "duration": 2509
+        },
+        {
+          "id": "a35d6e7a9c908e264e7ba7f3447aa2e7",
+          "title": "The Doctor Whose World Collapsed",
+          "series": "Brilliant Minds",
+          "start": 150901,
+          "duration": 2549
+        },
+        {
+          "id": "01a9c643c02c4649804930f65392d4a8",
+          "title": "Goodbye Iowa",
+          "series": "Buffy the Vampire Slayer",
+          "start": 153450,
+          "duration": 2631
+        },
+        {
+          "id": "2557740b054b65172af0f08b5c12db92",
+          "title": "The Future in the Past",
+          "series": "Bones",
+          "start": 156081,
+          "duration": 2627
+        },
+        {
+          "id": "395ac6f95aa9a53f88fd0bc0882e94e8",
+          "title": "Lies My Parents Told Me",
+          "series": "Buffy the Vampire Slayer",
+          "start": 158708,
+          "duration": 2571
+        },
+        {
+          "id": "708936cc9cd2e40eb1c34c03d68d3ab3",
+          "title": "The Bikini in the Soup",
+          "series": "Bones",
+          "start": 161279,
+          "duration": 2630
+        },
+        {
+          "id": "1252dc6b592b3df2a0f2bc4d9f80275b",
+          "title": "An Itty Bitty Beach Bungalow",
+          "series": "Good Bones",
+          "start": 163909,
+          "duration": 2580
+        },
+        {
+          "id": "4437c6b208f0b05dc0dfbf1ad486c220",
+          "title": "Consequences",
+          "series": "Buffy the Vampire Slayer",
+          "start": 166489,
+          "duration": 2657
+        },
+        {
+          "id": "99ded04f103c1e83e0c25db14f1d96ec",
+          "title": "Battle of the Two Chicks",
+          "series": "Good Bones",
+          "start": 169146,
+          "duration": 2577
+        },
+        {
+          "id": "9a84e11333a362b1c9d8302bc920732a",
+          "title": "The Geek in the Guck",
+          "series": "Bones",
+          "start": 171723,
+          "duration": 2580
+        },
+        {
+          "id": "81a102efd55dfa5177d129ed5ad35d53",
+          "title": "The Baby in the Bough",
+          "series": "Bones",
+          "start": 174303,
+          "duration": 2632
+        },
+        {
+          "id": "3f1f3cf854974dff34257204afb34d7a",
+          "title": "Decaying Duplex Gets a Transformation",
+          "series": "Good Bones",
+          "start": 176935,
+          "duration": 2593
+        },
+        {
+          "id": "3d6388285c63efcfb606b0875282b3df",
+          "title": "The Foot in the Foreclosure",
+          "series": "Bones",
+          "start": 179528,
+          "duration": 2594
+        },
+        {
+          "id": "fd1e673aa5f2440a63f7f0e0bfe2ff8b",
+          "title": "The Patriot in Purgatory",
+          "series": "Bones",
+          "start": 182122,
+          "duration": 2593
+        },
+        {
+          "id": "32f40c5713f7698da6225fa0c691c08b",
+          "title": "The Bullet in the Brain",
+          "series": "Bones",
+          "start": 184715,
+          "duration": 2627
+        },
+        {
+          "id": "f4577477853ddd3329dc176f6483e53e",
+          "title": "Risky Reno With Historic Charm",
+          "series": "Good Bones",
+          "start": 187342,
+          "duration": 2568
+        },
+        {
+          "id": "0d2a8f286d1528b48ade676878789033",
+          "title": "The Hero in the Hold",
+          "series": "Bones",
+          "start": 189910,
+          "duration": 2633
+        },
+        {
+          "id": "56845c861aa8e3c51ae0198c4f11a7f2",
+          "title": "The Secret in the Service",
+          "series": "Bones",
+          "start": 192543,
+          "duration": 2600
+        },
+        {
+          "id": "72bcac302376ae58396daf0a829f7da3",
+          "title": "The Movie in the Making",
+          "series": "Bones",
+          "start": 195143,
+          "duration": 2636
+        },
+        {
+          "id": "8ac985dcfb0753a1d7ec99eaea3bfd05",
+          "title": "The Steal in the Wheels",
+          "series": "Bones",
+          "start": 197779,
+          "duration": 2641
+        },
+        {
+          "id": "e4fe7137f268855338e980d5ceb9605c",
+          "title": "The Murder in the Middle East",
+          "series": "Bones",
+          "start": 200420,
+          "duration": 2603
+        },
+        {
+          "id": "2560809ddd94a63fcd71c06e362dc365",
+          "title": "A Structure Worth Saving",
+          "series": "Good Bones",
+          "start": 203023,
+          "duration": 2557
+        },
+        {
+          "id": "b75d43c7c4121bf434ab204371f87f6f",
+          "title": "The X in the File",
+          "series": "Bones",
+          "start": 205580,
+          "duration": 2646
+        },
+        {
+          "id": "5d176e06589a1600f6477bfd50cca233",
+          "title": "The Death of the Queen Bee",
+          "series": "Bones",
+          "start": 208226,
+          "duration": 2616
+        },
+        {
+          "id": "c50f2c96c085b046f92e3db68dcd3778",
+          "title": "Chosen",
+          "series": "Buffy the Vampire Slayer",
+          "start": 210842,
+          "duration": 2631
+        },
+        {
+          "id": "773f0b1bf056c48c5492834c6c4765d4",
+          "title": "The Shot in the Dark",
+          "series": "Bones",
+          "start": 213473,
+          "duration": 2634
+        },
+        {
+          "id": "d1601a25bc47993a408d68fd5c8f6a80",
+          "title": "The Fury in the Jury",
+          "series": "Bones",
+          "start": 216107,
+          "duration": 2629
+        },
+        {
+          "id": "77ee8695800610171f702c28ec16002e",
+          "title": "The Money Maker on the Merry-Go-Round",
+          "series": "Bones",
+          "start": 218736,
+          "duration": 2583
+        },
+        {
+          "id": "6e1889dc0e3b41abb9b140bde4d81a89",
+          "title": "The Man with the Bone",
+          "series": "Bones",
+          "start": 221319,
+          "duration": 2610
+        },
+        {
+          "id": "82fd09c6b5e474cc05caf51d747011d6",
+          "title": "The But in the Joke",
+          "series": "Bones",
+          "start": 223929,
+          "duration": 2635
+        },
+        {
+          "id": "155c18f591860dac426b48dbf238c2ba",
+          "title": "Intervention",
+          "series": "Buffy the Vampire Slayer",
+          "start": 226564,
+          "duration": 2674
+        },
+        {
+          "id": "80a39e89fd3d547c58b9ea54072d9a26",
+          "title": "The Hole in the Heart",
+          "series": "Bones",
+          "start": 229238,
+          "duration": 2607
+        },
+        {
+          "id": "a73245cae990b1d0c315723d41d7ee89",
+          "title": "The Harvest (2)",
+          "series": "Buffy the Vampire Slayer",
+          "start": 231845,
+          "duration": 2711
+        },
+        {
+          "id": "0bcfe1176356eb99e3823d875fa10b82",
+          "title": "The Skull in the Desert",
+          "series": "Bones",
+          "start": 234556,
+          "duration": 2657
+        },
+        {
+          "id": "972c315b109bdcdbce8bc7359cad81e1",
+          "title": "The Bird",
+          "series": "Blue Lights",
+          "start": 237213,
+          "duration": 3431
+        },
+        {
+          "id": "86089e45b81a0e8a977c488eb7342b8d",
+          "title": "MJs Dream Home",
+          "series": "Good Bones",
+          "start": 240644,
+          "duration": 2581
+        },
+        {
+          "id": "66a2cd4bcafe9ea241ea8a26168a9997",
+          "title": "New Moon Rising",
+          "series": "Buffy the Vampire Slayer",
+          "start": 243225,
+          "duration": 2673
+        },
+        {
+          "id": "eb711bf4f81252942b470ee117c0df75",
+          "title": "Restoring a Rundown Victorian",
+          "series": "Good Bones",
+          "start": 245898,
+          "duration": 2557
+        },
+        {
+          "id": "2cbfd01e5e204ed8987692aa7c8ea9b3",
+          "title": "Inca Mummy Girl",
+          "series": "Buffy the Vampire Slayer",
+          "start": 248455,
+          "duration": 2694
+        },
+        {
+          "id": "001a58581818505d4278e34079770f8e",
+          "title": "A New Man",
+          "series": "Buffy the Vampire Slayer",
+          "start": 251149,
+          "duration": 2675
+        },
+        {
+          "id": "578fe5444bb9f26ec18eaacdf4dd1b59",
+          "title": "Chasing Monsters",
+          "series": "Boston Blue",
+          "start": 253824,
+          "duration": 2596
+        },
+        {
+          "id": "555cde85f2b36511b0d752ea4f90b939",
+          "title": "All in the Family",
+          "series": "Good Bones",
+          "start": 256420,
+          "duration": 2580
+        },
+        {
+          "id": "0e413f3dc46fa2e517f8fc7632630931",
+          "title": "Touched",
+          "series": "Buffy the Vampire Slayer",
+          "start": 259000,
+          "duration": 2568
+        },
+        {
+          "id": "5ec8a01b48f473632ca18bffffc85add",
+          "title": "Full Moon Fever",
+          "series": "Blue Lights",
+          "start": 261568,
+          "duration": 3540
+        },
+        {
+          "id": "0c70443631fbb63b969dff3a22d1c82f",
+          "title": "Bargaining (2)",
+          "series": "Buffy the Vampire Slayer",
+          "start": 265108,
+          "duration": 2604
+        },
+        {
+          "id": "12b16283d513ce75daa33ba913a9a38e",
+          "title": "Beauty and the Beasts",
+          "series": "Buffy the Vampire Slayer",
+          "start": 267712,
+          "duration": 2698
+        },
+        {
+          "id": "a8e808cc3d7a994ae6af508ba5b41f64",
+          "title": "Bad to the Bones",
+          "series": "Good Bones",
+          "start": 270410,
+          "duration": 2563
+        },
+        {
+          "id": "e9490267a673bba06749c574430fa3d2",
+          "title": "The Daredevil in the Mold",
+          "series": "Bones",
+          "start": 272973,
+          "duration": 2622
+        },
+        {
+          "id": "4d287dea63329ec72351aa18e61f3a52",
+          "title": "Listening to Fear",
+          "series": "Buffy the Vampire Slayer",
+          "start": 275595,
+          "duration": 2643
+        },
+        {
+          "id": "630c78f0226ca279b7145165d29e31b3",
+          "title": "The Beaver in the Otter",
+          "series": "Bones",
+          "start": 278238,
+          "duration": 2617
+        },
+        {
+          "id": "8a821d2c76ea8a981ba57a823c9bb51e",
+          "title": "Shiplap Surprise in Fountain Square",
+          "series": "Good Bones",
+          "start": 280855,
+          "duration": 2591
+        },
+        {
+          "id": "04a7fd2ce171d6ef18ad398e9dfb0160",
+          "title": "The Secret in the Soil",
+          "series": "Bones",
+          "start": 283446,
+          "duration": 2629
+        },
+        {
+          "id": "e7e5d5c27b8bad60c2c046f0a7707cf1",
+          "title": "The Woman at the Airport",
+          "series": "Bones",
+          "start": 286075,
+          "duration": 2498
+        },
+        {
+          "id": "f42fb8b6f773090c56ae635a50d545c2",
+          "title": "Old Home Draws New Neighbors",
+          "series": "Good Bones",
+          "start": 288573,
+          "duration": 2560
+        },
+        {
+          "id": "edef54b90bdb181cf82fd871f14fcb0e",
+          "title": "Teacher's Pet",
+          "series": "Buffy the Vampire Slayer",
+          "start": 291133,
+          "duration": 2713
+        },
+        {
+          "id": "3a5adc1b90a13ef615b981cdafd4717a",
+          "title": "Money Pit Mishaps",
+          "series": "Good Bones",
+          "start": 293846,
+          "duration": 2580
+        },
+        {
+          "id": "c1141f246d03fff777b453e4ac68a493",
+          "title": "All the Way",
+          "series": "Buffy the Vampire Slayer",
+          "start": 296426,
+          "duration": 2604
+        },
+        {
+          "id": "5c596cdfaedc2b3f44b3328187ffb562",
+          "title": "Pilot",
+          "series": "Brilliant Minds",
+          "start": 299030,
+          "duration": 2540
+        },
+        {
+          "id": "ea4eb05f9f5db61e3908b31c7b7943c9",
+          "title": "The Maiden in the Mushrooms",
+          "series": "Bones",
+          "start": 301570,
+          "duration": 2579
+        },
+        {
+          "id": "ace0237b3dfd431b94b401e49b433de7",
+          "title": "Judas on a Pole",
+          "series": "Bones",
+          "start": 304149,
+          "duration": 2485
+        },
+        {
+          "id": "7eb6552b3989ec9bdc5211b6927fc414",
+          "title": "Dead Things",
+          "series": "Buffy the Vampire Slayer",
+          "start": 306634,
+          "duration": 2606
+        },
+        {
+          "id": "329a3d7ed99c4e2a04fe0b376d8f15d0",
+          "title": "The Goop on the Girl",
+          "series": "Bones",
+          "start": 309240,
+          "duration": 2621
+        },
+        {
+          "id": "003762f4925d7835e7e5316903632709",
+          "title": "The Bones that Weren't",
+          "series": "Bones",
+          "start": 311861,
+          "duration": 2609
+        },
+        {
+          "id": "444489064e98be3462e5f11e779d248d",
+          "title": "Family",
+          "series": "Buffy the Vampire Slayer",
+          "start": 314470,
+          "duration": 2674
+        },
+        {
+          "id": "a5f8862155090d822c2896c19d8a8c75",
+          "title": "The Woman in the Sand",
+          "series": "Bones",
+          "start": 317144,
+          "duration": 2483
+        },
+        {
+          "id": "652f5a29e98ba145bbf615646945d504",
+          "title": "The Gloriously Glam House",
+          "series": "Good Bones",
+          "start": 319627,
+          "duration": 2580
+        },
+        {
+          "id": "4ee437e5da7618f5e48ad378c0c99d69",
+          "title": "School Hard",
+          "series": "Buffy the Vampire Slayer",
+          "start": 322207,
+          "duration": 2692
+        },
+        {
+          "id": "e2fc4dccd41402a106421dd474d602cb",
+          "title": "The Signs in the Silence",
+          "series": "Bones",
+          "start": 324899,
+          "duration": 2602
+        },
+        {
+          "id": "9d15bd47e09fb770ea3b6d60010aa9e6",
+          "title": "The Woman in the Whirlpool",
+          "series": "Bones",
+          "start": 327501,
+          "duration": 2619
+        },
+        {
+          "id": "3cd246d683e0be3c33f6be139b9b0bac",
+          "title": "Small House, Big Problems",
+          "series": "Good Bones",
+          "start": 330120,
+          "duration": 2595
+        },
+        {
+          "id": "ee366805ad5eb102d80bb40b40b8f8f9",
+          "title": "The Pusher",
+          "series": "Brilliant Minds",
+          "start": 332715,
+          "duration": 2529
+        },
+        {
+          "id": "df3cbebbb25f2076a100ac128dbbbab3",
+          "title": "The Pain in the Heart",
+          "series": "Bones",
+          "start": 335244,
+          "duration": 2622
+        },
+        {
+          "id": "9e87e3823d1df49ff6023e8f9ffda688",
+          "title": "Episode 1",
+          "series": "Annika",
+          "start": 337866,
+          "duration": 2854
+        },
+        {
+          "id": "bb87adb284e758c659e5581b91ccd3b3",
+          "title": "Old Biker Bar",
+          "series": "Good Bones",
+          "start": 340720,
+          "duration": 2590
+        },
+        {
+          "id": "eb2df97b7ed0906768e1d8931452e131",
+          "title": "The End in the Beginning",
+          "series": "Bones",
+          "start": 343310,
+          "duration": 2637
+        },
+        {
+          "id": "be81030efd7b0331b7aac1a0b8da14e1",
+          "title": "Fear, Itself",
+          "series": "Buffy the Vampire Slayer",
+          "start": 345947,
+          "duration": 2561
+        },
+        {
+          "id": "4edaff1661bf8f2cdfd3ec67a5acffb6",
+          "title": "The Heiress in the Hill",
+          "series": "Bones",
+          "start": 348508,
+          "duration": 2563
+        },
+        {
+          "id": "8fb0981fecfdc7d9747d60b4395d5018",
+          "title": "The Sense in the Sacrifice",
+          "series": "Bones",
+          "start": 351071,
+          "duration": 2619
+        },
+        {
+          "id": "b5fc8d0cd70b4b6a8463070bd00fa014",
+          "title": "The Crank in the Shaft",
+          "series": "Bones",
+          "start": 353690,
+          "duration": 2632
+        },
+        {
+          "id": "17c9e74358476474bf577f510f833188",
+          "title": "The Plain in the Prodigy",
+          "series": "Bones",
+          "start": 356322,
+          "duration": 2642
+        },
+        {
+          "id": "a809b3364a05c19487efbbf6854d1b86",
+          "title": "Historical Hiccups on Hill Street",
+          "series": "Good Bones",
+          "start": 358964,
+          "duration": 2580
+        },
+        {
+          "id": "50597ca1f2594bcf713ff4bf2a80f370",
+          "title": "The Woman in the Tunnel",
+          "series": "Bones",
+          "start": 361544,
+          "duration": 2657
+        },
+        {
+          "id": "b9b53fddcdb78eb7f9b9354748940963",
+          "title": "World of Our Own",
+          "series": "Blue Lights",
+          "start": 364201,
+          "duration": 3517
+        },
+        {
+          "id": "706d4ca53a737bd0b2a44a57bd48ace0",
+          "title": "Hard Truths",
+          "series": "Boston Blue",
+          "start": 367718,
+          "duration": 2574
+        },
+        {
+          "id": "5932fae3fabb5c0eacacc6ffe2ca0d10",
+          "title": "The Blackout in the Blizzard",
+          "series": "Bones",
+          "start": 370292,
+          "duration": 2637
+        },
+        {
+          "id": "573faa759c05a4fd59e80eca663b8be7",
+          "title": "Beer Bad",
+          "series": "Buffy the Vampire Slayer",
+          "start": 372929,
+          "duration": 2613
+        },
+        {
+          "id": "c70bdfa953b53ab3e11baa6da72a842c",
+          "title": "The Recluse in the Recliner",
+          "series": "Bones",
+          "start": 375542,
+          "duration": 2582
+        },
+        {
+          "id": "2c7c889d4bfda3ae5730d2d6ef189ed9",
+          "title": "The Girl in the Gator",
+          "series": "Bones",
+          "start": 378124,
+          "duration": 2522
+        },
+        {
+          "id": "ae9a68d97ff9ef494ff582b1952249d3",
+          "title": "The Blood from the Stones",
+          "series": "Bones",
+          "start": 380646,
+          "duration": 2614
+        },
+        {
+          "id": "518bd215b9f87b0de0f80d296729b6b8",
+          "title": "Baggage Claim",
+          "series": "Boston Blue",
+          "start": 383260,
+          "duration": 2572
+        },
+        {
+          "id": "8bca84f867a60df69ba99096ebda2a2d",
+          "title": "First Date",
+          "series": "Buffy the Vampire Slayer",
+          "start": 385832,
+          "duration": 2568
+        },
+        {
+          "id": "7e10421fb5d6625f28cb1d21999d880e",
+          "title": "The Skull in the Sculpture",
+          "series": "Bones",
+          "start": 388400,
+          "duration": 2642
+        },
+        {
+          "id": "3b6716f6bb6e24a252e7f33753af48ed",
+          "title": "Updated Victorian in Old Southside",
+          "series": "Good Bones",
+          "start": 391042,
+          "duration": 2581
+        },
+        {
+          "id": "93143f62d8c1a5a9049eaea6a97898e8",
+          "title": "The Wedding Studio",
+          "series": "Good Bones",
+          "start": 393623,
+          "duration": 2580
+        },
+        {
+          "id": "02e4296b5a7234bb4c79e18f3d7337b2",
+          "title": "The Source in the Sludge",
+          "series": "Bones",
+          "start": 396203,
+          "duration": 2548
+        },
+        {
+          "id": "c23f3d8a2e3416c385632aceefb4220f",
+          "title": "From Teardown to Italian Treasure",
+          "series": "Good Bones",
+          "start": 398751,
+          "duration": 2580
+        },
+        {
+          "id": "1a518ee5d1b6efbb6bd7dd454a05e1c9",
+          "title": "Intern in the Incinerator",
+          "series": "Bones",
+          "start": 401331,
+          "duration": 2634
+        },
+        {
+          "id": "bfe620307a0cc85c5e09d4f1546f92bf",
+          "title": "Choices",
+          "series": "Buffy the Vampire Slayer",
+          "start": 403965,
+          "duration": 2684
+        },
+        {
+          "id": "39e82043c78d3a36b37de8f57e4644b6",
+          "title": "Faith, Hope & Trick",
+          "series": "Buffy the Vampire Slayer",
+          "start": 406649,
+          "duration": 2693
+        },
+        {
+          "id": "58a8141dc10560cfe63736c0e27bb04a",
+          "title": "The Little Brick House",
+          "series": "Good Bones",
+          "start": 409342,
+          "duration": 2573
+        },
+        {
+          "id": "5330d5354e1b6c2664ab23db7357663c",
+          "title": "No Place Like Home",
+          "series": "Buffy the Vampire Slayer",
+          "start": 411915,
+          "duration": 2672
+        },
+        {
+          "id": "82a6493c30ad4bb2917d291f2c9635c1",
+          "title": "The Boho Bungalow",
+          "series": "Good Bones",
+          "start": 414587,
+          "duration": 2580
+        },
+        {
+          "id": "32965a51f6283d94d95665158c76da9d",
+          "title": "The Finder",
+          "series": "Bones",
+          "start": 417167,
+          "duration": 2637
+        },
+        {
+          "id": "a6c565c2b9928a198e7646e67406899f",
+          "title": "The Brain in the Bot",
+          "series": "Bones",
+          "start": 419804,
+          "duration": 2607
+        },
+        {
+          "id": "f88bb8882c839152e755e5d45bf7d208",
+          "title": "The Baker in the Bits",
+          "series": "Bones",
+          "start": 422411,
+          "duration": 2587
+        },
+        {
+          "id": "0ac72e4df42e536e0a5ea15d6dab30f0",
+          "title": "Where the Wild Things Are",
+          "series": "Buffy the Vampire Slayer",
+          "start": 424998,
+          "duration": 2675
+        },
+        {
+          "id": "ec7076ac98101208a2f89e3cc504fc23",
+          "title": "Starting From Scratch in the Old Southside",
+          "series": "Good Bones",
+          "start": 427673,
+          "duration": 2580
+        },
+        {
+          "id": "cb8bb7096230c1b6ed63925e32c2131a",
+          "title": "Budget-Busting Basic Bombshell",
+          "series": "Good Bones",
+          "start": 430253,
+          "duration": 2580
+        },
+        {
+          "id": "99c356eadc097270c5823767b3d7468e",
+          "title": "Lovers Walk",
+          "series": "Buffy the Vampire Slayer",
+          "start": 432833,
+          "duration": 2695
+        },
+        {
+          "id": "05639afd40d441073468b7b3832a16e7",
+          "title": "Crush",
+          "series": "Buffy the Vampire Slayer",
+          "start": 435528,
+          "duration": 2671
+        },
+        {
+          "id": "2816b47dde95509cc69596d258bf6ba5",
+          "title": "The Past in the Present",
+          "series": "Bones",
+          "start": 438199,
+          "duration": 2618
+        },
+        {
+          "id": "e0d5b511d19fba133887d2aa01dafc02",
+          "title": "The Couple in the Cave",
+          "series": "Bones",
+          "start": 440817,
+          "duration": 2605
+        },
+        {
+          "id": "9d0c99498f1f3da91aec04c418ad2839",
+          "title": "The Man on the Fairway",
+          "series": "Bones",
+          "start": 443422,
+          "duration": 2630
+        },
+        {
+          "id": "5924b34f51a4dfb8fc2c93b8fbcacb6a",
+          "title": "The Truth in the Myth",
+          "series": "Bones",
+          "start": 446052,
+          "duration": 2582
+        },
+        {
+          "id": "0e4714958cbce0228279622a67e647cd",
+          "title": "The Superhero in the Alley",
+          "series": "Bones",
+          "start": 448634,
+          "duration": 2537
+        },
+        {
+          "id": "c8e9b7987bceb780468fe16a70a1a02f",
+          "title": "Conversations with Dead People",
+          "series": "Buffy the Vampire Slayer",
+          "start": 451171,
+          "duration": 2566
+        },
+        {
+          "id": "0af6a4660a618867742a3f3d755b249d",
+          "title": "The Crack in the Code",
+          "series": "Bones",
+          "start": 453737,
+          "duration": 2603
+        },
+        {
+          "id": "022bc1c460318bfb16d73c6d105af478",
+          "title": "The Tiger in the Tale",
+          "series": "Bones",
+          "start": 456340,
+          "duration": 2591
+        },
+        {
+          "id": "ca5025a8dd6caae6b6573cde0c1c61fc",
+          "title": "Empty Lot to Home Sweet Home",
+          "series": "Good Bones",
+          "start": 458931,
+          "duration": 2524
+        },
+        {
+          "id": "e986e00da29369a8810b2908c81b3279",
+          "title": "Player Under Pressure",
+          "series": "Bones",
+          "start": 461455,
+          "duration": 2632
+        },
+        {
+          "id": "8f6c481ec5d06e3ea7048a2a8fc135a6",
+          "title": "The Survivor in the Soap",
+          "series": "Bones",
+          "start": 464087,
+          "duration": 2601
+        },
+        {
+          "id": "9379d4dec3c3c01a990c7f9f3129abcd",
+          "title": "The Lady on the List",
+          "series": "Bones",
+          "start": 466688,
+          "duration": 2611
+        },
+        {
+          "id": "5a0824474f0f15299b69c9f311677178",
+          "title": "The Warrior in the Wuss",
+          "series": "Bones",
+          "start": 469299,
+          "duration": 2639
+        },
+        {
+          "id": "07f5b39c5355d6ffdb200efa839160ea",
+          "title": "Empty Places",
+          "series": "Buffy the Vampire Slayer",
+          "start": 471938,
+          "duration": 2569
+        },
+        {
+          "id": "036738a39e91d48effceca1a38d8d89f",
+          "title": "The Blackout Bride",
+          "series": "Brilliant Minds",
+          "start": 474507,
+          "duration": 2560
+        },
+        {
+          "id": "0df3f0c67c07b1add0c7d69280a46a08",
+          "title": "The Glowing Bones in the Old Stone House",
+          "series": "Bones",
+          "start": 477067,
+          "duration": 2477
+        },
+        {
+          "id": "48a92a96f9931e35064892ab1fbf95a4",
+          "title": "The Bones That Foam",
+          "series": "Bones",
+          "start": 479544,
+          "duration": 2643
+        },
+        {
+          "id": "b108aa7c6ab36a263684ed875cbfe8e6",
+          "title": "The Psychic in the Soup",
+          "series": "Bones",
+          "start": 482187,
+          "duration": 2601
+        },
+        {
+          "id": "98b4a2f7098f2787941599c35340f3b5",
+          "title": "Smelly Shotgun House To Chic Downtown Home",
+          "series": "Good Bones",
+          "start": 484788,
+          "duration": 2576
+        },
+        {
+          "id": "83e876f9426379e79efffe5976b85733",
+          "title": "Bodies in the Book",
+          "series": "Bones",
+          "start": 487364,
+          "duration": 2496
+        },
+        {
+          "id": "46a92b08701b022d6e1cbfa320290bc6",
+          "title": "The Puzzler in the Pit",
+          "series": "Bones",
+          "start": 489860,
+          "duration": 2587
+        },
+        {
+          "id": "1e76aa500f85259a1959be382668bf10",
+          "title": "The Parts in the Sum of the Whole",
+          "series": "Bones",
+          "start": 492447,
+          "duration": 2637
+        },
+        {
+          "id": "aac2fc7835bb04ecfa8f2fdcbd0d0165",
+          "title": "The Shallow in the Deep",
+          "series": "Bones",
+          "start": 495084,
+          "duration": 2638
+        },
+        {
+          "id": "4d2c3772666c25dc2d4a0d1102b522b5",
+          "title": "The Twist in the Twister",
+          "series": "Bones",
+          "start": 497722,
+          "duration": 2632
+        },
+        {
+          "id": "282ffb5b6ac155580c8fbdfa788ab452",
+          "title": "The Man in the Cell",
+          "series": "Bones",
+          "start": 500354,
+          "duration": 2526
+        },
+        {
+          "id": "8b056dc49d93ae4ac131790d7079d0f1",
+          "title": "The Boy in the Shroud",
+          "series": "Bones",
+          "start": 502880,
+          "duration": 2514
+        },
+        {
+          "id": "fe9e565fea5a5746b469c9bfe8b01644",
+          "title": "Halloween",
+          "series": "Buffy the Vampire Slayer",
+          "start": 505394,
+          "duration": 2665
+        },
+        {
+          "id": "677ac8a789cf3fcc9b0aad6a0c24a368",
+          "title": "From Burned Out to Boho Nordic",
+          "series": "Good Bones",
+          "start": 508059,
+          "duration": 2580
+        },
+        {
+          "id": "2248eeb3f73738557a4a8ef139a92d13",
+          "title": "The Doctor in the Den",
+          "series": "Bones",
+          "start": 510639,
+          "duration": 2644
+        },
+        {
+          "id": "9eb8a20255fdba6f3e46ec3f8c86573b",
+          "title": "Family Secrets",
+          "series": "Boston Blue",
+          "start": 513283,
+          "duration": 2477
+        },
+        {
+          "id": "691fc60a5a4525aaa3e3a25e47f7051c",
+          "title": "Flooded",
+          "series": "Buffy the Vampire Slayer",
+          "start": 515760,
+          "duration": 2602
         },
         {
           "id": "ee9f8a7352a08f990c9b2981fc2d75b6",
           "title": "Episode 5",
           "series": "Annika",
-          "start": 31257,
+          "start": 518362,
           "duration": 2810
+        },
+        {
+          "id": "4ffc309fb9049cf9b95936e1b51cea57",
+          "title": "What's My Line? (2)",
+          "series": "Buffy the Vampire Slayer",
+          "start": 521172,
+          "duration": 2664
+        },
+        {
+          "id": "81c2eca3ad86bfc996d3ae2008b50e62",
+          "title": "Once More, with Feeling",
+          "series": "Buffy the Vampire Slayer",
+          "start": 523836,
+          "duration": 2601
+        },
+        {
+          "id": "29f6511175f2c1851a1a25e26055ff2c",
+          "title": "Tiny Condo, Giant Upgrade",
+          "series": "Good Bones",
+          "start": 526437,
+          "duration": 2577
+        },
+        {
+          "id": "f1d7eb85a528c37523dba725a0b9f1f2",
+          "title": "The Girl with the Curl",
+          "series": "Bones",
+          "start": 529014,
+          "duration": 2517
+        },
+        {
+          "id": "09c0be3e2ab879fa2fd2c02a2a21a3d5",
+          "title": "The Puppet Show",
+          "series": "Buffy the Vampire Slayer",
+          "start": 531531,
+          "duration": 2697
+        },
+        {
+          "id": "c51279508b6814c9f1576b5fdcb8cef0",
+          "title": "The Flaw in the Saw",
+          "series": "Bones",
+          "start": 534228,
+          "duration": 2614
+        },
+        {
+          "id": "a29451ff864467c37bdd6d9ecd7f36b6",
+          "title": "The Weight of the World",
+          "series": "Buffy the Vampire Slayer",
+          "start": 536842,
+          "duration": 2674
+        },
+        {
+          "id": "56b515e3b7f30ee675178fe3ccbf17ce",
+          "title": "The Twist in the Plot",
+          "series": "Bones",
+          "start": 539516,
+          "duration": 2627
+        },
+        {
+          "id": "621c0911342a5deb55fafcfff5f32eea",
+          "title": "The Corpse at the Convention",
+          "series": "Bones",
+          "start": 542143,
+          "duration": 2636
+        },
+        {
+          "id": "e73e449895bdb4d631a208a68b409a92",
+          "title": "Bargaining (1)",
+          "series": "Buffy the Vampire Slayer",
+          "start": 544779,
+          "duration": 2607
+        },
+        {
+          "id": "1aa221443facd297b6b42969478fafa4",
+          "title": "The Bones on the Blue Line",
+          "series": "Bones",
+          "start": 547386,
+          "duration": 2594
+        },
+        {
+          "id": "a13d156c964ef1838fbcfa30cc7cce19",
+          "title": "The Sin in the Sisterhood",
+          "series": "Bones",
+          "start": 549980,
+          "duration": 2633
+        },
+        {
+          "id": "40fa0e462bbbbb1639fc8d2366f6e769",
+          "title": "Beneath You",
+          "series": "Buffy the Vampire Slayer",
+          "start": 552613,
+          "duration": 2567
+        },
+        {
+          "id": "f77509a12aef76e0659ed83999591a8b",
+          "title": "The Diamond in the Rough",
+          "series": "Bones",
+          "start": 555180,
+          "duration": 2550
+        },
+        {
+          "id": "5054e54f5476a8c6fa961f74496a5d65",
+          "title": "The Yoko Factor (1)",
+          "series": "Buffy the Vampire Slayer",
+          "start": 557730,
+          "duration": 2647
+        },
+        {
+          "id": "1d30d721acd0ad911168a2e95457e9d2",
+          "title": "Minas East Street Investment",
+          "series": "Good Bones",
+          "start": 560377,
+          "duration": 2589
+        },
+        {
+          "id": "083c757d047e0ccb8bc33a028748e04b",
+          "title": "In the Name of the Father, and of the Son...",
+          "series": "Boston Blue",
+          "start": 562966,
+          "duration": 2596
+        },
+        {
+          "id": "3e5f66bae64d10cc3d3681f330e6b1ca",
+          "title": "L'dor Vador",
+          "series": "Boston Blue",
+          "start": 565562,
+          "duration": 2587
+        },
+        {
+          "id": "4ef02e47e8f2390c70e690e03bae660b",
+          "title": "The Killer in the Crosshairs",
+          "series": "Bones",
+          "start": 568149,
+          "duration": 2604
+        },
+        {
+          "id": "1bc476a29cb2ac6f3098be4ed8a448ac",
+          "title": "The Prince in the Plastic",
+          "series": "Bones",
+          "start": 570753,
+          "duration": 2586
+        },
+        {
+          "id": "124677744416f430033c83dc17ec673a",
+          "title": "The Woman in Limbo",
+          "series": "Bones",
+          "start": 573339,
+          "duration": 2619
+        },
+        {
+          "id": "ac579698a9d1967c6738d0ba8d7e99cd",
+          "title": "The Man in the Mansion",
+          "series": "Bones",
+          "start": 575958,
+          "duration": 2522
+        },
+        {
+          "id": "ae54a9cacddf8c73798d8888d2f38e78",
+          "title": "The Monster in the Closet",
+          "series": "Bones",
+          "start": 578480,
+          "duration": 2630
+        },
+        {
+          "id": "6247622139df8027eb061c42b7e06f92",
+          "title": "Entropy",
+          "series": "Buffy the Vampire Slayer",
+          "start": 581110,
+          "duration": 2606
+        },
+        {
+          "id": "6c12a835ce6e76dbce349be5cbc46d98",
+          "title": "The Fear",
+          "series": "Blue Lights",
+          "start": 583716,
+          "duration": 3519
+        },
+        {
+          "id": "9f81572c82a12194cc53cb96c043fb64",
+          "title": "Mother and Child in the Bay",
+          "series": "Bones",
+          "start": 587235,
+          "duration": 2499
+        },
+        {
+          "id": "334726fe7c1b5ac6d9b2b57799e18dc0",
+          "title": "The Putter in the Rough",
+          "series": "Bones",
+          "start": 589734,
+          "duration": 2535
+        },
+        {
+          "id": "0b0c9a832201539db8032ba311c8a080",
+          "title": "Angel",
+          "series": "Buffy the Vampire Slayer",
+          "start": 592269,
+          "duration": 2708
+        },
+        {
+          "id": "9f9e9164fdea2305d47d98cfd94f7e59",
+          "title": "Villains",
+          "series": "Buffy the Vampire Slayer",
+          "start": 594977,
+          "duration": 2545
+        },
+        {
+          "id": "9594630b8bbf429990714852e7d07bd1",
+          "title": "The Truth in the Lye",
+          "series": "Bones",
+          "start": 597522,
+          "duration": 2475
+        },
+        {
+          "id": "ead159646406af06a7eff5e42ffba8f9",
+          "title": "Historical Hot Mess",
+          "series": "Good Bones",
+          "start": 599997,
+          "duration": 2584
+        },
+        {
+          "id": "9bbac99cf6bfae6ecc43060acc578dcf",
+          "title": "Earshot",
+          "series": "Buffy the Vampire Slayer",
+          "start": 602581,
+          "duration": 2670
+        },
+        {
+          "id": "a10427d0abe30f62a7bd520d06c53a32",
+          "title": "The Lost in the Found",
+          "series": "Bones",
+          "start": 605251,
+          "duration": 2545
+        },
+        {
+          "id": "9e99a145ba174f2dc213eedf0f27b980",
+          "title": "Outdated Townhome Gets a Funky Facelift",
+          "series": "Good Bones",
+          "start": 607796,
+          "duration": 2577
+        },
+        {
+          "id": "dc4df590c2b0a5f9cf446b83071ce832",
+          "title": "The Method in the Madness",
+          "series": "Bones",
+          "start": 610373,
+          "duration": 2597
+        },
+        {
+          "id": "e1405567cc4cf9987c94c1a52369f6d5",
+          "title": "A Stately House on Sanders",
+          "series": "Good Bones",
+          "start": 612970,
+          "duration": 2620
+        },
+        {
+          "id": "52cc7099b4fa7eb320d781b48bc6cc6e",
+          "title": "Spiral",
+          "series": "Buffy the Vampire Slayer",
+          "start": 615590,
+          "duration": 2673
+        },
+        {
+          "id": "07329421cb3ce9f695b0dd8a62cdb9bf",
+          "title": "The Promise in the Palace",
+          "series": "Bones",
+          "start": 618263,
+          "duration": 2593
+        },
+        {
+          "id": "44758b5971ce5c8740357fae9872c7eb",
+          "title": "The Bump in the Road",
+          "series": "Bones",
+          "start": 620856,
+          "duration": 2590
+        },
+        {
+          "id": "df93a2eb35d9e3710d1caab478392986",
+          "title": "Mayhem on a Cross",
+          "series": "Bones",
+          "start": 623446,
+          "duration": 2639
+        },
+        {
+          "id": "b1c8de98a081cbf27e2189d1c4f8b3c7",
+          "title": "Lady Liberty",
+          "series": "Brilliant Minds",
+          "start": 626085,
+          "duration": 2529
+        },
+        {
+          "id": "476df21d789db87bea9dbdc8b80d9522",
+          "title": "Rites of Passage",
+          "series": "Boston Blue",
+          "start": 628614,
+          "duration": 2562
+        },
+        {
+          "id": "6e09ff922a83b6b3f7a256b4ba909def",
+          "title": "Never Kill a Boy on the First Date",
+          "series": "Buffy the Vampire Slayer",
+          "start": 631176,
+          "duration": 2700
+        },
+        {
+          "id": "9705ffb137b4d14780e04d539b276093",
+          "title": "A Backyard Barn for Karen",
+          "series": "Good Bones",
+          "start": 633876,
+          "duration": 2611
+        },
+        {
+          "id": "265eab24d7d68a4a1086eddba538cc3e",
+          "title": "The Double Death of the Dearly Departed",
+          "series": "Bones",
+          "start": 636487,
+          "duration": 2591
+        },
+        {
+          "id": "a8f6da4824fd21fa0ffc0a868a3123f9",
+          "title": "Twinning Is Winning",
+          "series": "Good Bones",
+          "start": 639078,
+          "duration": 2580
+        },
+        {
+          "id": "2cfcc9d037be5ec7c7fda44ea55bb2f7",
+          "title": "Surprise (1)",
+          "series": "Buffy the Vampire Slayer",
+          "start": 641658,
+          "duration": 2670
+        },
+        {
+          "id": "9358f747d223fe33b729c04a279d1643",
+          "title": "Skipper",
+          "series": "Blue Lights",
+          "start": 644328,
+          "duration": 3491
+        },
+        {
+          "id": "e16aa52806cfffdb7f53b38ccf530a24",
+          "title": "When She Was Bad",
+          "series": "Buffy the Vampire Slayer",
+          "start": 647819,
+          "duration": 2737
+        },
+        {
+          "id": "0df8689184e9cb439c161fa3f8990771",
+          "title": "El Carnicero en el Coche",
+          "series": "Bones",
+          "start": 650556,
+          "duration": 2611
+        },
+        {
+          "id": "92256b8a466c1abb8fb018efa91498c1",
+          "title": "The Science in the Physicist",
+          "series": "Bones",
+          "start": 653167,
+          "duration": 2622
+        },
+        {
+          "id": "9f321734acc23de4d25342f55a07f4db",
+          "title": "The Initiative",
+          "series": "Buffy the Vampire Slayer",
+          "start": 655789,
+          "duration": 2674
+        },
+        {
+          "id": "69ed95f916cfcf53bb807217120f4093",
+          "title": "Helpless",
+          "series": "Buffy the Vampire Slayer",
+          "start": 658463,
+          "duration": 2687
+        },
+        {
+          "id": "2a208dfa7d31598a6bbb5665b70ec664",
+          "title": "Framing Fiasco in the Valley",
+          "series": "Good Bones",
+          "start": 661150,
+          "duration": 2580
+        },
+        {
+          "id": "02edd50ee550d27581a0aa5b7891d894",
+          "title": "Prophecy Girl",
+          "series": "Buffy the Vampire Slayer",
+          "start": 663730,
+          "duration": 2726
+        },
+        {
+          "id": "cfcedf7b70029a13f95479cebe72d15b",
+          "title": "Graduation Day (2)",
+          "series": "Buffy the Vampire Slayer",
+          "start": 666456,
+          "duration": 2683
+        },
+        {
+          "id": "1ec62f0c99efdb515173ef0b15250f0d",
+          "title": "Gingerbread",
+          "series": "Buffy the Vampire Slayer",
+          "start": 669139,
+          "duration": 2664
+        },
+        {
+          "id": "2e3eefc29d12679de0617a0ef6a3599b",
+          "title": "The Verdict in the Story",
+          "series": "Bones",
+          "start": 671803,
+          "duration": 2594
+        },
+        {
+          "id": "8fe497f6a9e0b3477df8185347d395b7",
+          "title": "The Tutor in the Tussle",
+          "series": "Bones",
+          "start": 674397,
+          "duration": 2654
+        },
+        {
+          "id": "31869af516a791b0c7010c851d317f89",
+          "title": "The Dentist in the Ditch",
+          "series": "Bones",
+          "start": 677051,
+          "duration": 2621
+        },
+        {
+          "id": "627cd873dd4dd9130f1f7930df60a15b",
+          "title": "Help",
+          "series": "Buffy the Vampire Slayer",
+          "start": 679672,
+          "duration": 2569
+        },
+        {
+          "id": "fa64e00beae0dc874ebb7e10a4a087bb",
+          "title": "Smashed",
+          "series": "Buffy the Vampire Slayer",
+          "start": 682241,
+          "duration": 2600
+        },
+        {
+          "id": "953a11785e322815b330eb9ea45eca3b",
+          "title": "The Doom in the Boom",
+          "series": "Bones",
+          "start": 684841,
+          "duration": 2629
+        },
+        {
+          "id": "ed68c941020d93dd47d6b1412d80098c",
+          "title": "Tiny House, Huge Transformation",
+          "series": "Good Bones",
+          "start": 687470,
+          "duration": 2447
+        },
+        {
+          "id": "ef1b26011cabe7417f2441793f6bc71e",
+          "title": "The Murder of the Meninist",
+          "series": "Bones",
+          "start": 689917,
+          "duration": 2634
+        },
+        {
+          "id": "05dd98b8e66c3fb677ff754d6516dd2c",
+          "title": "The Maggots in the Meathead",
+          "series": "Bones",
+          "start": 692551,
+          "duration": 2590
+        },
+        {
+          "id": "a764159595325ab108b45e991fec973c",
+          "title": "Potential",
+          "series": "Buffy the Vampire Slayer",
+          "start": 695141,
+          "duration": 2569
+        },
+        {
+          "id": "da23587981ba74e7436ce95fe1e6041f",
+          "title": "A Stately Home Full of Slithering Surprises",
+          "series": "Good Bones",
+          "start": 697710,
+          "duration": 2583
+        },
+        {
+          "id": "8d7995a71bed424257921096ab0688b4",
+          "title": "The Problem Project Pivot",
+          "series": "Good Bones",
+          "start": 700293,
+          "duration": 2580
+        },
+        {
+          "id": "a151f5cd6aeb49205b9c3159f5f1e00d",
+          "title": "Soccer Mom in the Mini-Van",
+          "series": "Bones",
+          "start": 702873,
+          "duration": 2624
+        },
+        {
+          "id": "cff78816c8cd9283a07184e5c4b8be6f",
+          "title": "The Memories in the Shallow Grave",
+          "series": "Bones",
+          "start": 705497,
+          "duration": 2615
+        },
+        {
+          "id": "71b7133791adea78b06bb3e571055733",
+          "title": "Senses",
+          "series": "Brilliant Minds",
+          "start": 708112,
+          "duration": 2528
+        },
+        {
+          "id": "dc8bbfc4c689f58ff5eecfd9c63bc4a7",
+          "title": "Quaint Cottage With Vintage Vibes",
+          "series": "Good Bones",
+          "start": 710640,
+          "duration": 2580
+        },
+        {
+          "id": "f0d4c77ca244707afd7ae22c7175f0db",
+          "title": "The Parting Glass",
+          "series": "Blue Lights",
+          "start": 713220,
+          "duration": 3509
+        },
+        {
+          "id": "0d925ba9fdd21b85a1fcf3416c651c53",
+          "title": "Reptile Boy",
+          "series": "Buffy the Vampire Slayer",
+          "start": 716729,
+          "duration": 2646
+        },
+        {
+          "id": "f3c49899d31b0a9e9423a893de1b4549",
+          "title": "The Bone That Blew",
+          "series": "Bones",
+          "start": 719375,
+          "duration": 2621
+        },
+        {
+          "id": "c7fb7cbfe4a9f17e41058ed5d0d5bd96",
+          "title": "Episode 3",
+          "series": "Annika",
+          "start": 721996,
+          "duration": 2825
+        },
+        {
+          "id": "e8b8aeecef07bfb50ca8b803937660f8",
+          "title": "Becoming (2)",
+          "series": "Buffy the Vampire Slayer",
+          "start": 724821,
+          "duration": 2655
+        },
+        {
+          "id": "64d8533a3d628856c697af259ec0a496",
+          "title": "The Family in the Feud",
+          "series": "Bones",
+          "start": 727476,
+          "duration": 2635
+        },
+        {
+          "id": "860db0817ec1e049c41147ec039487f0",
+          "title": "The Critic in the Cabernet",
+          "series": "Bones",
+          "start": 730111,
+          "duration": 2624
+        },
+        {
+          "id": "55e5f15be45404a0034f94e865773890",
+          "title": "The Man in the Outhouse",
+          "series": "Bones",
+          "start": 732735,
+          "duration": 2636
+        },
+        {
+          "id": "b02a40000903f8244200e8a19cd12cdb",
+          "title": "The Finger in the Nest",
+          "series": "Bones",
+          "start": 735371,
+          "duration": 5181
+        },
+        {
+          "id": "d5ade2dc9bb88510c6dad2b62de21b1c",
+          "title": "The Soldier on the Grave",
+          "series": "Bones",
+          "start": 740552,
+          "duration": 2657
+        },
+        {
+          "id": "da9c1437f132aaa3a0e361bb4a9493b7",
+          "title": "Witch",
+          "series": "Buffy the Vampire Slayer",
+          "start": 743209,
+          "duration": 2709
+        },
+        {
+          "id": "4627aa5d666288d7df992e11b311a41f",
+          "title": "Soft Stark Southside House",
+          "series": "Good Bones",
+          "start": 745918,
+          "duration": 2581
+        },
+        {
+          "id": "0942782c783ce07d266dc85562b6f158",
+          "title": "The Man in the Wall",
+          "series": "Bones",
+          "start": 748499,
+          "duration": 2629
+        },
+        {
+          "id": "e3b9659059dddf699118b809316b07f6",
+          "title": "Phases",
+          "series": "Buffy the Vampire Slayer",
+          "start": 751128,
+          "duration": 2651
+        },
+        {
+          "id": "7de1045010d92daf62778fa83c7f6688",
+          "title": "Love The One You're With",
+          "series": "Blue Lights",
+          "start": 753779,
+          "duration": 3435
+        },
+        {
+          "id": "536bdaa4f266e9c78725d06d8242df1b",
+          "title": "Some Assembly Required",
+          "series": "Buffy the Vampire Slayer",
+          "start": 757214,
+          "duration": 2654
+        },
+        {
+          "id": "669334e704830b1bca82b83b4e9585dd",
+          "title": "The Way Home",
+          "series": "Brilliant Minds",
+          "start": 759868,
+          "duration": 2486
+        },
+        {
+          "id": "b7a4698b4450cd11fb2cbaa5293a7bab",
+          "title": "The Other Woman",
+          "series": "Brilliant Minds",
+          "start": 762354,
+          "duration": 2558
+        },
+        {
+          "id": "e9d66050799bc96e5a0cc52593d73560",
+          "title": "The Blonde in the Game",
+          "series": "Bones",
+          "start": 764912,
+          "duration": 2623
+        },
+        {
+          "id": "a6ab197bebe651d71683c25674a49377",
+          "title": "DIY Reno Rescue",
+          "series": "Good Bones",
+          "start": 767535,
+          "duration": 2590
+        },
+        {
+          "id": "8d87a7f7225e8ee8e92c6bb8b6163d8d",
+          "title": "Falling Head Ova Heels in Fountain Square",
+          "series": "Good Bones",
+          "start": 770125,
+          "duration": 2580
+        },
+        {
+          "id": "f0d18eb56c12aa143ca63167d6d5746c",
+          "title": "The Mastodon in the Room",
+          "series": "Bones",
+          "start": 772705,
+          "duration": 2633
+        },
+        {
+          "id": "1a96b2c22f267fc58d92f18cf68f8584",
+          "title": "The Disembodied Woman",
+          "series": "Brilliant Minds",
+          "start": 775338,
+          "duration": 2558
+        },
+        {
+          "id": "39c1fa1f3bdb804c4601bc895076bf3f",
+          "title": "The Carpals in the Coy-Wolves",
+          "series": "Bones",
+          "start": 777896,
+          "duration": 2636
+        },
+        {
+          "id": "3551a6ba0a6e028d9910a2147197421d",
+          "title": "The Mystery in the Meat",
+          "series": "Bones",
+          "start": 780532,
+          "duration": 2623
+        },
+        {
+          "id": "7aeb3d540b878973299cc8ef4aafbab9",
+          "title": "Major Mansion Makeover",
+          "series": "Good Bones",
+          "start": 783155,
+          "duration": 2580
+        },
+        {
+          "id": "01e5fb5b737d3371703bfd4fbd7a95fa",
+          "title": "Historic Cottage for First-Time Flippers",
+          "series": "Good Bones",
+          "start": 785735,
+          "duration": 2581
+        },
+        {
+          "id": "b5e261c4ba5efa1ab4d63672651c2dad",
+          "title": "The Gunk in the Garage",
+          "series": "Bones",
+          "start": 788316,
+          "duration": 2582
+        },
+        {
+          "id": "8203878a8184ded7c78b7790f3014b62",
+          "title": "Poltergeist Property",
+          "series": "Good Bones",
+          "start": 790898,
+          "duration": 2582
+        },
+        {
+          "id": "c1c65f1d749e410c765eee3e8fedd972",
+          "title": "Checkpoint",
+          "series": "Buffy the Vampire Slayer",
+          "start": 793480,
+          "duration": 2673
+        },
+        {
+          "id": "90c43f32e05657652cc409a75a3ab7b7",
+          "title": "Grave",
+          "series": "Buffy the Vampire Slayer",
+          "start": 796153,
+          "duration": 2605
+        },
+        {
+          "id": "023392147556b87f479960c0973a1072",
+          "title": "Go Fish",
+          "series": "Buffy the Vampire Slayer",
+          "start": 798758,
+          "duration": 2577
+        },
+        {
+          "id": "acff309a7335ab16882507fb209e851b",
+          "title": "Lessons",
+          "series": "Buffy the Vampire Slayer",
+          "start": 801335,
+          "duration": 2512
+        },
+        {
+          "id": "e0b296639154bb6aea26b9be6b5af9a8",
+          "title": "The Tough Man in the Tender Chicken",
+          "series": "Bones",
+          "start": 803847,
+          "duration": 2647
+        },
+        {
+          "id": "260c2672071341437511382996532fff",
+          "title": "Saddest Home on Sanders Street",
+          "series": "Good Bones",
+          "start": 806494,
+          "duration": 2578
+        },
+        {
+          "id": "7dd7e4fe6ce582dc2b862e753661c001",
+          "title": "The Shabbiest Townhouse",
+          "series": "Good Bones",
+          "start": 809072,
+          "duration": 2578
+        },
+        {
+          "id": "fd1ecd36e9fa48fae1fffa614332cee6",
+          "title": "Older and Far Away",
+          "series": "Buffy the Vampire Slayer",
+          "start": 811650,
+          "duration": 2604
+        },
+        {
+          "id": "773ca695d8585a5e5b2d5e05dccd0db4",
+          "title": "The Suit on the Set",
+          "series": "Bones",
+          "start": 814254,
+          "duration": 2627
+        },
+        {
+          "id": "49e55bd809c66511c4a64c6e2c2051f0",
+          "title": "Dead Man's Party",
+          "series": "Buffy the Vampire Slayer",
+          "start": 816881,
+          "duration": 2697
+        },
+        {
+          "id": "d545ac461da813b559aa13431a862f5a",
+          "title": "Double Trouble in the Panhandle",
+          "series": "Bones",
+          "start": 819578,
+          "duration": 2642
+        },
+        {
+          "id": "ca062316d1f7e527708620d930c6c703",
+          "title": "A Man on Death Row",
+          "series": "Bones",
+          "start": 822220,
+          "duration": 2662
+        },
+        {
+          "id": "205093616f196c08387a5178b082d556",
+          "title": "The Master in the Slop",
+          "series": "Bones",
+          "start": 824882,
+          "duration": 2634
+        },
+        {
+          "id": "5cfe5744bf7781878e478206141d0166",
+          "title": "Spaceman in a Crater",
+          "series": "Bones",
+          "start": 827516,
+          "duration": 2469
+        },
+        {
+          "id": "f2be6931e0515401795b5ba24cce8b70",
+          "title": "The Witch in the Wardrobe",
+          "series": "Bones",
+          "start": 829985,
+          "duration": 2590
+        },
+        {
+          "id": "ebe3d6ec52e049928c565b91ceb0dcd4",
+          "title": "Passion",
+          "series": "Buffy the Vampire Slayer",
+          "start": 832575,
+          "duration": 2657
+        },
+        {
+          "id": "b5691e7bd3ee182e42459caadde3f114",
+          "title": "Same Time, Same Place",
+          "series": "Buffy the Vampire Slayer",
+          "start": 835232,
+          "duration": 2570
+        },
+        {
+          "id": "40e76a48b5393f011a52c1c7e99c14ca",
+          "title": "Wrecked",
+          "series": "Buffy the Vampire Slayer",
+          "start": 837802,
+          "duration": 2606
+        },
+        {
+          "id": "6b0bdd71cf0babd6717beaf40b537845",
+          "title": "Seeing Red",
+          "series": "Buffy the Vampire Slayer",
+          "start": 840408,
+          "duration": 2604
+        },
+        {
+          "id": "9172e96428b333b529943284e61b20a6",
+          "title": "Harbingers in the Fountain",
+          "series": "Bones",
+          "start": 843012,
+          "duration": 2642
+        },
+        {
+          "id": "ee2d8dbbfc68111508101fd031a2bfa4",
+          "title": "New Build, New Business",
+          "series": "Good Bones",
+          "start": 845654,
+          "duration": 2581
+        },
+        {
+          "id": "2ca3d5c52c32dd2ce818d8206a7a597c",
+          "title": "Big in the Philippines",
+          "series": "Bones",
+          "start": 848235,
+          "duration": 2620
+        },
+        {
+          "id": "84b18b0a2660f0e7971540f65faaa9cf",
+          "title": "The 200th in the 10th",
+          "series": "Bones",
+          "start": 850855,
+          "duration": 2623
+        },
+        {
+          "id": "cffbda85fadde3e09790813267982ff4",
+          "title": "The Girl Who Cried Pregnant",
+          "series": "Brilliant Minds",
+          "start": 853478,
+          "duration": 2548
+        },
+        {
+          "id": "ad133031a0cae77303113743901d04bb",
+          "title": "Townhome of Trouble",
+          "series": "Good Bones",
+          "start": 856026,
+          "duration": 2578
+        },
+        {
+          "id": "f7ca46947b161ce2dc007632396a84cc",
+          "title": "Sleeper",
+          "series": "Buffy the Vampire Slayer",
+          "start": 858604,
+          "duration": 2566
+        },
+        {
+          "id": "189682e9300dfba9fc929678337bd3f3",
+          "title": "The Boy with the Answer",
+          "series": "Bones",
+          "start": 861170,
+          "duration": 2599
+        },
+        {
+          "id": "5551253944fdd2e7ce97c9681ed9ff19",
+          "title": "The Freshman",
+          "series": "Buffy the Vampire Slayer",
+          "start": 863769,
+          "duration": 2670
+        },
+        {
+          "id": "47a5c589821642c234475024ee1208b3",
+          "title": "The Man in the Bear",
+          "series": "Bones",
+          "start": 866439,
+          "duration": 2612
+        },
+        {
+          "id": "fc36545bd194fd37f5a631cf93a6d7f8",
+          "title": "The Hero's Journey",
+          "series": "Brilliant Minds",
+          "start": 869051,
+          "duration": 2528
+        },
+        {
+          "id": "f7031cc092abc583510766606bcc6874",
+          "title": "Eyesore Overhaul",
+          "series": "Good Bones",
+          "start": 871579,
+          "duration": 2593
+        },
+        {
+          "id": "1b959ab74840e23b8bda9f63ae9ea806",
+          "title": "Tad's Next Chapter",
+          "series": "Good Bones",
+          "start": 874172,
+          "duration": 2580
+        },
+        {
+          "id": "c97156b65824c6ca592daa534529b219",
+          "title": "The Carrot in the Kudzu",
+          "series": "Bones",
+          "start": 876752,
+          "duration": 2566
+        },
+        {
+          "id": "c675fd3a57f24c087757bae109327a6a",
+          "title": "The Pathos in the Pathogens",
+          "series": "Bones",
+          "start": 879318,
+          "duration": 2594
+        },
+        {
+          "id": "373a7ff44ec2df2e73f6b742de56f7c0",
+          "title": "Episode 6",
+          "series": "Annika",
+          "start": 881912,
+          "duration": 2844
+        },
+        {
+          "id": "7d4e976185e879fd6be81f7b1525bf0a",
+          "title": "The Doll in the Derby",
+          "series": "Bones",
+          "start": 884756,
+          "duration": 2595
+        },
+        {
+          "id": "4c263f218890c4fa38b792375635eba0",
+          "title": "The Eye in the Sky",
+          "series": "Bones",
+          "start": 887351,
+          "duration": 2620
+        },
+        {
+          "id": "d1c5697c1552a5670a6a477c75161a3e",
+          "title": "Episode 6",
+          "series": "Annika",
+          "start": 889971,
+          "duration": 2841
+        },
+        {
+          "id": "9cb86f58ef30bb2925acfb0a24fd644e",
+          "title": "Scary to Chic in Old Southside",
+          "series": "Good Bones",
+          "start": 892812,
+          "duration": 2580
+        },
+        {
+          "id": "837584924e5ab820feaa01692e6e6285",
+          "title": "Primeval (2)",
+          "series": "Buffy the Vampire Slayer",
+          "start": 895392,
+          "duration": 2644
+        },
+        {
+          "id": "4a67c6312eb135d26cd39c23d79270d4",
+          "title": "Out of Mind, Out of Sight",
+          "series": "Buffy the Vampire Slayer",
+          "start": 898036,
+          "duration": 2693
+        },
+        {
+          "id": "4e984bcd05a74c26d7e26aab7f874e37",
+          "title": "The Day in the Life",
+          "series": "Bones",
+          "start": 900729,
+          "duration": 2628
+        },
+        {
+          "id": "d3b143934ebab830c31bfa059315c28b",
+          "title": "The Colorblind Painter",
+          "series": "Brilliant Minds",
+          "start": 903357,
+          "duration": 2559
+        },
+        {
+          "id": "6edce106e706fbcf2ed4bbdeed53bc38",
+          "title": "Tads Tiny Home",
+          "series": "Good Bones",
+          "start": 905916,
+          "duration": 2580
+        },
+        {
+          "id": "ea3e5feae29d452b8771c77875d8c540",
+          "title": "The Secret in the Siege",
+          "series": "Bones",
+          "start": 908496,
+          "duration": 2639
+        },
+        {
+          "id": "d3f786c49023ab02cca367d334266ee6",
+          "title": "What's My Line? (1)",
+          "series": "Buffy the Vampire Slayer",
+          "start": 911135,
+          "duration": 2676
+        },
+        {
+          "id": "aee9b587d291b33344746807c6032eea",
+          "title": "The Dark Age",
+          "series": "Buffy the Vampire Slayer",
+          "start": 913811,
+          "duration": 2694
+        },
+        {
+          "id": "8ad08bd6aac83ebfe63bd2821ca81ede",
+          "title": "A Boy in a Bush",
+          "series": "Bones",
+          "start": 916505,
+          "duration": 2666
+        },
+        {
+          "id": "de7c8562da6b201d0167718201ca9a66",
+          "title": "Eastside Americana Cottage",
+          "series": "Good Bones",
+          "start": 919171,
+          "duration": 2581
+        },
+        {
+          "id": "633608abe989e38091940780b688823d",
+          "title": "The Life in the Light",
+          "series": "Bones",
+          "start": 921752,
+          "duration": 2620
+        },
+        {
+          "id": "04a64a4e20d15420ccfecf80a827677a",
+          "title": "The Corpse on the Canopy",
+          "series": "Bones",
+          "start": 924372,
+          "duration": 2738
+        },
+        {
+          "id": "cf6161a7cc256ec3551143ea19bff51f",
+          "title": "Suffer the Children",
+          "series": "Boston Blue",
+          "start": 927110,
+          "duration": 2576
+        },
+        {
+          "id": "1101242608f9083a330961720ff35b71",
+          "title": "Code of Ethics",
+          "series": "Boston Blue",
+          "start": 929686,
+          "duration": 2597
+        },
+        {
+          "id": "23560b2dc91fac9afcc0abe8db0b14f9",
+          "title": "Old Doors, New Wall",
+          "series": "Good Bones",
+          "start": 932283,
+          "duration": 2576
+        },
+        {
+          "id": "559763893598692fef1472b44cb2e645",
+          "title": "Once Upon a Time in America",
+          "series": "Brilliant Minds",
+          "start": 934859,
+          "duration": 2529
+        },
+        {
+          "id": "fefc225aa0b8fad987bfa305bad99078",
+          "title": "The Q Word",
+          "series": "Blue Lights",
+          "start": 937388,
+          "duration": 3491
+        },
+        {
+          "id": "025e4ddeec9dfdb99285361f23126edc",
+          "title": "California Dreaming in Indy",
+          "series": "Good Bones",
+          "start": 940879,
+          "duration": 2580
+        },
+        {
+          "id": "4f85aad8b1ef54c01855b17d5c782441",
+          "title": "The Big Beef at the Royal Diner",
+          "series": "Bones",
+          "start": 943459,
+          "duration": 2638
+        },
+        {
+          "id": "0d754f310e398351830fd10279a7026b",
+          "title": "Out of My Mind",
+          "series": "Buffy the Vampire Slayer",
+          "start": 946097,
+          "duration": 2658
+        },
+        {
+          "id": "c6d48ac4b132765b1ee32e60770cc5e8",
+          "title": "Episode 4",
+          "series": "Annika",
+          "start": 948755,
+          "duration": 2824
+        },
+        {
+          "id": "6938e74c7ecb27301f353fa65be7f911",
+          "title": "The Next in the Last",
+          "series": "Bones",
+          "start": 951579,
+          "duration": 2602
+        },
+        {
+          "id": "b5b1b73c7faf9530fa358a33db1db00e",
+          "title": "The Upside Down",
+          "series": "Brilliant Minds",
+          "start": 954181,
+          "duration": 2407
+        },
+        {
+          "id": "1eb5241d27c6f8bdfa4496cada41353a",
+          "title": "The Radioactive Panthers in the Party",
+          "series": "Bones",
+          "start": 956588,
+          "duration": 2554
+        },
+        {
+          "id": "9cf28beeb5da74ed898f4fe039c5b74e",
+          "title": "The Predator in the Pool",
+          "series": "Bones",
+          "start": 959142,
+          "duration": 2606
+        },
+        {
+          "id": "330f7f8c7bf70aabfc00567a574663aa",
+          "title": "Dirty Girls",
+          "series": "Buffy the Vampire Slayer",
+          "start": 961748,
+          "duration": 2567
+        },
+        {
+          "id": "e75ccc450b42ea2afe3c50f99b05ecbc",
+          "title": "Bad Eggs",
+          "series": "Buffy the Vampire Slayer",
+          "start": 964315,
+          "duration": 2667
+        },
+        {
+          "id": "76cc02f9e14665c1fefe3e320ff51153",
+          "title": "Karen Gets Colorful",
+          "series": "Good Bones",
+          "start": 966982,
+          "duration": 2580
+        },
+        {
+          "id": "affd3bd2bcb9b8e2552ecc0d1008cb2a",
+          "title": "Storyteller",
+          "series": "Buffy the Vampire Slayer",
+          "start": 969562,
+          "duration": 2569
+        },
+        {
+          "id": "1fdfaf0f196dc08a033e33623390ec60",
+          "title": "The Man Who Can't See Faces",
+          "series": "Brilliant Minds",
+          "start": 972131,
+          "duration": 2548
+        },
+        {
+          "id": "ff9a3b68ba8734073a45ac384060189f",
+          "title": "The Fight in the Fixer",
+          "series": "Bones",
+          "start": 974679,
+          "duration": 2624
+        },
+        {
+          "id": "6fc5718f2ae08f63395820dd885708bc",
+          "title": "The Replacement",
+          "series": "Buffy the Vampire Slayer",
+          "start": 977303,
+          "duration": 2674
+        },
+        {
+          "id": "729c9d16cf2b47c1fc0fe7df0a1eab2a",
+          "title": "Gone",
+          "series": "Buffy the Vampire Slayer",
+          "start": 979977,
+          "duration": 2606
+        },
+        {
+          "id": "beb5c67e8ef5836aa93874632c40f3f5",
+          "title": "Through the Looking Glass",
+          "series": "Brilliant Minds",
+          "start": 982583,
+          "duration": 2527
+        },
+        {
+          "id": "3d96cc09b89ef3a91b6e3daee4f952ee",
+          "title": "The Brother in the Basement",
+          "series": "Bones",
+          "start": 985110,
+          "duration": 2638
+        },
+        {
+          "id": "55b05fb417004752e71a6e9fb41ed332",
+          "title": "The High in the Low",
+          "series": "Bones",
+          "start": 987748,
+          "duration": 2624
+        },
+        {
+          "id": "07a6948ea1f984b58ffaf439c41dced6",
+          "title": "The Wish",
+          "series": "Buffy the Vampire Slayer",
+          "start": 990372,
+          "duration": 2690
+        },
+        {
+          "id": "862ed71d29e909265d2710d6601d9d42",
+          "title": "Cottage Becomes Artistic Oasis",
+          "series": "Good Bones",
+          "start": 993062,
+          "duration": 2580
+        },
+        {
+          "id": "69f65f339b407719979d9db303e5282b",
+          "title": "The Wannabe in the Weeds",
+          "series": "Bones",
+          "start": 995642,
+          "duration": 2584
+        },
+        {
+          "id": "36e2c6f35d06c13e9827da8fa167a9ff",
+          "title": "Doomed",
+          "series": "Buffy the Vampire Slayer",
+          "start": 998226,
+          "duration": 2672
+        },
+        {
+          "id": "811609719f6ecdc029bdf6b531832af8",
+          "title": "Wild at Heart",
+          "series": "Buffy the Vampire Slayer",
+          "start": 1000898,
+          "duration": 2641
+        },
+        {
+          "id": "a8181289bfac78f7c13e4558d17bdb7f",
+          "title": "New House, Old Spirit",
+          "series": "Good Bones",
+          "start": 1003539,
+          "duration": 2590
+        },
+        {
+          "id": "3277e4188dec9e6485818fd2361da092",
+          "title": "The Body in the Bag",
+          "series": "Bones",
+          "start": 1006129,
+          "duration": 2548
+        },
+        {
+          "id": "6d0c52d0fef693571aa7d52b5107558a",
+          "title": "Selfless",
+          "series": "Buffy the Vampire Slayer",
+          "start": 1008677,
+          "duration": 2569
+        },
+        {
+          "id": "378a0c88bb16fe840480c7a57720327e",
+          "title": "The Bod in the Pod",
+          "series": "Bones",
+          "start": 1011246,
+          "duration": 2639
+        },
+        {
+          "id": "cdab467ae2c3b02d3bb98a90c2a4c199",
+          "title": "The Princess and the Pear",
+          "series": "Bones",
+          "start": 1013885,
+          "duration": 2633
+        },
+        {
+          "id": "be1af6074a4a15b392f9957f5bdc44d5",
+          "title": "The Girl in the Fridge",
+          "series": "Bones",
+          "start": 1016518,
+          "duration": 2659
+        },
+        {
+          "id": "e6b12ad825861ade5d83a74c3f6829d4",
+          "title": "Enemies",
+          "series": "Buffy the Vampire Slayer",
+          "start": 1019177,
+          "duration": 2695
+        },
+        {
+          "id": "718c087dbe7bb166e30f983fa0ed29bc",
+          "title": "Innocence (2)",
+          "series": "Buffy the Vampire Slayer",
+          "start": 1021872,
+          "duration": 2695
+        },
+        {
+          "id": "944e3815920eb7166ed4aef9fb070abb",
+          "title": "The Bond in the Boot",
+          "series": "Bones",
+          "start": 1024567,
+          "duration": 2642
+        },
+        {
+          "id": "9b075e6cba284276f373ec0aab452287",
+          "title": "Anne",
+          "series": "Buffy the Vampire Slayer",
+          "start": 1027209,
+          "duration": 2695
+        },
+        {
+          "id": "ce9c8a55d4b42fa48a179ed109722cf1",
+          "title": "Boy in the Time Capsule",
+          "series": "Bones",
+          "start": 1029904,
+          "duration": 2628
+        },
+        {
+          "id": "68fd1c60515fd0f5ccc4a3b0805acc14",
+          "title": "New Babies and New Neighborhoods",
+          "series": "Good Bones",
+          "start": 1032532,
+          "duration": 2580
+        },
+        {
+          "id": "af39e41d9c147efd66246c2b75023ed9",
+          "title": "Bad Girls",
+          "series": "Buffy the Vampire Slayer",
+          "start": 1035112,
+          "duration": 2673
+        },
+        {
+          "id": "da40a2675a36f16f2223c3c7ff7929aa",
+          "title": "Big Red Urban Barn",
+          "series": "Good Bones",
+          "start": 1037785,
+          "duration": 2580
+        },
+        {
+          "id": "efac09cf18a449d22ae7251a6548e368",
+          "title": "The End in the End",
+          "series": "Bones",
+          "start": 1040365,
+          "duration": 2636
+        },
+        {
+          "id": "01d5443d555b8ef230ac884f25310b1d",
+          "title": "The Woman in the Garden",
+          "series": "Bones",
+          "start": 1043001,
+          "duration": 2618
+        },
+        {
+          "id": "0982b46d90ce64e493283e2fa1ed1456",
+          "title": "Bringing in the Buyers",
+          "series": "Good Bones",
+          "start": 1045619,
+          "duration": 2581
+        },
+        {
+          "id": "697508d20eb356af89ee4a1a9cd52eab",
+          "title": "The Head in the Abutment",
+          "series": "Bones",
+          "start": 1048200,
+          "duration": 2623
+        },
+        {
+          "id": "fb31dad54c95d6e1df2cbba23459c6e5",
+          "title": "Fire in the Ice",
+          "series": "Bones",
+          "start": 1050823,
+          "duration": 2636
+        },
+        {
+          "id": "92cfeee58fe27655b2aa499ff929be1b",
+          "title": "The Dwarf in the Dirt",
+          "series": "Bones",
+          "start": 1053459,
+          "duration": 2620
+        },
+        {
+          "id": "b270ccc584bef94e5d05ead3e0cf53c8",
+          "title": "Big House, Big Potential",
+          "series": "Good Bones",
+          "start": 1056079,
+          "duration": 2593
+        },
+        {
+          "id": "28ba0d329f0172d39731e0f8c3ba272d",
+          "title": "The Don't in the Do",
+          "series": "Bones",
+          "start": 1058672,
+          "duration": 2586
+        },
+        {
+          "id": "082fc237464a43e4123297734524bc49",
+          "title": "The He in the She",
+          "series": "Bones",
+          "start": 1061258,
+          "duration": 2559
+        },
+        {
+          "id": "89bd79b040b1c1ccecf34b980408163e",
+          "title": "Bugging Out on Budget",
+          "series": "Good Bones",
+          "start": 1063817,
+          "duration": 2593
+        },
+        {
+          "id": "7d77f417ef637a190d056607bd555699",
+          "title": "Two to Go",
+          "series": "Buffy the Vampire Slayer",
+          "start": 1066410,
+          "duration": 2585
+        },
+        {
+          "id": "8471309be75abcb0c747e1024c7ad355",
+          "title": "Doctor, Interrupted",
+          "series": "Brilliant Minds",
+          "start": 1068995,
+          "duration": 2528
+        },
+        {
+          "id": "5555ca3e220f9b5c7f779eb6b2309aa3",
+          "title": "Budget-Busting Victorian",
+          "series": "Good Bones",
+          "start": 1071523,
+          "duration": 2618
+        },
+        {
+          "id": "a35a827734a43298d7b617ee294dc129",
+          "title": "Ted",
+          "series": "Buffy the Vampire Slayer",
+          "start": 1074141,
+          "duration": 2693
+        },
+        {
+          "id": "1fa98f5dae0b5855fbddd50cf93edbed",
+          "title": "The Titan on the Tracks",
+          "series": "Bones",
+          "start": 1076834,
+          "duration": 2522
+        },
+        {
+          "id": "ef73f05f6dcf9533fc1cc6f4543fb1b0",
+          "title": "Episode 2",
+          "series": "Annika",
+          "start": 1079356,
+          "duration": 2823
+        },
+        {
+          "id": "357b085c2c35cc11a3de432dac5c25bd",
+          "title": "The Widow's Son in the Windshield",
+          "series": "Bones",
+          "start": 1082179,
+          "duration": 2628
+        },
+        {
+          "id": "eea96acf58885e17923ba1e89c968f47",
+          "title": "Forever",
+          "series": "Buffy the Vampire Slayer",
+          "start": 1084807,
+          "duration": 2674
+        },
+        {
+          "id": "5ad56266e3f75f07dc33ed49925fcee4",
+          "title": "Flooded Two-Story Restored",
+          "series": "Good Bones",
+          "start": 1087481,
+          "duration": 2594
+        },
+        {
+          "id": "3ea8f979f122e146cd845f1a0b3e2e65",
+          "title": "Teammates",
+          "series": "Boston Blue",
+          "start": 1090075,
+          "duration": 2502
+        },
+        {
+          "id": "bbdba8f84df9633e6dc38d9f936a7dd8",
+          "title": "The Loyalty in the Lie",
+          "series": "Bones",
+          "start": 1092577,
+          "duration": 2631
+        },
+        {
+          "id": "6883d3fe950254dba7a5a0fe1308d602",
+          "title": "The Body",
+          "series": "Buffy the Vampire Slayer",
+          "start": 1095208,
+          "duration": 2667
+        },
+        {
+          "id": "e880500e04c4acad5bd540b6a1e13ca4",
+          "title": "Chop and Pop",
+          "series": "Good Bones",
+          "start": 1097875,
+          "duration": 2578
+        },
+        {
+          "id": "8490a717b540c384288d638a95b3783e",
+          "title": "I Was Made to Love You",
+          "series": "Buffy the Vampire Slayer",
+          "start": 1100453,
+          "duration": 2639
+        },
+        {
+          "id": "913fa1b4a3036d61c7faee3222071ae2",
+          "title": "The Senator in the Street Sweeper",
+          "series": "Bones",
+          "start": 1103092,
+          "duration": 2628
+        },
+        {
+          "id": "43734f0fcd3897ee50597aa1cb7a28b0",
+          "title": "Something Blue",
+          "series": "Buffy the Vampire Slayer",
+          "start": 1105720,
+          "duration": 2673
+        },
+        {
+          "id": "1e82abdde74015280273a71b478a4b31",
+          "title": "Free House, Expensive Reno",
+          "series": "Good Bones",
+          "start": 1108393,
+          "duration": 2581
+        },
+        {
+          "id": "0c61f6377f6d3c9dedf505a382849000",
+          "title": "Where I Want to Be",
+          "series": "Blue Lights",
+          "start": 1110974,
+          "duration": 3457
+        },
+        {
+          "id": "d2a2d3e887d60cb4ab6ed59735571e58",
+          "title": "I, Robot... You, Jane",
+          "series": "Buffy the Vampire Slayer",
+          "start": 1114431,
+          "duration": 2698
+        },
+        {
+          "id": "42798f346513b425ce7d136e0a582d5c",
+          "title": "Shadow",
+          "series": "Buffy the Vampire Slayer",
+          "start": 1117129,
+          "duration": 2612
+        },
+        {
+          "id": "e2443eeef9ccffaedba5eccef698d8fa",
+          "title": "The Friend in Need",
+          "series": "Bones",
+          "start": 1119741,
+          "duration": 2564
+        },
+        {
+          "id": "a67369a75fb4083a8a9076ca4edd35fe",
+          "title": "The Priest in the Churchyard",
+          "series": "Bones",
+          "start": 1122305,
+          "duration": 2516
+        },
+        {
+          "id": "6e3701e38f0e3203b32d64ef01eb5a01",
+          "title": "The Ghost in the Killer",
+          "series": "Bones",
+          "start": 1124821,
+          "duration": 2634
+        },
+        {
+          "id": "b84f9c93201a8764a44ae4e8a698e5d5",
+          "title": "Mina Takes the Lake",
+          "series": "Good Bones",
+          "start": 1127455,
+          "duration": 3872
+        },
+        {
+          "id": "cae0d2f8bbc3eb02fdeca4490e7fbb75",
+          "title": "Get It Done",
+          "series": "Buffy the Vampire Slayer",
+          "start": 1131327,
+          "duration": 2570
+        },
+        {
+          "id": "e5bd5985e0d90284244c5ebe9d031681",
+          "title": "The Gamer in the Grease",
+          "series": "Bones",
+          "start": 1133897,
+          "duration": 2597
+        },
+        {
+          "id": "81488aa5f060d0b9fe55c512bd5983ea",
+          "title": "The Partners in the Divorce",
+          "series": "Bones",
+          "start": 1136494,
+          "duration": 2583
+        },
+        {
+          "id": "2de6ba9479f6d84b35a44b7982c63928",
+          "title": "The Beautiful Day in the Neighborhood",
+          "series": "Bones",
+          "start": 1139077,
+          "duration": 2610
+        },
+        {
+          "id": "bb416090b898f3caa1b46860e15bd335",
+          "title": "The Stamp of Nature",
+          "series": "Blue Lights",
+          "start": 1141687,
+          "duration": 3512
+        },
+        {
+          "id": "be0a72c494afd7bf0675119655f3cce1",
+          "title": "Fool for Love",
+          "series": "Buffy the Vampire Slayer",
+          "start": 1145199,
+          "duration": 2673
+        },
+        {
+          "id": "c6df25044e32041f8fcedfb94f3f7757",
+          "title": "City Slickers Go Country",
+          "series": "Good Bones",
+          "start": 1147872,
+          "duration": 2580
+        },
+        {
+          "id": "1646c4be3f41fbcbe567b32512934005",
+          "title": "The Zeppo",
+          "series": "Buffy the Vampire Slayer",
+          "start": 1150452,
+          "duration": 2665
+        },
+        {
+          "id": "1fd17fad3ffd155a5639dae36a8b9e6e",
+          "title": "Personal Foul",
+          "series": "Boston Blue",
+          "start": 1153117,
+          "duration": 2543
+        },
+        {
+          "id": "200a74e8821ba75dd12a6c3c5de68c12",
+          "title": "Triangle",
+          "series": "Buffy the Vampire Slayer",
+          "start": 1155660,
+          "duration": 2651
+        },
+        {
+          "id": "a530062862b7c31f08d0b131513958a9",
+          "title": "The Man in the S.U.V.",
+          "series": "Bones",
+          "start": 1158311,
+          "duration": 2650
+        },
+        {
+          "id": "a44592dac05573236b5d7662ea687a91",
+          "title": "The Devil in the Details",
+          "series": "Bones",
+          "start": 1160961,
+          "duration": 2596
+        },
+        {
+          "id": "f7821d822f9c8f77316aed9ad0dd45bc",
+          "title": "The Party",
+          "series": "Blue Lights",
+          "start": 1163557,
+          "duration": 3491
+        },
+        {
+          "id": "cfb3a1611f77ee13091a1abddaad1e82",
+          "title": "First House on the Block",
+          "series": "Good Bones",
+          "start": 1167048,
+          "duration": 2578
+        },
+        {
+          "id": "9122654039af6df11edf8d55e1b1a807",
+          "title": "Bad Batch",
+          "series": "Blue Lights",
+          "start": 1169626,
+          "duration": 3451
+        },
+        {
+          "id": "0ccf025c8365292e4937508ec6fb87d7",
+          "title": "Client Renovation Rescue",
+          "series": "Good Bones",
+          "start": 1173077,
+          "duration": 2594
+        },
+        {
+          "id": "4180debd904eb083fb3ad35d49f1d99b",
+          "title": "The Body and the Bounty",
+          "series": "Bones",
+          "start": 1175671,
+          "duration": 2586
+        },
+        {
+          "id": "c106e048b2714375e072185b781f2fe4",
+          "title": "The Feet on the Beach",
+          "series": "Bones",
+          "start": 1178257,
+          "duration": 2623
+        },
+        {
+          "id": "48cf86136579f106ce627c2c3e789798",
+          "title": "Blood Chemistry",
+          "series": "Boston Blue",
+          "start": 1180880,
+          "duration": 2585
+        },
+        {
+          "id": "f75b3f611184132c04a8c896681fbf01",
+          "title": "Chelsea Vibes in Old Southside",
+          "series": "Good Bones",
+          "start": 1183465,
+          "duration": 2590
+        },
+        {
+          "id": "70b30602021ac640b14f4e61871fdbb2",
+          "title": "A Night at the Bones Museum",
+          "series": "Bones",
+          "start": 1186055,
+          "duration": 2605
+        },
+        {
+          "id": "f4bc347f7f761f2846a806e1aa99c363",
+          "title": "Eclectic Artistry in Garfield Park",
+          "series": "Good Bones",
+          "start": 1188660,
+          "duration": 2580
+        },
+        {
+          "id": "f1a87bde5af7347d09b29aa81805707e",
+          "title": "Pricey Paradise with Big Problems",
+          "series": "Good Bones",
+          "start": 1191240,
+          "duration": 2580
+        },
+        {
+          "id": "d7018251a7c1956957a1e282b65d78b2",
+          "title": "The Lovesick Widow",
+          "series": "Brilliant Minds",
+          "start": 1193820,
+          "duration": 2557
+        },
+        {
+          "id": "2f23edf3d6771827971211baa57a5c04",
+          "title": "Graduation Day (1)",
+          "series": "Buffy the Vampire Slayer",
+          "start": 1196377,
+          "duration": 2671
+        },
+        {
+          "id": "eabf8c8f1f45d6f31788e7f13e80f004",
+          "title": "Income Property Issues",
+          "series": "Good Bones",
+          "start": 1199048,
+          "duration": 2580
+        },
+        {
+          "id": "e8e879ba7a4c8c503d1937b9261da884",
+          "title": "Risky Reno with Historic Charm",
+          "series": "Good Bones",
+          "start": 1201628,
+          "duration": 2580
+        },
+        {
+          "id": "b46fe3b41930b549d3087ba9a963f2e6",
+          "title": "Secret Sanctuary on Singleton",
+          "series": "Good Bones",
+          "start": 1204208,
+          "duration": 2580
+        },
+        {
+          "id": "d6d4bd7b60cd7489c5b929916a41408b",
+          "title": "Restless",
+          "series": "Buffy the Vampire Slayer",
+          "start": 1206788,
+          "duration": 2671
+        },
+        {
+          "id": "e622014db369aa6d56c0d50e00aa7ddf",
+          "title": "Tabula Rasa",
+          "series": "Buffy the Vampire Slayer",
+          "start": 1209459,
+          "duration": 2606
+        },
+        {
+          "id": "8822311359becc61a6ce58fb757605b2",
+          "title": "The Killer in Me",
+          "series": "Buffy the Vampire Slayer",
+          "start": 1212065,
+          "duration": 2568
+        },
+        {
+          "id": "37f95a14085c1cba290cf02c9d982da3",
+          "title": "Pilot",
+          "series": "Bones",
+          "start": 1214633,
+          "duration": 2652
+        },
+        {
+          "id": "33a9b8bb8dddfa60eb390c9a15f7162f",
+          "title": "The Beginning in the End",
+          "series": "Bones",
+          "start": 1217285,
+          "duration": 2633
+        },
+        {
+          "id": "7fe7140d6373042a2a9369b7c2e9945d",
+          "title": "Never Leave Me",
+          "series": "Buffy the Vampire Slayer",
+          "start": 1219918,
+          "duration": 2508
+        },
+        {
+          "id": "c73f15c77bf34a95b790ecd1bb01b2c6",
+          "title": "The Archaeologist in the Cocoon",
+          "series": "Bones",
+          "start": 1222426,
+          "duration": 2580
+        },
+        {
+          "id": "9e1b4cb745eb3f20d9c878cf3baf760f",
+          "title": "End of Days",
+          "series": "Buffy the Vampire Slayer",
+          "start": 1225006,
+          "duration": 2568
+        },
+        {
+          "id": "5e00b6a1e7853dadca95b593b0798dae",
+          "title": "Killed by Death",
+          "series": "Buffy the Vampire Slayer",
+          "start": 1227574,
+          "duration": 2636
+        },
+        {
+          "id": "0ff7f5c4907afc0d252cb08b2add1a08",
+          "title": "The Man in the Mud",
+          "series": "Bones",
+          "start": 1230210,
+          "duration": 2588
+        },
+        {
+          "id": "269e89ef26cbfe6a3e53e0e764d7cd6b",
+          "title": "The Scare in the Score",
+          "series": "Bones",
+          "start": 1232798,
+          "duration": 2535
+        },
+        {
+          "id": "4b60f608b652f53d052a42c3debd2e54",
+          "title": "The Drama in the Queen",
+          "series": "Bones",
+          "start": 1235333,
+          "duration": 2638
+        },
+        {
+          "id": "23fea3966cc27b79917b9cfcab788075",
+          "title": "The Woman in White",
+          "series": "Bones",
+          "start": 1237971,
+          "duration": 2634
+        },
+        {
+          "id": "bff0dc2f250ff02931e73f4fd5ebab81",
+          "title": "After Life",
+          "series": "Buffy the Vampire Slayer",
+          "start": 1240605,
+          "duration": 2603
+        },
+        {
+          "id": "26603de1e686e12e6c84e4a30fb88a3b",
+          "title": "Patrol",
+          "series": "Boston Blue",
+          "start": 1243208,
+          "duration": 2596
+        },
+        {
+          "id": "e4a3cf371a1aca7913f5d3025c3d66a5",
+          "title": "Little White House on a Hill",
+          "series": "Good Bones",
+          "start": 1245804,
+          "duration": 2594
+        },
+        {
+          "id": "29619933ab4046a8e0828881ebca0dd8",
+          "title": "The Fire Fighter",
+          "series": "Brilliant Minds",
+          "start": 1248398,
+          "duration": 2405
+        },
+        {
+          "id": "c1790acf7548466d35a469b3dfadbd32",
+          "title": "The Haunted Marine",
+          "series": "Brilliant Minds",
+          "start": 1250803,
+          "duration": 2556
+        },
+        {
+          "id": "8bf3aa1f08496b6fe878f261173ba0af",
+          "title": "The Greenwich Village Townhome",
+          "series": "Good Bones",
+          "start": 1253359,
+          "duration": 2580
+        },
+        {
+          "id": "cecb4a8a9119c040e0c71d15a826c29f",
+          "title": "The Rocker in the Rinse Cycle",
+          "series": "Bones",
+          "start": 1255939,
+          "duration": 2606
+        },
+        {
+          "id": "1148312ea7c29cba79fd981975bb2e4d",
+          "title": "Mummy in the Maze",
+          "series": "Bones",
+          "start": 1258545,
+          "duration": 2635
+        },
+        {
+          "id": "a96dd543e0a8fb24791f931d90ed0490",
+          "title": "The Cottage Catastrophe",
+          "series": "Good Bones",
+          "start": 1261180,
+          "duration": 2580
+        },
+        {
+          "id": "4837c6f6c532e2808047b46f25139c75",
+          "title": "The Purging of the Pundit",
+          "series": "Bones",
+          "start": 1263760,
+          "duration": 2622
+        },
+        {
+          "id": "b9e96ca30ab62fa33ff836cad6627672",
+          "title": "The One That Got Away",
+          "series": "Brilliant Minds",
+          "start": 1266382,
+          "duration": 2527
+        },
+        {
+          "id": "1cea7a30c33b22d0c31288fe6716d432",
+          "title": "Life Serial",
+          "series": "Buffy the Vampire Slayer",
+          "start": 1268909,
+          "duration": 2604
+        },
+        {
+          "id": "ce311788ec49b8350dd778150325409d",
+          "title": "The Teacher in the Books",
+          "series": "Bones",
+          "start": 1271513,
+          "duration": 2621
+        },
+        {
+          "id": "6ffa76a6295442ba23199364fe6536c3",
+          "title": "The Prisoner in the Pipe",
+          "series": "Bones",
+          "start": 1274134,
+          "duration": 2605
+        },
+        {
+          "id": "65715a298b555eac3ad2c66ceb87fe80",
+          "title": "The Ghost in the Machine",
+          "series": "Bones",
+          "start": 1276739,
+          "duration": 2569
+        },
+        {
+          "id": "7ad99b3d848ea174fed5eddfd95a8a24",
+          "title": "St. Patrick's Day",
+          "series": "Boston Blue",
+          "start": 1279308,
+          "duration": 2554
+        },
+        {
+          "id": "d5dd1dc6814d4dca61e75352f902756a",
+          "title": "The Loyal",
+          "series": "Blue Lights",
+          "start": 1281862,
+          "duration": 3515
+        },
+        {
+          "id": "0415dde9ebd9565da9a85c77071739da",
+          "title": "Pangs",
+          "series": "Buffy the Vampire Slayer",
+          "start": 1285377,
+          "duration": 2674
+        },
+        {
+          "id": "f829f7674e9e56b92b3c2ae9f3ba7943",
+          "title": "Living Conditions",
+          "series": "Buffy the Vampire Slayer",
+          "start": 1288051,
+          "duration": 2572
+        },
+        {
+          "id": "5d0aa5656f7f0209334f1a7f77b7dc2a",
+          "title": "The Headless Witch in the Woods",
+          "series": "Bones",
+          "start": 1290623,
+          "duration": 2523
+        },
+        {
+          "id": "3b239966b280e2d32979fe318c898964",
+          "title": "A Boy in a Tree",
+          "series": "Bones",
+          "start": 1293146,
+          "duration": 2631
+        },
+        {
+          "id": "73e9b28d4ac8b78131135a5c03783c84",
+          "title": "Episode 5",
+          "series": "Annika",
+          "start": 1295777,
+          "duration": 2844
+        },
+        {
+          "id": "7fb8364dd1d3ecd02c887dbc202b3b10",
+          "title": "New Clients in the Countryside",
+          "series": "Good Bones",
+          "start": 1298621,
+          "duration": 2546
+        },
+        {
+          "id": "c30877e18583c15218683c63348b3091",
+          "title": "The Rabbit Hole",
+          "series": "Brilliant Minds",
+          "start": 1301167,
+          "duration": 2391
+        },
+        {
+          "id": "8a72fc8b207024326c3395b2ad027ec5",
+          "title": "Big Money in Fountain Square",
+          "series": "Good Bones",
+          "start": 1303558,
+          "duration": 2577
+        },
+        {
+          "id": "b488aab85a2a3bdd14f7761aadcdb9d7",
+          "title": "The Verdict in the Victims",
+          "series": "Bones",
+          "start": 1306135,
+          "duration": 2531
+        },
+        {
+          "id": "6baf2317f97c22b8ec236849dc22dccf",
+          "title": "The Man in the Morgue",
+          "series": "Bones",
+          "start": 1308666,
+          "duration": 2609
+        },
+        {
+          "id": "94ff0ab8b6ba34b51c8f85e95dff8f38",
+          "title": "Him",
+          "series": "Buffy the Vampire Slayer",
+          "start": 1311275,
+          "duration": 2566
+        },
+        {
+          "id": "8bc44ac08ebeab0e2a4bd58bf80c2954",
+          "title": "The Mutilation of the Master Manipulator",
+          "series": "Bones",
+          "start": 1313841,
+          "duration": 2625
+        },
+        {
+          "id": "5a55503703c8bc8ea1605bfe4b8c7ec2",
+          "title": "The Half Million Dollar House",
+          "series": "Good Bones",
+          "start": 1316466,
+          "duration": 2597
+        },
+        {
+          "id": "b5103d43e6237d37e1c342297cb25766",
+          "title": "Death in the Saddle",
+          "series": "Bones",
+          "start": 1319063,
+          "duration": 2611
+        },
+        {
+          "id": "4d69108b8e08318f492d9abdfb8a9283",
+          "title": "Little But Luxurious",
+          "series": "Good Bones",
+          "start": 1321674,
+          "duration": 2580
+        },
+        {
+          "id": "de7a4642bd572338850c1eeb05a7a477",
+          "title": "Who Are You? (2)",
+          "series": "Buffy the Vampire Slayer",
+          "start": 1324254,
+          "duration": 2675
+        },
+        {
+          "id": "3ada78ec180a901324008d72a41411df",
+          "title": "The Cold in the Case",
+          "series": "Bones",
+          "start": 1326929,
+          "duration": 2600
+        },
+        {
+          "id": "ed9a0550aca395e5d523565b074c0ad1",
+          "title": "The Pack",
+          "series": "Buffy the Vampire Slayer",
+          "start": 1329529,
+          "duration": 2710
+        },
+        {
+          "id": "0ed18f61bfb4724eb03e6714a80aafca",
+          "title": "The Last Shot at a Second Chance",
+          "series": "Bones",
+          "start": 1332239,
+          "duration": 2620
+        },
+        {
+          "id": "deebb36f33b5b18e83bc1e2fa637a3cb",
+          "title": "The Babe in the Bar",
+          "series": "Bones",
+          "start": 1334859,
+          "duration": 2637
+        },
+        {
+          "id": "138702b56f34feb638dbabdd0cb91968",
+          "title": "The Nail in the Coffin",
+          "series": "Bones",
+          "start": 1337496,
+          "duration": 2571
+        },
+        {
+          "id": "9ec8ba642629b129defa08682c33ebf9",
+          "title": "For Those Who Weren't Heard",
+          "series": "Boston Blue",
+          "start": 1340067,
+          "duration": 2607
+        },
+        {
+          "id": "3cf8574cad368a9dfa79342ed4300a34",
+          "title": "The Proof in the Pudding",
+          "series": "Bones",
+          "start": 1342674,
+          "duration": 2624
+        },
+        {
+          "id": "87d4b6da8001bd6beb181d2f155cc087",
+          "title": "Episode 3",
+          "series": "Annika",
+          "start": 1345298,
+          "duration": 2854
+        },
+        {
+          "id": "d1ce4cfcce03d80aa9a39d74feda1f39",
+          "title": "The Lance to the Heart",
+          "series": "Bones",
+          "start": 1348152,
+          "duration": 2634
+        },
+        {
+          "id": "67cd09caad636c25f811c05c60111017",
+          "title": "The Passenger in the Oven",
+          "series": "Bones",
+          "start": 1350786,
+          "duration": 2640
+        },
+        {
+          "id": "3e2b05093dc60affcd9a0c22e7870667",
+          "title": "Collateral Damage",
+          "series": "Boston Blue",
+          "start": 1353426,
+          "duration": 2588
+        },
+        {
+          "id": "19ce81bd8319ac9e2b50a736118e22c4",
+          "title": "Episode 2",
+          "series": "Annika",
+          "start": 1356014,
+          "duration": 2855
+        },
+        {
+          "id": "3b492f48eaec39e45196b7f7c04128f9",
+          "title": "The Killer in the Concrete",
+          "series": "Bones",
+          "start": 1358869,
+          "duration": 2517
+        },
+        {
+          "id": "1f895258475f7a4008b65dfaab2e6796",
+          "title": "Amends",
+          "series": "Buffy the Vampire Slayer",
+          "start": 1361386,
+          "duration": 2726
+        },
+        {
+          "id": "210674ed101f6e4baa2aa118663af6d1",
+          "title": "Hush",
+          "series": "Buffy the Vampire Slayer",
+          "start": 1364112,
+          "duration": 2673
+        },
+        {
+          "id": "fd02a063c213481869269ecd1d3d8d6e",
+          "title": "The Harsh Light of Day",
+          "series": "Buffy the Vampire Slayer",
+          "start": 1366785,
+          "duration": 2656
+        },
+        {
+          "id": "460888911a2c6e82a45b7cbeab5cca07",
+          "title": "Two Chicks Forever Home",
+          "series": "Good Bones",
+          "start": 1369441,
+          "duration": 2580
+        },
+        {
+          "id": "203afd9f389b1f150ef79f7ce6170e96",
+          "title": "The Gift",
+          "series": "Buffy the Vampire Slayer",
+          "start": 1372021,
+          "duration": 2673
+        },
+        {
+          "id": "9f33c369f83710ec7502f40187523e9d",
+          "title": "The Resident",
+          "series": "Brilliant Minds",
+          "start": 1374694,
+          "duration": 2406
+        },
+        {
+          "id": "32058128e5780a4741bc1539ccf498eb",
+          "title": "Superstar",
+          "series": "Buffy the Vampire Slayer",
+          "start": 1377100,
+          "duration": 2674
+        },
+        {
+          "id": "5fb5d8a399aa427c3cb1498f94fb2b4c",
+          "title": "The Man from Grozny",
+          "series": "Brilliant Minds",
+          "start": 1379774,
+          "duration": 2438
+        },
+        {
+          "id": "41f4edc6d1e7ba5b152395397a4c78c6",
+          "title": "Nightmares",
+          "series": "Buffy the Vampire Slayer",
+          "start": 1382212,
+          "duration": 2698
+        },
+        {
+          "id": "fb80b242f3c03e86c4550c64d90c46f0",
+          "title": "The Invisible Man",
+          "series": "Brilliant Minds",
+          "start": 1384910,
+          "duration": 2406
+        },
+        {
+          "id": "9c301b0a077d3142bdeaed9b1c7f4e8a",
+          "title": "Episode 1",
+          "series": "Annika",
+          "start": 1387316,
+          "duration": 2849
+        },
+        {
+          "id": "c3fd29d9827e2aa064155d3c1d98e97b",
+          "title": "The Graft in the Girl",
+          "series": "Bones",
+          "start": 1390165,
+          "duration": 2616
+        },
+        {
+          "id": "f6aadd9b423eecd5292d1fd80cf2ded5",
+          "title": "The Phantom Hook",
+          "series": "Brilliant Minds",
+          "start": 1392781,
+          "duration": 2529
+        },
+        {
+          "id": "b47ceff47ad23f93d0c0ad30a207809a",
+          "title": "Beautiful Broken Things",
+          "series": "Boston Blue",
+          "start": 1395310,
+          "duration": 2553
+        },
+        {
+          "id": "c980cc1ea325f0406c669f8eb0d42e6c",
+          "title": "Blood Ties",
+          "series": "Buffy the Vampire Slayer",
+          "start": 1397863,
+          "duration": 2673
+        },
+        {
+          "id": "9f0faaaf0308f8fb35cbf6b56d4372a7",
+          "title": "The Girl in the Mask",
+          "series": "Bones",
+          "start": 1400536,
+          "duration": 2670
+        },
+        {
+          "id": "3cc8036e26ff12ba3b8c3f0a54f83436",
+          "title": "The Doctor's Graveyard",
+          "series": "Brilliant Minds",
+          "start": 1403206,
+          "duration": 2528
+        },
+        {
+          "id": "8dc8e92b375db2f2bd51ff2dacd2bd73",
+          "title": "Ordo ab Chao",
+          "series": "Blue Lights",
+          "start": 1405734,
+          "duration": 3484
+        },
+        {
+          "id": "e1e734063a3fa2054e8134a02645325b",
+          "title": "This Year's Girl (1)",
+          "series": "Buffy the Vampire Slayer",
+          "start": 1409218,
+          "duration": 2613
+        },
+        {
+          "id": "6ee6feb6057a19949162881d5647b819",
+          "title": "The Hope in the Horror",
+          "series": "Bones",
+          "start": 1411831,
+          "duration": 2633
+        },
+        {
+          "id": "4e4d068eda142d0717496c122cb12078",
+          "title": "The Lost Biker",
+          "series": "Brilliant Minds",
+          "start": 1414464,
+          "duration": 2557
+        },
+        {
+          "id": "e72a3df106a5495371d717c793867d5e",
+          "title": "The Prom",
+          "series": "Buffy the Vampire Slayer",
+          "start": 1417021,
+          "duration": 2634
+        },
+        {
+          "id": "be78ee4afb746c50f968d54f03d25f3c",
+          "title": "The Perfect Pieces in the Purple Pond",
+          "series": "Bones",
+          "start": 1419655,
+          "duration": 2619
+        },
+        {
+          "id": "7717f7adfaa1c39a8fc746fe58c584f8",
+          "title": "The Resurrection in the Remains (I)",
+          "series": "Bones",
+          "start": 1422274,
+          "duration": 2635
+        },
+        {
+          "id": "96818787943c64bfeb84672b2bacda81",
+          "title": "The Strike in the Chord",
+          "series": "Bones",
+          "start": 1424909,
+          "duration": 2611
+        },
+        {
+          "id": "cf8894c54500c0858ecd4523a4a9e95b",
+          "title": "The Nazi on the Honeymoon",
+          "series": "Bones",
+          "start": 1427520,
+          "duration": 2628
+        },
+        {
+          "id": "6adb9b3b920d61f784c8983449d5fbe7",
+          "title": "The New Tricks in the Old Dogs",
+          "series": "Bones",
+          "start": 1430148,
+          "duration": 2649
+        },
+        {
+          "id": "02f6fee8f946dc5718902ebe921f31b6",
+          "title": "Becoming (1)",
+          "series": "Buffy the Vampire Slayer",
+          "start": 1432797,
+          "duration": 2694
+        },
+        {
+          "id": "28e52bd744621e644012cf613ef4e7ed",
+          "title": "Abandoned Rebuild Rescued",
+          "series": "Good Bones",
+          "start": 1435491,
+          "duration": 2594
+        },
+        {
+          "id": "8f17449112dad732ef1a6c58fc3de8d6",
+          "title": "The Fact in the Fiction",
+          "series": "Bones",
+          "start": 1438085,
+          "duration": 2587
+        },
+        {
+          "id": "23818cbfaaf64180b04418dc32ea1a6d",
+          "title": "Doppelgangland",
+          "series": "Buffy the Vampire Slayer",
+          "start": 1440672,
+          "duration": 2694
+        },
+        {
+          "id": "4f4ab4fc97971cda401885655de056bf",
+          "title": "Real Me",
+          "series": "Buffy the Vampire Slayer",
+          "start": 1443366,
+          "duration": 2594
+        },
+        {
+          "id": "65ec8de0149dae79103ce4eaaa3ed6b5",
+          "title": "Claire's Crooked Cottage",
+          "series": "Good Bones",
+          "start": 1445960,
+          "duration": 2580
+        },
+        {
+          "id": "883f6e0f71d29fadb3a521eb29d133b0",
+          "title": "The I in Team",
+          "series": "Buffy the Vampire Slayer",
+          "start": 1448540,
+          "duration": 2674
+        },
+        {
+          "id": "5346dbd25b174afa3069e613f2eeaa03",
+          "title": "The Code",
+          "series": "Blue Lights",
+          "start": 1451214,
+          "duration": 3434
+        },
+        {
+          "id": "7cbb94462e39cdf2eb00613a3a98c7c2",
+          "title": "The Santa in the Slush",
+          "series": "Bones",
+          "start": 1454648,
+          "duration": 2633
+        },
+        {
+          "id": "93ac75961d719c5bf3a9229e15e4b038",
+          "title": "Into the Woods",
+          "series": "Buffy the Vampire Slayer",
+          "start": 1457281,
+          "duration": 2673
+        },
+        {
+          "id": "c955b872ac52ff575ead80ddc0ae2cac",
+          "title": "Small House, Big Charm",
+          "series": "Good Bones",
+          "start": 1459954,
+          "duration": 2477
+        },
+        {
+          "id": "b53f5667e6bcad351a9c823ec0451dd8",
+          "title": "The Boneless Bride in the River",
+          "series": "Bones",
+          "start": 1462431,
+          "duration": 2520
+        },
+        {
+          "id": "86ef7edb5e2323cee43e45523fd06a26",
+          "title": "The Nightmare Within the Nightmare",
+          "series": "Bones",
+          "start": 1464951,
+          "duration": 2611
+        },
+        {
+          "id": "0eea8099a5a8f17ca09af78bbde6e581",
+          "title": "I Only Have Eyes for You",
+          "series": "Buffy the Vampire Slayer",
+          "start": 1467562,
+          "duration": 2676
+        },
+        {
+          "id": "898fb67fe848134b8d0fb7ce298e6b3c",
+          "title": "The Grief and the Girl",
+          "series": "Bones",
+          "start": 1470238,
+          "duration": 2586
+        },
+        {
+          "id": "2e8dfdce6c96f60db430b0bc0f7f8e9c",
+          "title": "Welcome to the Hellmouth (1)",
+          "series": "Buffy the Vampire Slayer",
+          "start": 1472824,
+          "duration": 2615
+        },
+        {
+          "id": "1f3be0084a66aebf0b619ccd8a2cab15",
+          "title": "Karen's Beach Bungalow",
+          "series": "Good Bones",
+          "start": 1475439,
+          "duration": 2580
+        },
+        {
+          "id": "059853d21e9f62a047a267ea12111792",
+          "title": "The Secrets in the Proposal",
+          "series": "Bones",
+          "start": 1478019,
+          "duration": 2555
+        },
+        {
+          "id": "b44475e9c497c34fa0250aa099a35ef3",
+          "title": "The Cowboy in the Contest",
+          "series": "Bones",
+          "start": 1480574,
+          "duration": 2629
+        },
+        {
+          "id": "9af2eda08752a2aeb2b79bd1482c060a",
+          "title": "The Knight on the Grid",
+          "series": "Bones",
+          "start": 1483203,
+          "duration": 2599
+        },
+        {
+          "id": "75c96424b7f36c6e1e05550adb63bad4",
+          "title": "Homecoming",
+          "series": "Buffy the Vampire Slayer",
+          "start": 1485802,
+          "duration": 2691
+        },
+        {
+          "id": "c3355e6fcef3310e36516aafd43607fa",
+          "title": "The Boy Who Feels Everything",
+          "series": "Brilliant Minds",
+          "start": 1488493,
+          "duration": 2408
+        },
+        {
+          "id": "a1ab535afc1e25bf2ffbc95de0ee3170",
+          "title": "Yanks in the U.K. (1) / Yanks in the U.K. (2)",
+          "series": "Bones",
+          "start": 1490901,
+          "duration": 5181
+        },
+        {
+          "id": "049a16331bac6c6d61590284e3a347d4",
+          "title": "The Cinderella in the Cardboard",
+          "series": "Bones",
+          "start": 1496082,
+          "duration": 2643
+        },
+        {
+          "id": "676e4b5dcb74e04e9b121a8e48552ebe",
+          "title": "History",
+          "series": "Boston Blue",
+          "start": 1498725,
+          "duration": 2628
+        },
+        {
+          "id": "52eb01e877e3b363e9ae6354f3d03465",
+          "title": "Anatomy of a Bomb",
+          "series": "Boston Blue",
+          "start": 1501353,
+          "duration": 2571
+        },
+        {
+          "id": "e35f394a61fde2d07cd4694864f56e63",
+          "title": "Beautifying a Boring Boxy Home",
+          "series": "Good Bones",
+          "start": 1503924,
+          "duration": 2592
+        },
+        {
+          "id": "b4cf2635bcf0f4d89acf95684c7cf98d",
+          "title": "Little Pink House on Palmer",
+          "series": "Good Bones",
+          "start": 1506516,
+          "duration": 2621
+        },
+        {
+          "id": "d359372bce326eef2e5638c510df4172",
+          "title": "Doublemeat Palace",
+          "series": "Buffy the Vampire Slayer",
+          "start": 1509137,
+          "duration": 2604
+        },
+        {
+          "id": "400b730f4cb3590561649a6b557edf45",
+          "title": "Facelift for a Tiny Victorian",
+          "series": "Good Bones",
+          "start": 1511741,
+          "duration": 2594
+        },
+        {
+          "id": "3f5fd9f2f40cf5ccc560a579f338f0dd",
+          "title": "The Change in the Game",
+          "series": "Bones",
+          "start": 1514335,
+          "duration": 2559
+        },
+        {
+          "id": "d96688ba9c1f1da4fbfeea880d190d80",
+          "title": "Revelations",
+          "series": "Buffy the Vampire Slayer",
+          "start": 1516894,
+          "duration": 2694
         }
       ]
     },
