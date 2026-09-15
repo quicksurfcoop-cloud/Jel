@@ -44,7 +44,15 @@ const CHANNELS = [
       'Cold Case', 
       'Code Black', 
       'Criminal Minds', 
-      'CSI: Crime Scene Investigation'],
+      'CSI: Crime Scene Investigation',
+      'Dexter', 
+      'The Doctor Blake Mysteries', 
+      'ER', 
+      'Firefly', 
+      'Found', 
+      'Happy Valley', 
+      'House', 
+      'Luther'],
     excludeGenres: ['Reality']
   },
   { 
