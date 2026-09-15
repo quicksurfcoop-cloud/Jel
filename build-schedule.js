@@ -50,9 +50,7 @@ const CHANNELS = [
       'ER', 
       'Firefly', 
       'Found', 
-      'Happy Valley', 
-      'House', 
-      'Luther'],
+      ],
     excludeGenres: ['Reality']
   },
   { 
