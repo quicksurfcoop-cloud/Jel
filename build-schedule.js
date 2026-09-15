@@ -32,7 +32,12 @@ const CHANNELS = [
   {
     id: 'krissy-one',
     name: 'Krissy ONE',
-    includeTitles: ['Annika']
+    includeTitles: ['Annika', 
+      'Blue Lights', 
+      'Bones', 
+      'Boston Blue', 
+      'Brilliant Minds', 
+      'Buffy the Vampire Slayer']
   },
   { 
     id: 'BBC', 
