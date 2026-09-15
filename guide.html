@@ -197,32 +197,38 @@
   const FIXED_EPOCH_SECONDS = 1767225600; // Matches your build script epoch
 
   async function loadGuide() {
+    const gridEl = document.getElementById('epgTableGrid');
     try {
-      console.log('Fetching channels.json...');
-      
-      // Build a bulletproof path based on the current domain/repo structure
-      const basePath = window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/'));
-      const fetchUrl = `${window.location.origin}${basePath}/channels.json?t=${Date.now()}`;
-      
-      console.log('Target URL:', fetchUrl);
+      gridEl.style.display = 'block';
+      gridEl.style.gridTemplateColumns = '1fr';
+      gridEl.innerHTML = '<div style="padding: 20px; color: #a0aec0; text-align: center;">Loading schedule data from channels.json...</div>';
 
-      let res = await fetch(fetchUrl);
+      const res = await fetch('./channels.json?t=' + Date.now());
       if (!res.ok) {
-        // Fallback to simple relative path if absolute path fails
-        res = await fetch(`./channels.json?t=${Date.now()}`);
-      }
-      
-      if (!res.ok) {
-        throw new Error(`HTTP error! status: ${res.status}`);
+        throw new Error(`HTTP ${res.status} (${res.statusText}) - File not found or blocked.`);
       }
 
       const scheduleData = await res.json();
-      console.log('Schedule loaded successfully:', scheduleData);
+      if (!scheduleData.channels) {
+        throw new Error('channels.json loaded, but missing the "channels" property.');
+      }
 
+      // Reset grid display for table rendering
+      gridEl.style.display = 'grid';
       buildGrid(scheduleData);
     } catch (err) {
-      console.error('Failed to load schedule for EPG:', err);
-      document.getElementById('epgTableGrid').innerHTML = `<div style="padding: 20px; color: #fc8181;">Error loading channel guide: ${err.message}.</div>`;
+      console.error('EPG Load Error:', err);
+      gridEl.style.display = 'block';
+      gridEl.style.gridTemplateColumns = '1fr';
+      gridEl.innerHTML = `
+        <div style="padding: 25px; color: #fc8181; background: #220909; border: 1px solid #742a2a; border-radius: 6px; margin: 10px;">
+          <h3 style="margin-top: 0; color: #feb2b2;">⚠️ Could not load TV Guide</h3>
+          <p><strong>Error Details:</strong> ${err.message}</p>
+          <p style="font-size: 13px; color: #cbd5e0; margin-bottom: 0;">
+            <strong>Quick Check:</strong> Go to your GitHub repository and verify that <code>channels.json</code> exists in the root branch/folder that GitHub Pages is publishing from.
+          </p>
+        </div>
+      `;
     }
   }
 
@@ -233,7 +239,10 @@
     const channels = scheduleData.channels;
     const channelKeys = Object.keys(channels);
 
-    if (channelKeys.length === 0) return;
+    if (channelKeys.length === 0) {
+      gridEl.innerHTML = '<div style="padding: 20px; color: #f6ad55;">No channels found inside channels.json.</div>';
+      return;
+    }
 
     const now = new Date();
     now.setMinutes(now.getMinutes() < 30 ? 0 : 30, 0, 0);
@@ -249,21 +258,19 @@
       headerHtml += `<div class="epg-time-header">${timeString}</div>`;
     }
     gridEl.style.gridTemplateColumns = `180px repeat(${totalSlots}, 200px)`;
-    gridEl.innerHTML = headerHtml; // Set initial header
+    gridEl.innerHTML = headerHtml;
 
     document.getElementById('currentDateLabel').innerText = now.toLocaleDateString([], { weekday: 'long', month: 'short', day: 'numeric' });
 
-    // 2. Build Channel Rows and append them safely via DOM elements
+    // 2. Build Channel Rows
     channelKeys.forEach(key => {
       const channel = channels[key];
 
-      // Channel Name Column Element
       const channelCell = document.createElement('div');
       channelCell.className = 'epg-channel-cell';
       channelCell.innerText = channel.name;
       gridEl.appendChild(channelCell);
 
-      // 30-minute block columns
       for (let i = 0; i < totalSlots; i++) {
         const targetTime = gridStartSeconds + (i * slotDuration);
         const loopElapsed = (targetTime - FIXED_EPOCH_SECONDS) % channel.totalLoopSeconds;
@@ -280,7 +287,6 @@
         const displayTitle = matchedItem.series ? matchedItem.series : matchedItem.title;
         const displaySub = matchedItem.series ? matchedItem.title : '';
 
-        // Create slot element safely without inline string interpolation bugs
         const slotEl = document.createElement('div');
         slotEl.className = 'epg-slot';
         slotEl.innerHTML = `
@@ -288,7 +294,6 @@
           <div class="slot-show-sub">${escapeHtml(displaySub || 'Feature Broadcast')}</div>
         `;
 
-        // Attach click handler safely via JS property assignment
         slotEl.onclick = () => {
           selectProgram(key, displayTitle, displaySub);
         };
@@ -298,40 +303,19 @@
     });
   }
 
-  // Simple HTML escaper for safety
-  function escapeHtml(str) {
-    return (str || '').replace(/[&<>'"]/g, 
-      tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag)
-    );
-  }
-
-        const displayTitle = matchedItem.series ? matchedItem.series : matchedItem.title;
-        const displaySub = matchedItem.series ? matchedItem.title : '';
-
-        rowHtml += `
-          <div class="epg-slot" onclick="selectProgram('${channel.key || key}', '${escapeJs(displayTitle)}', '${escapeJs(displaySub)}')">
-            <div class="slot-show-title">${displayTitle}</div>
-            <div class="slot-show-sub">${displaySub || 'Feature Broadcast'}</div>
-          </div>
-        `;
-      }
-
-      gridEl.innerHTML += rowHtml;
-    });
-  }
-
   function selectProgram(channelId, title, subtitle) {
     document.getElementById('infoTitle').innerText = subtitle ? `${title} — ${subtitle}` : title;
     document.getElementById('infoDesc').innerText = `Click to switch to this channel on the main player.`;
     
-    // Optional feature: clicking a grid cell takes you straight to index.html with that channel selected
     setTimeout(() => {
       window.location.href = `index.html?channel=${channelId}`;
     }, 400);
   }
 
-  function escapeJs(str) {
-    return (str || '').replace(/'/g, "\\'").replace("/g, '\\"');
+  function escapeHtml(str) {
+    return (str || '').replace(/[&<>'"]/g, 
+      tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag)
+    );
   }
 
   // Initial load
