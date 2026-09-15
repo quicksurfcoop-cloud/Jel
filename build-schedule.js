@@ -37,7 +37,8 @@ const CHANNELS = [
       'Bones', 
       'Boston Blue', 
       'Brilliant Minds', 
-      'Buffy the Vampire Slayer']
+      'Buffy the Vampire Slayer'],
+    excludeGenres: ['Reality']
   },
   { 
     id: 'BBC', 
