@@ -1,3 +1,52 @@
+const FILLER_URL = "https://archive.org/download/leslie-nielsen-worlds-funniest-commercials-1995-uk-vhs/Leslie%20Nielsen%20World%27s%20Funniest%20Commercials%20%281995%20UK%20VHS%29.mp4";
+const SLOT_SIZE = 900; // 15 minutes in seconds
+
+function applySlotPadding(channelsData) {
+  Object.keys(channelsData).forEach(key => {
+    const channel = channelsData[key];
+    let currentEpochOffset = 0;
+    const paddedItems = [];
+
+    channel.items.forEach(item => {
+      // 1. Force show to start at current padded offset
+      item.start = currentEpochOffset;
+      
+      // Calculate show duration in seconds (convert ticks/ms if needed)
+      const durationSeconds = item.duration || Math.round(item.RunTimeTicks / 10000000) || 1800;
+      item.duration = durationSeconds;
+      
+      const naturalEnd = item.start + durationSeconds;
+      paddedItems.push(item);
+
+      // 2. Calculate next 15-minute boundary
+      const nextSlotTime = Math.ceil(naturalEnd / SLOT_SIZE) * SLOT_SIZE;
+      const gap = nextSlotTime - naturalEnd;
+
+      // 3. Inject filler if show finishes before 15-min mark
+      if (gap > 0) {
+        paddedItems.push({
+          id: `filler-${naturalEnd}`,
+          title: "Commercial Break",
+          series: "Skyline Intermission",
+          duration: gap,
+          start: naturalEnd,
+          isFiller: true,
+          streamUrl: FILLER_URL
+        });
+      }
+
+      // 4. Advance clock to exact 15-minute boundary
+      currentEpochOffset = nextSlotTime;
+    });
+
+    channel.items = paddedItems;
+    channel.totalLoopSeconds = currentEpochOffset;
+  });
+
+  return channelsData;
+}
+
+
 const fs = require('fs');
 
 const envUrl = process.env.JELLYFIN_URL || '';
