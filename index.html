@@ -134,6 +134,7 @@
   let scheduleData = null;
   let currentChannelKey = null;
   let hlsEngine = null;
+  let currentPlayingId = null; // Tracks what is currently on screen to prevent reloading
 
   async function init() {
     try {
@@ -157,6 +158,10 @@
       });
 
       currentChannelKey = channelKeys[0];
+      
+      // Check the schedule every 1 second. This makes the player automatically 
+      // advance to the filler/next show when the current one ends!
+      setInterval(syncPlayback, 1000);
       syncPlayback();
 
       // Render the EPG immediately upon loading data
@@ -190,48 +195,85 @@
     }
 
     const player = document.getElementById('tvPlayer');
-    const apiKey = scheduleData.apiKey || '';
     
-    const streamUrl = `${JELLYFIN_URL}/Videos/${activeItem.id}/master.m3u8?` + 
-      `api_key=${apiKey}` +
-      `&MediaSourceId=${activeItem.id}` +
-      `&VideoCodec=h264` +
-      `&AudioCodec=aac` +
-      `&AudioChannels=2` +
-      `&MaxAudioChannels=2` +
-      `&SegmentContainer=ts` +
-      `&VideoBitrate=8000000`;
+    // Create a unique ID so we know if the broadcast has moved to the next item
+    const uniqueId = activeItem.isFiller ? 'filler-' + activeItem.start : activeItem.id;
 
-    if (Hls.isSupported()) {
+    // Only switch the video stream if the show/commercial break has actually changed
+    if (currentPlayingId !== uniqueId) {
+      currentPlayingId = uniqueId;
+      
+      // Clean up previous stream completely to prevent audio overlap
       if (hlsEngine) {
+        hlsEngine.detachMedia();
         hlsEngine.destroy();
+        hlsEngine = null;
       }
-      hlsEngine = new Hls({
-        maxBufferLength: 30,
-        maxMaxBufferLength: 60
-      });
-      
-      hlsEngine.loadSource(streamUrl);
-      hlsEngine.attachMedia(player);
-      
-      hlsEngine.on(Hls.Events.MANIFEST_PARSED, function() {
-        player.currentTime = seekOffset;
-        player.muted = false; 
+      player.pause();
+      player.removeAttribute('src');
+      player.load();
+
+      // --- 1. PLAY NATIVE MP4 FILLER ---
+      if (activeItem.isFiller && activeItem.streamUrl) {
+        player.src = activeItem.streamUrl;
         
-        const playPromise = player.play();
-        if (playPromise !== undefined) {
-          playPromise.catch(() => {
-            player.muted = true;
-            player.play();
+        player.onloadedmetadata = () => {
+          player.currentTime = seekOffset;
+          player.muted = false;
+          const playPromise = player.play();
+          if (playPromise !== undefined) {
+            playPromise.catch(() => {
+              player.muted = true; // Auto-play fallback
+              player.play();
+            });
+          }
+        };
+      } 
+      // --- 2. PLAY JELLYFIN HLS STREAM ---
+      else {
+        const apiKey = scheduleData.apiKey || '';
+        const streamUrl = `${JELLYFIN_URL}/Videos/${activeItem.id}/master.m3u8?` + 
+          `api_key=${apiKey}` +
+          `&MediaSourceId=${activeItem.id}` +
+          `&VideoCodec=h264` +
+          `&AudioCodec=aac` +
+          `&AudioChannels=2` +
+          `&MaxAudioChannels=2` +
+          `&SegmentContainer=ts` +
+          `&VideoBitrate=8000000`;
+
+        if (Hls.isSupported()) {
+          hlsEngine = new Hls({
+            maxBufferLength: 30,
+            maxMaxBufferLength: 60
           });
+          
+          hlsEngine.loadSource(streamUrl);
+          hlsEngine.attachMedia(player);
+          
+          hlsEngine.on(Hls.Events.MANIFEST_PARSED, function() {
+            player.currentTime = seekOffset;
+            player.muted = false; 
+            
+            const playPromise = player.play();
+            if (playPromise !== undefined) {
+              playPromise.catch(() => {
+                player.muted = true;
+                player.play();
+              });
+            }
+          });
+        } else if (player.canPlayType('application/vnd.apple.mpegurl')) {
+          player.src = streamUrl;
+          player.onloadedmetadata = () => {
+            player.currentTime = seekOffset;
+            player.play().catch(() => {});
+          };
         }
-      });
-    } else if (player.canPlayType('application/vnd.apple.mpegurl')) {
-      player.src = streamUrl;
-      player.currentTime = seekOffset;
-      player.play().catch(() => {});
+      }
     }
 
+    // Always update the now playing text with the live offset clock
     document.getElementById('nowPlaying').innerText = 
       `Playing: ${activeItem.title} ${activeItem.series ? `(${activeItem.series})` : ''} | Offset: ${Math.floor(seekOffset)}s`;
   }
@@ -239,21 +281,11 @@
   function switchChannel() {
     currentChannelKey = document.getElementById('channelSelect').value;
     
-    const player = document.getElementById('tvPlayer');
-    player.pause();
+    // Force the script to reload the stream by clearing the tracker
+    currentPlayingId = null; 
     
-    if (hlsEngine) {
-      hlsEngine.detachMedia();
-      hlsEngine.destroy();
-      hlsEngine = null;
-    }
-
-    player.src = "";
-    player.load();
-
-    setTimeout(() => {
-      syncPlayback();
-    }, 150);
+    // Instantly sync up the new channel
+    syncPlayback();
   }
 
   function renderEPG(schedule) {
@@ -290,7 +322,6 @@
         </div>
       `;
       
-      // Click row to change channel instantly
       row.style.cursor = 'pointer';
       row.onclick = () => {
         document.getElementById('channelSelect').value = channelId;
@@ -309,5 +340,6 @@
   // Initialize application
   init();
 </script>
+
 </body>
 </html>
