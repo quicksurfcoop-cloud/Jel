@@ -31,7 +31,7 @@ function applySlotPadding(channelsData) {
           duration: gap,
           start: naturalEnd,
           isFiller: true,
-          streamUrl: FILLER_URL
+          streamUrl: `${FILLER_URL}#t=0,${gap}`
         });
       }
 
@@ -102,7 +102,7 @@ const CHANNELS = [
     name: 'BBC', 
     studios: ['BBC', 'BBC One', 'BBC Two', 'BBC Three', 'BBC Four'],
   },
-    { 
+  { 
     id: 'GW', 
     name: 'GW TV', 
     studios: ['Warhammer TV'],
@@ -110,7 +110,7 @@ const CHANNELS = [
   {
     id: 'scream-kids',
     name: 'SCREAM KIDS',
-    includeTitles: ['Goosebumps','The Munsters', 'Eerie, Indiana', 'Aaahh!!! Real Monsters', 'Amazing Stories', 'Beetlejuice', 'Bewitched', 'Beyond Belief: Fact or Fiction', 'Count Duckula', 'Ghostbusters', 'The Grim Adventures of Billy and Mandy', 'The New Scooby and Scrappy-Doo Show'], // Replace these with your actual Jellyfin show titles
+    includeTitles: ['Goosebumps','The Munsters', 'Eerie, Indiana', 'Aaahh!!! Real Monsters', 'Amazing Stories', 'Beetlejuice', 'Bewitched', 'Beyond Belief: Fact or Fiction', 'Count Duckula', 'Ghostbusters', 'The Grim Adventures of Billy and Mandy', 'The New Scooby and Scrappy-Doo Show'],
   },
   {
     id: 'superhero-tv',
@@ -142,7 +142,7 @@ const CHANNELS = [
     name: 'Forbidon Plannet', 
     genres: ['Sci-fi', 'Fantasy'],
     tags: ['fantasy', 'science fiction', 'science Fantasy', 'Space oepera', 'sci-fy', 'monster movie', 'Sci-fi'],
-   excludeGenres: ['Anime'],
+    excludeGenres: ['Anime'],
     excludeTags: ['Anime'],
     startYear: 1900,
     endYear: 2026
@@ -202,7 +202,7 @@ async function generateSchedule() {
 
   console.log('Authenticated successfully. Fetching TV Series and Movie metadata...');
 
-  // 2. Fetch metadata from Jellyfin (ADDED "Studios" TO THE FIELDS LIST)
+  // 2. Fetch metadata from Jellyfin
   const mediaUrl = `${JELLYFIN_URL}/Users/${userId}/Items?IncludeItemTypes=Series,Movie&Recursive=true&Fields=Genres,Tags,OfficialRating,ProductionYear,RunTimeTicks,Studios&api_key=${apiKey}`;
   const mediaRes = await fetch(mediaUrl);
   if (!mediaRes.ok) throw new Error(`Failed to fetch media list: ${mediaRes.status}`);
@@ -215,15 +215,17 @@ async function generateSchedule() {
 
   console.log(`Found ${allSeries.length} TV Series and ${allMovies.length} Movies in library.`);
 
+  // Anchor "Time Zero" to the nearest 15-minute mark so frontend syncs with wall clock
+  const anchorMs = Math.floor(Date.now() / (900 * 1000)) * (900 * 1000);
+
   const outputSchedule = {
     apiKey: apiKey,
-    generatedAt: Date.now(),
+    generatedAt: anchorMs,
     channels: {}
   };
 
   // Helper filter function for metadata matching
   const matchesCriteria = (item, ch) => {
-       // Check for explicitly included titles first
     if (ch.includeTitles && ch.includeTitles.length > 0) {
       const isIncluded = ch.includeTitles.some(title => 
         item.Name.toLowerCase() === title.toLowerCase() || 
@@ -232,9 +234,7 @@ async function generateSchedule() {
       if (!isIncluded) return false;
     }
   
-    // Check for Studio rules first
     if (ch.studios && ch.studios.length > 0) {
-      // Jellyfin returns studios as an array of objects, so we map to the name
       const itemStudios = (item.Studios || []).map(s => s.Name.toLowerCase());
       const targetStudios = ch.studios.map(s => s.toLowerCase());
       const hasStudioMatch = itemStudios.some(s => targetStudios.includes(s));
@@ -367,14 +367,13 @@ async function generateSchedule() {
     };
   }
 
-    // 4. Apply the 15-minute slot padding and commercial breaks!
+  // 4. Apply the 15-minute slot padding and commercial breaks
   outputSchedule.channels = applySlotPadding(outputSchedule.channels);
 
   // 5. Save schedule
   fs.writeFileSync('channels.json', JSON.stringify(outputSchedule, null, 2));
   console.log('channels.json generated cleanly with 15-minute padding!');
 }
-
 
 generateSchedule().catch(err => {
   console.error('Fatal Error:', err);
