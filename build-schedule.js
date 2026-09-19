@@ -367,10 +367,14 @@ async function generateSchedule() {
     };
   }
 
-  // 4. Save schedule
+    // 4. Apply the 15-minute slot padding and commercial breaks!
+  outputSchedule.channels = applySlotPadding(outputSchedule.channels);
+
+  // 5. Save schedule
   fs.writeFileSync('channels.json', JSON.stringify(outputSchedule, null, 2));
-  console.log('channels.json generated cleanly!');
+  console.log('channels.json generated cleanly with 15-minute padding!');
 }
+
 
 generateSchedule().catch(err => {
   console.error('Fatal Error:', err);
