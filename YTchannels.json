@@ -5602,5 +5602,62 @@
         "duration": 4708
       }
     ]
+  },
+  {
+    "id": 42,
+    "name": "Channel 42",
+    "broadcastStart": "00:00",
+    "playlist": [
+      {
+        "id": "DSmIolKETsQ",
+        "title": "3 Hours of Retro Halloween Horror Anthology TV With Commercials (1980s–1990s) Sleep & Relax - CH. 42",
+        "duration": 11391
+      },
+      {
+        "id": "p2L3fTuH8t0",
+        "title": "3 Hours of Retro Christmas Horror Anthology TV With Commercials (1980s–1990s) Sleep & Relax - CH. 42",
+        "duration": 10694
+      },
+      {
+        "id": "v6DItheY48c",
+        "title": "Ch. 42  - Vol. 3  - Retro TV Broadcast with Commercials (80s / 90s) | Full Episodes & Vintage Ads",
+        "duration": 3395
+      },
+      {
+        "id": "VRfRXWk1w38",
+        "title": "Ch. 42 - Vol. 4 - Retro TV Broadcast with Commercials (80s / 90s) | Full Episodes & Vintage Ads",
+        "duration": 5031
+      },
+      {
+        "id": "n2OmmfPMZtw",
+        "title": "Ch. 42 - Vol. 6 - Retro TV Broadcast with Commercials (80s / 90s) | Full Episodes & Vintage Ads",
+        "duration": 3581
+      },
+      {
+        "id": "Pxs7cspfWHw",
+        "title": "Ch. 42 - Vol. 5 - Retro TV Broadcast with Commercials (80s / 90s) | Full Episodes & Vintage Ads",
+        "duration": 3674
+      },
+      {
+        "id": "Gt8SBfFZ47E",
+        "title": "1 Hour of Weird, Funny, and Forgotten Retro Commercials (80s–90s Ads) Time Capsule - Vintage TV #1",
+        "duration": 4787
+      },
+      {
+        "id": "qpWcflHP_M0",
+        "title": "Ultimate Amiga Guide to Video Production Vol. 2 (1990 Commodore SuperGen Instructional VHS Tape)",
+        "duration": 6758
+      },
+      {
+        "id": "Fcjrt8q09ZI",
+        "title": "Justin Snaps at Matt Over His New Mic, Also We Thought Sam Had a Stroke During a Voice Chat",
+        "duration": 1643
+      },
+      {
+        "id": "2E-monQUycg",
+        "title": "3+ Hours of Low-Budget Alien Horror | FEEDERS Double Feature | Cursed VHS | Retro Sci-Fi Horror",
+        "duration": 11907
+      }
+    ]
   }
 ]
