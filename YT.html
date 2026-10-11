@@ -165,6 +165,27 @@ html, body {
     font-weight: bold;
 }
 
+#epg-header-right {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+#epg-now-btn {
+    background: #222;
+    color: #fff;
+    border: 1px solid #444;
+    padding: 6px 14px;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+#epg-now-btn:hover {
+    background: #333;
+}
+
 /* Outer Scrollable Grid Container */
 #epg-content {
     flex: 1;
@@ -441,7 +462,10 @@ html, body {
 <div id="epg">
     <div id="epg-header">
         <div id="epg-title">TV GUIDE</div>
-        <div id="epg-clock">00:00:00</div>
+        <div id="epg-header-right">
+            <button id="epg-now-btn" onclick="scrollEPGToNow()">⏮ NOW</button>
+            <div id="epg-clock">00:00:00</div>
+        </div>
     </div>
     <div id="epg-content"></div>
 </div>
@@ -475,6 +499,7 @@ let configurationLoaded = false;
 
 let osdTimer = null;
 let epgVisible = false;
+let epgAutoScroll = true;
 
 let startupSeeking = false;
 
@@ -918,10 +943,16 @@ function toggleEPG() {
 
     if (epgVisible) {
         epg.classList.add("visible");
+        epgAutoScroll = true; // snap to current time when opened
         buildEPG();
     } else {
         epg.classList.remove("visible");
     }
+}
+
+function scrollEPGToNow() {
+    epgAutoScroll = true;
+    buildEPG();
 }
 
 
@@ -964,8 +995,8 @@ function formatClock(date) {
    GET VIDEO TITLE
    ========================================================= */
 
-function getVideoTitle(video, index) {
-    if (player && index === currentVideoIndex) {
+function getVideoTitle(video, index, channelIndex) {
+    if (player && channelIndex === currentChannelIndex && index === currentVideoIndex) {
         try {
             const data = player.getVideoData();
             if (data && data.title) {
@@ -989,6 +1020,11 @@ function getVideoTitle(video, index) {
 function buildEPG() {
     const container = document.getElementById("epg-content");
     if (!container) return;
+
+    // Remember the user's scroll position so the 1-second refresh
+    // doesn't snap the guide back to the current time
+    const prevScrollLeft = container.scrollLeft;
+    const prevScrollTop = container.scrollTop;
 
     container.innerHTML = "";
     if (!CHANNELS.length) return;
@@ -1044,58 +1080,111 @@ function buildEPG() {
         });
         row.appendChild(sidebar);
 
-        // Track containing timed program blocks
+        // Track containing timed program blocks.
+        // The playlist loops to fill the whole 24-hour grid, matching how
+        // the player itself loops (see calculateBroadcastPosition).
         const track = document.createElement("div");
         track.className = "epg-track";
         track.style.width = (24 * 300) + "px"; // 24 hours width
 
         const broadcastStartSecs = getBroadcastStart(channel);
-        let accumulatedSecs = broadcastStartSecs;
-
         const count = channel.playlist ? channel.playlist.length : 0;
+        const totalDuration = channel.playlist
+            ? channel.playlist.reduce(function(sum, v) {
+                  return sum + (Number(v.duration) || 0);
+              }, 0)
+            : 0;
 
-        for (let i = 0; i < count; i++) {
-            const video = channel.playlist[i];
-            const duration = Number(video.duration) || 0;
+        if (count > 0 && totalDuration > 0) {
+            // Helper: walk the looping playlist between two points on the
+            // 24-hour grid, starting from a given video and position in it.
+            function emitSegment(startCursor, endCursor, startIndex, startInto) {
+                let idx = startIndex;
+                let into = startInto;
+                let cursor = startCursor;
+                let guard = 0;
 
-            const startPosSecs = accumulatedSecs;
-            const endPosSecs = startPosSecs + duration;
+                while (cursor < endCursor && guard < 100000) {
+                    guard++;
 
-            // Determine if playing right now
-            const isNow = currentSeconds >= startPosSecs && currentSeconds < endPosSecs && channelIndex === currentChannelIndex;
+                    const video = channel.playlist[idx];
+                    const duration = Number(video.duration) || 0;
 
-            const block = document.createElement("div");
-            block.className = "epg-block" + (isNow ? " is-now" : "");
+                    if (duration > 0) {
+                        const remaining = duration - into;
+                        const blockStart = cursor;
+                        const blockEnd = Math.min(cursor + remaining, endCursor);
+                        const blockLen = blockEnd - blockStart;
 
-            // Calculate pixel positioning relative to midnight
-            const leftPx = startPosSecs * PIXELS_PER_SECOND;
-            const widthPx = Math.max(duration * PIXELS_PER_SECOND, 40); // minimum 40px width
+                        if (blockLen > 0) {
+                            // Determine if playing right now
+                            const isNow = currentSeconds >= blockStart && currentSeconds < blockEnd && channelIndex === currentChannelIndex;
 
-            block.style.left = leftPx + "px";
-            block.style.width = (widthPx - 4) + "px"; // 4px margin gap
+                            const block = document.createElement("div");
+                            block.className = "epg-block" + (isNow ? " is-now" : "");
 
-            // Air time formatting
-            const startHour = String(Math.floor(startPosSecs / 3600) % 24).padStart(2, "0");
-            const startMin = String(Math.floor((startPosSecs % 3600) / 60)).padStart(2, "0");
-            const timeFormatted = startHour + ":" + startMin;
+                            // Pixel positioning relative to midnight
+                            const leftPx = blockStart * PIXELS_PER_SECOND;
+                            const widthPx = Math.max(blockLen * PIXELS_PER_SECOND, 40); // minimum 40px width
 
-            const titleText = getVideoTitle(video, i);
+                            block.style.left = leftPx + "px";
+                            block.style.width = (widthPx - 4) + "px"; // 4px margin gap
 
-            block.innerHTML = `
-                <div class="epg-block-title">${titleText}</div>
-                <div class="epg-block-time">${timeFormatted} (${formatDuration(duration)})</div>
-            `;
+                            // Air time formatting
+                            const startHour = String(Math.floor(blockStart / 3600)).padStart(2, "0");
+                            const startMin = String(Math.floor((blockStart % 3600) / 60)).padStart(2, "0");
+                            const timeFormatted = startHour + ":" + startMin;
 
-            block.addEventListener("click", function() {
-                currentChannelIndex = channelIndex;
-                loadVideo(i, 0);
-                toggleEPG();
-            });
+                            const titleText = getVideoTitle(video, idx, channelIndex);
 
-            track.appendChild(block);
+                            block.innerHTML = `
+                                <div class="epg-block-title">${titleText}</div>
+                                <div class="epg-block-time">${timeFormatted} (${formatDuration(duration)})</div>
+                            `;
 
-            accumulatedSecs += duration;
-            if (accumulatedSecs >= 86400) break; // End of 24-hr layout block
+                            block.addEventListener("click", (function(videoIndex) {
+                                return function() {
+                                    currentChannelIndex = channelIndex;
+                                    loadVideo(videoIndex, 0);
+                                    toggleEPG();
+                                };
+                            })(idx));
+
+                            track.appendChild(block);
+                        }
+
+                        cursor = blockEnd;
+                    }
+
+                    idx = (idx + 1) % count;
+                    into = 0;
+                }
+            }
+
+            // Segment A: [00:00, broadcastStart) — the tail of the previous
+            // broadcast day (only exists when the channel starts after midnight)
+            if (broadcastStartSecs > 0) {
+                const offsetAtMidnight = (((86400 - broadcastStartSecs) % totalDuration) + totalDuration) % totalDuration;
+
+                let idx = 0;
+                let acc = 0;
+                let into = offsetAtMidnight;
+                for (let i = 0; i < count; i++) {
+                    const d = Number(channel.playlist[i].duration) || 0;
+                    if (offsetAtMidnight < acc + d) {
+                        idx = i;
+                        into = offsetAtMidnight - acc;
+                        break;
+                    }
+                    acc += d;
+                }
+
+                emitSegment(0, broadcastStartSecs, idx, into);
+            }
+
+            // Segment B: [broadcastStart, 24:00) — today's broadcast day,
+            // the cycle starts at the top of the playlist at broadcastStart
+            emitSegment(broadcastStartSecs, 86400, 0, 0);
         }
 
         row.appendChild(track);
@@ -1111,9 +1200,18 @@ function buildEPG() {
 
     container.appendChild(grid);
 
-    // Auto-scroll horizontally to current time position when opened
+    // Snap to the current time when the guide is first opened (or via the
+    // NOW button); otherwise restore the user's scroll position so the
+    // 1-second refresh doesn't yank the guide back while scrolling.
     setTimeout(function() {
-        container.scrollLeft = nowLeftPx - 300;
+        if (epgAutoScroll) {
+            container.scrollLeft = Math.max(nowLeftPx - 300, 0);
+            container.scrollTop = 0;
+            epgAutoScroll = false;
+        } else {
+            container.scrollLeft = prevScrollLeft;
+            container.scrollTop = prevScrollTop;
+        }
     }, 50);
 }
 
@@ -1166,6 +1264,10 @@ document.addEventListener("keydown", function(event) {
         prevChannel();
     } else if (event.key === "ArrowDown") {
         nextChannel();
+    } else if (event.key === "ArrowLeft" && epgVisible) {
+        document.getElementById("epg-content").scrollLeft -= 300;
+    } else if (event.key === "ArrowRight" && epgVisible) {
+        document.getElementById("epg-content").scrollLeft += 300;
     } else if (event.key.toLowerCase() === "m") {
         toggleMute();
     } else if (event.key.toLowerCase() === "g") {
