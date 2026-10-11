@@ -8,22 +8,25 @@ function applySlotPadding(channelsData) {
     const paddedItems = [];
 
     channel.items.forEach(item => {
-      // 1. Force show to start at current padded offset
       item.start = currentEpochOffset;
       
-      // Calculate show duration in seconds (convert ticks/ms if needed)
       const durationSeconds = item.duration || Math.round(item.RunTimeTicks / 10000000) || 1800;
       item.duration = durationSeconds;
       
       const naturalEnd = item.start + durationSeconds;
       paddedItems.push(item);
 
-      // 2. Calculate next 15-minute boundary
       const nextSlotTime = Math.ceil(naturalEnd / SLOT_SIZE) * SLOT_SIZE;
       const gap = nextSlotTime - naturalEnd;
 
-      // 3. Inject filler if show finishes before 15-min mark
       if (gap > 0) {
+        // Generate a random start point in the source video (assuming a 3600s / 1-hour source tape)
+        const MAX_SOURCE_SECONDS = 3600;
+        const maxStart = Math.max(0, MAX_SOURCE_SECONDS - gap);
+        // Uses Math.sin(naturalEnd) as a stable, deterministic seed so every viewer gets the same random spot
+        const randomFactor = Math.abs(Math.sin(naturalEnd)); 
+        const sourceStart = Math.floor(randomFactor * maxStart);
+
         paddedItems.push({
           id: `filler-${naturalEnd}`,
           title: "Commercial Break",
@@ -31,11 +34,11 @@ function applySlotPadding(channelsData) {
           duration: gap,
           start: naturalEnd,
           isFiller: true,
-          streamUrl: `${FILLER_URL}#t=0,${gap}`
+          streamUrl: FILLER_URL,
+          sourceStart: sourceStart // Pass the random start point to the frontend
         });
       }
 
-      // 4. Advance clock to exact 15-minute boundary
       currentEpochOffset = nextSlotTime;
     });
 
@@ -45,7 +48,6 @@ function applySlotPadding(channelsData) {
 
   return channelsData;
 }
-
 
 const fs = require('fs');
 
