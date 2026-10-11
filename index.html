@@ -104,7 +104,7 @@
   </style>
 </head>
 <body>
-  <header id="tv-header" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 30px;">
+  <header id="tv-header" style="display: flex; justify-content: center; align-items: center; gap: 30px; padding: 15px 30px;">
     <img src="IMG_1942.jpeg" alt="Skyline TV Logo" id="brand-logo" style="margin: 0; align-items: center;">
     <div>
       <a href="guide.html" style="color: #ffcc00; text-decoration: none; font-weight: bold; background: #14244f; padding: 10px 15px; border: 1px solid #2c4a96; border-radius: 6px; align-items: center;">📺 Full TV Guide</a>
@@ -218,8 +218,11 @@
         player.src = activeItem.streamUrl;
         
         player.onloadedmetadata = () => {
-          // Combine the item's random source start with how far into the break we currently are
-          player.currentTime = (activeItem.sourceStart || 0) + seekOffset;
+          // Start the filler at a random point, leaving enough content to cover the break
+          const duration = player.duration;
+          const maxStart = Math.max(0, duration - seekOffset);
+          const randomStart = Math.random() * maxStart;
+          player.currentTime = randomStart;
           player.muted = false;
           const playPromise = player.play();
           if (playPromise !== undefined) {
@@ -253,7 +256,7 @@
           hlsEngine.attachMedia(player);
           
           hlsEngine.on(Hls.Events.MANIFEST_PARSED, function() {
-            player.currentTime = seekOffset;
+            hlsEngine.startLoad(seekOffset);
             player.muted = false; 
             
             const playPromise = player.play();
