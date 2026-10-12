@@ -256,8 +256,15 @@
           hlsEngine.attachMedia(player);
           
           hlsEngine.on(Hls.Events.MANIFEST_PARSED, function() {
-            hlsEngine.startLoad(seekOffset);
-            player.muted = false; 
+            player.currentTime = seekOffset;
+            // Retry the seek after a short delay — sometimes the seek is applied
+            // before the player is ready and gets ignored, so we verify and re-apply
+            setTimeout(function() {
+              if (player.duration && Math.abs(player.currentTime - seekOffset) > 5) {
+                player.currentTime = seekOffset;
+              }
+            }, 500);
+            player.muted = false;
             
             const playPromise = player.play();
             if (playPromise !== undefined) {
