@@ -454,6 +454,7 @@ html, body {
             <button onclick="prevChannel()">▲ CH Prev</button>
             <button onclick="nextChannel()">▼ CH Next</button>
             <button id="mute-btn" onclick="toggleMute()">🔇 Unmute</button>
+            <button id="captions-btn" onclick="toggleCaptions()">💬 CC Off</button>
             <button onclick="toggleEPG()">📺 TV Guide (G)</button>
         </div>
     </div>
@@ -890,6 +891,45 @@ function updateMuteButton() {
     }
 }
 
+function toggleCaptions() {
+    if (!player) return;
+
+    try {
+        const track = player.getOption('captions', 'track');
+        const captionsOn = track && track.languageCode;
+
+        if (captionsOn) {
+            player.unloadModule('captions');
+        } else {
+            player.loadModule('captions');
+        }
+    } catch (e) {
+        console.warn('Could not toggle captions:', e);
+    }
+
+    updateCaptionsButton();
+}
+
+function updateCaptionsButton() {
+    const button = document.getElementById('captions-btn');
+    if (!button || !player) return;
+
+    try {
+        const track = player.getOption('captions', 'track');
+        const captionsOn = track && track.languageCode;
+
+        if (captionsOn) {
+            button.textContent = '💬 CC On';
+            button.style.background = '#2d5a2d';
+        } else {
+            button.textContent = '💬 CC Off';
+            button.style.background = '#222';
+        }
+    } catch (e) {
+        button.textContent = '💬 CC Off';
+    }
+}
+
 
 /* =========================================================
    ON SCREEN DISPLAY
@@ -1270,6 +1310,8 @@ document.addEventListener("keydown", function(event) {
         document.getElementById("epg-content").scrollLeft += 300;
     } else if (event.key.toLowerCase() === "m") {
         toggleMute();
+    } else if (event.key.toLowerCase() === "c") {
+        toggleCaptions();
     } else if (event.key.toLowerCase() === "g") {
         toggleEPG();
     } else if (event.key === "Escape" && epgVisible) {
