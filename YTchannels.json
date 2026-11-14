@@ -7553,5 +7553,417 @@
         "duration": 144
       }
     ]
+  },
+  {
+    "id": 11,
+    "name": "Nev TV",
+    "broadcastStart": "00:00",
+    "playlist": [
+      {
+        "id": "cIQxxOAS59w",
+        "title": "Smile 22nd July 2007",
+        "duration": 4404
+      },
+      {
+        "id": "xN5S2ZqQWpo",
+        "title": "Bear Behaving Badly S01E01 Homeless and Angry (Widescreen)",
+        "duration": 1316
+      },
+      {
+        "id": "93Z_xyPjltQ",
+        "title": "Bear Behaving Badly S01E02 Hair Today (Widescreen)",
+        "duration": 1302
+      },
+      {
+        "id": "aTVrLJFdc2A",
+        "title": "Bear Behaving Badly S01E03 Marathon Nev (Widescreen)",
+        "duration": 1337
+      },
+      {
+        "id": "vlKtPZ40iDQ",
+        "title": "Bear Behaving Badly S01E04 Raffle Hassle (Widescreen)",
+        "duration": 1328
+      },
+      {
+        "id": "I44g04X0O68",
+        "title": "Bear Behaving Badly S01E05 Portrait (Widescreen)",
+        "duration": 1325
+      },
+      {
+        "id": "hfswjAVlZv0",
+        "title": "Bear Behaving Badly S01E06 Ice-Cream Celebrity Chef (Widescreen)",
+        "duration": 1294
+      },
+      {
+        "id": "Zs18GMmGq08",
+        "title": "Bear Behaving Badly S01E07 Bunfight at the Ice Cream Corral (Widescreen)",
+        "duration": 1321
+      },
+      {
+        "id": "SRUTOelLUaY",
+        "title": "Bear Behaving Badly S01E08 A Right Pair of Pants (Widescreen)",
+        "duration": 1322
+      },
+      {
+        "id": "NgyY4CdwB6w",
+        "title": "Bear Behaving Badly S01E09 Treasure Hunt (Widescreen)",
+        "duration": 1364
+      },
+      {
+        "id": "XH9jo3k9gyA",
+        "title": "Bear Behaving Badly S01E10 Magic Box (Widescreen)",
+        "duration": 1307
+      },
+      {
+        "id": "AgUeuM42TSw",
+        "title": "Bear Behaving Badly S01E11 That Sinking Feeling (Widescreen)",
+        "duration": 1369
+      },
+      {
+        "id": "UVVCr2Jnsd8",
+        "title": "Bear Behaving Badly S01E12 Genie of the Lamp (Widescreen)",
+        "duration": 1298
+      },
+      {
+        "id": "gbRrsi7Vouw",
+        "title": "Bear Behaving Badly S01E13 For Sale (Widescreen)",
+        "duration": 1380
+      },
+      {
+        "id": "DMTK5aQR7I0",
+        "title": "Bear Behaving Badly S01E14 Pets Win Prizes (Widescreen)",
+        "duration": 1302
+      },
+      {
+        "id": "GFbwFJctthE",
+        "title": "Bear Behaving Badly S01E15 Clown Law (Widescreen)",
+        "duration": 1333
+      },
+      {
+        "id": "FpThn8vxqbw",
+        "title": "Bear Behaving Badly S01E16 Bin Man Nev (Widescreen)",
+        "duration": 1339
+      },
+      {
+        "id": "njf7PjY-fdM",
+        "title": "Bear Behaving Badly S01E17 Enter Mr Angry Pants Left (Widescreen)",
+        "duration": 1337
+      },
+      {
+        "id": "k5GZHzZFPgQ",
+        "title": "Bear Behaving Badly S01E18 Unhappy Halloween (Widescreen)",
+        "duration": 1352
+      },
+      {
+        "id": "4Fdj0s_hWJQ",
+        "title": "Bear Behaving Badly S01E19 Valentine (Widescreen)",
+        "duration": 1362
+      },
+      {
+        "id": "YHdO9JZ1Cak",
+        "title": "Bear Behaving Badly S01E20 Strictly Dumb Dancing (Widescreen)",
+        "duration": 1324
+      },
+      {
+        "id": "F2S1XAvVVoo",
+        "title": "Bear Behaving Badly S01E21 Rumble in the Jumble (Widescreen)",
+        "duration": 1349
+      },
+      {
+        "id": "qEgTGHcbFyo",
+        "title": "Bear Behaving Badly S01E22 Holiday (Widescreen)",
+        "duration": 1275
+      },
+      {
+        "id": "lSCxK4ONC7M",
+        "title": "Bear Behaving Badly S01E23 Robot Rat Catcher (Widescreen)",
+        "duration": 1330
+      },
+      {
+        "id": "McZZZcYQTo4",
+        "title": "Bear Behaving Badly S01E24 No Joke (Widescreen)",
+        "duration": 1337
+      },
+      {
+        "id": "IkjR6fALNXQ",
+        "title": "Bear Behaving Badly S01E25 Blinga Stinga (Widescreen)",
+        "duration": 1365
+      },
+      {
+        "id": "ZPa0EbAtsoA",
+        "title": "Bear Behaving Badly S01E26 Mr Ice-Cream Head (Widescreen)",
+        "duration": 1339
+      },
+      {
+        "id": "Qdn-4KR1Jvk",
+        "title": "Bear Behaving Badly S02E01 Gnome Laughing Matter",
+        "duration": 1353
+      },
+      {
+        "id": "btcxIryw3X8",
+        "title": "Bear Behaving Badly S02E02 Day of the Terrific",
+        "duration": 1346
+      },
+      {
+        "id": "ViG-zQPK_0Y",
+        "title": "Bear Behaving Badly S02E03 It's Cow or Never",
+        "duration": 1375
+      },
+      {
+        "id": "DSj4LSxKXQU",
+        "title": "Bear Behaving Badly   S02E04   Hypnotwits",
+        "duration": 1322
+      },
+      {
+        "id": "EBCrg_FLnrI",
+        "title": "Bear Behaving Badly S02E05 Curse of the Werebear",
+        "duration": 1459
+      },
+      {
+        "id": "Kmmk_HGS0D8",
+        "title": "Bear Behaving Badly S02E06 Around the Flat in Eighty Days",
+        "duration": 1351
+      },
+      {
+        "id": "tkS-pM_lf7g",
+        "title": "Bear Behaving Badly S02E07 Operation Nev",
+        "duration": 1491
+      },
+      {
+        "id": "6EoWhdoOp4U",
+        "title": "Bear Behaving Badly S02E08 Teething Trouble",
+        "duration": 1368
+      },
+      {
+        "id": "UT13VCTVScI",
+        "title": "Bear Behaving Badly S02E09 Everyone Loves Chops",
+        "duration": 1364
+      },
+      {
+        "id": "lBdQyQybIes",
+        "title": "Bear Behaving Badly S02E10 The Perfect Ice Cream Flavour",
+        "duration": 1343
+      },
+      {
+        "id": "068b2N4u2sY",
+        "title": "Bear Behaving Badly S02E11 Shaken and Stirred",
+        "duration": 1361
+      },
+      {
+        "id": "Ima2Pcghr10",
+        "title": "Bear Behaving Badly   S02E12 Postman Nev",
+        "duration": 1375
+      },
+      {
+        "id": "542KIlnJbvM",
+        "title": "Bear Behaving Badly S02E13 Did Dib Nev",
+        "duration": 1364
+      },
+      {
+        "id": "HbsPm62tcpk",
+        "title": "Bear Behaving Badly S02E14 NevQuest",
+        "duration": 1376
+      },
+      {
+        "id": "0pQDGADuGjc",
+        "title": "Bear Behaving Badly S02E15 Back in the Day",
+        "duration": 1337
+      },
+      {
+        "id": "TIefBcHmrlw",
+        "title": "Bear Behaving Badly S02E16 Frog Prince",
+        "duration": 1381
+      },
+      {
+        "id": "kUytPqQ8nks",
+        "title": "Bear Behaving Badly S02E17 Arty Time",
+        "duration": 1401
+      },
+      {
+        "id": "GAemcIigx5M",
+        "title": "Bear Behaving Badly S02E18 Out of Control",
+        "duration": 1544
+      },
+      {
+        "id": "WEYTwSz8ftA",
+        "title": "Bear Behaving Badly S02E19 Invisible Nev",
+        "duration": 1355
+      },
+      {
+        "id": "WL5xtbmW7J0",
+        "title": "Bear Behaving Badly S02E20 A Star Is Born",
+        "duration": 1384
+      },
+      {
+        "id": "G30yWwi8BXE",
+        "title": "Bear Behaving Badly S02E21 Love Potion",
+        "duration": 1376
+      },
+      {
+        "id": "ex3FDUJS3GE",
+        "title": "Bear Behaving Badly S02E22 Jamageddon",
+        "duration": 1360
+      },
+      {
+        "id": "JyjDLwwkk6g",
+        "title": "Bear Behaving Badly S02E23 Cavebear",
+        "duration": 1342
+      },
+      {
+        "id": "ID-1HEAJVTA",
+        "title": "Bear Behaving Badly S02E24 Freaky Fur Day",
+        "duration": 1372
+      },
+      {
+        "id": "eDjImJBk5o4",
+        "title": "Bear Behaving Badly S02E25 Wedding Belles",
+        "duration": 1501
+      },
+      {
+        "id": "DZ-WOC4VYck",
+        "title": "Bear Behaving Badly S02E26 Bird Brain",
+        "duration": 1502
+      },
+      {
+        "id": "TJcs33IpiAI",
+        "title": "Bear Behaving Badly S03E01 Robopostie Rampage",
+        "duration": 1351
+      },
+      {
+        "id": "FL1Wzlv2qIQ",
+        "title": "Bear Behaving Badly S03E02 Nev in the Hood",
+        "duration": 1338
+      },
+      {
+        "id": "FLXY_9oWM2w",
+        "title": "Bear Behaving Badly S03E03 Sock Mess Monster",
+        "duration": 1405
+      },
+      {
+        "id": "aIbJIY2EeTY",
+        "title": "Bear Behaving Badly S03E04 Crazy Keith: Extreme Koala",
+        "duration": 1436
+      },
+      {
+        "id": "OOPHSxVAUoA",
+        "title": "Bear Behaving Badly S03E05 A Bear's Tale",
+        "duration": 1356
+      },
+      {
+        "id": "MmMMHxGo65c",
+        "title": "Bear Behaving Badly S03E06 Two Bears and a Baby",
+        "duration": 1360
+      },
+      {
+        "id": "nVYU0_t9iJE",
+        "title": "Bear Behaving Badly S03E07 Mr Scary Head",
+        "duration": 1313
+      },
+      {
+        "id": "lKFIP1V-m-s",
+        "title": "Bear Behaving Badly S03E08 Radio Doris",
+        "duration": 1328
+      },
+      {
+        "id": "0P97haVssMs",
+        "title": "Bear Behaving Badly S03E09 Nev Through the Looking Glass",
+        "duration": 1358
+      },
+      {
+        "id": "N7b9cBS15Nk",
+        "title": "Bear Behaving Badly S03E10 Cousin Dev",
+        "duration": 1407
+      },
+      {
+        "id": "n3RMLytDbM8",
+        "title": "Bear Behaving Badly S03E11 The Strange Case of Mr Prank",
+        "duration": 1348
+      },
+      {
+        "id": "-5MPuYeupWA",
+        "title": "Bear Behaving Badly S03E12 Take Me To Your Ice Cream",
+        "duration": 1384
+      },
+      {
+        "id": "tJxgBTIXXao",
+        "title": "Bear Behaving Badly S03E13 The Legend of Angry Pants' Gold",
+        "duration": 1490
+      },
+      {
+        "id": "4WFrgIZLR34",
+        "title": "Bear Behaving Badly S04E01 Hero to Zero",
+        "duration": 1323
+      },
+      {
+        "id": "hUsa8IAzGZQ",
+        "title": "Bear Behaving Badly S04E02 Yummy Mummy",
+        "duration": 1363
+      },
+      {
+        "id": "PiZ3FiOcLvQ",
+        "title": "Bear Behaving Badly S04E03 School's In",
+        "duration": 1335
+      },
+      {
+        "id": "jTD-IDqjNO4",
+        "title": "Bear Behaving Badly S04E04 Nev the Bear Wizard",
+        "duration": 1322
+      },
+      {
+        "id": "kG8STEo4Nig",
+        "title": "Bear Behaving Badly S04E05 Big Dog Little Pants",
+        "duration": 1348
+      },
+      {
+        "id": "cNlMrWNKKQs",
+        "title": "Bear Behaving Badly S04E06 King of the Swingers",
+        "duration": 1369
+      },
+      {
+        "id": "7CQFO6Pro18",
+        "title": "Bear Behaving Badly S04E07 Pimples",
+        "duration": 1324
+      },
+      {
+        "id": "X2Wj7QFIIC0",
+        "title": "Bear Behaving Badly S04E08 Sing a Song of Secrets",
+        "duration": 1321
+      },
+      {
+        "id": "cThxI47adKM",
+        "title": "Bear Behaving Badly S04E09 Wibbles",
+        "duration": 1313
+      },
+      {
+        "id": "LsMLHqL1v9Q",
+        "title": "Bear Behaving Badly S04E10 Mission Impawsable",
+        "duration": 1306
+      },
+      {
+        "id": "efri7mnylNk",
+        "title": "Bear Behaving Badly S04E11 Alice in Nevvieland",
+        "duration": 1325
+      },
+      {
+        "id": "rAVQrQHkc8s",
+        "title": "Bear Behaving Badly S04E12 Doris of Doom",
+        "duration": 1355
+      },
+      {
+        "id": "MrlD28w-_E0",
+        "title": "Bear Behaving Badly S04E13 Caught on Camera",
+        "duration": 1326
+      },
+      {
+        "id": "MgYb5B17emM",
+        "title": "Smile 12th August 2007",
+        "duration": 3755
+      },
+      {
+        "id": "-iHUY3iXUyI",
+        "title": "Smile 19th August 2007",
+        "duration": 3829
+      }
+    ]
   }
 ]
